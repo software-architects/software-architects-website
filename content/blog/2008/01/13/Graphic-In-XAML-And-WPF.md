@@ -47,15 +47,15 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
   <img height="329" alt="Relationship of Drawing Objects And Framework Elements" width="406" src="{{site.baseurl}}/content/images/blog/2008/01/Figure_7_27_WPF_und_XAML.png" class="           " />
 </p><p>
   <span class="Highlighted">XAML und WPF Programmierhandbuch
-<br /></span> Figure 7.27, Page 467<br /></p><p>At the first glance Geometries (objects derived from <span class="Highlighted">Geometry</span>) seem to be similar as Shapes. Actually they are quite different. Geometries do not represent graphical objects that are ready to be displayed on the screen. They just specify the shape of an object.</p><p>In our case it makes sense to use Drawing Objects to implement the logo because it is a relatively static graphical object. Here is the XAML code for the basic shapes of the logo:</p><p class="DecoratorRight">Note the namespace declaration for<span class="Highlighted">PresentationOptions</span>. You need this to be able to freeze Freezables.</p>{% highlight javascript %}<Page
+<br /></span> Figure 7.27, Page 467<br /></p><p>At the first glance Geometries (objects derived from <span class="Highlighted">Geometry</span>) seem to be similar as Shapes. Actually they are quite different. Geometries do not represent graphical objects that are ready to be displayed on the screen. They just specify the shape of an object.</p><p>In our case it makes sense to use Drawing Objects to implement the logo because it is a relatively static graphical object. Here is the XAML code for the basic shapes of the logo:</p><p class="DecoratorRight">Note the namespace declaration for<span class="Highlighted">PresentationOptions</span>. You need this to be able to freeze Freezables.</p>{% highlight xml %}<Page
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:PresentationOptions=
     "http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   mc:Ignorable="PresentationOptions" >{% endhighlight %}<p class="DecoratorRight">We put the logo into the page's resource collection. Thus the logo could easily be extracted into a separate XAML file (e.g. App.xaml or another file).</p><p class="Code">
-  {% highlight javascript %}  <Page.Resources>{% endhighlight %}
-  <br /> Here you can see the declaration of the two graphic objects ("software" and "architects"). Note that we use <strong>frozen</strong> Drawing objects.</p><p class="DecoratorRight">You should also take a look at how we combine multiple <span class="Highlighted">PathGeometry</span>-objects using <span class="Highlighted">GeometryGroup</span>. I will go into details concerning this class later.</p>{% highlight javascript %}    <!-- ****** SOFTWARE ******************************************* -->
+  {% highlight xml %}  <Page.Resources>{% endhighlight %}
+  <br /> Here you can see the declaration of the two graphic objects ("software" and "architects"). Note that we use <strong>frozen</strong> Drawing objects.</p><p class="DecoratorRight">You should also take a look at how we combine multiple <span class="Highlighted">PathGeometry</span>-objects using <span class="Highlighted">GeometryGroup</span>. I will go into details concerning this class later.</p>{% highlight xml %}    <!-- ****** SOFTWARE ******************************************* -->
     <!-- Geometry for the word "software" -->
     <GeometryGroup x:Key="LogoSoftware" 
       PresentationOptions:Freeze="True" >
@@ -82,7 +82,7 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
       <PathGeometry Figures="M 805.67431,206.22951 ... z" />
       <PathGeometry Figures="M 869.59918,226.66181 ... z" />
       <PathGeometry Figures="M 873.62206,206.17249 ... z" />
-    </GeometryGroup>{% endhighlight %}<p class="DecoratorRight">Here we define the gradient brushes used in the logo.</p>{% highlight javascript %}    <!-- ****** BRUSHES ******************************************* -->
+    </GeometryGroup>{% endhighlight %}<p class="DecoratorRight">Here we define the gradient brushes used in the logo.</p>{% highlight xml %}    <!-- ****** BRUSHES ******************************************* -->
     <!-- Brush for the word "software" -->
     <LinearGradientBrush x:Key="SoftwareBrush" StartPoint="0,1" 
       EndPoint="0,0" PresentationOptions:Freeze="True">
@@ -95,7 +95,7 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
       EndPoint="0,0" PresentationOptions:Freeze="True">
       <GradientStop Color="#264da6" Offset="0.0" />
       <GradientStop Color="#15306c" Offset="1.0" />
-    </LinearGradientBrush>{% endhighlight %}<p class="DecoratorRight">As we said before Drawing Objects needs a Framework Element helper to display them on the screen. In our case the class <span class="Highlighted">Image</span> is used for that. <span class="Highlighted">Image</span> needs a descendant of<span class="Highlighted">ImageSource</span> as the source of the image. For this reason we provide a <span class="Highlighted">DrawingImage</span>-object (<span class="Highlighted">DrawingImage</span> derives from<span class="Highlighted">ImageSource</span>) in the resource dictionary.</p>{% highlight javascript %}    <!-- ****** LOGO ********************************************** -->
+    </LinearGradientBrush>{% endhighlight %}<p class="DecoratorRight">As we said before Drawing Objects needs a Framework Element helper to display them on the screen. In our case the class <span class="Highlighted">Image</span> is used for that. <span class="Highlighted">Image</span> needs a descendant of<span class="Highlighted">ImageSource</span> as the source of the image. For this reason we provide a <span class="Highlighted">DrawingImage</span>-object (<span class="Highlighted">DrawingImage</span> derives from<span class="Highlighted">ImageSource</span>) in the resource dictionary.</p>{% highlight xml %}    <!-- ****** LOGO ********************************************** -->
     <DrawingImage x:Key="SoftwareArchitectsLogo" 
       PresentationOptions:Freeze="True" >
       <DrawingImage.Drawing>
@@ -107,7 +107,7 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
         </DrawingGroup>
       </DrawingImage.Drawing>
     </DrawingImage>
-  </Page.Resources>{% endhighlight %}<p class="DecoratorRight">Three lines of code are enough to display the logo in any WPF window or page. Everything else is defined in the resources.</p>{% highlight javascript %}  <Canvas>
+  </Page.Resources>{% endhighlight %}<p class="DecoratorRight">Three lines of code are enough to display the logo in any WPF window or page. Everything else is defined in the resources.</p>{% highlight xml %}  <Canvas>
     <Image Source="{StaticResource SoftwareArchitectsLogo}" />
   </Canvas>
 </Page>{% endhighlight %}<p class="DecoratorRight">Here you can see the logo implemented with the code shown above in XAMLPad. XAMLPad is a small tool with which you can prototype your XAML code. It is included in the free <a href="http://msdn2.microsoft.com/en-us/windowsvista/aa904955.aspx" target="_blank">Windows SDK</a>.</p><p>
@@ -115,8 +115,8 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
 </p><h2 class="Head">
   <a id="CombiningGeometryObjects" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="CombiningGeometryObjects"></a>Combining Geometry Objects</h2><p>In WPF you have two possibilities to combine Geometries. You can either group them in a collection as shown in the code above. In this case you use the class <span class="Highlighted">GeometryGroup</span>. Be aware that <span class="Highlighted">GeometryGroup</span> is really just a collection and nothing more. If you want to build a completely new Geometry by combining two others (e.g. intersection, union, etc.) you have to use <span class="Highlighted">CombinedGeometry</span> instead.</p><p>In our case we use a combination of two Geometries to create the solid color bottom of the word "software". The goal is not to create separate paths for this area of the logo. Instead we want to build on the previously declared path and exclude the gray rectangle (see picture below) from it.</p><p>
   <img height="323" alt="CombinedGeometry Applied In The Logo" width="361" src="{{site.baseurl}}/content/images/blog/2008/01/LogoDarkBottom.png" class="   " />
-</p>{% highlight javascript %}<Page.Resources>
-[...]{% endhighlight %}<p class="DecoratorRight">Note how we reference the existing Geometry of the word "software" by using the<span class="Highlighted">StaticResource</span>-Markup Extension.</p>{% highlight javascript %}  <!-- Geometry for the dark area at the bottom of the letters 
+</p>{% highlight xml %}<Page.Resources>
+[...]{% endhighlight %}<p class="DecoratorRight">Note how we reference the existing Geometry of the word "software" by using the<span class="Highlighted">StaticResource</span>-Markup Extension.</p>{% highlight xml %}  <!-- Geometry for the dark area at the bottom of the letters 
        of the word "software" -->
   <CombinedGeometry x:Key="LogoSoftwareBottomShape" 
     GeometryCombineMode="Exclude" 
@@ -157,7 +157,7 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
   <img height="175" alt="WPF Transform Classes" width="385" src="{{site.baseurl}}/content/images/blog/2008/01/Figure_7_39_WPF_und_XAML.png" class="        " />
 </p><p>
   <span class="Highlighted">XAML und WPF Programmierhandbuch
-<br /></span> Figure 7.39, Page 484</p><p>In our case we do not only use a <span class="Highlighted">Transform</span>-object. Additionally we use <a href="http://www.software-architects.com/TechnicalArticles/GraphicInWPF/tabid/74/Default.aspx#CombiningGeometryObjects" target="_blank">CombinedGeometry</a> to truncate the mirrored words. If we would not do that objects that follow the logo horizontally would show a strange distance from the logo.</p>{% highlight javascript %}<Page.Resources>
+<br /></span> Figure 7.39, Page 484</p><p>In our case we do not only use a <span class="Highlighted">Transform</span>-object. Additionally we use <a href="http://www.software-architects.com/TechnicalArticles/GraphicInWPF/tabid/74/Default.aspx#CombiningGeometryObjects" target="_blank">CombinedGeometry</a> to truncate the mirrored words. If we would not do that objects that follow the logo horizontally would show a strange distance from the logo.</p>{% highlight xml %}<Page.Resources>
 [...]
 
   <!-- Geometry for the mirror-effect of the word "software" -->
@@ -177,7 +177,7 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
     </CombinedGeometry.Geometry1>
     <CombinedGeometry.Geometry2>
       <RectangleGeometry Rect="0,0,519,145" />
-    </CombinedGeometry.Geometry2>{% endhighlight %}<p class="DecoratorRight">You can apply a transformation by assigning the appropriate decendent class of<span class="Highlighted">Transform</span> to the <span class="Highlighted">Transform</span>-property of the object you want to change.</p>{% highlight javascript %}    <CombinedGeometry.Transform>
+    </CombinedGeometry.Geometry2>{% endhighlight %}<p class="DecoratorRight">You can apply a transformation by assigning the appropriate decendent class of<span class="Highlighted">Transform</span> to the <span class="Highlighted">Transform</span>-property of the object you want to change.</p>{% highlight xml %}    <CombinedGeometry.Transform>
       <TransformGroup>
         <ScaleTransform CenterY="184" ScaleY="-1" />
       </TransformGroup>
@@ -250,7 +250,7 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
   <li>...know about Freezables.</li>
   <li>...support the mini-language for path expressions in <span class="Highlighted">PathGeometry</span>. It is just supported in <span class="Highlighted">Path</span>.</li>
   <li>...know Markup Extensions like {StaticResource ...} or {Binding ...}. You have to implement the corresponding functionality yourself using JavaScript.</li>
-</ul><p>Here is the source code of an implementation of a simplified version of the logo in Silverlight. You can see how similar the Silverlight version is to the WPF version.</p><p class="DecoratorRight">Note that there is no reference related to freezing Freezables in the Silverlight version. Silverlight does not know Freezables.</p>{% highlight javascript %}<Canvas
+</ul><p>Here is the source code of an implementation of a simplified version of the logo in Silverlight. You can see how similar the Silverlight version is to the WPF version.</p><p class="DecoratorRight">Note that there is no reference related to freezing Freezables in the Silverlight version. Silverlight does not know Freezables.</p>{% highlight xml %}<Canvas
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" >
@@ -268,7 +268,7 @@ permalink: /blog/2008/01/13/Graphic-In-XAML-And-WPF
         <ScaleTransform ScaleX="0.25" ScaleY="0.25" />
         <TranslateTransform x:Name="SoftwareTranslateAnimation" />
       </TransformGroup>
-    </Path.RenderTransform>{% endhighlight %}<p class="DecoratorRight">For demonstration purposes we added a small animation here. We used <span class="Highlighted">DoubleAnimation</span>-objects to let the logo fly and fade in.</p>{% highlight javascript %}    <Path.Triggers>
+    </Path.RenderTransform>{% endhighlight %}<p class="DecoratorRight">For demonstration purposes we added a small animation here. We used <span class="Highlighted">DoubleAnimation</span>-objects to let the logo fly and fade in.</p>{% highlight xml %}    <Path.Triggers>
       <EventTrigger RoutedEvent="Path.Loaded">
         <BeginStoryboard>
           <Storyboard>

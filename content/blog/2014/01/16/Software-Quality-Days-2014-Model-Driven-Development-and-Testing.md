@@ -58,7 +58,7 @@ permalink: /blog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-
   <param name="ThumbnailMaxHeight" value="500" />
   <param name="ImageMaxWidth" value="1024" />
   <param name="ImageMaxHeight" value="1024" />
-</function><p>Next we wanted to demo the power of PEX and Code Digger in a slightly more complex scenario. Here is the code we used (don't analyze the logic, it does not have any deeper meening):</p>{% highlight javascript %}public class Bill
+</function><p>Next we wanted to demo the power of PEX and Code Digger in a slightly more complex scenario. Here is the code we used (don't analyze the logic, it does not have any deeper meening):</p>{% highlight c# %}public class Bill
 {
     public Bill(Region outsideEU, decimal amount, string supplier)
     {

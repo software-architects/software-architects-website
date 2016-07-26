@@ -111,7 +111,7 @@ app.listen(process.env.PORT || 3000);{% endhighlight %}<h2>Step 2: Test Your Web
   <param name="ThumbnailMaxHeight" value="800" />
   <param name="ImageMaxWidth" value="1920" />
   <param name="ImageMaxHeight" value="1280" />
-</function><p>We need a few more components for our clients. In contrast to NodeJS where we used <em>NPM</em> (<em>Node Package Manager</em>), we now use <em>NuGet</em>. You can either right-click on the project, select <em>Manage NuGet Packages</em> and select the packages by hand or you can copy/past the following code in your <em>packages.config</em> file:</p>{% highlight javascript %}<?xml version="1.0" encoding="utf-8"?>
+</function><p>We need a few more components for our clients. In contrast to NodeJS where we used <em>NPM</em> (<em>Node Package Manager</em>), we now use <em>NuGet</em>. You can either right-click on the project, select <em>Manage NuGet Packages</em> and select the packages by hand or you can copy/past the following code in your <em>packages.config</em> file:</p>{% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
 <packages>
   <package id="angularjs" version="1.2.16" targetFramework="net451" />
   <package id="angularjs.TypeScript.DefinitelyTyped" version="1.0.4" targetFramework="net451" />
@@ -176,7 +176,7 @@ class RegistrationsViewModel {
                 });
         };
     }
-}{% endhighlight %}<p>Having this controller, building the data-bound client code is a piece of cake. Here is the HTML from <em>registrations.html</em> including the AngularJS data binding attributes:</p>{% highlight javascript %}<h1>Registration Sample</h1>
+}{% endhighlight %}<p>Having this controller, building the data-bound client code is a piece of cake. Here is the HTML from <em>registrations.html</em> including the AngularJS data binding attributes:</p>{% highlight xml %}<h1>Registration Sample</h1>
 
 <button type="button" class="btn btn-primary" ng-click="refresh()">Refresh</button>
 
@@ -213,7 +213,7 @@ class RegisterViewModel {
                 });
         }
     }
-}{% endhighlight %}<p>And here is the corresponding HTML file called <em>register.html</em>:</p>{% highlight javascript %}<h1>Registration Sample</h1>
+}{% endhighlight %}<p>And here is the corresponding HTML file called <em>register.html</em>:</p>{% highlight xml %}<h1>Registration Sample</h1>
 
 <form role="form" style="max-width: 300px;">
     <div class="form-group">
@@ -234,7 +234,7 @@ class RegisterViewModel {
     </div>
 </form>
 
-<p>Do you want to view <a href="#/">registrations</a>?</p>{% endhighlight %}<h3>Single Page App (SPA)</h3><p>Did you recognize that the HTML code above is not complete? They have only been fragments. The reason for this is that we want to use AngularJS routing service to build a <em>Single Page App</em> (SPA). A SPA loads a single file and loads the necessary view fragments in the background.</p><p>We need an HTML file that hosts our fragments. Here is the code for <em>index.html</em>. Note the attribute <em>ng-view</em>. This is where the fragments shown above will be inserted.</p>{% highlight javascript %}<!DOCTYPE html>
+<p>Do you want to view <a href="#/">registrations</a>?</p>{% endhighlight %}<h3>Single Page App (SPA)</h3><p>Did you recognize that the HTML code above is not complete? They have only been fragments. The reason for this is that we want to use AngularJS routing service to build a <em>Single Page App</em> (SPA). A SPA loads a single file and loads the necessary view fragments in the background.</p><p>We need an HTML file that hosts our fragments. Here is the code for <em>index.html</em>. Note the attribute <em>ng-view</em>. This is where the fragments shown above will be inserted.</p>{% highlight xml %}<!DOCTYPE html>
 
 <html lang="en">
 <head>

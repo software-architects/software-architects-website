@@ -16,7 +16,7 @@ permalink: /blog/2013/09/24/BASTA-2013-Android-Development-with-Xamarin-C-and-Az
 </function><h2>Slides</h2><iframe src="http://www.slideshare.net/slideshow/embed_code/26489078?rel=0" width="512" height="421" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe><div style="margin-bottom:5px" data-mce-style="margin-bottom: 5px;">
   <strong>
     <a href="https://de.slideshare.net/rstropek/basta-2013-xamarin-26489078" title="Developing Android and iOS Apps With C#, .NET, Xamarin, Mono, and Windows Azure" target="_blank">Developing Android and iOS Apps With C#, .NET, Xamarin, Mono, and Windows Azure</a>
-  </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><p>If you prefer PDF, you can <a href="{{site.baseurl}}/content/images/blog/2013/09/BASTA 2013 - Xamarin.pdf" target="_blank">download the slide deck here</a>.</p><h2>Sourcecode</h2><p>The slidedeck contains a step-by-step description of how to build the sample. However, it does not include the complete sourcecode as I did not write it manually during the session. People who are interested in playing with the sample can <a href="{{site.baseurl}}/content/images/blog/2013/09/BeeBook.MobileAssets.zip" target="_blank">download the source code files</a> here. If you don't want to download the entire sample you can also take a look at the most important pieces of code below. BTW - the sample is about managing honey bee hives. The reason why I have chosen this example is because honey bees are my hobby. If you want to know more you can check out my <a href="http://bienenimgarten.wordpress.com" target="_blank">private blog</a> (German).</p><h3>Platform-Independent Data Access Layer</h3><p>In my example I wanted to demonstrate the cross-platform usage of ADO.NET (with its <em>Task</em>-based async API) for building a simple data access layer. I wanted my bee hive management app to be offline-enabled. Therefore it uses this layer to access a SQLite database on the phone. However, it could be used e.g. on the server as a data access layer for an web app or web API, too.</p>{% highlight javascript %}using System;
+  </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><p>If you prefer PDF, you can <a href="{{site.baseurl}}/content/images/blog/2013/09/BASTA 2013 - Xamarin.pdf" target="_blank">download the slide deck here</a>.</p><h2>Sourcecode</h2><p>The slidedeck contains a step-by-step description of how to build the sample. However, it does not include the complete sourcecode as I did not write it manually during the session. People who are interested in playing with the sample can <a href="{{site.baseurl}}/content/images/blog/2013/09/BeeBook.MobileAssets.zip" target="_blank">download the source code files</a> here. If you don't want to download the entire sample you can also take a look at the most important pieces of code below. BTW - the sample is about managing honey bee hives. The reason why I have chosen this example is because honey bees are my hobby. If you want to know more you can check out my <a href="http://bienenimgarten.wordpress.com" target="_blank">private blog</a> (German).</p><h3>Platform-Independent Data Access Layer</h3><p>In my example I wanted to demonstrate the cross-platform usage of ADO.NET (with its <em>Task</em>-based async API) for building a simple data access layer. I wanted my bee hive management app to be offline-enabled. Therefore it uses this layer to access a SQLite database on the phone. However, it could be used e.g. on the server as a data access layer for an web app or web API, too.</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
 using System.Data;
@@ -194,7 +194,7 @@ namespace BeeBook.Mobile
             }
         }
     }
-}{% endhighlight %}<p>And this is the sample implementation (derived from the class above) for SQLite on the Android phone.</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>And this is the sample implementation (derived from the class above) for SQLite on the Android phone.</p>{% highlight c# %}using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -268,7 +268,7 @@ namespace BeeBook.Mobile
         }
 
     }
-}{% endhighlight %}<h3>Adapter (Data Source for <em>ListView</em>)</h3><p>The Data Access Layer is used by an adapter which acts as the data source for the main activity:</p>{% highlight javascript %}using Android.Content;
+}{% endhighlight %}<h3>Adapter (Data Source for <em>ListView</em>)</h3><p>The Data Access Layer is used by an adapter which acts as the data source for the main activity:</p>{% highlight c# %}using Android.Content;
 using Android.Views;
 using Android.Widget;
 using BeeHive.Mobile;
@@ -316,7 +316,7 @@ namespace BeeBook.Mobile
             this.NotifyDataSetChanged();
         }
     }
-}{% endhighlight %}<h3>Main Activity</h3><p>The main activity simply displays a list of bee hives. The data is read from the adapter shown above. Note that the main activity uses an action bar menu item to display a <em>Sync</em> option. If the user clicks on this menu item, the data from the phone's SQLite database is transferred into the cloud using Windows Azure Mobile Services.</p>{% highlight javascript %}using Android.App;
+}{% endhighlight %}<h3>Main Activity</h3><p>The main activity simply displays a list of bee hives. The data is read from the adapter shown above. Note that the main activity uses an action bar menu item to display a <em>Sync</em> option. If the user clicks on this menu item, the data from the phone's SQLite database is transferred into the cloud using Windows Azure Mobile Services.</p>{% highlight c# %}using Android.App;
 using Android.OS;
 using Android.Views;
 using BeeBook.Mobile;
@@ -379,7 +379,7 @@ namespace BeeHive.Mobile
             }
         }
     }
-}{% endhighlight %}<h3>Hive Details With Google M{% highlight javascript %}using Android.App;
+}{% endhighlight %}<h3>Hive Details With Google M{% highlight c# %}using Android.App;
 using Android.OS;
 using Android.Views;
 using BeeBook.Mobile;
@@ -442,7 +442,7 @@ namespace BeeHive.Mobile
             }
         }
     }
-}{% endhighlight %}aps Activation</h3><p>If a user clicks on a bee hive row in the main activity's <em>ListView</em>, the hive's details are displayed. The detail form contains a butten which should show the location of the bee hive in Google maps. Here is the code for the hive detail activity:</p>{% highlight javascript %}using Android.App;
+}{% endhighlight %}aps Activation</h3><p>If a user clicks on a bee hive row in the main activity's <em>ListView</em>, the hive's details are displayed. The detail form contains a butten which should show the location of the bee hive in Google maps. Here is the code for the hive detail activity:</p>{% highlight c# %}using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;

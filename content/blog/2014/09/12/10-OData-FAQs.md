@@ -58,7 +58,7 @@ permalink: /blog/2014/09/12/10-OData-FAQs
   <li>Client application (e.g. Windows Store app, mobile app, browser app)</li>
   <li>Web services (e.g. REST services based on HTTP and JSON)</li>
   <li>Database (e.g. SQL Server)</li>
-</ol><p>In the good old days you might have used WCF to create web services. Today, most people prefer Microsoft’s <a href="http://www.asp.net/web-api" target="_blank">ASP.NET Web API</a> library. It makes it quite simple to create REST-based web services.</p><p>Let’s think about how we would design a REST web service for maintaining our customers in the example shown above. We would likely offer a service to get all customers using HTTP GET at e.g. <em>http://localhost:12345/api/Customer</em>. The ASP.NET Web API code for this is really simple:</p>{% highlight javascript %}public class CustomerWebApiController : ApiController
+</ol><p>In the good old days you might have used WCF to create web services. Today, most people prefer Microsoft’s <a href="http://www.asp.net/web-api" target="_blank">ASP.NET Web API</a> library. It makes it quite simple to create REST-based web services.</p><p>Let’s think about how we would design a REST web service for maintaining our customers in the example shown above. We would likely offer a service to get all customers using HTTP GET at e.g. <em>http://localhost:12345/api/Customer</em>. The ASP.NET Web API code for this is really simple:</p>{% highlight c# %}public class CustomerWebApiController : ApiController
 {
     [HttpGet]
     public IEnumerable<customer> Get()
@@ -68,7 +68,7 @@ permalink: /blog/2014/09/12/10-OData-FAQs
             return context.Customers.ToArray();
         }
     }
-}{% endhighlight %}<p class="showcase">Note that the sample solution <a href="https://github.com/rstropek/Samples/tree/master/ODataFaq" target="_blank">in my GitHub repository</a> contains an OWin/Katana self-hosting command line program <em>ODataFaq.SelfHostService</em> that you can use to try and debug the web API. It also contains the code necessary to setup the web API routes. I will not include it in the blog post to keep the text clean. If you are interested in this aspect of the sample, please download the sample code.</p><p>However, in practice that would not be sufficient. A client application will likely need to load a single customer, too. So we add a second API e.g. at <em>http://localhost:12345/api/Customer/&lt;customerid&gt;</em>:</p>{% highlight javascript %}public class CustomerWebApiController : ApiController
+}{% endhighlight %}<p class="showcase">Note that the sample solution <a href="https://github.com/rstropek/Samples/tree/master/ODataFaq" target="_blank">in my GitHub repository</a> contains an OWin/Katana self-hosting command line program <em>ODataFaq.SelfHostService</em> that you can use to try and debug the web API. It also contains the code necessary to setup the web API routes. I will not include it in the blog post to keep the text clean. If you are interested in this aspect of the sample, please download the sample code.</p><p>However, in practice that would not be sufficient. A client application will likely need to load a single customer, too. So we add a second API e.g. at <em>http://localhost:12345/api/Customer/&lt;customerid&gt;</em>:</p>{% highlight c# %}public class CustomerWebApiController : ApiController
 {
     [...]
     [HttpGet]
@@ -80,7 +80,7 @@ permalink: /blog/2014/09/12/10-OData-FAQs
                 .SingleOrDefault(c => c.CustomerId == id);
         }
     }
-}{% endhighlight %}<p>Imagine your client application allows the user to filter customers by country. Of course it could use the <em>get all customers</em> service mentioned above and do the filtering on the client-side. This would be very inefficient. So we have to add a third service in order to let the database do the heavy lifting of filtering our customers. The service could life at e.g. <em>http://myserver/api/CustomerByCountry/&lt;countryisocode&gt;</em>.</p>{% highlight javascript %}public class CustomerByCountryWebApiController : ApiController
+}{% endhighlight %}<p>Imagine your client application allows the user to filter customers by country. Of course it could use the <em>get all customers</em> service mentioned above and do the filtering on the client-side. This would be very inefficient. So we have to add a third service in order to let the database do the heavy lifting of filtering our customers. The service could life at e.g. <em>http://myserver/api/CustomerByCountry/&lt;countryisocode&gt;</em>.</p>{% highlight c# %}public class CustomerByCountryWebApiController : ApiController
 {
     [HttpGet]
     public IEnumerable<Customer> Get(string countryIsoCode)
@@ -92,7 +92,7 @@ permalink: /blog/2014/09/12/10-OData-FAQs
                 .ToArray();
         }
     }
-}{% endhighlight %}<p>Now think about where this approach would lead us to in a more complex, real-world example. You would likely create dozens or even hundreds of different services to access your database via the web service layer. Each time the client application’s developer wants to add a feature that needs another kind of filtering or sorting, you need to extend and deploy the service layer. In practice, this is often not done. Generic data access functions like <em>get all customers</em> are used and people end up having performance problems because they do not use the database for what it is good at (efficient querying) and transfer an unnecessary large amount of data.</p><p>Wouldn’t it be nice if we had a more generic web service? The approach shown above reminds me a bit of the "good" old times when I had been programming <a href="http://en.wikipedia.org/wiki/DBase" target="_blank">dBase</a> and <a href="http://en.wikipedia.org/wiki/Btrieve" target="_blank">BTrieve</a>. At that time, <a href="http://en.wikipedia.org/wiki/Select_(SQL)" target="_blank">SQL’s SELECT statement</a> was a huge step forward. Why not creating a single web service that accepts something like a SELECT statement? Well, OData does exactly that.</p><p>Here is the code for adding an OData endpoint to our web API:</p>{% highlight javascript %}[ODataRoutePrefix("Customer")]
+}{% endhighlight %}<p>Now think about where this approach would lead us to in a more complex, real-world example. You would likely create dozens or even hundreds of different services to access your database via the web service layer. Each time the client application’s developer wants to add a feature that needs another kind of filtering or sorting, you need to extend and deploy the service layer. In practice, this is often not done. Generic data access functions like <em>get all customers</em> are used and people end up having performance problems because they do not use the database for what it is good at (efficient querying) and transfer an unnecessary large amount of data.</p><p>Wouldn’t it be nice if we had a more generic web service? The approach shown above reminds me a bit of the "good" old times when I had been programming <a href="http://en.wikipedia.org/wiki/DBase" target="_blank">dBase</a> and <a href="http://en.wikipedia.org/wiki/Btrieve" target="_blank">BTrieve</a>. At that time, <a href="http://en.wikipedia.org/wiki/Select_(SQL)" target="_blank">SQL’s SELECT statement</a> was a huge step forward. Why not creating a single web service that accepts something like a SELECT statement? Well, OData does exactly that.</p><p>Here is the code for adding an OData endpoint to our web API:</p>{% highlight c# %}[ODataRoutePrefix("Customer")]
 public class CustomerController : ODataController
 {
     private OrderManagementContext context = new OrderManagementContext();
@@ -141,7 +141,7 @@ public class CustomerController : ODataController
   <param name="ThumbnailMaxHeight" value="800" />
   <param name="ImageMaxWidth" value="1280" />
   <param name="ImageMaxHeight" value="1024" />
-</function><p>Build your program and you will get auto-generated proxy classes based on service metadata. You can now use Linq to query your OData service:</p>{% highlight javascript %}class Program
+</function><p>Build your program and you will get auto-generated proxy classes based on service metadata. You can now use Linq to query your OData service:</p>{% highlight c# %}class Program
 {
     static void Main(string[] args)
     {
@@ -154,7 +154,7 @@ public class CustomerController : ODataController
         }
     }
 }{% endhighlight %}<h2>
-  <a id="Functions" name="Functions" class="mce-item-anchor"></a>Is there something like stored procedures or functions to encapsulate logic?</h2><p>Of course there is. You can define actions and functions. They can be unbound, bound to a single entity (e.g. customer), or bound to a collection (e.g. customers).</p><p>Here is an example for a function that is bound to the <em>Customers</em> entity. It should return all customers that have bought at least one product from the category <em>BIKE</em>. This is a rather complex query and therefore it makes sense to encapsulate it in a function.</p>{% highlight javascript %}[ODataRoutePrefix("Customer")]
+  <a id="Functions" name="Functions" class="mce-item-anchor"></a>Is there something like stored procedures or functions to encapsulate logic?</h2><p>Of course there is. You can define actions and functions. They can be unbound, bound to a single entity (e.g. customer), or bound to a collection (e.g. customers).</p><p>Here is an example for a function that is bound to the <em>Customers</em> entity. It should return all customers that have bought at least one product from the category <em>BIKE</em>. This is a rather complex query and therefore it makes sense to encapsulate it in a function.</p>{% highlight c# %}[ODataRoutePrefix("Customer")]
 public class CustomerController : ODataController
 {
     [...]
@@ -183,7 +183,7 @@ public class CustomerController : ODataController
   <param name="ImageMaxHeight" value="1024" />
 </function><p>
   <a href="http://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api/odata-security-guidance" target="_blank">Here</a> you can learn more about OData security considerations.</p><h2>
-  <a href="#WCFDataServices"></a>How does ASP.NET Web API relate to WCF Data Services?</h2><p>Before ASP.NET Web API learned to speak OData, Microsoft provided a library called <em>WCF Data Services</em> (aka <em>Astoria</em> As the name indicates, it is not based on the latest and greatest OWin/Katana technology stack. However, it is still maintained (e.g. see recently published <a href="http://blogs.msdn.com/b/odatateam/archive/2014/08/18/wcf-data-services-entity-framework-provider-is-updated-with-wcf-data-service-5-6-2.aspx" target="_blank">WCF Data Services EF Provider</a>).</p><p>WCF Data Services uses OData v3 instead of v4. This needs not to be a disadvantage as many tools including Microsoft Office Excel and LinqPad do not support OData v4 yet.</p><p>The beauty of WCF Data Services is that it makes it super simple to publish your entire Entity Framework model as an OData Feed with just two lines of code:</p>{% highlight javascript %}public class ODataFaqService : EntityFrameworkDataService<ordermanagementcontext>
+  <a href="#WCFDataServices"></a>How does ASP.NET Web API relate to WCF Data Services?</h2><p>Before ASP.NET Web API learned to speak OData, Microsoft provided a library called <em>WCF Data Services</em> (aka <em>Astoria</em> As the name indicates, it is not based on the latest and greatest OWin/Katana technology stack. However, it is still maintained (e.g. see recently published <a href="http://blogs.msdn.com/b/odatateam/archive/2014/08/18/wcf-data-services-entity-framework-provider-is-updated-with-wcf-data-service-5-6-2.aspx" target="_blank">WCF Data Services EF Provider</a>).</p><p>WCF Data Services uses OData v3 instead of v4. This needs not to be a disadvantage as many tools including Microsoft Office Excel and LinqPad do not support OData v4 yet.</p><p>The beauty of WCF Data Services is that it makes it super simple to publish your entire Entity Framework model as an OData Feed with just two lines of code:</p>{% highlight c# %}public class ODataFaqService : EntityFrameworkDataService<ordermanagementcontext>
 {
     public static void InitializeService(DataServiceConfiguration config)
     {
@@ -215,13 +215,13 @@ public class CustomerController : ODataController
   <param name="ImageMaxWidth" value="1280" />
   <param name="ImageMaxHeight" value="1024" />
 </function><p class="showcase">In our own software <a href="https://www.timecockpit.com" target="_blank">time cockpit</a>, we also offer a <a href="http://help.timecockpit.com/?topic=html/5d6e34c5-3b08-4fa4-baa0-45eb707b6b78.htm" target="_blank">read- and write-enabled OData endpoint</a>. Our customers use it for reporting purposes, for writing time cockpit add-ons, and for automating routine tasks (e.g. scheduled checking for projects with budget overrun).</p><h2>
-  <a id="Writing" name="Writing" class="mce-item-anchor"></a>Is OData just for reading data?</h2><p>No, it fully supports changing data (insert, delete, replace, merge), too. You can even group multiple operations in so called <em>batches</em> and make the server run them in the context of a DB transaction. However, you are not forced to allow changing data. If you just want to publish a read-only endpoint for your users for e.g. reporting purposes, that is fine, too.</p><p>The interesting thing about OData is that it does also standardize the serialization format of data. Data types, representation of relations, nested objects, etc. are well defined. Additionally, the OData's metadata format is extensible so you can add your own annotations.</p><p>Here you see the sample implementation that enables inserting of new customers in our ASP.NET Web API OData implementation:</p>{% highlight javascript %}[HttpPost]
+  <a id="Writing" name="Writing" class="mce-item-anchor"></a>Is OData just for reading data?</h2><p>No, it fully supports changing data (insert, delete, replace, merge), too. You can even group multiple operations in so called <em>batches</em> and make the server run them in the context of a DB transaction. However, you are not forced to allow changing data. If you just want to publish a read-only endpoint for your users for e.g. reporting purposes, that is fine, too.</p><p>The interesting thing about OData is that it does also standardize the serialization format of data. Data types, representation of relations, nested objects, etc. are well defined. Additionally, the OData's metadata format is extensible so you can add your own annotations.</p><p>Here you see the sample implementation that enables inserting of new customers in our ASP.NET Web API OData implementation:</p>{% highlight c# %}[HttpPost]
 public async Task<ihttpactionresult> Post([FromBody] Customer customer)
 {
     context.Customers.Add(customer);
     await context.SaveChangesAsync();
     return Created(customer);
-}{% endhighlight %}<p>In WCF Data Services it is even simpler to enable inserting customers:</p>{% highlight javascript %}public class ODataFaqService : EntityFrameworkDataService<ordermanagementcontext>
+}{% endhighlight %}<p>In WCF Data Services it is even simpler to enable inserting customers:</p>{% highlight c# %}public class ODataFaqService : EntityFrameworkDataService<ordermanagementcontext>
 {
     public static void InitializeService(DataServiceConfiguration config)
     {
@@ -240,7 +240,7 @@ public async Task<ihttpactionresult> Post([FromBody] Customer customer)
   <a id="Auth" name="Auth" class="mce-item-anchor"></a>What about authentication and authorization?</h2><p>OData does not cover authentication or authorization. However, it is a REST web service and therefore you can use existing standards from that domain for auth (e.g. <a href="http://en.wikipedia.org/wiki/Basic_access_authentication" target="_blank">basic auth</a>, <a href="http://tools.ietf.org/html/rfc6750" target="_blank">bearer tokens</a>, <a href="http://tools.ietf.org/html/rfc6749" target="_blank">OAuth2</a>, <a href="http://openid.net/connect/" target="_blank">Open ID Connect</a>, etc.).</p><p>In my example I want to demonstrate how to do authorization using the <a href="http://oauth.net/2/" target="_blank">OAuth2</a> protocol with its <em>Resource Owner Password Credentials Grant</em> flow. With that, accessing the OData service is a two-step process:</p><ol>
   <li>First, you need to get a token by presenting username and password.</li>
   <li>Next, you need to sent the token in the <em>Authorization</em> header of subsequent OData requests.</li>
-</ol><p>Microsoft offers a ready-made OAuth2 middleware for OWin/Katana. I will use it and add a very simple password validation logic (username and password simply have to match). Additionally, I add an <em>IsAdmin</em> claim if the username is <em>admin</em>. Your implementation would probably contain a more sophisticated logic with additional claims.</p>{% highlight javascript %}private static void SetupOauthServer(IAppBuilder app)
+</ol><p>Microsoft offers a ready-made OAuth2 middleware for OWin/Katana. I will use it and add a very simple password validation logic (username and password simply have to match). Additionally, I add an <em>IsAdmin</em> claim if the username is <em>admin</em>. Your implementation would probably contain a more sophisticated logic with additional claims.</p>{% highlight c# %}private static void SetupOauthServer(IAppBuilder app)
 {
     app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
     {
@@ -278,7 +278,7 @@ private class DummyAuthorizationProvider : OAuthAuthorizationServerProvider
         context.Validated(identity);
         return FinishedTask;
     }
-}{% endhighlight %}<p>Now we can protect our OData API using the <a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.118).aspx" target="_blank"><em>Authorize</em></a> attribute or in code by manually inspecting the claims of the user:</p>{% highlight javascript %}[Authorize]
+}{% endhighlight %}<p>Now we can protect our OData API using the <a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.118).aspx" target="_blank"><em>Authorize</em></a> attribute or in code by manually inspecting the claims of the user:</p>{% highlight c# %}[Authorize]
 [ODataRoutePrefix("Customer")]
 public class CustomerController : ODataController
 {

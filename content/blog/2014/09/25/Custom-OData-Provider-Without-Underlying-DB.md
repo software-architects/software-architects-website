@@ -10,7 +10,7 @@ tags: [About]
 permalink: /blog/2014/09/25/Custom-OData-Provider-Without-Underlying-DB
 ---
 
-<p>Today I will do my <a href="http://www.software-architects.com/devblog/2014/09/12/10-OData-FAQs" target="_blank">OData session</a> at <a href="http://basta.net/2014/sessions/custom-odata-providers-mit-aspnet-web-api" target="_blank">BASTA conference in Mainz</a>. This time I have a bit more time so I will add a demo of creating a custom OData provider without any underlying database. The result is generated based on the OData query on the fly. In this blog article I share the code.</p><p class="showcase">You can download the entire source code from <a href="https://github.com/rstropek/Samples/tree/master/CustomODataProvider" target="_blank">my GitHub Samples repository</a>.</p><h2>The OData Controller</h2><p>Let's start with the important part of the sample: The <em>ODataController</em>.</p>{% highlight javascript %}using Microsoft.OData.Core.UriParser.Semantic;
+<p>Today I will do my <a href="http://www.software-architects.com/devblog/2014/09/12/10-OData-FAQs" target="_blank">OData session</a> at <a href="http://basta.net/2014/sessions/custom-odata-providers-mit-aspnet-web-api" target="_blank">BASTA conference in Mainz</a>. This time I have a bit more time so I will add a demo of creating a custom OData provider without any underlying database. The result is generated based on the OData query on the fly. In this blog article I share the code.</p><p class="showcase">You can download the entire source code from <a href="https://github.com/rstropek/Samples/tree/master/CustomODataProvider" target="_blank">my GitHub Samples repository</a>.</p><h2>The OData Controller</h2><p>Let's start with the important part of the sample: The <em>ODataController</em>.</p>{% highlight c# %}using Microsoft.OData.Core.UriParser.Semantic;
 using Microsoft.OData.Core.UriParser.TreeNodeKinds;
 using System;
 using System.Collections.Generic;
@@ -93,7 +93,7 @@ namespace CustomODataProvider.Provider.Controller
             return result.ToString();
         }
     }
-}{% endhighlight %}<h2>Configuration the OData Endpoint</h2>{% highlight javascript %}using Microsoft.OData.Edm;
+}{% endhighlight %}<h2>Configuration the OData Endpoint</h2>{% highlight c# %}using Microsoft.OData.Edm;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.OData.Builder;
@@ -120,7 +120,7 @@ namespace CustomODataProvider.Provider
             return modelBuilder.GetEdmModel();
         }
     }
-}{% endhighlight %}<h2>The Self Host</h2>{% highlight javascript %}using CustomODataProvider.Provider;
+}{% endhighlight %}<h2>The Self Host</h2>{% highlight c# %}using CustomODataProvider.Provider;
 using Microsoft.Owin.Hosting;
 using Owin;
 using System;

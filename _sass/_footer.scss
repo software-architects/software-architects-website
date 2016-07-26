@@ -1,0 +1,34 @@
+@import "_variables.scss";
+
+footer.tc-page-footer {
+	background-color: #222;
+	color: #fff;
+	padding-top: 40px;
+    padding-bottom: 40px;
+	font-size: 14px;
+	color: $footer-text-color;
+
+	a {
+		color: $footer-text-color;
+	}
+
+	h3 {
+		color: $footer-text-color;
+		font-size: $base-font-size;
+		font-weight: bolder;
+	}
+
+	ul {
+		padding-left: 0;
+
+		li {
+			list-style-type: none;
+		}
+	}
+
+	.tc-col {
+		h3:first-of-type {
+			margin-top: 0;
+		}
+	}
+}

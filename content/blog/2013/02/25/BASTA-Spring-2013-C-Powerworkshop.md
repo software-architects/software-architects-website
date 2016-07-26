@@ -14,7 +14,7 @@ permalink: /blog/2013/02/25/BASTA-Spring-2013-C-Powerworkshop
   <em>
     <span>Die fünfte Version von C# ist da. Zeit, sich intensiv damit auseinanderzusetzen und einen Blick in die Zukunft zu werfen. Rainer Stropek bietet auch dieses Jahr wieder geballtes C#-Wissen in diesem ganztägigen Workshop an. Der Schwerpunkt sind die Neuerungen von C# 5 hinsichtlich asynchroner und paralleler Programmierung. Rainer wiederholt zu Beginn die Grundlagen der parallelen Programmierung mit .NET (und wird dabei viele nützliche Tipps weitergeben). Danach geht er auf die Anwendung dieser Basics in C# 5 mit async/await ein. Wir kratzen nicht nur an der Oberfläche, sondern gehen wirklich ins Detail. Am Nachmittag wird Rainer einen Ausblick auf die Zukunft von C# geben und zeigen, was Projekte wie "Roslyn" an Änderungen für C#-Entwickler bringen werden.</span>
   </em>
-</p><h2>Slides</h2><p>Hier gibt es die <a href="{{site.baseurl}}/content/images/blog/2013/02/CSharp Powerworkshop BASTA Spring 2013 - Rainer Stropek.pdf" title="Slides als PDF Datei" target="_blank">Slides als PDF Datei zum Download</a>.</p><h2>Samples</h2><p>Im Workshop haben wir live eine ganze Reihe von Samples erarbeitet. Die gesamte Sammlung an Samples gibt es <a href="{{site.baseurl}}/content/images/blog/2013/02/BastaCSharpWorkshopSamples.zip" title="Samples als ZIP Datei" target="_blank">hier zum Download</a>. Falls jemand nur ein Code Snippet sucht und nicht alle Samples herunterladen möchte, füge ich unten die wichtigsten Sourcen direkt in den Text dieses Blogartikels ein.</p><h3>Task Basics</h3>{% highlight javascript %}using System;
+</p><h2>Slides</h2><p>Hier gibt es die <a href="{{site.baseurl}}/content/images/blog/2013/02/CSharp Powerworkshop BASTA Spring 2013 - Rainer Stropek.pdf" title="Slides als PDF Datei" target="_blank">Slides als PDF Datei zum Download</a>.</p><h2>Samples</h2><p>Im Workshop haben wir live eine ganze Reihe von Samples erarbeitet. Die gesamte Sammlung an Samples gibt es <a href="{{site.baseurl}}/content/images/blog/2013/02/BastaCSharpWorkshopSamples.zip" title="Samples als ZIP Datei" target="_blank">hier zum Download</a>. Falls jemand nur ein Code Snippet sucht und nicht alle Samples herunterladen möchte, füge ich unten die wichtigsten Sourcen direkt in den Text dieses Blogartikels ein.</p><h3>Task Basics</h3>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -62,7 +62,7 @@ namespace TaskBasics
                 });
         }
     }
-}{% endhighlight %}<h3>Task Continuations</h3>{% highlight javascript %}using System;
+}{% endhighlight %}<h3>Task Continuations</h3>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -116,7 +116,7 @@ namespace TaskContinuations
             Console.WriteLine(x);
         }
     }
-}{% endhighlight %}<h3>Parallel-Class, PLINQ, ThreadStatic</h3>{% highlight javascript %}using System;
+}{% endhighlight %}<h3>Parallel-Class, PLINQ, ThreadStatic</h3>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -208,7 +208,7 @@ namespace PiWithMonteCarlo
             }
         }
     }
-}{% endhighlight %}<h3>TaskCompletionSource</h3>{% highlight javascript %}using System;
+}{% endhighlight %}<h3>TaskCompletionSource</h3>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -272,7 +272,7 @@ namespace TasksAdvancedTips
             });
         }
     }
-}{% endhighlight %}<h3>Producer/Consumer, BlockingCollection</h3>{% highlight javascript %}using System;
+}{% endhighlight %}<h3>Producer/Consumer, BlockingCollection</h3>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -319,7 +319,7 @@ namespace ProducerConsumer
             }
         }
     }
-}{% endhighlight %}<h3>ViewModel with async/await</h3>{% highlight javascript %}using System;
+}{% endhighlight %}<h3>ViewModel with async/await</h3>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -393,7 +393,7 @@ SELECT * FROM Customers;
             }
         }
     }
-}{% endhighlight %}<h3>Expression Trees, DLR Scripting (Into to Roslyn)</h3>{% highlight javascript %}using System;
+}{% endhighlight %}<h3>Expression Trees, DLR Scripting (Into to Roslyn)</h3>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

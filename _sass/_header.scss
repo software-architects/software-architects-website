@@ -1,0 +1,114 @@
+@import "_variables.scss";
+
+div.header {
+	background-color: #222;
+	color: #fff;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 100%;
+
+	> div.container:first-of-type {
+		margin-top: 4px;
+	}
+
+	.navbar {
+		border: none;
+		background-color: transparent;
+		margin-bottom: 0;
+	}
+
+	.navbar-default .navbar-toggle {
+		color: #fff;
+		border: none;
+	}
+
+	.navbar-default .navbar-nav > .open > a {
+		background-color: #222;
+		color: #fff;
+		opacity: .8;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	.navbar-default .navbar-nav > li > a, .tc-logo {
+		text-transform: uppercase;
+		color: #fff;
+		font-size: 16px;
+		font-weight: lighter;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&.tc-action-button {
+			color: $main-color;
+			font-weight: bold;
+
+			span.glyphicon {
+				top: 2px;
+				margin-left: 10px;
+			}
+		}
+	}
+
+	.navbar-default .navbar-nav > li:first-of-type > a {
+		padding-left: 0;
+	}
+
+	.navbar-default .navbar-nav > li:last-of-type > a {
+		padding-right: 0;
+	}
+
+	.navbar-collapse {
+		padding-left: 0;
+		padding-right: 0;
+
+		.navbar-nav {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	.navbar-default .navbar-toggle .icon-bar {
+		color: #fff;
+	}
+
+	.navbar-nav > li > .dropdown-menu  {
+		min-width: 260px;
+		background-color: #222;
+		font-weight: lighter;
+		text-transform: uppercase;
+		box-shadow: none;
+
+		> li > a {
+			line-height: 30px;
+			color: #fff;
+			font-weight: lighter;
+
+			&:hover {
+				background-color: #444;
+			}
+		}
+	}
+
+	a.tc-logo {
+		svg {
+			height: 30px;
+			width: auto;
+			margin: 10px 0 0 0;
+		}
+	}
+
+	.header-side-menu {
+		line-height: 45px;
+
+		a {
+			color: #fff;
+			text-decoration: none;
+			font-weight: lighter;
+		}
+	}
+}

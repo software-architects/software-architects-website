@@ -175,7 +175,7 @@ $(document.body).ready(function(){
         event.preventDefault();
    });
 });
-{% endhighlight %}<p>default.htm:</p>{% highlight javascript %}<!DOCTYPE html>
+{% endhighlight %}<p>default.htm:</p>{% highlight xhtml %}<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />

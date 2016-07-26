@@ -35,7 +35,7 @@ permalink: /blog/2012/12/20/Windows-Azure-Table-Service---An-Example
   <li>Asynchronous write and query operations using .NET's new task programming model (async/await)</li>
   <li>Access to table services without schema (i.e. consuming table data in XML format)</li>
   <li>Shared access signatures for table services</li>
-</ul>{% highlight javascript %}using Microsoft.WindowsAzure;
+</ul>{% highlight c# %}using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.StorageClient;
 using System;
 using System.Collections.Generic;

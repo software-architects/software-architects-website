@@ -1,38 +1,42 @@
-<footer class="site-footer">
 
-  <div class="wrapper">
+<footer class="tc-page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <p>
+                    software architects gmbh
+                    <br>
+                    Welser Straße 26
+                    <br>
+                    Austria - 4060 Leonding
+                    <br>
+                    <a href="https://software-architects.github.io/time-cockpit-website/">time cockpit product website</a>
+                    <br>
+                    <a href="mailto:support@timecockpit.com">support@timecockpit.com</a>
+                    <br>
+                    <a href="https://twitter.com/timecockpit" target="_blank">follow us on twitter</a>
+                    <br>
+                    <br>
+                </p>
+                <p>
+                    © 2016 software architects gmbh
+                </p>
+            </div>
 
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
+            <div class="col-xs-6 -sm-6 col-md-3">
+                <form action="" method="post" id=""> 
+                    <p>
+                        <label for="mce-EMAIL">
+                            <b> Subscribe to our newsletter</b>
+                        </label>
+                        <input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email address" required="required">
+                        <br>
+                    </p>
+                    <p class="textalgincenter">
+                        <input type="button" value="Subscribe" name="subscribe" id="mce-embedded-subscribe" class="linkButtonMain" onclick="alert('it was clicked')" >
+                    </p> 
+                </form>
+            </div>
+        </div>
     </div>
-
-  </div>
-
 </footer>

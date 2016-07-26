@@ -17,7 +17,7 @@ permalink: /blog/2010/11/12/Custom-SSIS-Data-Source-For-Loading-Azure-Tables-Int
   <li>This is just a sample.</li>
   <li>The code has not been tested.</li>
   <li>If you want to use this stuff you have to compile and deploy it. Check out the post-build actions in the project to see which DLLs you have to copy to which folders in order to make them run.</li>
-</ol><p>Let's start by demonstrating how the resulting component works inside SSIS. For this I have created this very short video:</p><embed width="480" height="385" src="https://www.youtube.com/v/xTgpCZBwUlA?fs=1&amp;hl=de_DE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" /><p>Now let's take a look at the source code.</p><h2>Reading an Azure Table without a fixed class</h2><p>The first problem that has to be solved is to read data from an Azure table without knowing it's schema at compile time. There is an <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazure/thread/481afa1b-03a9-42d9-ae79-9d5dc33b9297/" target="_blank">excellent post</a> covering that in the Azure Community pages. I took the sourcecode shown there and extended/modified it a little bit so that it fits to what I needed.</p><p>First class is just a helper representing a column in the table store (Column.cs):</p>{% highlight javascript %}using System;
+</ol><p>Let's start by demonstrating how the resulting component works inside SSIS. For this I have created this very short video:</p><embed width="480" height="385" src="https://www.youtube.com/v/xTgpCZBwUlA?fs=1&amp;hl=de_DE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" /><p>Now let's take a look at the source code.</p><h2>Reading an Azure Table without a fixed class</h2><p>The first problem that has to be solved is to read data from an Azure table without knowing it's schema at compile time. There is an <a href="http://social.msdn.microsoft.com/Forums/en-US/windowsazure/thread/481afa1b-03a9-42d9-ae79-9d5dc33b9297/" target="_blank">excellent post</a> covering that in the Azure Community pages. I took the sourcecode shown there and extended/modified it a little bit so that it fits to what I needed.</p><p>First class is just a helper representing a column in the table store (Column.cs):</p>{% highlight c# %}using System;
 using Microsoft.SqlServer.Dts.Runtime.Wrapper;
 
 namespace TableStorageSsisSource
@@ -85,7 +85,7 @@ namespace TableStorageSsisSource
    }
   }
  }
-}{% endhighlight %}<p>Second class represents a row inside the table store (without strong schema; GenericEntity.cs):</p>{% highlight javascript %}using System.Collections.Generic;
+}{% endhighlight %}<p>Second class represents a row inside the table store (without strong schema; GenericEntity.cs):</p>{% highlight c# %}using System.Collections.Generic;
 using Microsoft.WindowsAzure.StorageClient;
 
 namespace TableStorageSsisSource
@@ -127,7 +127,7 @@ namespace TableStorageSsisSource
             }
         }
     }   
-}{% endhighlight %}<p>Last but not least we need a context class that interprets the AtomPub format and builds the generic content objects (GenericTableContent.cs):</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>Last but not least we need a context class that interprets the AtomPub format and builds the generic content objects (GenericTableContent.cs):</p>{% highlight c# %}using System;
 using System.Data.Services.Client;
 using System.Linq;
 using System.Xml.Linq;
@@ -177,7 +177,7 @@ namespace TableStorageSsisSource
    }
   }
  }
-}{% endhighlight %}<h2>The Custom SSIS Data Source</h2><p>The custom SSIS data source is quite simple (TableStorageSsisSource.cs):</p>{% highlight javascript %}using System.Collections.Generic;
+}{% endhighlight %}<h2>The Custom SSIS Data Source</h2><p>The custom SSIS data source is quite simple (TableStorageSsisSource.cs):</p>{% highlight c# %}using System.Collections.Generic;
 using Microsoft.SqlServer.Dts.Pipeline;
 using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
 using Microsoft.WindowsAzure;

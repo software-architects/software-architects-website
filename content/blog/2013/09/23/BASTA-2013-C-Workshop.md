@@ -10,7 +10,7 @@ tags: [.NET,C#,MEF,Visual Studio,WPF]
 permalink: /blog/2013/09/23/BASTA-2013-C-Workshop
 ---
 
-<p>Meine Vorträge auf der <a href="http://www.basta.net" target="_blank">BASTA 2013</a> starten heute mit einem ganztägigen C# Workshop. In diesem Blogartikel stelle ich Unterlagen und Links, die ich dabei verwende, zur Verfügung.</p><h2>Slidedeck</h2><p>You can download the entire <a href="{{site.baseurl}}/content/images/blog/2013/09/BASTA 2013 - CSharp Workshop.pdf" target="_blank">slidedeck in PDF</a> format. At the end of the workshop I will also publish the slides in my Slideshare account for online viewing.</p><h2>NuGet Sample</h2><p>One of the topics we cover in the workshop is NuGet. If you want to follow my sample you can use the following code snippet (.nuspec file) so you do not have to type XML by hand:</p>{% highlight javascript %}<?xml version="1.0" encoding="utf-16"?>
+<p>Meine Vorträge auf der <a href="http://www.basta.net" target="_blank">BASTA 2013</a> starten heute mit einem ganztägigen C# Workshop. In diesem Blogartikel stelle ich Unterlagen und Links, die ich dabei verwende, zur Verfügung.</p><h2>Slidedeck</h2><p>You can download the entire <a href="{{site.baseurl}}/content/images/blog/2013/09/BASTA 2013 - CSharp Workshop.pdf" target="_blank">slidedeck in PDF</a> format. At the end of the workshop I will also publish the slides in my Slideshare account for online viewing.</p><h2>NuGet Sample</h2><p>One of the topics we cover in the workshop is NuGet. If you want to follow my sample you can use the following code snippet (.nuspec file) so you do not have to type XML by hand:</p>{% highlight xml %}<?xml version="1.0" encoding="utf-16"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>Basta.ToolLib</id>
@@ -47,12 +47,12 @@ permalink: /blog/2013/09/23/BASTA-2013-C-Workshop
     <param name="SourceCode" value="//------------------------------------------------------------------------------------------------------------&#xA;// &lt;copyright file=&quot;Tool1.cs&quot; company=&quot;software architects gmbh&quot;&gt;&#xA;//     Copyright (c) software architects gmbh. All rights reserved.&#xA;// &lt;/copyright&gt;&#xA;//------------------------------------------------------------------------------------------------------------&#xA;&#xA;namespace $rootnamespace${body}#xA;{&#xA;    using ToolsLib;&#xA;&#xA;    public class Tool1 : Tool&#xA;    {&#xA;        public override void DoSomething()&#xA;        {&#xA;        }&#xA;    }&#xA;}" />
     <param name="CodeType" value="c#" />
   </function>
-  {% highlight javascript %}<configuration>
+  {% highlight xml %}<configuration>
     <appSettings>
         <add key="ToolPath" value="c:\temp" />
     </appSettings>
 </configuration>{% endhighlight %}
-</p><h2>MAF (Managed Addin Framework aka System.Addin)</h2><p>In the morning we will also speak about MEF vs. MAF. The example I use to demonstrate MAF is a modified and upgraded (to .NET 4.5) version of Microsoft's original <a href="http://clraddins.codeplex.com/wikipage?title=Samples&amp;referringTitle=Home" target="_blank">WPF Calculator</a> sample. If you want to play with my version of the sample, you can <a href="{{site.baseurl}}/content/images/blog/2013/09/WPF Calculator.zip" target="_blank">download it here</a>.</p><h2>Update 2013-09-24: Live-Coding Sample, Missing Answer</h2><p>In the afternoon I have built a <em>async/await</em> WPF application following the MVVM design principle. Some people asked me to publish the live coded sample. <a href="{{site.baseurl}}/content/images/blog/2013/09/AsyncAwaitFullClientUI.zip" target="_blank">Here it is</a>. If you don't want to download the whole sample and you just want to look at the async view model we have built, here is the C# code followed by the XAML view:</p>{% highlight javascript %}using AsyncAwaitFullClientUI.Data;
+</p><h2>MAF (Managed Addin Framework aka System.Addin)</h2><p>In the morning we will also speak about MEF vs. MAF. The example I use to demonstrate MAF is a modified and upgraded (to .NET 4.5) version of Microsoft's original <a href="http://clraddins.codeplex.com/wikipage?title=Samples&amp;referringTitle=Home" target="_blank">WPF Calculator</a> sample. If you want to play with my version of the sample, you can <a href="{{site.baseurl}}/content/images/blog/2013/09/WPF Calculator.zip" target="_blank">download it here</a>.</p><h2>Update 2013-09-24: Live-Coding Sample, Missing Answer</h2><p>In the afternoon I have built a <em>async/await</em> WPF application following the MVVM design principle. Some people asked me to publish the live coded sample. <a href="{{site.baseurl}}/content/images/blog/2013/09/AsyncAwaitFullClientUI.zip" target="_blank">Here it is</a>. If you don't want to download the whole sample and you just want to look at the async view model we have built, here is the C# code followed by the XAML view:</p>{% highlight c# %}using AsyncAwaitFullClientUI.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -149,7 +149,7 @@ namespace AsyncAwaitFullClientUI
             }
         }
     }
-}{% endhighlight %}{% highlight javascript %}<Window x:Class="AsyncAwaitFullClientUI.MainWindow"
+}{% endhighlight %}{% highlight xml %}<Window x:Class="AsyncAwaitFullClientUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
@@ -174,7 +174,7 @@ namespace AsyncAwaitFullClientUI
         <DataGrid Grid.Row="1" Grid.ColumnSpan="3" Margin="5,0,5,5"
                   ItemsSource="{Binding Path=Sensors}"/>
     </Grid>
-</Window>{% endhighlight %}<p>Finally I forgot to answer a question I was asked. Sorry for that. I promised during the workshop I would but time was running and so I didn't remember this todo. Someone asked me how to use <em>await</em> to wait for two tasks which run in parallel. The answer is <em>Task.WhenAll</em>. Here is a code snippet:</p>{% highlight javascript %}using System;
+</Window>{% endhighlight %}<p>Finally I forgot to answer a question I was asked. Sorry for that. I promised during the workshop I would but time was running and so I didn't remember this todo. Someone asked me how to use <em>await</em> to wait for two tasks which run in parallel. The answer is <em>Task.WhenAll</em>. Here is a code snippet:</p>{% highlight c# %}using System;
 using System.Threading.Tasks;
 
 namespace ConsoleApplication1

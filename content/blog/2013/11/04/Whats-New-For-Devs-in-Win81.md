@@ -44,7 +44,7 @@ permalink: /blog/2013/11/04/Whats-New-For-Devs-in-Win81
   <li>A "Hero" image to visually "pimp" my app</li>
   <li>A list of hives that I get from my Azure Mobile Services backend</li>
   <li>A detail form of the currently selected hive</li>
-</ul><p>The following code snippet from <em>MainPage.xaml</em> shows how I use the new hub control. BTW - note how I use the new <em><a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.frameworkelement.requestedtheme" target="_blank">RequestedTheme</a></em> attribute to switch the theme to "light". You could even switch between dark and light theme for a specific part of your control tree.</p>{% highlight javascript %}<Page ... RequestedTheme="Light">
+</ul><p>The following code snippet from <em>MainPage.xaml</em> shows how I use the new hub control. BTW - note how I use the new <em><a href="http://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.frameworkelement.requestedtheme" target="_blank">RequestedTheme</a></em> attribute to switch the theme to "light". You could even switch between dark and light theme for a specific part of your control tree.</p>{% highlight xml %}<Page ... RequestedTheme="Light">
     ...
     <Grid Background="{StaticResource MainWindowBackgroundBrush}">
         <!-- Use the new hub control -->
@@ -76,7 +76,7 @@ permalink: /blog/2013/11/04/Whats-New-For-Devs-in-Win81
             </HubSection>
         </Hub>
     </Grid>
-</Page>{% endhighlight %}<h3>MVVM - Model-View-ViewModel</h3><p>Of course I separate view and logic for the view ("ViewModel") into two separate classes. The ViewModel could be reused on different platforms (e.g. WPF, Silverlight, with <a href="http://www.xamarin.com" target="_blank">Xamarin</a> even Android or iOS) to a large degree.</p><p>During my session I pointed out a specific feature regarding MVVM: The ability to use an instance of the ViewModel in Visual Studio to support the visual design of your app. Additionally having access to the ViewModel in Visual Studio greatly enhances your Intellisense experience. Here is the relevant code snippet (look for the XML namespace <em>d</em>):</p>{% highlight javascript %}<Page ...
+</Page>{% endhighlight %}<h3>MVVM - Model-View-ViewModel</h3><p>Of course I separate view and logic for the view ("ViewModel") into two separate classes. The ViewModel could be reused on different platforms (e.g. WPF, Silverlight, with <a href="http://www.xamarin.com" target="_blank">Xamarin</a> even Android or iOS) to a large degree.</p><p>During my session I pointed out a specific feature regarding MVVM: The ability to use an instance of the ViewModel in Visual Studio to support the visual design of your app. Additionally having access to the ViewModel in Visual Studio greatly enhances your Intellisense experience. Here is the relevant code snippet (look for the XML namespace <em>d</em>):</p>{% highlight xml %}<Page ...
     x:Class="HiveManager.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -93,7 +93,7 @@ permalink: /blog/2013/11/04/Whats-New-For-Devs-in-Win81
   <span style="color: rgb(37, 160, 218); font-size: 15px; line-height: 15px;" data-mce-style="color: #25a0da; font-size: 15px; line-height: 15px;">The new</span>
   <em style="color: rgb(37, 160, 218); font-size: 15px; line-height: 15px;" data-mce-style="color: #25a0da; font-size: 15px; line-height: 15px;">CommandBar</em>
   <span style="color: rgb(37, 160, 218); font-size: 15px; line-height: 15px;" data-mce-style="color: #25a0da; font-size: 15px; line-height: 15px;">, Flyouts</span>
-</p><p>Like the <em>Hub</em> control makes it easy to build navigation, the <em>CommandBar</em> greatly simplifies adding app bars to your app. In Windows 8.1, the amount of XAML you have to write has reduced massively compared to the previous version. Here is a code snippet that adds a command bar to our app:</p>{% highlight javascript %}<Page ...>
+</p><p>Like the <em>Hub</em> control makes it easy to build navigation, the <em>CommandBar</em> greatly simplifies adding app bars to your app. In Windows 8.1, the amount of XAML you have to write has reduced massively compared to the previous version. Here is a code snippet that adds a command bar to our app:</p>{% highlight xml %}<Page ...>
     <!-- Use the new command bar of win 8.1 to add an app bar -->
     <Page.BottomAppBar>
         <CommandBar>
@@ -119,12 +119,12 @@ permalink: /blog/2013/11/04/Whats-New-For-Devs-in-Win81
     </Grid>
 </Page>{% endhighlight %}<p>This sample code also shows another feature of Windows 8.1: Flyouts. They are very handy for confirmation messages as the one showed above. They can even contain more complex UI (e.g. check boxes, etc.). Here you see the flyout in action:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2013/11/Flyout.png" />
-</p><h3>Behavior SDK</h3><p>In some areas, WinRT has a built-in mechanism for triggering ViewModel-code in response to user interaction. The <em>Click</em> event of a <em>Button</em> is one example that you are probably familiar with. Instead of writing code in the View which more-or-less just forwards the event to a ViewModel-method, you use a binding in the <em>Command</em> property referring to an implementation of <em>ICommand</em>. My sample includes this way of data binding in multiple places. Here is a short XAML snippet that shows what I mean:</p>{% highlight javascript %}<Flyout>
+</p><h3>Behavior SDK</h3><p>In some areas, WinRT has a built-in mechanism for triggering ViewModel-code in response to user interaction. The <em>Click</em> event of a <em>Button</em> is one example that you are probably familiar with. Instead of writing code in the View which more-or-less just forwards the event to a ViewModel-method, you use a binding in the <em>Command</em> property referring to an implementation of <em>ICommand</em>. My sample includes this way of data binding in multiple places. Here is a short XAML snippet that shows what I mean:</p>{% highlight xml %}<Flyout>
     <StackPanel>
         <TextBlock Text="Note that generating demo data will delete all existing data. Proceed?" />
         <Button Content="Yes" Command="{Binding Path=GenerateDemoDataCommand}" />
     </StackPanel>
-</Flyout>{% endhighlight %}<p>To simplify the implementation of the ViewModel, I built a <em>DelegateCommand</em> helper class. Note that in practise you do not need to implement it yourself. Use an MVVM framework like <a href="http://prismwindowsruntime.codeplex.com/" target="_blank">Prism</a>, <a href="http://mvvmlight.codeplex.com/" target="_blank">MVVMLight</a>, etc. instead.</p>{% highlight javascript %}using System;
+</Flyout>{% endhighlight %}<p>To simplify the implementation of the ViewModel, I built a <em>DelegateCommand</em> helper class. Note that in practise you do not need to implement it yourself. Use an MVVM framework like <a href="http://prismwindowsruntime.codeplex.com/" target="_blank">Prism</a>, <a href="http://mvvmlight.codeplex.com/" target="_blank">MVVMLight</a>, etc. instead.</p>{% highlight c# %}using System;
 using System.Windows.Input;
 
 namespace HiveManager
@@ -168,7 +168,7 @@ namespace HiveManager
             }
         }
     }
-}{% endhighlight %}<p>Inside the ViewModel, I use the <em>DelegateCommand</em> to create an <em>ICommand</em> property for data binding:</p>{% highlight javascript %}using ...
+}{% endhighlight %}<p>Inside the ViewModel, I use the <em>DelegateCommand</em> to create an <em>ICommand</em> property for data binding:</p>{% highlight c# %}using ...
 
 namespace HiveManager
 {
@@ -199,7 +199,7 @@ namespace HiveManager
     }
 }{% endhighlight %}<p>If you want to call a ViewModel-method in response to an event other than <em>Button.Click</em>, many people write code in the view's code behind file. In WPF there has been a better way for quite a long time: Behaviors. Behaviors are objects that you attach to a UI element. They catch a specified event and perform an action that you specify (e.g. calling a method in the ViewModel). Visual Studio 2013 comes with a Behavior SDK for Windows Store apps. So finally you can program in this nice way in your Windows Store apps, too.</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2013/11/BehaviorsSDK.png?mw=600&amp;mh=600" />
-</p><p>The screen shot above shows how you add a reference to the new Behavior SDK. The following XAML snippet shows how I use it in my sample to trigger authentication when the app has been loaded:</p>{% highlight javascript %}<Page ...>
+</p><p>The screen shot above shows how you add a reference to the new Behavior SDK. The following XAML snippet shows how I use it in my sample to trigger authentication when the app has been loaded:</p>{% highlight xml %}<Page ...>
     ...
     <!-- User behavior SDK to let user authenticate immediately after app startup -->
     <Interactivity:Interaction.Behaviors>
@@ -227,7 +227,7 @@ namespace HiveManager
       <img src="{{site.baseurl}}/content/images/blog/2013/11/AzureMobileServicesNuGet.png?mw=600&amp;mh=600" />
     </p>
   </li>
-</ul><p>If you have successfully completed above steps, it is really simple to add authentication code to your ViewModel:</p>{% highlight javascript %}private MobileServiceUser user = null;
+</ul><p>If you have successfully completed above steps, it is really simple to add authentication code to your ViewModel:</p>{% highlight c# %}private MobileServiceUser user = null;
 
 public bool IsAuthenticated
 {
@@ -258,7 +258,7 @@ public async void Authenticate()
   <param name="ThumbnailMaxHeight" value="600" />
   <param name="ImageMaxWidth" value="1000" />
   <param name="ImageMaxHeight" value="1000" />
-</function><h3>Data Access Using Windows Azure Mobile Services Tables</h3><p>The data itself is stored in Mobile Services tables. In our simple example it is just one table. The following class shows its structure:</p>{% highlight javascript %}using Newtonsoft.Json;
+</function><h3>Data Access Using Windows Azure Mobile Services Tables</h3><p>The data itself is stored in Mobile Services tables. In our simple example it is just one table. The following class shows its structure:</p>{% highlight c# %}using Newtonsoft.Json;
 using System;
 
 namespace HiveManager
@@ -287,7 +287,7 @@ namespace HiveManager
         [JsonProperty(PropertyName = "hiveForm")]
         public HiveForms HiveForm { get; set; }
     }
-}{% endhighlight %}<p>The code used to retrieve hive data rows via REST is simple:</p>{% highlight javascript %}private IEnumerable<Hive> HivesValue;
+}{% endhighlight %}<p>The code used to retrieve hive data rows via REST is simple:</p>{% highlight c# %}private IEnumerable<Hive> HivesValue;
 public IEnumerable<Hive> Hives
 {
     get
@@ -318,7 +318,7 @@ public async void RefreshHives()
     {
         this.Hives = await table.ToCollectionAsync();
     }
-}{% endhighlight %}<h3>In-app Search</h3><p>You might have noticed that the <em>RefreshHives</em> method contains a <em>Where</em> clause (again, I recommend to check out the corresponding HTTP traffic in Fiddler for people who are new with REST). The reason for this is that our app supports in-app search. This is also new to Windows 8.1. Before, Microsoft encouraged all developers to add search capabilities only by supporting the WinRT <em>Search Contract</em>. You can still do that. However, Microsoft added special support for in-app search with the new <em>SearchBox</em> control.</p><p>Here is a XAML snippet that shows how to add the <em>SearchBox</em> to your app (note the use of behaviors to trigger <em>RefreshHives</em> whenever the <em>QuerySubmitted</em> event occurs:</p>{% highlight javascript %}<HubSection Header="Hives">
+}{% endhighlight %}<h3>In-app Search</h3><p>You might have noticed that the <em>RefreshHives</em> method contains a <em>Where</em> clause (again, I recommend to check out the corresponding HTTP traffic in Fiddler for people who are new with REST). The reason for this is that our app supports in-app search. This is also new to Windows 8.1. Before, Microsoft encouraged all developers to add search capabilities only by supporting the WinRT <em>Search Contract</em>. You can still do that. However, Microsoft added special support for in-app search with the new <em>SearchBox</em> control.</p><p>Here is a XAML snippet that shows how to add the <em>SearchBox</em> to your app (note the use of behaviors to trigger <em>RefreshHives</em> whenever the <em>QuerySubmitted</em> event occurs:</p>{% highlight xml %}<HubSection Header="Hives">
     <DataTemplate>
         <Grid HorizontalAlignment="Stretch" Width="400">
             <Grid.RowDefinitions>
@@ -341,7 +341,7 @@ public async void RefreshHives()
             </ListView>
         </Grid>
     </DataTemplate>
-</HubSection>{% endhighlight %}<p>To keep the sample simple, I added one little function to the view's code behind:</p>{% highlight javascript %}public async void SuggestionsRequested(object pane, SearchBoxSuggestionsRequestedEventArgs ea)
+</HubSection>{% endhighlight %}<p>To keep the sample simple, I added one little function to the view's code behind:</p>{% highlight c# %}public async void SuggestionsRequested(object pane, SearchBoxSuggestionsRequestedEventArgs ea)
 {
     // Use deferral object to indicate that the request is NOT completed when the
     // event handler exits. It will continue until the async request completes.
@@ -354,7 +354,7 @@ public async void RefreshHives()
     {
         deferral.Complete();
     }
-}{% endhighlight %}<p>The core search logic can be found in the ViewModel:</p>{% highlight javascript %}public async Task<IEnumerable<string>> QueryHiveNames(string queryString)
+}{% endhighlight %}<p>The core search logic can be found in the ViewModel:</p>{% highlight c# %}public async Task<IEnumerable<string>> QueryHiveNames(string queryString)
 {
     if (!string.IsNullOrEmpty(queryString))
     {
@@ -371,7 +371,7 @@ public async void RefreshHives()
   <img src="{{site.baseurl}}/content/images/blog/2013/11/Search.png" />
 </p><h3>New and Enhanced Controls</h3><p>Windows 8.1 comes with quite some enhancements concerning controls used to implement forms. First you can now add a label to an input control just by settings its <em>Header</em> property. Additionally, many input controls support the <em>PlaceholderText</em> property to add a watermark. Last but not least, Windows 8.1 gives us a date and a time picker control :-) Here you see a screenshot with header, placeholder, and date picker:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2013/11/Form.png" />
-</p><p>During my session, I demonstrated these new features. Here is the XAML snippet that I used:</p>{% highlight javascript %}<!-- Details for selected hive -->
+</p><p>During my session, I demonstrated these new features. Here is the XAML snippet that I used:</p>{% highlight xml %}<!-- Details for selected hive -->
 <HubSection Margin="80,0,0,0" Visibility="{Binding Path=HiveDetailsVisible}" Header="Hive Details">
     <DataTemplate>
         <StackPanel Width="400">
@@ -421,7 +421,7 @@ exports.get = function(request, response) {
     var imageUri = sasQueryUrl.baseUrl + sasQueryUrl.path;
     
     response.send(statusCodes.OK, { 'sasQueryString': sasQueryString, 'imageUri': imageUri });
-};{% endhighlight %}<p>Once you have your custom API up and running, it is easy to call it from your app and use the SAS to upload the image:</p>{% highlight javascript %}public async void TakePictureAndUpload()
+};{% endhighlight %}<p>Once you have your custom API up and running, it is easy to call it from your app and use the SAS to upload the image:</p>{% highlight c# %}public async void TakePictureAndUpload()
 {
     var camera = new CameraCaptureUI();
     camera.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;

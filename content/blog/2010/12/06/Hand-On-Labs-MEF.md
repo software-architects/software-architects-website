@@ -20,7 +20,7 @@ permalink: /blog/2010/12/06/Hand-On-Labs-MEF
   <li>The application will ask the user for a string, apply a set of string operations on that string and output the result. The string operations should be extensible. A user should be able to copy an assembly into the program's directory and the application should automatically pick up the assembly and apply all operations that it contains. Therefore the first thing we need is a contract that all string operation parts have to implement.
 
 <ul><li>Add a new class library project called <span class="InlineCode">OperatorContract</span> to your solution.</li><li>Add the following interface to the newly created project:</li></ul></li>
-</ul>{% highlight javascript %}namespace OperatorContract
+</ul>{% highlight c# %}namespace OperatorContract
 {
  public interface IStringOperator
  {
@@ -30,7 +30,7 @@ permalink: /blog/2010/12/06/Hand-On-Labs-MEF
   <li>Now add an implemenation of <span class="InlineCode">IStringOperator</span> to the command line project <span class="InlineCode">DirectoryCatalogDemo</span>.
 
 <ul><li>Add a reference to <span class="InlineCode">System.ComponentModel.Composition</span> to the command line project <span class="InlineCode">DirectoryCatalogDemo</span>.</li><li>Add the following class to the project:</li></ul></li>
-</ul>{% highlight javascript %}using System.ComponentModel.Composition;
+</ul>{% highlight c# %}using System.ComponentModel.Composition;
 using OperatorContract;
 
 namespace DirectoryCatalogDemo
@@ -45,7 +45,7 @@ namespace DirectoryCatalogDemo
  }
 }{% endhighlight %}<ul>
   <li>Next you have to implement the <span class="InlineCode">Program</span> class as follows (note especially how MEF is used to load operators into the member <span class="InlineCode">Program.operators</span> using the <span class="InlineCode">ComposeParts</span> method):</li>
-</ul>{% highlight javascript %}using System;
+</ul>{% highlight c# %}using System;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
@@ -92,7 +92,7 @@ namespace DirectoryCatalogDemo
   <li>Create a new class library project <span class="InlineCode">ReverseStringOperator</span>.
 
 <ul><li>Add a reference to <span class="InlineCode">System.ComponentModel.Composition</span> to the class library.</li><li>Add the following class to the project:</li></ul></li>
-</ul>{% highlight javascript %}using System.ComponentModel.Composition;
+</ul>{% highlight c# %}using System.ComponentModel.Composition;
 using System.Linq;
 using OperatorContract;
 
@@ -115,7 +115,7 @@ namespace ReverseStringOperator
   <li>Add the following class to your command line project <span class="InlineCode">DirectoryCatalogDemo</span>:
 
 <ul><li>Note the <span class="InlineCode">Export</span> attributes on the methods instead of the classes.</li></ul></li>
-</ul>{% highlight javascript %}using System.ComponentModel.Composition;
+</ul>{% highlight c# %}using System.ComponentModel.Composition;
 using System.Linq;
 
 namespace DirectoryCatalogDemo
@@ -136,7 +136,7 @@ namespace DirectoryCatalogDemo
  }
 }{% endhighlight %}<ul>
   <li>Change the implementation of the <span class="InlineCode">Program</span> class as follows (new/changed lines are written in italic):</li>
-</ul>{% highlight javascript %}using System;
+</ul>{% highlight c# %}using System;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
@@ -191,7 +191,7 @@ namespace DirectoryCatalogDemo
 </ul><p>Lab step by step description:</p><ul>
   <li>Create a new command line project called <span class="InlineCode">LifeCycleDemo</span>.</li>
   <li>Add an exported class to the project as follows:</li>
-</ul>{% highlight javascript %}[Export]
+</ul>{% highlight c# %}[Export]
 public class DisposableObject : IDisposable
 {
  private bool disposed = false;
@@ -218,7 +218,7 @@ public class DisposableObject : IDisposable
  }
 }{% endhighlight %}<ul>
   <li>Change the implementation of the <span class="InlineCode">Program</span> class as follows:</li>
-</ul>{% highlight javascript %}public class Program : IPartImportsSatisfiedNotification
+</ul>{% highlight c# %}public class Program : IPartImportsSatisfiedNotification
 {
  [Import(RequiredCreationPolicy = CreationPolicy.NonShared)]
  public Lazy<DisposableObject> mefObject1;

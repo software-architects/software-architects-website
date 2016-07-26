@@ -119,7 +119,7 @@ permalink: /blog/2008/03/15/Bug-Busters---Test-Driven-Development-in-NET
   <br />
   <em>Detailed specification of entities</em>
   <br />
-</p><p>We start our example for Test Driven Development with the specification. In our fictitious project we received a specification from a business analyst. The specification tells us that we have to build a web-based solution for time tracking. Fortunately the analyst defined the business data model quite detailed. We have no problem translating the business data model into a few SQL Server tables.</p>{% highlight javascript %}USE [TddSample_TimeTracking] 
+</p><p>We start our example for Test Driven Development with the specification. In our fictitious project we received a specification from a business analyst. The specification tells us that we have to build a web-based solution for time tracking. Fortunately the analyst defined the business data model quite detailed. We have no problem translating the business data model into a few SQL Server tables.</p>{% highlight sql %}USE [TddSample_TimeTracking] 
 GO 
 
 CREATE TABLE [dbo].[Project]( 
@@ -197,7 +197,7 @@ ALTER TABLE [dbo].[TimeTracking] CHECK CONSTRAINT [FK_TimeTracking_User]{% endhi
   <li>we add an <em>App.config</em> file to the test project (it contains the DB connection string as well as the SQL initialization script shown below),</li>
   <li>add a test initialization method that opens a database connection and executes the script</li>
   <li>and add a test cleanup method that closes the database connection again.</li>
-</ul><p>Here is the SQL code I use to prepare the database:</p>{% highlight javascript %}begin tran; 
+</ul><p>Here is the SQL code I use to prepare the database:</p>{% highlight sql %}begin tran; 
 
 delete from TimeTracking; 
 delete from [User]; 
@@ -223,7 +223,7 @@ values ( 'Other', 'Time used for other things' );
 insert into [User] ( WindowsLogin ) values ( 'rainer' ); 
 insert into [User] ( WindowsLogin ) values ( 'karin' ); 
 
-commit;{% endhighlight %}<p>Here is the test initialization code for the <span class="InlineCode">DataAccessLayerTests </span> class:</p><p class="DecoratorRight">Note that we open a Linq data context in the initialization code and close it in the cleanup method. All the tests can use the open database connection without having to care about whether it is already open. Additionally this implementation uses a single data context at a time - a recommended best practice.</p>{% highlight javascript %}#region Test initialization and cleanup code
+commit;{% endhighlight %}<p>Here is the test initialization code for the <span class="InlineCode">DataAccessLayerTests </span> class:</p><p class="DecoratorRight">Note that we open a Linq data context in the initialization code and close it in the cleanup method. All the tests can use the open database connection without having to care about whether it is already open. Additionally this implementation uses a single data context at a time - a recommended best practice.</p>{% highlight c# %}#region Test initialization and cleanup code
 private BugBustersDataContext db;
 /// <summary>
 /// Initialize test database using SQL initialization script and open data context
@@ -252,7 +252,7 @@ public void TimeTrackingConstraintsTestCleanup()
     db.Dispose();
     db = null;
 }
-#endregion{% endhighlight %}<p>After we cared for correct test data in our database we are ready to implement the test routine:</p><p class="DecoratorRight">Note how we use the functions of the<span class="InlineCode">Assert</span>-class here to check if the test succeeded!</p>{% highlight javascript %}[TestMethod]
+#endregion{% endhighlight %}<p>After we cared for correct test data in our database we are ready to implement the test routine:</p><p class="DecoratorRight">Note how we use the functions of the<span class="InlineCode">Assert</span>-class here to check if the test succeeded!</p>{% highlight c# %}[TestMethod]
 public void AddSingleRow()
 {
     var startTime = new DateTime(2007, 1, 1, 8, 0, 0);
@@ -279,7 +279,7 @@ public void AddSingleRow()
   <br />
   <em>Requirements for business logic</em>
   <br />
-</p><p>The specification contains some business logic that we have to implement. On the one hand end time must not be lower than start time. On the other hand the data access layer has to ensure that no user enters overlapping time tracking entries.</p><p>According to the TDD philosophy we <em>must not</em> start with writing the business logic code. We have to start with the test first!</p>{% highlight javascript %}[TestMethod]
+</p><p>The specification contains some business logic that we have to implement. On the one hand end time must not be lower than start time. On the other hand the data access layer has to ensure that no user enters overlapping time tracking entries.</p><p>According to the TDD philosophy we <em>must not</em> start with writing the business logic code. We have to start with the test first!</p>{% highlight c# %}[TestMethod]
 public void EndBeforeStart()
 {
     var exception = false;
@@ -304,7 +304,7 @@ public void EndBeforeStart()
   <br />
   <em>Test failed because of missing logic</em>
   <br />
-</p><p>Of course the test fails because we have not implemented the corresponding application logic yet.</p><p>Because we use Linq-to-SQL it is quite easy to add the appropriate business logic. We use Linq's extensibility method <span class="InlineCode">TimeTracking.OnValidate</span> and add the necessary code there:</p>{% highlight javascript %}using System;
+</p><p>Of course the test fails because we have not implemented the corresponding application logic yet.</p><p>Because we use Linq-to-SQL it is quite easy to add the appropriate business logic. We use Linq's extensibility method <span class="InlineCode">TimeTracking.OnValidate</span> and add the necessary code there:</p>{% highlight c# %}using System;
 using System.Linq;
 using System.Data.Linq;
 
@@ -375,7 +375,7 @@ namespace BugBusters.Data
   <li>add a new unit test <span class="InlineCode">UserInterfaceTests</span> to our test project,</li>
   <li>add references to <em>WatiN.Core.dll</em> and <em>WatiN.Core.UnitTests.dll</em></li>
   <li>and add a test initialization method that opens a database connection and executes a SQL script filling the database with defined test data (similar to what we did in the initialization methods of the unit tests for the data access layer; this time we also insert some rows into the table <em>TimeTracking</em>).</li>
-</ul><p>After these preparation steps we can add the base class <span class="InlineCode">Screen</span> and the interface<span class="InlineCode">IAssertable</span> we mentioned above:</p>{% highlight javascript %}private interface IAssertable
+</ul><p>After these preparation steps we can add the base class <span class="InlineCode">Screen</span> and the interface<span class="InlineCode">IAssertable</span> we mentioned above:</p>{% highlight c# %}private interface IAssertable
 {
     void AssertControls();
 }
@@ -404,7 +404,7 @@ private abstract class Screen : IDisposable
         ie.Dispose();
         GC.SuppressFinalize(this);
     }
-}{% endhighlight %}<p>Based on this helper class we define <span class="InlineCode">OverviewScreen</span>. A very basic first version (not complete!) looks like this (you can take a look at the complete implementation in the sample code which you can download below):</p><p class="DecoratorRight">Note the property <span class="InlineCode">LoginFilter</span>. Properties like this make tests a lot easier to read and write!<br /> If you want to build your tests similar to how we do it, you will have to write a lot of those properties. To make life easier we wrote a short but useful C# snippet for creating such properties.<br /> [<a href="{{site.baseurl}}/content/images/blog/2008/03/SnippetForWatiNControlProperty.zip">Download the snippet</a>].</p>{% highlight javascript %}private class OverviewScreen : Screen, IAssertable
+}{% endhighlight %}<p>Based on this helper class we define <span class="InlineCode">OverviewScreen</span>. A very basic first version (not complete!) looks like this (you can take a look at the complete implementation in the sample code which you can download below):</p><p class="DecoratorRight">Note the property <span class="InlineCode">LoginFilter</span>. Properties like this make tests a lot easier to read and write!<br /> If you want to build your tests similar to how we do it, you will have to write a lot of those properties. To make life easier we wrote a short but useful C# snippet for creating such properties.<br /> [<a href="{{site.baseurl}}/content/images/blog/2008/03/SnippetForWatiNControlProperty.zip">Download the snippet</a>].</p>{% highlight c# %}private class OverviewScreen : Screen, IAssertable
 {
     private const string url = "http:// localhost /BugBustersWeb/Default.aspx";
     private const string Control_WindowsLoginFilter = "lstUsers";
@@ -435,7 +435,7 @@ private abstract class Screen : IDisposable
         // implementation not complete yet -> throw exception
         throw new NotImplementedException();
     }
-}{% endhighlight %}<p>After adding the complete implementation of <span class="InlineCode">OverviewScreen</span> including all helper properties we can go on and write the test method. Note that we have still not written a single line of ASP.NET code. We are doing real TDD here! The test code is quite readable, isn't it?</p>{% highlight javascript %}[TestMethod]
+}{% endhighlight %}<p>After adding the complete implementation of <span class="InlineCode">OverviewScreen</span> including all helper properties we can go on and write the test method. Note that we have still not written a single line of ASP.NET code. We are doing real TDD here! The test code is quite readable, isn't it?</p>{% highlight c# %}[TestMethod]
 [AspNetDevelopmentServer("localhost", @"C:\Data\...\Applications\BugBusters.Web")]
 public void Overview_Launch()
 {
@@ -467,7 +467,7 @@ public void Overview_Launch()
   <br />
   <em>First UI test succeeds</em>
   <br />
-</p><p>Now that the ASP.NET site really exists the UI unit test succeeds. Do not forget that it is mandatory in TDD to run <em>all </em> tests to really make sure that the last feature you implemented did not screw up other functions of your application.</p><p>The specification demands a filter box that can be used to filter the results in the result grid. The box has to contain all users that exist in the database and one extra item "All". If the user selects "All" data of all users has to be displayed. According to the TDD philosophy we develop an UI unit test first.</p>{% highlight javascript %}[TestMethod]
+</p><p>Now that the ASP.NET site really exists the UI unit test succeeds. Do not forget that it is mandatory in TDD to run <em>all </em> tests to really make sure that the last feature you implemented did not screw up other functions of your application.</p><p>The specification demands a filter box that can be used to filter the results in the result grid. The box has to contain all users that exist in the database and one extra item "All". If the user selects "All" data of all users has to be displayed. According to the TDD philosophy we develop an UI unit test first.</p>{% highlight c# %}[TestMethod]
 public void Overview_Filter()
 {
     using (var screen = new OverviewScreen())
@@ -513,7 +513,7 @@ public void Overview_Filter()
   <li>If necessary and appropriate we refactor what we have built. If you decide to refactor your code make sure that after you have finished <em>all the tests still </em> work.</li>
 </ul><p>It would be boring for us to write and for you to read if we would show you every single step to the complete solution here. Every step follows the same procedure you see above. At the very end of this article you can find the download link to the completely implemented solution including all the source code.</p><p>However, there are some special WatiN topics in the other parts of the unit test code that are worth while discussing them in detail.</p><p class="InfoTitle">HANDLING IE MODELESS DIALOGS</p><p>In IE you can open modeless dialogs (WatiN calls them HTML Dialogs) by using<span class="InlineCode">window.showModelessDialog(...)</span> instead of <span class="InlineCode">window.open(...)</span>. Such windows require special handling in WatiN. If you want to access them you cannot use the <span class="InlineCode">WatiN.Core.IE</span>class. You have to use <span class="InlineCode">WatiN.Core.HtmlDialog</span> instead. As discussed above we do not directly use WatiN classes in our test code. We created the base class <span class="InlineCode">Screen</span> and descendant classes as a helper layer between the test code and WatiN. However, <span class="InlineCode">Screen</span> uses<span class="InlineCode">WatiN.Core.IE</span> internally and cannot be used for HTML dialogs though. We have to build another helper class for that case: <span class="InlineCode">Dialog</span>.</p><p>
   <img alt="UML diagram with class Dialog" src="{{site.baseurl}}/content/images/blog/2008/03/WatiNDialogUML.png" class="  " />
-</p><p>The UML diagram above shows the class <span class="InlineCode">Dialog</span> as well as the descendant class <span class="InlineCode">HelpScreen</span>.<span class="InlineCode">Dialog</span> is extremely similar to <span class="InlineCode">Screen</span>:</p><p class="DecoratorRight">Note that <span class="InlineCode">Dialog </span> uses WatiN's class<span class="InlineCode">HtmlDialog </span> instead of <span class="InlineCode">IE</span>.</p>{% highlight javascript %}private abstract class Dialog : IDisposable
+</p><p>The UML diagram above shows the class <span class="InlineCode">Dialog</span> as well as the descendant class <span class="InlineCode">HelpScreen</span>.<span class="InlineCode">Dialog</span> is extremely similar to <span class="InlineCode">Screen</span>:</p><p class="DecoratorRight">Note that <span class="InlineCode">Dialog </span> uses WatiN's class<span class="InlineCode">HtmlDialog </span> instead of <span class="InlineCode">IE</span>.</p>{% highlight c# %}private abstract class Dialog : IDisposable
 {
     protected HtmlDialog dialog { get; private set; }
 
@@ -529,7 +529,7 @@ public void Overview_Filter()
         dialog.Close();
         GC.SuppressFinalize(this);
     }
-}{% endhighlight %}<p>Here is the unit test code that tests if the "Help" link works:</p><p class="DecoratorRight">Note that we use <span class="InlineCode">ClickNoWait</span> instead of<span class="InlineCode">Click </span> here. <span class="InlineCode">Click</span> internally calls<span class="InlineCode">WaitForComplete </span> which waits for Internet Explorer telling it has finished handling the request. However, <span class="InlineCode">Click </span> would wait endlessly because a new window opened.<span class="InlineCode">ClickNoWait</span> does not wait and is the function of choice in this case!</p>{% highlight javascript %}[TestMethod()]
+}{% endhighlight %}<p>Here is the unit test code that tests if the "Help" link works:</p><p class="DecoratorRight">Note that we use <span class="InlineCode">ClickNoWait</span> instead of<span class="InlineCode">Click </span> here. <span class="InlineCode">Click</span> internally calls<span class="InlineCode">WaitForComplete </span> which waits for Internet Explorer telling it has finished handling the request. However, <span class="InlineCode">Click </span> would wait endlessly because a new window opened.<span class="InlineCode">ClickNoWait</span> does not wait and is the function of choice in this case!</p>{% highlight c# %}[TestMethod()]
 public void Overview_Help()
 {
     using (var screen = new OverviewScreen())
@@ -537,7 +537,7 @@ public void Overview_Help()
         screen.HelpLink.ClickNoWait();
         using (var help = new HelpScreen(screen)) { };
     }
-}{% endhighlight %}<p>Dialog windows that are opened using window.open can be handled with descendants of the normal <span class="InlineCode">Screen </span> class:</p>{% highlight javascript %}[TestMethod]
+}{% endhighlight %}<p>Dialog windows that are opened using window.open can be handled with descendants of the normal <span class="InlineCode">Screen </span> class:</p>{% highlight c# %}[TestMethod]
 public void AddEntry_Launch()
 {
     using (var overviewScreen = new OverviewScreen())
@@ -559,7 +559,7 @@ public void AddEntry_Launch()
   <li>
     <span class="InlineCode">UseDialogOnce</span>
   </li>
-</ul><p>In our sample you can see how to use them in the <span class="InlineCode">AddEntry_CancelYes</span> method:</p>{% highlight javascript %}[TestMethod]
+</ul><p>In our sample you can see how to use them in the <span class="InlineCode">AddEntry_CancelYes</span> method:</p>{% highlight c# %}[TestMethod]
 public void AddEntry_CancelYes()
 {
     using (var overviewScreen = new OverviewScreen())
@@ -573,7 +573,7 @@ public void AddEntry_CancelYes()
         using (var screen = new AddEntryScreen())
         {
             // fill in test data
-            screen.EnterTestData();{% endhighlight %}<p class="DecoratorRight">In this first case we simulate a click on "Cancel" in the confirmation box. The user has to stay on the "Add new" screen in this case.</p>{% highlight javascript %}            // click cancel and then NO -> must return to dialog
+            screen.EnterTestData();{% endhighlight %}<p class="DecoratorRight">In this first case we simulate a click on "Cancel" in the confirmation box. The user has to stay on the "Add new" screen in this case.</p>{% highlight c# %}            // click cancel and then NO -> must return to dialog
             var confirm = new ConfirmDialogHandler();
             using (new UseDialogOnce(screen.ie.DialogWatcher, confirm))
             {
@@ -581,7 +581,7 @@ public void AddEntry_CancelYes()
                 confirm.WaitUntilExists();
                 confirm.CancelButton.Click();
                 screen.ie.WaitForComplete();
-            } {% endhighlight %}<p class="DecoratorRight">In the second case we simulate a click on "OK" in the confirmation box. The user has to return to the "Overview" screen.</p>{% highlight javascript %}            // click cancel and then YES -> must return to "Overview" screen
+            } {% endhighlight %}<p class="DecoratorRight">In the second case we simulate a click on "OK" in the confirmation box. The user has to return to the "Overview" screen.</p>{% highlight c# %}            // click cancel and then YES -> must return to "Overview" screen
             using (new UseDialogOnce(screen.ie.DialogWatcher, confirm))
             {
                 screen.CancelLink.ClickNoWait();

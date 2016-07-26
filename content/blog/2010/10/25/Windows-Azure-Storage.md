@@ -180,7 +180,7 @@ Used to implement optimistic locking.</li>
     <param name="CodeType" value="c#" />
   </function>
   <p>With these changes we have a reference to the Azure blob container that should receive our blobs and we can create the blob inside our worker process (I will not repeat the whole worker class here, just the necessary lines for creating the blob):</p>
-  {% highlight javascript %}CloudBlob blob;
+  {% highlight c# %}CloudBlob blob;
 (blob = connection.ConfirmationContainer
  .GetBlobReference(messagePayload.RowKey))
  .UploadText(string.Format("Order {0} accepted!", messagePayload.RowKey));

@@ -1,0 +1,22 @@
+{
+  "name": "software-architects-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/software-architects/software-architects-website.git"
+  },
+  "author": "jovan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/software-architects/software-architects-website/issues"
+  },
+  "homepage": "https://github.com/software-architects/software-architects-website#readme",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}

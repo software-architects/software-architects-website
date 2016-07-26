@@ -120,7 +120,7 @@ permalink: /blog/2009/10/13/SQL-Champ---Quiz
       <p dir="ltr">1. SELECT<br /> 2. SELECT, INSERT (if used with INSERT...SELECT syntax)<br /> 3. SELECT, INSERT, UPDATE, DELETE<br /> 4. None. TOP is new in SQL Server 2008</p>
       <p class="DecoratorRight">Parentheses that delimit expression in TOP is required in INSERT, UPDATE, and DELETE statements. For backward compatibility, TOP expression without parentheses in SELECT statements is supported, but Microsoft does not recommend this.</p>
       <p dir="ltr">The correct answer is <em>SELECT, INSERT, UPDATE, DELETE</em>. In SQL Server 2000 TOP was only supported in SELECT statements. Since SQL Server 2005 you can use TOP also with INSERT, UPDATE and DELETE. Here is an example for the use of TOP in a DELETE statement:</p>
-      {% highlight javascript %}use tempdb;  
+      {% highlight sql %}use tempdb;  
 
 create table Orders ( OrderId int, CustId int, Revenue money );  
 

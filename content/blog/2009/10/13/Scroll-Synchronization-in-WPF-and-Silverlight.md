@@ -10,7 +10,7 @@ tags: [Silverlight,WPF]
 permalink: /blog/2009/10/13/Scroll-Synchronization-in-WPF-and-Silverlight
 ---
 
-<p>Imagine you have two ListBoxes with lots of items. Whenever a user scrolls in one of the two ListBoxes, the other one should be updated, too. What we want to do in this article is to create a simple attached property, that allows us to group scrollable controls. In the following sample you see two ScrollViewers, whose scroll positions are synchronized because they are both attached to the same ScrollGroup "Group1":</p>{% highlight javascript %}<ScrollViewer 
+<p>Imagine you have two ListBoxes with lots of items. Whenever a user scrolls in one of the two ListBoxes, the other one should be updated, too. What we want to do in this article is to create a simple attached property, that allows us to group scrollable controls. In the following sample you see two ScrollViewers, whose scroll positions are synchronized because they are both attached to the same ScrollGroup "Group1":</p>{% highlight xml %}<ScrollViewer 
 Name="ScrollViewer1" scroll:ScrollSynchronizer.ScrollGroup="Group1">
    ...
 </ScrollViewer>
@@ -32,7 +32,7 @@ Name="ScrollViewer2" scroll:ScrollSynchronizer.ScrollGroup="Group1">
   <li>Synchronizing ListBoxes</li>
   <li>Silverlight Support</li>
 </ul><h2 class="Head">
-  <a id="Building" name="Building" class="mceItemAnchor"></a>Building the ScrollSynchronizer</h2><p>Our <span class="InlineCode">ScrollSynchronizer</span> object has no representation in the UI. It is just responsible for providing the attached property ScrollGroup. So I have chosen <span class="InlineCode">DependencyObject</span> as the base class. First I added the attached dependency property ScrollGroup with its corresponding methodes <span class="InlineCode">GetScrollGroup</span> and S<span class="InlineCode">etScrollGroup</span> to the class.</p>{% highlight javascript %}public class ScrollSynchronizer : DependencyObject
+  <a id="Building" name="Building" class="mceItemAnchor"></a>Building the ScrollSynchronizer</h2><p>Our <span class="InlineCode">ScrollSynchronizer</span> object has no representation in the UI. It is just responsible for providing the attached property ScrollGroup. So I have chosen <span class="InlineCode">DependencyObject</span> as the base class. First I added the attached dependency property ScrollGroup with its corresponding methodes <span class="InlineCode">GetScrollGroup</span> and S<span class="InlineCode">etScrollGroup</span> to the class.</p>{% highlight c# %}public class ScrollSynchronizer : DependencyObject
 {
     public static readonly DependencyProperty ScrollGroupProperty =
         DependencyProperty.RegisterAttached(
@@ -55,14 +55,14 @@ Name="ScrollViewer2" scroll:ScrollSynchronizer.ScrollGroup="Group1">
     }
 
     ...
-}{% endhighlight %}<p>In the property metadata of the new property there is a callback that is invoked everytime a<span class="InlineCode">ScrollViewer</span> uses the attached property, so this is the place where we will provide the logic to synchronize the <span class="InlineCode">ScrollViewer</span> with all other attached ScrollViewers. But before we need some private fields to store all attached ScrollViewers as well as their corresponding horizontal and vertical offsets. The string part in these dictionaries is equal to the name of the group that is set by the <span class="InlineCode">ScrollGroup</span> property.</p>{% highlight javascript %}private static Dictionary<ScrollViewer, string> scrollViewers = 
+}{% endhighlight %}<p>In the property metadata of the new property there is a callback that is invoked everytime a<span class="InlineCode">ScrollViewer</span> uses the attached property, so this is the place where we will provide the logic to synchronize the <span class="InlineCode">ScrollViewer</span> with all other attached ScrollViewers. But before we need some private fields to store all attached ScrollViewers as well as their corresponding horizontal and vertical offsets. The string part in these dictionaries is equal to the name of the group that is set by the <span class="InlineCode">ScrollGroup</span> property.</p>{% highlight c# %}private static Dictionary<ScrollViewer, string> scrollViewers = 
     new Dictionary<ScrollViewer, string>();
 
 private static Dictionary<string, double> horizontalScrollOffsets = 
     new Dictionary<string, double>();
 
 private static Dictionary<string, double> verticalScrollOffsets = 
-    new Dictionary<string, double>();{% endhighlight %}<p>Now we can implement the callback for changes in the <span class="InlineCode">ScrollGroup</span> property. Basically the code is quite simple. When a new <span class="InlineCode">ScrollViewer</span> is added by setting the attached property, we check if we can already find a scroll position for the group in the fields<span class="InlineCode">horizontalScrollOffset</span> and <span class="InlineCode">verticalScrollOffset</span>. If so, we set the adjust the scollposition of the new <span class="InlineCode">ScrollViewer</span>, so that it matches the group. Otherwise we add an entry to <span class="InlineCode">horizontalScrollOffset</span> and <span class="InlineCode">verticalScrollOffset</span> with the current scrollposition of the new <span class="InlineCode">ScrollViewer</span>. Finally we add the new <span class="InlineCode">ScrollViewer</span> to the<span class="InlineCode">scrollViewers</span> dictionary with its corresponding group name, and we add an event handler for the <span class="InlineCode">ScrollChanged</span> event, so that we can adapt all other ScrollViewers in the group when the scrollposition has changed.</p><p>If the attached property is removed we remove the <span class="InlineCode">ScrollViewer</span> from the list. In this case we do not remove the entries in <span class="InlineCode">horizontalScrollOffset</span> and <span class="InlineCode">verticalScrollOffset</span>, even when it is the last <span class="InlineCode">ScrollViewer</span> of one group, because when another <span class="InlineCode">ScrollViewer</span> is added to that group later, we still know the last scrollposition of that group.</p>{% highlight javascript %}private static void OnScrollGroupChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) 
+    new Dictionary<string, double>();{% endhighlight %}<p>Now we can implement the callback for changes in the <span class="InlineCode">ScrollGroup</span> property. Basically the code is quite simple. When a new <span class="InlineCode">ScrollViewer</span> is added by setting the attached property, we check if we can already find a scroll position for the group in the fields<span class="InlineCode">horizontalScrollOffset</span> and <span class="InlineCode">verticalScrollOffset</span>. If so, we set the adjust the scollposition of the new <span class="InlineCode">ScrollViewer</span>, so that it matches the group. Otherwise we add an entry to <span class="InlineCode">horizontalScrollOffset</span> and <span class="InlineCode">verticalScrollOffset</span> with the current scrollposition of the new <span class="InlineCode">ScrollViewer</span>. Finally we add the new <span class="InlineCode">ScrollViewer</span> to the<span class="InlineCode">scrollViewers</span> dictionary with its corresponding group name, and we add an event handler for the <span class="InlineCode">ScrollChanged</span> event, so that we can adapt all other ScrollViewers in the group when the scrollposition has changed.</p><p>If the attached property is removed we remove the <span class="InlineCode">ScrollViewer</span> from the list. In this case we do not remove the entries in <span class="InlineCode">horizontalScrollOffset</span> and <span class="InlineCode">verticalScrollOffset</span>, even when it is the last <span class="InlineCode">ScrollViewer</span> of one group, because when another <span class="InlineCode">ScrollViewer</span> is added to that group later, we still know the last scrollposition of that group.</p>{% highlight c# %}private static void OnScrollGroupChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) 
 { 
     var scrollViewer = d as ScrollViewer; 
     if (scrollViewer != null) 
@@ -113,7 +113,7 @@ private static Dictionary<string, double> verticalScrollOffsets =
                 new ScrollChangedEventHandler(ScrollViewer_ScrollChanged); 
         } 
     } 
-}{% endhighlight %}<p>Now our last task is to implement the event handler for the <span class="InlineCode">ScrollChanged</span> event. If the horizontal or the vertical scrollposition has changed, we update the dictionaries<span class="InlineCode">verticalScrollOffsets</span> and <span class="InlineCode">horizontalScrollOffsets</span> to the latest position. Then we have to find all ScrollViewers that are in the same group as the changed <span class="InlineCode">ScrollViewer</span> and update its scroll positions.</p>{% highlight javascript %}private static void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e) 
+}{% endhighlight %}<p>Now our last task is to implement the event handler for the <span class="InlineCode">ScrollChanged</span> event. If the horizontal or the vertical scrollposition has changed, we update the dictionaries<span class="InlineCode">verticalScrollOffsets</span> and <span class="InlineCode">horizontalScrollOffsets</span> to the latest position. Then we have to find all ScrollViewers that are in the same group as the changed <span class="InlineCode">ScrollViewer</span> and update its scroll positions.</p>{% highlight c# %}private static void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e) 
 { 
     if (e.VerticalChange != 0 || e.HorizontalChange != 0) 
     { 
@@ -146,7 +146,7 @@ private static void Scroll(ScrollViewer changedScrollViewer)
         } 
     } 
 }{% endhighlight %}<h2 class="Head">
-  <a id="Testing" name="Testing" class="mceItemAnchor"></a>Testing the ScrollSynchronizer</h2><p>To test the new attached property we build a simple UI with two ScrollViewers. For both ScrollViewers we assign the value "Group1" to the <span class="InlineCode">ScrollGroup</span> property.</p>{% highlight javascript %}<Window  
+  <a id="Testing" name="Testing" class="mceItemAnchor"></a>Testing the ScrollSynchronizer</h2><p>To test the new attached property we build a simple UI with two ScrollViewers. For both ScrollViewers we assign the value "Group1" to the <span class="InlineCode">ScrollGroup</span> property.</p>{% highlight xml %}<Window  
 xmlns:scroll="clr-namespace:SoftwareArchitects.Windows.Controls; 
 assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer" 
 ...> 
@@ -167,7 +167,7 @@ assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer"
             <StackPanel Name="Panel2" /> 
         </ScrollViewer> 
     </Grid> 
-</Window>{% endhighlight %}<p>In the code-behind file we add some TextBlocks to both panels, so that the ScrollBars will get visible.</p>{% highlight javascript %}public Window1() 
+</Window>{% endhighlight %}<p>In the code-behind file we add some TextBlocks to both panels, so that the ScrollBars will get visible.</p>{% highlight c# %}public Window1() 
 { 
     InitializeComponent(); 
 
@@ -182,7 +182,7 @@ assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer"
 }{% endhighlight %}<p>Done! We have two synchronized ScrollViewers:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.png" class="mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused" />
 </p><h2 class="Head">
-  <a id="ListBoxes" name="ListBoxes" class="mceItemAnchor"></a>Synchronizing ListBoxes</h2><p>Now, how can we get other controls synchronized? Let's replace the ScrollViewers by two ListBoxes. Unfortunately we cannot set the attached property <span class="InlineCode">ScrollGroup</span> to the ListBoxes. In the <span class="InlineCode">OnScrollGroupChanged</span> callback we assume, that we will always get a <span class="InlineCode">ScrollViewer</span>. So we could enhance the ScrollSynchronizer to accept other types of controls, or we could simply add a style for the <span class="InlineCode">ScrollViewer</span> within the ListBoxes, that sets the <span class="InlineCode">ScrollGroup</span>property. In this case no changes are necessary for out <span class="InlineCode">ScrollSynchronizer</span>.</p>{% highlight javascript %}<ListBox Grid.Column="0" Name="ListBox1" Margin="0,0,5,0"> 
+  <a id="ListBoxes" name="ListBoxes" class="mceItemAnchor"></a>Synchronizing ListBoxes</h2><p>Now, how can we get other controls synchronized? Let's replace the ScrollViewers by two ListBoxes. Unfortunately we cannot set the attached property <span class="InlineCode">ScrollGroup</span> to the ListBoxes. In the <span class="InlineCode">OnScrollGroupChanged</span> callback we assume, that we will always get a <span class="InlineCode">ScrollViewer</span>. So we could enhance the ScrollSynchronizer to accept other types of controls, or we could simply add a style for the <span class="InlineCode">ScrollViewer</span> within the ListBoxes, that sets the <span class="InlineCode">ScrollGroup</span>property. In this case no changes are necessary for out <span class="InlineCode">ScrollSynchronizer</span>.</p>{% highlight xml %}<ListBox Grid.Column="0" Name="ListBox1" Margin="0,0,5,0"> 
     <ListBox.Resources> 
         <Style TargetType="ScrollViewer"> 
             <Setter Property="scroll:ScrollSynchronizer.ScrollGroup"  
@@ -198,7 +198,7 @@ assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer"
                 Value="Group1" /> 
         </Style> 
     </ListBox.Resources> 
-</ListBox>{% endhighlight %}<p>A nicer way to do this would be to set the style in the <span class="InlineCode">Grid </span> resources, so it applies to all ScrollViewers in the grid automatically.</p>{% highlight javascript %}<Grid.Resources> 
+</ListBox>{% endhighlight %}<p>A nicer way to do this would be to set the style in the <span class="InlineCode">Grid </span> resources, so it applies to all ScrollViewers in the grid automatically.</p>{% highlight xml %}<Grid.Resources> 
     <Style TargetType="ScrollViewer"> 
         <Setter Property="scroll:ScrollSynchronizer.ScrollGroup"  
             Value="Group1" /> 

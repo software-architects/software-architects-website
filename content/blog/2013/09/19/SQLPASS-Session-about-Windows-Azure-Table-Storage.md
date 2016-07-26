@@ -77,7 +77,7 @@ permalink: /blog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
   </li>
   <li>
     <a href="http://www.windowsazure.com/en-us/support/trust-center/" target="_blank">Windows Azure Trust Center</a> - the number one source if you want detailed information about data security and privacy in Windows Azure</li>
-</ul><h2>Source Code of the Sample</h2>{% highlight javascript %}using Microsoft.WindowsAzure.Storage;
+</ul><h2>Source Code of the Sample</h2>{% highlight c# %}using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.RetryPolicies;
 using Microsoft.WindowsAzure.Storage.Table;

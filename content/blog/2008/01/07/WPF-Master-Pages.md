@@ -21,7 +21,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
   <li>and the main content</li>
 </ul><p class="DecoratorRight">The screenshot shows the first page of the applications. In this case all three areas contain some text. But as we will see later in the sample we are not limited to text.</p><p>
   <img height="350" width="500" src="{{site.baseurl}}/content/images/blog/2008/01/Page1.png" class="     mceC1Focused" />
-</p><p>If I would build this page without using a master page I would start with a new blank page and then I would arrange different types of controls on this page. I used Stackpanels and a Grid to arrange the logo and the three types of content on the page.</p>{% highlight javascript %}<Page x:Class="MasterPages.Page.PageWithoutMaster"
+</p><p>If I would build this page without using a master page I would start with a new blank page and then I would arrange different types of controls on this page. I used Stackpanels and a Grid to arrange the logo and the three types of content on the page.</p>{% highlight xml %}<Page x:Class="MasterPages.Page.PageWithoutMaster"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   Title="PageWithoutMaster">
@@ -60,7 +60,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
   <li>Title</li>
   <li>Abstract</li>
   <li>Content</li>
-</ul><p>Each property represents one area in my master page.</p><p class="DecoratorRight">The datatype for the dependency properties is<span class="InlineCode">object</span>. This ensures that I cannot only add text but also controls to each area in the page.</p>{% highlight javascript %}namespace MasterPages.Master
+</ul><p>Each property represents one area in my master page.</p><p class="DecoratorRight">The datatype for the dependency properties is<span class="InlineCode">object</span>. This ensures that I cannot only add text but also controls to each area in the page.</p>{% highlight c# %}namespace MasterPages.Master
 {
   public class Master : Control
   {
@@ -100,7 +100,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
       DependencyProperty.Register("Content", typeof(object), 
       typeof(Master), new UIPropertyMetadata());
   }
-}{% endhighlight %}<p>As you may know WPF does not add layout information into the class implementing a custom control like <span class="InlineCode">Master</span>. The content of the file <span class="InlineCode">generic.xaml</span> defines the look of the control. This file is automatically created by Visual Studio as soon as you add a custom control to your project.</p><p>In my case I defined a style for my new class <span class="InlineCode">Master</span> in generic.xaml. This is the place where the arrangement of the areas should happen. Just as in the single page before I used Stackpanels and Grids to arrange the logo and all the other parts of the page. The key to include the content of the dependency properties is the control <span class="InlineCode">ContentPresenter</span>. I inserted three of them and bound them to the three dependency properties of the <span class="InlineCode">Master</span>class.</p><p class="DecoratorRight">I added some <span class="InlineCode">ResourceDictionary</span>objects to the generic.xaml for my more complex styles like the logo, which is entirely built in XAML.</p>{% highlight javascript %}<ResourceDictionary
+}{% endhighlight %}<p>As you may know WPF does not add layout information into the class implementing a custom control like <span class="InlineCode">Master</span>. The content of the file <span class="InlineCode">generic.xaml</span> defines the look of the control. This file is automatically created by Visual Studio as soon as you add a custom control to your project.</p><p>In my case I defined a style for my new class <span class="InlineCode">Master</span> in generic.xaml. This is the place where the arrangement of the areas should happen. Just as in the single page before I used Stackpanels and Grids to arrange the logo and all the other parts of the page. The key to include the content of the dependency properties is the control <span class="InlineCode">ContentPresenter</span>. I inserted three of them and bound them to the three dependency properties of the <span class="InlineCode">Master</span>class.</p><p class="DecoratorRight">I added some <span class="InlineCode">ResourceDictionary</span>objects to the generic.xaml for my more complex styles like the logo, which is entirely built in XAML.</p>{% highlight xml %}<ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:local="clr-namespace:MasterPages.Master">
@@ -141,7 +141,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
   <li>add a dependency property for each area of the page and</li>
   <li>define the layout of the control in the file generic.xaml.</li>
 </ul><h2 class="Head">
-  <a id="UsingTheMasterPage" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="UsingTheMasterPage"></a>Using the Master Page</h2><p>Finally we are able to build a new page based on the master page. Therefore we need a reference to to class <span class="InlineCode">Master </span> in our WPF file: <span class="InlineCode">xmlns:m="clr-namespace:MasterPages.Master"</span>. I chose the prefix m for my <span class="InlineCode">Master</span> class. With this prefix I can add a new instance of <span class="InlineCode">Master</span> to the page. Inside of &lt;m:Master&gt; I can set the<span class="InlineCode">Title</span>, the <span class="InlineCode">Abstract</span> and the <span class="InlineCode">Content</span> property of the class.</p><p class="DecoratorRight">In this case I only used text but as you can see in the next sample I am not limited to text.</p>{% highlight javascript %}<Page x:Class="MasterPages.Page.Page1"
+  <a id="UsingTheMasterPage" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="UsingTheMasterPage"></a>Using the Master Page</h2><p>Finally we are able to build a new page based on the master page. Therefore we need a reference to to class <span class="InlineCode">Master </span> in our WPF file: <span class="InlineCode">xmlns:m="clr-namespace:MasterPages.Master"</span>. I chose the prefix m for my <span class="InlineCode">Master</span> class. With this prefix I can add a new instance of <span class="InlineCode">Master</span> to the page. Inside of &lt;m:Master&gt; I can set the<span class="InlineCode">Title</span>, the <span class="InlineCode">Abstract</span> and the <span class="InlineCode">Content</span> property of the class.</p><p class="DecoratorRight">In this case I only used text but as you can see in the next sample I am not limited to text.</p>{% highlight xml %}<Page x:Class="MasterPages.Page.Page1"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:m="clr-namespace:MasterPages.Master"
@@ -157,7 +157,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
       In the long term software architects will offer ...
     </m:Master.Content>
   </m:Master>
-</Page>{% endhighlight %}<p>To show the advange of a master page I added a second page to my project. Again I do not have to care about layout any more. I just add the <span class="InlineCode">Master</span> control to my page and set the properties of the control. But this time I add more advanved content to the control. The<span class="InlineCode">Content</span> property holds a <span class="InlineCode">StackPanel</span> with a <span class="InlineCode">ListBox</span>.</p>{% highlight javascript %}<Page x:Class="MasterPages.Page.Page2"
+</Page>{% endhighlight %}<p>To show the advange of a master page I added a second page to my project. Again I do not have to care about layout any more. I just add the <span class="InlineCode">Master</span> control to my page and set the properties of the control. But this time I add more advanved content to the control. The<span class="InlineCode">Content</span> property holds a <span class="InlineCode">StackPanel</span> with a <span class="InlineCode">ListBox</span>.</p>{% highlight xml %}<Page x:Class="MasterPages.Page.Page2"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:m="clr-namespace:MasterPages.Master"
@@ -181,7 +181,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
   </m:Master>
 </Page>{% endhighlight %}<p>As you can see in the following screenshot my second page looks similar to my first one. Instead of the text it shows a <span class="InlineCode">ListBox</span> with some items. </p><p>
   <img height="350" width="500" src="{{site.baseurl}}/content/images/blog/2008/01/Page2.png" />
-</p><p>If you want to access controls of your page in the codebehind file you just have to add a name to the control. In the following sample I added a <span class="InlineCode">Button</span> to the <span class="InlineCode">Content</span> area of my page.</p>{% highlight javascript %}<Page x:Class="MasterPages.Page.Page3" 
+</p><p>If you want to access controls of your page in the codebehind file you just have to add a name to the control. In the following sample I added a <span class="InlineCode">Button</span> to the <span class="InlineCode">Content</span> area of my page.</p>{% highlight xml %}<Page x:Class="MasterPages.Page.Page3" 
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   
@@ -199,7 +199,7 @@ permalink: /blog/2008/01/07/WPF-Master-Pages
       </StackPanel> 
     </m:Master.Content> 
   </m:Master> 
-</Page>{% endhighlight %}<p>In the codebehind file of the page I added a click eventhandler to the button which shows a messagebox when it is clicked.</p>{% highlight javascript %}... 
+</Page>{% endhighlight %}<p>In the codebehind file of the page I added a click eventhandler to the button which shows a messagebox when it is clicked.</p>{% highlight c# %}... 
 
 protected override void OnInitialized(EventArgs e) 
 { 

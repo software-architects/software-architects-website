@@ -51,7 +51,7 @@ permalink: /blog/2011/02/16/Custom-OData-Provider-for-Windows-Azure-
   </li>
   <li>
     <p>Use the sample tool <span class="InlineCode">DemoDataGenerator</span> to fill your databases (local and cloud) with demo data. With these two T-SQL statements you can check the number of rows and the size of your demo databases:</p>
-    {% highlight javascript %}select count(*) from dbo.RealEstate 
+    {% highlight sql %}select count(*) from dbo.RealEstate 
 SELECT SUM(reserved_page_count)*8.0/1024 + SUM(lob_reserved_page_count)*8.0/1024 FROM sys.dm_db_partition_stats{% endhighlight %}
     <p> Your large demo database in the cloud should contain approx. 12.4 million rows.</p>
   </li>
@@ -65,7 +65,7 @@ SELECT SUM(reserved_page_count)*8.0/1024 + SUM(lob_reserved_page_count)*8.0/1024
       </li>
       <li>
         <p>This is how the implementation should look like:</p>
-        {% highlight javascript %}using System.Data.Services; 
+        {% highlight c# %}using System.Data.Services; 
 using System.Data.Services.Common; 
 using System.ServiceModel; 
 using CustomODataService.Data; 
@@ -112,7 +112,7 @@ namespace CustomODataService
       <param name="CodeType" value="c#" />
     </function>
     <p> As you can see the custom provider metadata is built using the helper function <span class="InlineCode">BuildMetadataForEntityFrameworkEntity&lt;T&gt;</span>. This function uses reflection to inspect the given type and generates all the necessary OData resource sets and types. In practise you could add addition intelligence here (e.g. provide different metadata for different use cases, generate metadata manually if you do not implement a stronly typed provider).</p>
-    {% highlight javascript %}/// <summary> 
+    {% highlight c# %}/// <summary> 
 /// Helper function that generates service metadata for entity framework entities based on reflection 
 /// </summary> 
 /// <typeparam name="TEntity">Entity framework entity type</typeparam> 
@@ -153,14 +153,14 @@ public static IDataServiceMetadataProvider BuildMetadataForEntityFrameworkEntity
   <img src="{{site.baseurl}}/content/images/blog/2011/02/Default OData Provider Load Test Results 2011-02-13 - Part 2.png" class="  " />
   <br />
   <img src="{{site.baseurl}}/content/images/blog/2011/02/Default OData Provider Load Test Results 2011-02-13 - Part 5.png" class="  " />
-</p><p>The poor performance does not come from OData. I also created a unit test that runs a Linq-to-Entities query - same results:</p>{% highlight javascript %}[TestMethod] 
+</p><p>The poor performance does not come from OData. I also created a unit test that runs a Linq-to-Entities query - same results:</p>{% highlight c# %}[TestMethod] 
 public void TestLocalQuery() 
 { 
   using (var context = RealEstateEntities.Create()) 
   { 
     var result = context.RealEstate.Take(25).Where(re => re.Location == "Wien" && re.HasBalcony.Value).OrderBy(re => re.SizeOfGarden).ToArray(); 
   } 
-}{% endhighlight %}<h3>Custom LINQ Provider - First Steps</h3><p>If you want to implement <span class="InlineCode">IQueryable</span> you should really consider using the <a href="http://iqtoolkit.codeplex.com/">IQToolkit</a>.  If offers a base class <span class="InlineCode">QueryProvider</span>. You can derive your custom <span class="InlineCode">IQueryable</span> from that class. In our case we will implement the class <span class="InlineCode">ShardingProvider</span>. It should be able to send a single Linq-to-Entities query to mulitple database in parallel and consolidate the partly results after that. The declaration of our new class looks like this:</p>{% highlight javascript %}public class ShardingProvider<TContext, TEntity> 
+}{% endhighlight %}<h3>Custom LINQ Provider - First Steps</h3><p>If you want to implement <span class="InlineCode">IQueryable</span> you should really consider using the <a href="http://iqtoolkit.codeplex.com/">IQToolkit</a>.  If offers a base class <span class="InlineCode">QueryProvider</span>. You can derive your custom <span class="InlineCode">IQueryable</span> from that class. In our case we will implement the class <span class="InlineCode">ShardingProvider</span>. It should be able to send a single Linq-to-Entities query to mulitple database in parallel and consolidate the partly results after that. The declaration of our new class looks like this:</p>{% highlight c# %}public class ShardingProvider<TContext, TEntity> 
     : QueryProvider 
     where TContext : ObjectContext 
     where TEntity : EntityObject 
@@ -203,7 +203,7 @@ public void TestLocalQuery()
     { 
         throw new NotImplementedException(); 
     } 
-}{% endhighlight %}<p>To try our custom LINQ provider we can add a second unit test. This time the target queryable is <span class="InlineCode">Query&lt;T&gt;</span> (part of IQToolkit). <span class="InlineCode">Query&lt;T&gt;</span> needs a Linq provider - our custom <span class="InlineCode">ShardingProvider</span>. As you can see the LINQ query to Entity Framework and to our sharding provider are identical. The only additional code that is necessary is the code for building the connection strings to our sharding databases. Here is the code you have to add to <span class="InlineCode">LinqProviderTest.cs</span> in order to be able to try the custom LINQ provider:</p>{% highlight javascript %}[TestMethod] 
+}{% endhighlight %}<p>To try our custom LINQ provider we can add a second unit test. This time the target queryable is <span class="InlineCode">Query&lt;T&gt;</span> (part of IQToolkit). <span class="InlineCode">Query&lt;T&gt;</span> needs a Linq provider - our custom <span class="InlineCode">ShardingProvider</span>. As you can see the LINQ query to Entity Framework and to our sharding provider are identical. The only additional code that is necessary is the code for building the connection strings to our sharding databases. Here is the code you have to add to <span class="InlineCode">LinqProviderTest.cs</span> in order to be able to try the custom LINQ provider:</p>{% highlight c# %}[TestMethod] 
 public void TestMethod2() 
 { 
     var queryable = CreateQueryableRoot(); 
@@ -230,7 +230,7 @@ private static Query<RealEstate> CreateQueryableRoot()
             (ctx) => ctx.RealEstate, 
             connectionStrings.ToArray())); 
     return queryable; 
-}{% endhighlight %}<p>Before we finish our Linq provider we want to link our custom OData service with the custom Linq provider. The only thing we have to do to achieve this is to use the code shown above (creates Query&lt;T&gt; instance) with the existing <span class="InlineCode">RealEstateContext</span>. Here is the new code for <span class="InlineCode">RealEstateContext.cs</span> (notice that GetQueryable now returns <span class="InlineCode">Query&lt;T&gt;</span>):</p>{% highlight javascript %}using System; 
+}{% endhighlight %}<p>Before we finish our Linq provider we want to link our custom OData service with the custom Linq provider. The only thing we have to do to achieve this is to use the code shown above (creates Query&lt;T&gt; instance) with the existing <span class="InlineCode">RealEstateContext</span>. Here is the new code for <span class="InlineCode">RealEstateContext.cs</span> (notice that GetQueryable now returns <span class="InlineCode">Query&lt;T&gt;</span>):</p>{% highlight c# %}using System; 
 using System.Configuration; 
 using System.Data.EntityClient; 
 using System.Data.Services.Providers; 
@@ -306,7 +306,7 @@ namespace CustomODataService
 
 <ol><li>Open entity framework connection to sharding database</li><li>Replace <span class="InlineCode">Query&lt;T&gt;</span> in expression tree by connection to sharding database</li><li>Execute query and return partial result</li></ol></li>
   <li>Combine partial results by sorting them and applying the top-clause</li>
-</ol><p>Here is the implementation of the ShardingProvider class that does this (notice that I do not include the visitor classes here; they are in the sample code download):</p>{% highlight javascript %}using System; 
+</ol><p>Here is the implementation of the ShardingProvider class that does this (notice that I do not include the visitor classes here; they are in the sample code download):</p>{% highlight c# %}using System; 
 using System.Collections.Generic; 
 using System.Data.Objects; 
 using System.Data.Objects.DataClasses; 
@@ -448,7 +448,7 @@ namespace ShardingProvider
             throw new NotImplementedException(); 
         } 
     } 
-}{% endhighlight %}<h3>Tip: Don't forget to set minimum threads in thread pools to enable full potential of PLINQ with async database IO</h3>{% highlight javascript %}static CustomRealEstateDataService() 
+}{% endhighlight %}<h3>Tip: Don't forget to set minimum threads in thread pools to enable full potential of PLINQ with async database IO</h3>{% highlight c# %}static CustomRealEstateDataService() 
 { 
     int minThreads, completionPortThreads; 
     ThreadPool.GetMinThreads(out minThreads, out completionPortThreads); 

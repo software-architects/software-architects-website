@@ -25,7 +25,7 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
 </p><p>That's absolutely not true! The Common Type System supports object oriented and procedural languages. It has support for OO constructs built in.</p><p>If you are interested you can download the ECMA C# and Common Language Infrastructure Standards from <a href="http://msdn2.microsoft.com/en-us/netframework/aa569283.aspx" target="_blank">Microsoft's website</a>. The documents include a good introduction into as well as a detailed documentation of the Common Type System.</p><h2 class="Head">
   <a id="Q2" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q2"></a>Question 2 - String vs. System.String</h2><p class="Abstract">
   <strong>What is more efficient in respect of memory usage and performance: The use of <em>string</em> or the use of <em>System.String</em>?</strong>
-</p><p>The correct answer is <span class="Highlighted">It doesn’t matter which one you take, they perform equally</span>. <span class="InlineCode">string</span> is a synonym for <span class="InlineCode">System.String</span>. Therefore it does not matter if you take <span class="InlineCode">string</span> or <span class="InlineCode">System.String</span>.</p><p>You can prove that the C# compiler and the .NET CLR treats <span class="InlineCode">string</span> and <span class="InlineCode">System.String</span>equally by looking at the generated code in intermediate language. Take a look at the following lines of code. As you can see we define two classes handling strings. One of them (<span class="InlineCode">PersonString</span>) uses string to do its job; the other (<span class="InlineCode">PersonSystemString</span>) uses<span class="InlineCode">System.String</span>.</p><p class="DecoratorRight">This class uses <span class="InlineCode">string</span>.<br /><br />Mark the use of auto-implemented properties in this sample. This is a new feature of C# 3.0!</p>{% highlight javascript %}internal class PersonString
+</p><p>The correct answer is <span class="Highlighted">It doesn’t matter which one you take, they perform equally</span>. <span class="InlineCode">string</span> is a synonym for <span class="InlineCode">System.String</span>. Therefore it does not matter if you take <span class="InlineCode">string</span> or <span class="InlineCode">System.String</span>.</p><p>You can prove that the C# compiler and the .NET CLR treats <span class="InlineCode">string</span> and <span class="InlineCode">System.String</span>equally by looking at the generated code in intermediate language. Take a look at the following lines of code. As you can see we define two classes handling strings. One of them (<span class="InlineCode">PersonString</span>) uses string to do its job; the other (<span class="InlineCode">PersonSystemString</span>) uses<span class="InlineCode">System.String</span>.</p><p class="DecoratorRight">This class uses <span class="InlineCode">string</span>.<br /><br />Mark the use of auto-implemented properties in this sample. This is a new feature of C# 3.0!</p>{% highlight c# %}internal class PersonString
 {
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
@@ -44,7 +44,7 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
     {
         return FirstName + " " + LastName;
     }
-}{% endhighlight %}<p class="DecoratorRight">This class uses <span class="InlineCode">System.String</span>.</p>{% highlight javascript %}internal class PersonSystemString
+}{% endhighlight %}<p class="DecoratorRight">This class uses <span class="InlineCode">System.String</span>.</p>{% highlight c# %}internal class PersonSystemString
 {
     public System.String FirstName { get; private set; }
     public System.String LastName { get; private set; }
@@ -65,7 +65,7 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
     {
         return FirstName + " " + LastName;
     }
-}{% endhighlight %}<p class="DecoratorRight">The implementation of Main uses implicitly typed variables. This is a new featur of C# 3.0! See question 2 for more details about implicitly typed variables.</p>{% highlight javascript %}static class Program
+}{% endhighlight %}<p class="DecoratorRight">The implementation of Main uses implicitly typed variables. This is a new featur of C# 3.0! See question 2 for more details about implicitly typed variables.</p>{% highlight c# %}static class Program
 {
     static void Main()
     {
@@ -78,10 +78,10 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
 }{% endhighlight %}<p class="DecoratorRight">
   <img alt="IL code of the two classes" src="{{site.baseurl}}/content/images/blog/2009/10/DotNetQuizQuestion1_large.png" class="   " />
   <em>IL code of the two classes</em>
-</p><p>After compiling the program we can use ILDASM (MS Intermediate Language Disassembler) to generate a readable version of the IL:</p>{% highlight javascript %}ildasm.exe /output="$(TargetDir)\$(TargetName).il" $(TargetPath){% endhighlight %}<p>If you compare the IL of the two classes you can see that they are (with the exception of their names) absolutely identical.</p><h2 class="Head">
+</p><p>After compiling the program we can use ILDASM (MS Intermediate Language Disassembler) to generate a readable version of the IL:</p>{% highlight text %}ildasm.exe /output="$(TargetDir)\$(TargetName).il" $(TargetPath){% endhighlight %}<p>If you compare the IL of the two classes you can see that they are (with the exception of their names) absolutely identical.</p><h2 class="Head">
   <a id="Q3" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q3"></a>Question 3 - Implicitly Typed Variables</h2><p class="Abstract">
   <strong>C# 3.0 introduces implicitly typed local variables. You do not need to specify a type for a local variable any more! The compiler figures out which type to use for you. So what do you think; does the following code work?</strong>
-</p>{% highlight javascript %}namespace ImplicitTypes
+</p>{% highlight c# %}namespace ImplicitTypes
 {
     class Program
     {
@@ -95,7 +95,7 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
 }{% endhighlight %}<p class="DecoratorRight">You can read more about implicitly typed local variables in <a href="http://msdn2.microsoft.com/en-us/library/bb384061.aspx" target="_blank">MSDN</a>.</p><p>The correct answer is <span class="Highlighted">No, you cannot compile this code</span>.</p><p>The code does not compile. The line <span class="InlineCode">v = 10;</span> produces the error <span class="InlineCode">Cannot implicitly convert type 'int' to 'string'</span>. The reason is that the new keyword <span class="InlineCode">var</span> does not mean<span class="InlineCode">variant</span>! It just means that the compiler determines and assigns the most appropriate type <strong>during compile time</strong>!</p><h2 class="Head">
   <a id="Q4" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q4"></a>Question 4 - Value vs. Reference Types</h2><p class="Abstract">
   <strong>What is the output of the following program?</strong>
-</p>{% highlight javascript %}namespace ValueVsReferenceTypes
+</p>{% highlight c# %}namespace ValueVsReferenceTypes
 {
     class Program
     {
@@ -122,13 +122,13 @@ permalink: /blog/2009/10/13/C-and-NET-Secrets---Quiz
     <param name="CodeType" value="c#" />
   </function>
   <br />is the same as
-			<br /><br />{% highlight javascript %}class MyClass { 
+			<br /><br />{% highlight c# %}class MyClass { 
     protected override 
       void Finalize()
     {   ...
         base.Finalize(); 
     } 
-}{% endhighlight %}<br /></p><p>C# knows destructors. A destructor is the same as a <span class="InlineCode">Finalize</span>-Method in which you call<span class="InlineCode">base.Finalize();</span> at the end. However, using finalizers costs performance. Additionally you have to be aware that finalizers are not called when an object is no longer needed by your program. It is called when the garbage collector decides to remove the object. Usually you cannot predict when that will happen. Therefore you have to do a little bit more to provide a proper cleanup mechanism in your programs.</p><p>Take a look at the following program:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<br /></p><p>C# knows destructors. A destructor is the same as a <span class="InlineCode">Finalize</span>-Method in which you call<span class="InlineCode">base.Finalize();</span> at the end. However, using finalizers costs performance. Additionally you have to be aware that finalizers are not called when an object is no longer needed by your program. It is called when the garbage collector decides to remove the object. Usually you cannot predict when that will happen. Therefore you have to do a little bit more to provide a proper cleanup mechanism in your programs.</p><p>Take a look at the following program:</p>{% highlight c# %}using System;
 using System.IO;
 
 namespace Finalizers
@@ -179,7 +179,7 @@ namespace Finalizers
 </ol><h2 class="Head">
   <a id="Q6" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q6"></a>Question 6 - Lambda Expressions</h2><p class="Abstract">
   <strong>In C# every method must have a name. True or false?</strong>
-</p><p>That's not true! Since the version 2.0 C# has known anonymous methods. Take a look at the following code:</p>{% highlight javascript %}namespace AnonymousMethods
+</p><p>That's not true! Since the version 2.0 C# has known anonymous methods. Take a look at the following code:</p>{% highlight c# %}namespace AnonymousMethods
 {
     class Program
     {
@@ -194,13 +194,13 @@ namespace Finalizers
                 delegate(int x) { return x * x; }));
         }
     }
-}{% endhighlight %}<p>The <span class="InlineCode">main</span>-method creates an anonymous method that is passed in the <span class="InlineCode">calc</span>-parameter to the<span class="InlineCode">PerformCalculation</span>-method. This construct is quite useful in a situation when having to create a method might seem an unnecessary overhead.</p><p class="DecoratorRight">Read more about Lambda Expressions in <a target="_blank" href="http://msdn2.microsoft.com/en-us/library/bb397687.aspx">MSDN</a>.</p><p>In C# 3.0 you can replace anonymous methods with Lamdba Expressions in most cases. In our case we could change the implementation of the <span class="InlineCode">Main</span>-method as follows:</p>{% highlight javascript %}static void Main()
+}{% endhighlight %}<p>The <span class="InlineCode">main</span>-method creates an anonymous method that is passed in the <span class="InlineCode">calc</span>-parameter to the<span class="InlineCode">PerformCalculation</span>-method. This construct is quite useful in a situation when having to create a method might seem an unnecessary overhead.</p><p class="DecoratorRight">Read more about Lambda Expressions in <a target="_blank" href="http://msdn2.microsoft.com/en-us/library/bb397687.aspx">MSDN</a>.</p><p>In C# 3.0 you can replace anonymous methods with Lamdba Expressions in most cases. In our case we could change the implementation of the <span class="InlineCode">Main</span>-method as follows:</p>{% highlight c# %}static void Main()
 {
     System.Console.Write(PerformCalculation(5, x => x*x ));
 }{% endhighlight %}<p>If you take a look behind the scenes and check the intermediate language that the C# compiler generates you will see that the generated IL nearly does not differ between C# 2.0 anonymous methods and Lamdba Expressions.</p><h2 class="Head">
   <a id="Q7" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q7"></a>Question 7 - Nullable Types</h2><p class="Abstract">
   <strong>What is the output of the following program?</strong>
-</p>{% highlight javascript %}namespace NullableTypes
+</p>{% highlight c# %}namespace NullableTypes
 {
     class Program
     {
@@ -218,7 +218,7 @@ namespace Finalizers
 </p><p>The correct answer is <span class="Highlighted">method by method</span>.</p><p>During loading the CLR creates a stub for each method in a type when it is loaded and initialized. When a method is called for the first time the stub passes control to the JIT compiler which converts the MSIL for that method into native code. If the method is called again the native code is executed without involving the JIT.</p><p>You can observe how the JITter generates native code using the following code sample:</p><p class="DecoratorRight">
   <img alt="Observe the number of methods Jited using Performance Monitor" src="{{site.baseurl}}/content/images/blog/2009/10/JIT_large.png" class="   " />
   <em>In the Performance Monitor you can see how the JITter generates native code.</em>
-</p>{% highlight javascript %}namespace JIT
+</p>{% highlight c# %}namespace JIT
 {
     class Program
     {

@@ -10,7 +10,7 @@ tags: [.NET,C#]
 permalink: /blog/2014/09/22/C-Parallel-and-Async-Programming
 ---
 
-<p>At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be parallel and async programming. In this blog article I share the code of my demo and describe the scenario I will cover: TPL, async/await, profiling of CPU-bound algorithms.</p><h2>The Scenario</h2><p>The sample scenario is one that I used multiple times before: Calculating PI using a <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank">Monte Carlo Simulation</a>. However, for the BASTA workshop I have completely rewritten the sample code. I also included some demos for upcoming C# 6 features.</p><p class="showcase">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples repository</a>.</p><p>Let's start with a trivial, synchronous implementation. During the workshop, I put it in a portable class library as I will use the sample to speak about PCLs and NuGet, too. But this is a topic for another blog article ...</p>{% highlight javascript %}using System;
+<p>At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be parallel and async programming. In this blog article I share the code of my demo and describe the scenario I will cover: TPL, async/await, profiling of CPU-bound algorithms.</p><h2>The Scenario</h2><p>The sample scenario is one that I used multiple times before: Calculating PI using a <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank">Monte Carlo Simulation</a>. However, for the BASTA workshop I have completely rewritten the sample code. I also included some demos for upcoming C# 6 features.</p><p class="showcase">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples repository</a>.</p><p>Let's start with a trivial, synchronous implementation. During the workshop, I put it in a portable class library as I will use the sample to speak about PCLs and NuGet, too. But this is a topic for another blog article ...</p>{% highlight c# %}using System;
 #if LANG_EXPERIMENTAL
 // Note c# 6 using static here
 using System.Math;
@@ -49,7 +49,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p>For comparing the performance of the different calculation algorithms we add a command line test driver:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>For comparing the performance of the different calculation algorithms we add a command line test driver:</p>{% highlight c# %}using System;
 using System.Diagnostics;
 
 namespace PiWithMonteCarlo.TestDriver
@@ -92,7 +92,7 @@ namespace PiWithMonteCarlo.TestDriver
             return new Tuple<T, TimeSpan>(result, watch.Elapsed);
         }
     }
-}{% endhighlight %}<h2>Trivial Parallelization</h2><p>TPL contains a useful construct: <em>Parallel.For</em>. It makes it quite simple to turn a sequential for loop into a parallel algorithm. So let's use it in our sample:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Trivial Parallelization</h2><p>TPL contains a useful construct: <em>Parallel.For</em>. It makes it quite simple to turn a sequential for loop into a parallel algorithm. So let's use it in our sample:</p>{% highlight c# %}using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -128,7 +128,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p>What do you think, does it use all CPU cores? Will it be faster? Try it using our test driver shown above.</p><h2>Enhanced Parallel.For</h2><p>It turns out that our parallel version uses more CPU but is slower. So we have to enhance it. This could look something like this:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>What do you think, does it use all CPU cores? Will it be faster? Try it using our test driver shown above.</p><h2>Enhanced Parallel.For</h2><p>It turns out that our parallel version uses more CPU but is slower. So we have to enhance it. This could look something like this:</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -167,7 +167,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p>Much better like this, isn't it?</p><h2>PLINQ</h2><p>During the workshop I show a PLINQ implementation, too. We discuss the different programming styles and check the performance results.</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>Much better like this, isn't it?</p><h2>PLINQ</h2><p>During the workshop I show a PLINQ implementation, too. We discuss the different programming styles and check the performance results.</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -201,7 +201,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<h2>Fast Implementation Using Tasks</h2><p>So let's try what we can achieve if we handcraft the tasks ourselves.</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Fast Implementation Using Tasks</h2><p>So let's try what we can achieve if we handcraft the tasks ourselves.</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -254,7 +254,7 @@ namespace PiWithMonteCarlo
             return ((double)inCircle / iterations) * 4;
         }
     }
-}{% endhighlight %}<p>Go on and compare the different algorithms. Impressed of how much faster the last one is?</p><h2>Async Programming</h2><p>During the workshop we spend quite some time discussing the difference between parallel and async programming. The following sample algorithm takes the last implementation shown above and converts it to an easy-to-use async method:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>Go on and compare the different algorithms. Impressed of how much faster the last one is?</p><h2>Async Programming</h2><p>During the workshop we spend quite some time discussing the difference between parallel and async programming. The following sample algorithm takes the last implementation shown above and converts it to an easy-to-use async method:</p>{% highlight c# %}using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -362,7 +362,7 @@ namespace PiWithMonteCarlo
             await stoppedCallback();
         }
     }
-}{% endhighlight %}<p>Based on that, it is easy to add a platform-independent ViewModel implementation (could be used in a e.g. Windows Store app, WPF, etc.).</p>{% highlight javascript %}using Microsoft.Practices.Prism.Commands;
+}{% endhighlight %}<p>Based on that, it is easy to add a platform-independent ViewModel implementation (could be used in a e.g. Windows Store app, WPF, etc.).</p>{% highlight c# %}using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using System;
 using System.Diagnostics;
