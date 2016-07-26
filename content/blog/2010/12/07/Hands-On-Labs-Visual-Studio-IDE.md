@@ -44,7 +44,7 @@ permalink: /blog/2010/12/07/Hands-On-Labs-Visual-Studio-IDE
   <li>Implement the method <span class="InlineCode">TestIsEven</span>as follows:
 
 <ul><li>Tip: Use <span class="InlineCode">for</span> snippet to generate the loop's code.</li></ul></li>
-</ul>{% highlight javascript %}[TestMethod]
+</ul>{% highlight c# %}[TestMethod]
 public void TestIsEven()
 {
  for (int i = 0; i < 10; i++)

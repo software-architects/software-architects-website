@@ -10,7 +10,7 @@ tags: [.NET,Azure,C#]
 permalink: /blog/2014/09/22/Profiling-of-DB-Related-C-Applications
 ---
 
-<p>At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be profiling. In this blog article I share the code of my demo and describe the scenario I will cover.</p><p class="showcase">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples Repository</a>.</p><h2>The Scenario</h2><p>We want to develop a simple REST web API for searching customers in <a href="http://msftdbprodsamples.codeplex.com/" target="_blank">Microsoft's Adventure Works DB</a>. Imagine we first prototyped the underlying query in SQL Management Studio:</p>{% highlight javascript %}DECLARE @customerName NVARCHAR(50)
+<p>At BASTA 2014 I will do a <a href="http://www.software-architects.com/devblog/2014/09/21/BASTA-2014-C-Fitness" target="_blank">full-day C# workshop</a>. One of the topics will be profiling. In this blog article I share the code of my demo and describe the scenario I will cover.</p><p class="showcase">You can download the entire sample from <a href="https://github.com/rstropek/Samples/tree/master/ProfilingWorkshop" target="_blank">my GitHub Samples Repository</a>.</p><h2>The Scenario</h2><p>We want to develop a simple REST web API for searching customers in <a href="http://msftdbprodsamples.codeplex.com/" target="_blank">Microsoft's Adventure Works DB</a>. Imagine we first prototyped the underlying query in SQL Management Studio:</p>{% highlight sql %}DECLARE @customerName NVARCHAR(50)
 SET @customername = 'Smith'
  
 DECLARE @AddressTypeID INT
@@ -42,7 +42,7 @@ PRINT 'Execution start time: ' + CAST(GETDATE() AS VARCHAR(50));{% endhighlight 
   <li>Microsoft.Owin.Host.HttpListener</li>
   <li>Microsoft.Owin.Hosting</li>
   <li>Dapper (we will need that one later)</li>
-</ul><p>Next, create the startup code:</p>{% highlight javascript %}using AdoNetPerfProfiling.Controller;
+</ul><p>Next, create the startup code:</p>{% highlight c# %}using AdoNetPerfProfiling.Controller;
 using Microsoft.Owin.Hosting;
 using Owin;
 using System;
@@ -87,7 +87,7 @@ namespace AdoNetPerfProfiling
             );
         }
     }
-}{% endhighlight %}<p>With that, we are ready to go. So let's create a very basic implementation:</p>{% highlight javascript %}using AdoNetPerfProfiling.DataAccess;
+}{% endhighlight %}<p>With that, we are ready to go. So let's create a very basic implementation:</p>{% highlight c# %}using AdoNetPerfProfiling.DataAccess;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -195,7 +195,7 @@ namespace AdoNetPerfProfiling.Controller
             return jsonResult;
         }
     }
-}{% endhighlight %}<p>Note that the algorithm shown above uses a T4 template to generate the SQL SELECT statement:</p>{% highlight javascript %}<#@ template language="C#" #>
+}{% endhighlight %}<p>Note that the algorithm shown above uses a T4 template to generate the SQL SELECT statement:</p>{% highlight sql %}<#@ template language="C#" #>
 
 -- The following line is a problem. It changes during every SQL execution. Therefore, SQL Server
 -- cannot do proper exec plan caching.
@@ -225,7 +225,7 @@ PRINT 'Execution start time: <#= DateTime.UtcNow.ToString("O") #>';{% endhighlig
   <li>Run the load test while profiling CPU in Visual Studio. Do we have a CPU problem?</li>
   <li>Collect a SQL statement with Visual Studio IntelliTrace, run it in SQL Management Studio and analyze it (how long does it take? How does the execution plan look like?)</li>
   <li>Check if SQL Server is properly caching execution plans. Here is the query with which you can do that:</li>
-</ol>{% highlight javascript %}-- Analyze performance of last queries
+</ol>{% highlight sql %}-- Analyze performance of last queries
 -- Based on http://msdn.microsoft.com/en-us/library/ff394114.aspx
 SELECT top 1000 last_execution_time, execution_count, total_worker_time, last_worker_time, total_rows, statement_text
 FROM 
@@ -237,7 +237,7 @@ FROM
      FROM sys.dm_exec_query_stats AS QS
      CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
 order by last_execution_time desc{% endhighlight %}<p>You will probably find out that we do not have a CPU problem at all. The DB query is simply too slow. Additionally, the execution plan is not cached. So change the T4 template and the algorithm to make it cache execution plans. That solves our perf problem to a certain degree.</p><h2>Caching</h2><p>In our scenario we assume that we cannot make the DB faster (in practice it would only take a few mouse clicks thanks to Microsoft Azure SQL Database different pricing tiers). So we have to re-think our approach. Let's just cache the result and look for customers in memory. Our first approach uses ADO.NET's <em>DataView</em> mechanism:</p><p>
-  {% highlight javascript %}using Newtonsoft.Json.Linq;
+  {% highlight c# %}using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -335,7 +335,7 @@ namespace AdoNetPerfProfiling.Controller
   <li>How can you destroy LINQ's performance with poor programming?</li>
   <li>Garbage Collector profiling with PerfView</li>
   <li>Profiling Windows system calls with PerfView</li>
-</ol><h2>POCO Approach</h2><p>Seems that caching ADO.NET data isn't very efficient, right? So let's change that to POCOs. Note the use of the light-weight OR mapper <a href="https://github.com/StackExchange/dapper-dot-net" target="_blank"><em>Dapper</em></a>:</p>{% highlight javascript %}using AdoNetPerfProfiling.DataAccess;
+</ol><h2>POCO Approach</h2><p>Seems that caching ADO.NET data isn't very efficient, right? So let's change that to POCOs. Note the use of the light-weight OR mapper <a href="https://github.com/StackExchange/dapper-dot-net" target="_blank"><em>Dapper</em></a>:</p>{% highlight c# %}using AdoNetPerfProfiling.DataAccess;
 using Dapper;
 using System.Configuration;
 using System.Data.SqlClient;

@@ -13,7 +13,7 @@ permalink: /blog/2013/05/17/Parallel-2013-Conference-Workshop-Parallel-Programmi
 <p>On May 17th I did a workshop on parallel programming at <a href="http://www.parallel2013.de" target="_blank">parallel 2013</a> conference in Karlsruhe. The attendees asked me to publish some of the live coding samples I did. In this blog you can find the samples.</p><h2>Slides</h2><p>The slides for the workshop were handed out to attendees on memory sticks. However, my slides were quite similar to the slides I have used in my parallel programming workshop at the last <a href="http://www.basta.net" target="_blank">BASTA</a> conference. You can find them on SlideShare:</p><iframe src="http://de.slideshare.net/slideshow/embed_code/15297267?rel=0" width="512" height="421" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe><div style="margin-bottom:5px" data-mce-style="margin-bottom: 5px;">
   <strong>
     <a href="http://de.slideshare.net/rstropek/parallel-und-async-basta-at-2012-rainer-stropek" title="Parallel and Async Programming With C#" target="_blank">Parallel and Async Programming With C#</a>
-  </strong> from <strong><a href="http://de.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2>Sample for Introduction for Tasks</h2><p>Here is the sample code that I have developed step by step to describe what a <em>Task</em> is in .NET:</p>{% highlight javascript %}using System;
+  </strong> from <strong><a href="http://de.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2>Sample for Introduction for Tasks</h2><p>Here is the sample code that I have developed step by step to describe what a <em>Task</em> is in .NET:</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,7 +77,7 @@ namespace ConsoleApplication1
                 });
         }
     }
-}{% endhighlight %}<h2>Monte Carlo Simulation to Calculate PI</h2><p>This is the serial implementation of the monte carlo simulation example from which we started our discussion about parallel algorithms:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Monte Carlo Simulation to Calculate PI</h2><p>This is the serial implementation of the monte carlo simulation example from which we started our discussion about parallel algorithms:</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -126,7 +126,7 @@ namespace ConsoleApplication1
             Console.WriteLine(iterations / 1000000 / stopwatch.Elapsed.TotalSeconds);
         }
     }
-}{% endhighlight %}<p>After a few steps we parallelized the algorithm. Note that it was not our goal to come up with the most optimal algorithm for calculating PI using monte carlo simulation. We have just used the example to discuss various aspects of parallel programming with .NET.</p>{% highlight javascript %}private static void MonteCarloAdvancedParallel()
+}{% endhighlight %}<p>After a few steps we parallelized the algorithm. Note that it was not our goal to come up with the most optimal algorithm for calculating PI using monte carlo simulation. We have just used the example to discuss various aspects of parallel programming with .NET.</p>{% highlight c# %}private static void MonteCarloAdvancedParallel()
 {
     var counterInside = 0;
     var iterations = 350000000;
@@ -158,7 +158,7 @@ namespace ConsoleApplication1
     stopwatch.Stop();
     Console.WriteLine(((double)counterInside) / ((double)iterations) * 4);
     Console.WriteLine(iterations / 1000000 / stopwatch.Elapsed.TotalSeconds);
-}{% endhighlight %}<h2>Producer/Consumer Pattern</h2><p>In the workshop we discussed various possibilities of implementing producer/consumer problems. The attendees asked me to publish one possible algorithm which makes use of the <em>BlockingCollection&lt;T&gt;</em> class:</p>{% highlight javascript %}using System;
+}{% endhighlight %}<h2>Producer/Consumer Pattern</h2><p>In the workshop we discussed various possibilities of implementing producer/consumer problems. The attendees asked me to publish one possible algorithm which makes use of the <em>BlockingCollection&lt;T&gt;</em> class:</p>{% highlight c# %}using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;

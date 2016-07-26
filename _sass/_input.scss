@@ -1,0 +1,44 @@
+@import "_variables.scss";
+
+input, select, textarea {
+	width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+
+    &:focus { 
+        border-color:$main-color;
+        border-style: solid;
+        outline-style:none;
+    }
+}
+
+input, select, textarea{
+
+    &.tc-touched:invalid{
+        border-color:red;
+    }
+}
+
+span.tc-error{
+    color:red;
+    display:none;
+}
+
+span.tc-error-visible{
+    display:block;
+}
+
+.confirmationField{
+    height: 0; 
+    visibility: hidden;
+    margin: 0;
+}
+
+textarea{
+    height:150px;
+}
+
+.acceptTermsOfService{
+    font-size:12px;
+}

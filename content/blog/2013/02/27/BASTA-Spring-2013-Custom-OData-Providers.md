@@ -22,7 +22,7 @@ permalink: /blog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers
     <param name="SourceCode" value="using System;&#xA;using System.Collections.Generic;&#xA;using System.Linq;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    public class Customer&#xA;    {&#xA;        public int CustomerID { get; set; }&#xA;        public string CompanyName { get; set; }&#xA;        public string ContactPersonFirstName { get; set; }&#xA;        public string ContactPersonLastName { get; set; }&#xA;&#xA;        public override string ToString()&#xA;        {&#xA;            return string.Format(&quot;{0}, {1} {2}, {3}&quot;, this.CustomerID, this.ContactPersonFirstName, this.ContactPersonLastName, this.CompanyName);&#xA;        }&#xA;&#xA;        public static IReadOnlyList&lt;Customer&gt; GenerateDemoCustomers(int firstCustomerID = 0, int numberOfCustomers = 100)&#xA;        {&#xA;            var rand = new Random();&#xA;            return Enumerable.Range(firstCustomerID, numberOfCustomers)&#xA;                .Select(i =&gt; new Customer()&#xA;                {&#xA;                    CustomerID = i,&#xA;                    ContactPersonLastName = DemoNames.LastNames[rand.Next(DemoNames.LastNames.Count)],&#xA;                    ContactPersonFirstName = DemoNames.FirstNames[rand.Next(DemoNames.FirstNames.Count)],&#xA;                    CompanyName = string.Format(&#xA;                        &quot;{0} {1} {2}&quot;,&#xA;                        DemoNames.CompanyNamesPart1[rand.Next(DemoNames.CompanyNamesPart1.Count)],&#xA;                        DemoNames.CompanyNamesPart2[rand.Next(DemoNames.CompanyNamesPart2.Count)],&#xA;                        DemoNames.CompanyNamesPart3[rand.Next(DemoNames.CompanyNamesPart3.Count)])&#xA;                })&#xA;                .ToArray();&#xA;        }&#xA;    }&#xA;}" />
     <param name="CodeType" value="c#" />
   </function>
-  {% highlight javascript %}using System.Collections.Generic;
+  {% highlight c# %}using System.Collections.Generic;
 
 namespace CustomLinqProvider
 {
@@ -52,7 +52,7 @@ namespace CustomLinqProvider
     <param name="SourceCode" value="&#xA;&#xA;&lt;%@ ServiceHost Language=&quot;C#&quot; Factory=&quot;System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; Service=&quot;CustomODataService.CustomerReflectionService&quot; %&gt;" />
     <param name="CodeType" value="xml" />
   </function>
-  {% highlight javascript %}using IQToolkit;
+  {% highlight c# %}using IQToolkit;
 using CustomLinqProvider;
 using System.Data.Services;
 using System.Data.Services.Common;
@@ -110,7 +110,7 @@ namespace CustomODataService
     <param name="SourceCode" value="using System;&#xA;using System.Linq.Expressions;&#xA;using System.Reflection;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    /// &lt;summary&gt;&#xA;    /// Simple visitor that extracts &quot;Take&quot; and &quot;Skip&quot; clauses from expression tree&#xA;    /// &lt;/summary&gt;&#xA;    internal class AnalyzeQueryVisitor : ExpressionVisitor&#xA;    {&#xA;        public AnalyzeQueryVisitor()&#xA;        {&#xA;            this.Take = 100;&#xA;            this.Skip = 0;&#xA;        }&#xA;&#xA;        public int Take { get; private set; }&#xA;        public int Skip { get; private set; }&#xA;&#xA;        protected override Expression VisitMethodCall(MethodCallExpression m)&#xA;        {&#xA;            switch (m.Method.Name)&#xA;            {&#xA;                case &quot;Take&quot;:&#xA;                    this.Take = (int)(m.Arguments[1] as ConstantExpression).Value;&#xA;                    break;&#xA;                case &quot;Skip&quot;:&#xA;                    this.Skip = (int)(m.Arguments[1] as ConstantExpression).Value;&#xA;                    break;&#xA;                case &quot;OrderBy&quot;:&#xA;                    // We do not check/consider order by yet.&#xA;                    break;&#xA;                default:&#xA;                    throw new CustomLinqProviderException(&quot;Method not supported!&quot;);&#xA;            }&#xA;&#xA;            return base.VisitMethodCall(m);&#xA;        }&#xA;    }&#xA;}" />
     <param name="CodeType" value="c#" />
   </function>
-  {% highlight javascript %}using System;
+  {% highlight c# %}using System;
 using System.Runtime.Serialization;
 
 namespace CustomLinqProvider
@@ -139,7 +139,7 @@ namespace CustomLinqProvider
         }
     }
 }{% endhighlight %}
-</p><p>Of course you do not absolutely need OData to make use of the LINQ provider. You can use it directly in your C# app, too. You can easily try it e.g. in a unit test:</p>{% highlight javascript %}using IQToolkit;
+</p><p>Of course you do not absolutely need OData to make use of the LINQ provider. You can use it directly in your C# app, too. You can easily try it e.g. in a unit test:</p>{% highlight c# %}using IQToolkit;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CustomLinqProvider;
 using System.Linq;
@@ -184,7 +184,7 @@ namespace CustomODataProvider.Test
             Assert.IsTrue(exception);
         }
     }
-}{% endhighlight %}<h2>Using the LINQ Provider in OData</h2><p>Now that we have the optimized LINQ provider, we can back our OData service with it:</p>{% highlight javascript %}/// <summary>
+}{% endhighlight %}<h2>Using the LINQ Provider in OData</h2><p>Now that we have the optimized LINQ provider, we can back our OData service with it:</p>{% highlight c# %}/// <summary>
 /// Implements a context class that contain queryables which we want to expose using OData
 /// </summary>
 public class CustomerReflectionContext 
@@ -218,7 +218,7 @@ public class CustomerReflectionContext
     <param name="SourceCode" value="using System;&#xA;using System.Data.Services;&#xA;using System.Data.Services.Common;&#xA;using System.Data.Services.Providers;&#xA;using CustomODataService.CustomDataServiceBase;&#xA;using System.Threading;&#xA;using CustomLinqProvider;&#xA;using System.Reflection;&#xA;using System.Linq;&#xA;using IQToolkit;&#xA;&#xA;namespace CustomODataService&#xA;{&#xA;    public class CustomerServiceDataContext : IGenericDataServiceContext&#xA;    {&#xA;        public IQueryable GetQueryable(ResourceSet set)&#xA;        {&#xA;            if (set.Name == &quot;Customer&quot;)&#xA;            {&#xA;                return new Query&lt;Customer&gt;(new DemoCustomerProvider());&#xA;            }&#xA;&#xA;            return null;&#xA;        }&#xA;    }&#xA;}" />
     <param name="CodeType" value="c#" />
   </function>
-  {% highlight javascript %}using System.Data.Services.Providers;
+  {% highlight c# %}using System.Data.Services.Providers;
 using System.Linq;
 
 namespace CustomODataService.CustomDataServiceBase
@@ -235,7 +235,7 @@ namespace CustomODataService.CustomDataServiceBase
         IQueryable GetQueryable(ResourceSet set);
     }
 }{% endhighlight %}
-</p><p>Next we have to somehow inform the OData runtime about which types and properties our class can provide. This is done using OData's <em>ResourceSet</em> and <em>ResourceType</em> objects in combination with the interface <em>IDataServiceMetadataProvider</em>. Note that I have kept the following implementation consciously simple. It should demonstrate the concept without you having to worry about use-case-specific implementation details.</p>{% highlight javascript %}using System;
+</p><p>Next we have to somehow inform the OData runtime about which types and properties our class can provide. This is done using OData's <em>ResourceSet</em> and <em>ResourceType</em> objects in combination with the interface <em>IDataServiceMetadataProvider</em>. Note that I have kept the following implementation consciously simple. It should demonstrate the concept without you having to worry about use-case-specific implementation details.</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Data.Services.Providers;
 using System.Reflection;
@@ -362,7 +362,7 @@ namespace CustomODataService.CustomDataServiceBase
         }
         #endregion
     }
-}{% endhighlight %}<p>We are still missing a class that connects our <em>CustomerServiceDataContext</em> class with OData. This is done using OData's <em>IDataServiceQueryProvider</em> interface. It has to be able to generate an <em>IQueryable</em> for every resource set that we have added to our metadata (see above). Our sample implementation of <em>IDataServiceQueryProvider</em> is again kept simple.</p>{% highlight javascript %}using System;
+}{% endhighlight %}<p>We are still missing a class that connects our <em>CustomerServiceDataContext</em> class with OData. This is done using OData's <em>IDataServiceQueryProvider</em> interface. It has to be able to generate an <em>IQueryable</em> for every resource set that we have added to our metadata (see above). Our sample implementation of <em>IDataServiceQueryProvider</em> is again kept simple.</p>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Data.Services.Providers;
 using System.Linq;
@@ -429,7 +429,7 @@ namespace CustomODataService.CustomDataServiceBase
     <param name="SourceCode" value="&#xA;&#xA;&lt;%@ ServiceHost Language=&quot;C#&quot; Factory=&quot;System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; Service=&quot;CustomODataService.CustomerService&quot; %&gt;&#xA;" />
     <param name="CodeType" value="xml" />
   </function>
-  {% highlight javascript %}using System;
+  {% highlight c# %}using System;
 using System.Data.Services;
 using System.Data.Services.Common;
 using System.Data.Services.Providers;

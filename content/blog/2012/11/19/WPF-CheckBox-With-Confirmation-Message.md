@@ -10,7 +10,7 @@ tags: [.NET,C#,WPF]
 permalink: /blog/2012/11/19/WPF-CheckBox-With-Confirmation-Message
 ---
 
-<p>During <a href="http://www.basta-austria.at" title="Homepage of BASTA Austria" target="_blank">BASTA Austria</a> I have been asked a WPF question. How can I implement a confirmation question that is asked whenever a user checks a CheckBox? Imagine the following dialog:</p><p> <img src="{{site.baseurl}}/content/images/blog/2012/11/CheckboxConfirmation.png" alt="CheckBox Confirmation Sample Dialog" /></p><p>Our goal is to display an "Are you sure?" message if the user checks "Delete everything!" or hits the "Delete Everything (in Code)" button. There should not be a message box if the user unchecks the "Delete everything!" check box.</p><h2>XAML Source (Without Confirmation Message)</h2><p>Here you see the XAML source with which we start:</p>{% highlight javascript %}<Window x:Class="WpfApplication1.MainWindow"
+<p>During <a href="http://www.basta-austria.at" title="Homepage of BASTA Austria" target="_blank">BASTA Austria</a> I have been asked a WPF question. How can I implement a confirmation question that is asked whenever a user checks a CheckBox? Imagine the following dialog:</p><p> <img src="{{site.baseurl}}/content/images/blog/2012/11/CheckboxConfirmation.png" alt="CheckBox Confirmation Sample Dialog" /></p><p>Our goal is to display an "Are you sure?" message if the user checks "Delete everything!" or hits the "Delete Everything (in Code)" button. There should not be a message box if the user unchecks the "Delete everything!" check box.</p><h2>XAML Source (Without Confirmation Message)</h2><p>Here you see the XAML source with which we start:</p>{% highlight xml %}<Window x:Class="WpfApplication1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  
@@ -26,7 +26,7 @@ permalink: /blog/2012/11/19/WPF-CheckBox-With-Confirmation-Message
                  Margin="5"/>
     </StackPanel>
 </Window>
-{% endhighlight %}<p>The code behind file just connects to the view model:</p>{% highlight javascript %}using System.Windows;
+{% endhighlight %}<p>The code behind file just connects to the view model:</p>{% highlight c# %}using System.Windows;
 
 namespace WpfApplication1
 {
@@ -39,7 +39,7 @@ namespace WpfApplication1
         }
     }
 }
-{% endhighlight %}<p>And finally here is the view model (I use Prism's <em>NotificationObject</em> class as the base class to get an implementation of <em>INotifyPropertyChanged</em>):</p>{% highlight javascript %}using Microsoft.Practices.Prism.Commands;
+{% endhighlight %}<p>And finally here is the view model (I use Prism's <em>NotificationObject</em> class as the base class to get an implementation of <em>INotifyPropertyChanged</em>):</p>{% highlight c# %}using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
 using System.Windows.Input;
 
@@ -74,7 +74,7 @@ namespace WpfApplication1
     }
 }
 {% endhighlight %}<h2>Add a <em>TriggerAction</em> for Showing Confirmation Message</h2><p>
-  <em>System.Windows.Interactivity</em> defines a class <em>TriggerAction&lt;T&gt;</em> which we can use to provide a mechanism for adding the confirmation message in XAML. The code is quite simple:</p>{% highlight javascript %}using System.Windows;
+  <em>System.Windows.Interactivity</em> defines a class <em>TriggerAction&lt;T&gt;</em> which we can use to provide a mechanism for adding the confirmation message in XAML. The code is quite simple:</p>{% highlight c# %}using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
@@ -105,7 +105,7 @@ namespace WpfApplication1
         }
     }
 }
-{% endhighlight %}<p>We use an event trigger (mechanism defined in the Expression SDK) to access our <em>TriggerAction</em> in XAML:</p>{% highlight javascript %}<Window x:Class="WpfApplication1.MainWindow"
+{% endhighlight %}<p>We use an event trigger (mechanism defined in the Expression SDK) to access our <em>TriggerAction</em> in XAML:</p>{% highlight xml %}<Window x:Class="WpfApplication1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"  

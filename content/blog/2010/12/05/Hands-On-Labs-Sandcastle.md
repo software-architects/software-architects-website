@@ -67,7 +67,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 <ul><li>Tip: You could integrate this step in your corporate's build process and even treat StyleCop warnings as errors. With this you can make sure that developers do not forget to write code documentation XML.</li></ul></li>
   <li>Add documentation header to class:
 
-{% highlight javascript %}/// <summary>
+{% highlight c# %}/// <summary>
 /// Represents a reader for SWIFT files
 /// </summary>
 /// <typeparam name="T">Parameter type that should be used for reading files</typeparam>{% endhighlight %}</li>
@@ -86,7 +86,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
     </ul>
   </li>
   <li>Add and correct the code documentation so that the class file looks like this:</li>
-</ul>{% highlight javascript %}namespace CSharpCodeDoc
+</ul>{% highlight c# %}namespace CSharpCodeDoc
 {
  using System;
  using System.Collections.Generic;
@@ -187,7 +187,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 </ol><p>Lab step by step description:</p><ul>
   <li>Add file <span class="InlineCode">UsageSamples.cs</span>with C# example code to your project:
 
-{% highlight javascript %}namespace CSharpCodeDoc
+{% highlight c# %}namespace CSharpCodeDoc
 {
  public static class UsageSamples
  {
@@ -206,7 +206,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
   <li>Change documentation of class <span class="InlineCode">SwiftFileReader&lt;T&gt;</span>as follows:
 
 <ul><li>Note how the previously created example code is referenced.</li></ul></li>
-</ul>{% highlight javascript %}/// <summary>
+</ul>{% highlight c# %}/// <summary>
 /// Represents a reader for SWIFT files.
 /// </summary>
 /// <typeparam name="T">Parameter type that should be used for reading files.</typeparam>
@@ -217,7 +217,7 @@ permalink: /blog/2010/12/05/Hands-On-Labs-Sandcastle
 public class SwiftFileReader<T> : TextReader
 { [...] }{% endhighlight %}<ul>
   <li>Exclude the property <span class="InlineCode">Size</span> from documentation by adding an <span class="InlineCode">exclude</span> element:</li>
-</ul>{% highlight javascript %}/// <summary>
+</ul>{% highlight c# %}/// <summary>
 /// Gets the size of the file.
 /// </summary>
 /// <value>Size of the file.</value>
@@ -226,14 +226,14 @@ public int Size { get; private set; }{% endhighlight %}<ul>
   <li>Add a paragraph to the <span class="InlineCode">return</span> section of the documentation for the method <span class="InlineCode">ConvertFileContent</span>:
 
 <ul><li>Note how the <span class="InlineCode">see langword</span> element is used.</li></ul></li>
-</ul>{% highlight javascript %}/// <returns>
+</ul>{% highlight c# %}/// <returns>
 /// <para>Returns the file's content as an enumerable.</para>
 /// <para>The result contains max. <paramref name="sizeLimit"/> objects.</para>
 /// <para>Result will never be <see langword="null"/>.</para>
 /// </returns>
 public IEnumerable<TDest> ConvertFileContent<TDest>(int sizeLimit){% endhighlight %}<ul>
   <li>Add a method <span class="InlineCode">Dec</span> with two overloads and add documentation to the <span class="InlineCode">overloads</span> section in the documentation:</li>
-</ul>{% highlight javascript %}/// <summary>Decrements the number by 1.</summary>
+</ul>{% highlight c# %}/// <summary>Decrements the number by 1.</summary>
 /// <overloads>This method has two overloads.</overloads>
 public void Dec()
 {
@@ -245,7 +245,7 @@ public void Dec(int amount)
 {
 }{% endhighlight %}<ul>
   <li>Add file <span class="InlineCode">NamespaceDoc.cs</span> with documentation for your namespace to your project:</li>
-</ul>{% highlight javascript %}namespace CSharpCodeDoc
+</ul>{% highlight c# %}namespace CSharpCodeDoc
 {
  using System.Runtime.CompilerServices;
  
@@ -274,7 +274,7 @@ public void Dec(int amount)
 
 <ul><li>Option: You can open it you favorite XML editor instead</li></ul></li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}<?xml version="1.0" encoding="utf-8"?>
+</ul>{% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
 <topic id="b7b0a984-7cab-4ab7-ba17-39618dfb6feb" revisionNumber="1">
   <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
     
@@ -350,7 +350,7 @@ myobj.Dispose()
     </ul>
   </li>
   <li>Define the content of the file as follows (<strong><em>don't forget to replace the GUID in the topic id with your guid</em></strong>):</li>
-</ul>{% highlight javascript %}<?xml version="1.0" encoding="utf-8"?>
+</ul>{% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
 <topic id="7e268ef9-b888-4094-bca8-1d51c95f6382" revisionNumber="1">
   <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -401,7 +401,7 @@ myobj.Dispose()
   <li>Click on the image in SHFB's <em>Project Explorer</em> and change <em>BuildAction</em> to <em>Image</em> in bitmap properties.</li>
   <li>Change <em>ImageId</em> to <em>TitleImage</em> in bitmap properties.</li>
   <li>Add image to <span class="InlineCode">Introduction</span> section in <span class="InlineCode">Overview.aml</span>:</li>
-</ul>{% highlight javascript %}<mediaLink>
+</ul>{% highlight xml %}<mediaLink>
 <caption>Title</caption>
 <image placement="center" xlink:href="TitleImage"/>
 </mediaLink>{% endhighlight %}<ul>

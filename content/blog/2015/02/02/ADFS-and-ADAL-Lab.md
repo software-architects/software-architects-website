@@ -42,7 +42,7 @@ permalink: /blog/2015/02/02/ADFS-and-ADAL-Lab
   </li>
   <li>Windows 8 machine with <em>Visual Studio</em> for code demos (you can use Azure's existing VS VM template to make things easier)</li>
 </ul><p>In the workshop I am currently preparing, Azure AD is not relevant (unfortunately). Therefore, I don't setup an <a href="https://technet.microsoft.com/en-us/library/dn554244.aspx" target="_blank">ADFS proxy</a>. This will be a topic for future posts.</p><h2>Samples</h2><h3>OWIN and WS-Federation</h3><p>You can use this sample to demonstrate how simple it is to connect an ASP.NET MVC application with ADFS using <a href="https://msdn.microsoft.com/en-us/library/bb498017.aspx" target="_blank">WS-Federation</a>.</p><p>GitHub Link to the sample: <a href="https://github.com/AzureADSamples/WebApp-WSFederation-DotNet" target="_blank">https://github.com/AzureADSamples/WebApp-WSFederation-DotNet</a></p><p>
-  <a href="http://www.cloudidentity.com/blog/2014/04/29/use-the-owin-security-components-in-asp-net-to-implement-web-sign-on-with-adfs/" target="_blank">Vittorio has a description</a> of what to change so that the sample works with ADFS. After the changes described there, your <em>Startup.Auth.cs</em> file will look something like this:</p>{% highlight javascript %}using Microsoft.Owin.Security;
+  <a href="http://www.cloudidentity.com/blog/2014/04/29/use-the-owin-security-components-in-asp-net-to-implement-web-sign-on-with-adfs/" target="_blank">Vittorio has a description</a> of what to change so that the sample works with ADFS. After the changes described there, your <em>Startup.Auth.cs</em> file will look something like this:</p>{% highlight c# %}using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.WsFederation;
 using Owin;
@@ -71,7 +71,7 @@ namespace WebApp_WSFederation_DotNet
     }
 }{% endhighlight %}<p>To make it easier for the audience to follow, consider switching <em>ADFS Authentication Method</em> from <em>Windows Authentication</em> to <em>Forms Authentication</em>. After that change, you have more time talking about URLs and the entire redirect flow.</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2015/02/ADFS_Auth_Methods.png?mw=800" />
-</p><h3>OWIN, OAuth2, ADFS, and ADAL</h3><p>The second sample demonstrate the out-of-the-box OAuth2 implementation of ADFS. Currently, ADFS' OAuth2 does only support <a href="http://tools.ietf.org/html/rfc6749#section-4.1" target="_blank">authorization code grant</a>. So your possibilities are limited. The third sample (see below) will show us how to get around this limitation.</p><p>In this sample we start by setting up an OWIN-based web API. We protected it using <em>ADFS Bearer Auth</em> middleware (<em>Microsoft.Owin.Security.ActiveDirectory</em> package):</p>{% highlight javascript %}using Microsoft.Owin.Security.ActiveDirectory;
+</p><h3>OWIN, OAuth2, ADFS, and ADAL</h3><p>The second sample demonstrate the out-of-the-box OAuth2 implementation of ADFS. Currently, ADFS' OAuth2 does only support <a href="http://tools.ietf.org/html/rfc6749#section-4.1" target="_blank">authorization code grant</a>. So your possibilities are limited. The third sample (see below) will show us how to get around this limitation.</p><p>In this sample we start by setting up an OWIN-based web API. We protected it using <em>ADFS Bearer Auth</em> middleware (<em>Microsoft.Owin.Security.ActiveDirectory</em> package):</p>{% highlight c# %}using Microsoft.Owin.Security.ActiveDirectory;
 using Owin;
 using System.Configuration;
 using System.IdentityModel.Tokens;
@@ -93,7 +93,7 @@ namespace OWIN_ADAL_ADFS_WebMVC
                 });
         }
     }
-}{% endhighlight %}<p>Next, we build a <strong>WPF</strong> (<em>Windows Presentation Foundation</em>) <strong>full client</strong> using Microsoft's ADAL (<em>Active Directory Authentication Library</em>) <a href="https://msdn.microsoft.com/en-us/library/azure/jj573266.aspx">for .NET</a>:</p>{% highlight javascript %}private async void Button_Click(object sender, RoutedEventArgs e)
+}{% endhighlight %}<p>Next, we build a <strong>WPF</strong> (<em>Windows Presentation Foundation</em>) <strong>full client</strong> using Microsoft's ADAL (<em>Active Directory Authentication Library</em>) <a href="https://msdn.microsoft.com/en-us/library/azure/jj573266.aspx">for .NET</a>:</p>{% highlight c# %}private async void Button_Click(object sender, RoutedEventArgs e)
 {
     string authority = "https://adfs.corp.adfssample.com/adfs";
     string resourceURI = "https://adfssample.com/OWIN-ADAL-ADFS-WebMVC";
@@ -113,7 +113,7 @@ namespace OWIN_ADAL_ADFS_WebMVC
     MessageBox.Show(responseString);
 }{% endhighlight %}<p class="showcase">In the code above you find a <em>clientID</em>. Don't forget that you have to create this client in ADFS using <em><a href="https://technet.microsoft.com/en-us/library/dn479319.aspx" target="_blank">Add-AdfsClient</a></em>.</p><p>I recommend looking at the flow of requests using a web debugger like <a href="http://www.telerik.com/fiddler" target="_blank">Fiddler</a>. Note that this will only work if you switch to <em>Forms Authentication</em> (see above).</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2015/02/ADFS_OAuth2_Fiddler.png?mw=800" />
-</p><p>Last but not least we look at a demo showing how this works in an <strong>ASP.NET MVC app</strong>:</p>{% highlight javascript %}public ActionResult About()
+</p><p>Last but not least we look at a demo showing how this works in an <strong>ASP.NET MVC app</strong>:</p>{% highlight c# %}public ActionResult About()
 {
     string authorizationUrl = string.Format(
         "https://adfs.corp.adfssample.com/adfs/oauth2/authorize?api-version=1.0&response_type=code&client_id={0}&resource={1}&redirect_uri={2}",
@@ -142,7 +142,7 @@ public async Task<ActionResult> CatchCode(string code)
     return View("About");
 }{% endhighlight %}<p>Note that in this example the web server does the REST call to the service protected by ADFS.</p><h2>Enter: Identity Server v3</h2><p>As you can see, you can do some interesting things with what Microsoft delivers out-of-the-box. However, a lot is still missing. ADFS does not even implement all OAuth2 flows (e.g. <a href="http://tools.ietf.org/html/rfc6749#section-4.2" target="_blank">implicit grant</a> is missing which would be important for <em>Single Page Apps</em>). ADFS does not implement the new shining star for auth <em>Open ID Connect</em>. Note that you can get all of that by using <em><a href="http://azure.microsoft.com/en-us/services/active-directory/" target="_blank">Microsoft Azure Active Directory</a></em>. However, that's only an option if you are willing to use the public cloud. We have a few large customers who do not want to use offerings like Azure (yet). They need a different solution.</p><a href="https://github.com/IdentityServer/Thinktecture.IdentityServer3">Identity Server v3</a><em>
   <a href="http://identityserver.github.io/Documentation/docs/configuration/identityProviders.html" target="_blank">Identity Provider</a>
-</em><br /><h3>The Server</h3><p>Configuring ADFS as an identity provider in IDServer3 isn't complicated:</p>{% highlight javascript %}using Microsoft.Owin.Security.WsFederation;
+</em><br /><h3>The Server</h3><p>Configuring ADFS as an identity provider in IDServer3 isn't complicated:</p>{% highlight c# %}using Microsoft.Owin.Security.WsFederation;
 using Owin;
 using SelfHost.Config;
 using Thinktecture.IdentityServer.Core.Configuration;

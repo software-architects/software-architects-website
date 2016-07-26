@@ -39,7 +39,7 @@ var HelloCtrl = function ($scope: IHelloWorldScope) {
         { isoCode: 'CH', name: 'Switzerland' }];
     $scope.getName = () => $scope.name;
     $scope.getEnclosedName = (tag) => "<" + tag + ">" + $scope.name + "<" + tag + "/>";
-};{% endhighlight %}<h3>HTML View</h3>{% highlight javascript %}<!DOCTYPE html>
+};{% endhighlight %}<h3>HTML View</h3>{% highlight xml %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -116,7 +116,7 @@ module Hello {
 }
 
 angular.module("Hello", [])
-    .controller("HelloCtrl", Hello.HelloCtrl);{% endhighlight %}<h3>HTML View</h3>{% highlight javascript %}<!DOCTYPE html>
+    .controller("HelloCtrl", Hello.HelloCtrl);{% endhighlight %}<h3>HTML View</h3>{% highlight xml %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -155,7 +155,7 @@ var WorldCtrl = function ($scope: IHierarchyScope) {
     $scope.worldsPercentage = function (countryPopulation) {
         return (countryPopulation / $scope.population) * 100;
     };
-};{% endhighlight %}<h3>HTML View</h3>{% highlight javascript %}<!DOCTYPE html>
+};{% endhighlight %}<h3>HTML View</h3>{% highlight xml %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -287,7 +287,7 @@ angular.module("notificationsApp", [])
     .constant("MAX_LEN", 10)
     .factory("notificationsArchive", () => new NotificationsModule.NotificationsArchive())
     .factory("notificationService", NotificationsModule.NotificationsService.Factory)
-    .controller("NotificationsCtrl", NotificationsModule.NotificationsCtrl);{% endhighlight %}<h3>HTML View</h3><p>Here is the view for the controller. Nothing special, just some controls to interact with the controller. The focus of this sample is not the view, its the TypeScript code shown above.</p>{% highlight javascript %}<!DOCTYPE html>
+    .controller("NotificationsCtrl", NotificationsModule.NotificationsCtrl);{% endhighlight %}<h3>HTML View</h3><p>Here is the view for the controller. Nothing special, just some controls to interact with the controller. The focus of this sample is not the view, its the TypeScript code shown above.</p>{% highlight xml %}<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -703,7 +703,7 @@ angular.module("HttpServiceModule", ["ui.bootstrap", "ngGrid"])
     .factory("eventTable", ($http: ng.IHttpService, paginationItemsPerPage: number) =>
         new MobileServicesDataAccess.Table($http, "adcthings", "events",
             paginationItemsPerPage, "...yourApiKey..."))
-    .controller("HttpServiceController", HttpServiceModule.HttpServiceController);{% endhighlight %}<p>Last but not least here is the HTML code of the view:</p>{% highlight javascript %}<!doctype html>
+    .controller("HttpServiceController", HttpServiceModule.HttpServiceController);{% endhighlight %}<p>Last but not least here is the HTML code of the view:</p>{% highlight xml %}<!doctype html>
 <html>
 <head>
   <meta charset="utf-8">

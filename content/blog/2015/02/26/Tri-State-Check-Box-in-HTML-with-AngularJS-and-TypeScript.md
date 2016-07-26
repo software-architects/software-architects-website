@@ -12,7 +12,7 @@ permalink: /blog/2015/02/26/Tri-State-Check-Box-in-HTML-with-AngularJS-and-TypeS
 
 <p>HTML does not support tri-state checkboxes by default. There is an indeterminate attribute to indicate that the value is undefined but there is no way to set a checkbox back to indeterminate through the user interface once it has been checked or unchecked. The attribute can only be changed with JavaScript.</p><h2>Current State in HTML and JavaScript</h2><p>The following screenshot shows how the three states of a checkbox are visualized in Internet Explorer 11. Other browsers visualize the states slightly different.</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2015/02/check-box-states.png" />
-</p><p>This is how the HTML for the tree checkboxes looks like:</p>{% highlight javascript %}<!DOCTYPE html>
+</p><p>This is how the HTML for the tree checkboxes looks like:</p>{% highlight xhtml %}<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Check Box States</title>
@@ -115,7 +115,7 @@ module Samples.Controls {
 		</h2><p>The goal for the directive built with AngularJS and TypeScript was to:</p><ul>
   <li>be able to set all three states directly in HTML without the need for JavaScript</li>
   <li>allow data binding in AngularJS</li>
-</ul><p>The first HTML snippet shows how the directive can be used to set the values in HTML:</p>{% highlight javascript %}<div class="col-md-4">
+</ul><p>The first HTML snippet shows how the directive can be used to set the values in HTML:</p>{% highlight xhtml %}<div class="col-md-4">
     <p><span tri-state-check-box is-three-state="true" is-checked="null">Tri-state check box 1</span></p>
 </div>
 <div class="col-md-4">
@@ -123,7 +123,7 @@ module Samples.Controls {
 </div>
 <div class="col-md-4">
     <p><span tri-state-check-box is-three-state="true" is-checked="false">Tri-state check box 3</span></p>
-</div>{% endhighlight %}<p>The next snippet shows how data binding works. For each state there is a property in the controller: myBooleanValue1, myBooleanValue2 and myBooleanValue3. Each is bound to a checkbox to change the value and a span tag to display the current value.</p>{% highlight javascript %}<div class="col-md-4">
+</div>{% endhighlight %}<p>The next snippet shows how data binding works. For each state there is a property in the controller: myBooleanValue1, myBooleanValue2 and myBooleanValue3. Each is bound to a checkbox to change the value and a span tag to display the current value.</p>{% highlight xhtml %}<div class="col-md-4">
     <p><span tri-state-check-box is-three-state="true" is-checked="myBooleanValue1">Tri-state check box 1</span></p>
     <p>Check box value: <span ng-bind="myBooleanValue1 == null ? '-' : myBooleanValue1" /></p>
 </div>

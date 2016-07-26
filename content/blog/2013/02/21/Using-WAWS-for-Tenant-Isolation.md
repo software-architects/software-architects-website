@@ -27,7 +27,7 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
     <param name="MediaImage" value="MediaArchive:438d73df-94f2-42d0-b68d-1cfd73546704" />
     <param name="ThumbnailMaxWidth" value="350" />
     <param name="ThumbnailMaxHeight" value="189" />
-  </function> Architecture Diagram (click to enlarge)</p><h2>Code Walkthrough</h2><p>When a user subscribes to our service, the website queues a tenant creation request using <a href="http://www.windowsazure.com/en-us/home/features/messaging/" title="Azure Service Bus" target="_blank">Azure's Service Bus</a>. This service makes communicating between servers in the cloud a piece of cake. Just as an example, here is the code I used in the sample to enqueue a tenant creation request.</p>{% highlight javascript %}protected void LinkButton1_Click(object sender, EventArgs e)
+  </function> Architecture Diagram (click to enlarge)</p><h2>Code Walkthrough</h2><p>When a user subscribes to our service, the website queues a tenant creation request using <a href="http://www.windowsazure.com/en-us/home/features/messaging/" title="Azure Service Bus" target="_blank">Azure's Service Bus</a>. This service makes communicating between servers in the cloud a piece of cake. Just as an example, here is the code I used in the sample to enqueue a tenant creation request.</p>{% highlight c# %}protected void LinkButton1_Click(object sender, EventArgs e)
 {
     var tenant = string.Format("tenant{0}", DateTime.Now.Ticks);
 
@@ -37,7 +37,7 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
     var bm = new BrokeredMessage();
     bm.Properties["Tenant"] = tenant;
     queueClient.Send(bm);
-}{% endhighlight %}<p>Here is the code for the worker waiting for tenant creation request. I share this code because it demonstrates how you can use e.g. <a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/" title="WAWS Command Line Tools" target="_blank">WAWS's command line tools</a> to automate the creation of websites in Azure.</p>{% highlight javascript %}class Program
+}{% endhighlight %}<p>Here is the code for the worker waiting for tenant creation request. I share this code because it demonstrates how you can use e.g. <a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/" title="WAWS Command Line Tools" target="_blank">WAWS's command line tools</a> to automate the creation of websites in Azure.</p>{% highlight c# %}class Program
 {
     static void Main(string[] args)
     {
@@ -143,7 +143,7 @@ permalink: /blog/2013/02/21/Using-WAWS-for-Tenant-Isolation
     <a href="http://pytools.codeplex.com/" title="Python Tools for VS Website" target="_blank">Python Tools for Visual Studio</a> (you will even get debugging capabilities for your scripts; Simon Opelt, a colleague of mine has written <a href="~/blog/2012/12/17/Debugging-and-Interactive-Development-of-Time-Cockpit-Python-Scripts" title="Simon's blog" target="_blank">a blog article about it</a>)</li>
   <li>Add the <a href="http://nuget.org/packages/IronPython/" title="IronPython on nuget.org" target="_blank">IronPython Nuget package</a> to the .NET projects in which you want to use it</li>
 </ul><p>The following code snippet demonstrates how the isolated WAWS website loads a Python script from the tenant's database and executes it. Be aware that in practice you would have to invest some time in making this code more robust (e.g. collect console output from script, special handling of syntax errors, etc.). However, you do not have to care about sandboxing. WAWS will take care of that.</p><div>
-  {% highlight javascript %}public class ScriptController : ApiController
+  {% highlight c# %}public class ScriptController : ApiController
 {
     // GET api/<controller>/5
     public HttpResponseMessage Get(HttpRequestMessage request, string id)

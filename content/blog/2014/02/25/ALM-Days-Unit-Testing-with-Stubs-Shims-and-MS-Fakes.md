@@ -10,7 +10,7 @@ tags: [C#,Visual Studio]
 permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
 ---
 
-<p>At <a href="http://alm-days.de/" target="_blank">ALM Days</a> my second talk is about unit testing with <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx" target="_blank">Microsoft Fakes</a>, Stubs, and Shims. Here is the sample that I am going to use.</p><p class="showcase">A reference implementation of the sample can be found on <a href="https://github.com/rstropek/Samples/tree/master/SudokuBoard" target="_blank">GitHub</a>. During the session coding will be live. Therefore it is likely that the sample shown in the session is not 100% identical with the reference implementation on GitHub.</p><h2>Sample 1: Integration Tests</h2><p>My sample contains a class <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs"><em>BoardStreamRepository</em></a>. It can handle any kind of stream and uses the interface <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/IStreamManager.cs"><em>IStreamManager</em></a> to get it. The sample project contains two implementations of this interface: One for local files (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a>) and one for Windows Azure Blob Storage (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs"><em>CloudBlobStreamManager</em></a>). You could write integration tests for both classes:</p>{% highlight javascript %}namespace Samples.Sudoku.Test
+<p>At <a href="http://alm-days.de/" target="_blank">ALM Days</a> my second talk is about unit testing with <a href="http://msdn.microsoft.com/en-us/library/hh549175.aspx" target="_blank">Microsoft Fakes</a>, Stubs, and Shims. Here is the sample that I am going to use.</p><p class="showcase">A reference implementation of the sample can be found on <a href="https://github.com/rstropek/Samples/tree/master/SudokuBoard" target="_blank">GitHub</a>. During the session coding will be live. Therefore it is likely that the sample shown in the session is not 100% identical with the reference implementation on GitHub.</p><h2>Sample 1: Integration Tests</h2><p>My sample contains a class <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs"><em>BoardStreamRepository</em></a>. It can handle any kind of stream and uses the interface <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/IStreamManager.cs"><em>IStreamManager</em></a> to get it. The sample project contains two implementations of this interface: One for local files (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a>) and one for Windows Azure Blob Storage (<a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs"><em>CloudBlobStreamManager</em></a>). You could write integration tests for both classes:</p>{% highlight c# %}namespace Samples.Sudoku.Test
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.IO;
@@ -43,7 +43,7 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
             Assert.IsTrue(((byte[])board).SequenceEqual(BoardSampleData.sampleBoard));
         }
     }
-}{% endhighlight %}{% highlight javascript %}namespace Samples.Sudoku.Test
+}{% endhighlight %}{% highlight c# %}namespace Samples.Sudoku.Test
 {
     using Microsoft.QualityTools.Testing.Fakes;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -118,7 +118,7 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
     }
 }{% endhighlight %}<h2>Sample 2: Using Stubs</h2><p>
   <em>
-    <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs" target="_blank">BoardStreamRepository</a> </em> and <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/IStreamManager.cs" target="_blank"><em>IStreamManager</em></a> are a perfect example for using an auto-generated <a href="http://msdn.microsoft.com/en-us/library/hh549174.aspx" target="_blank">Stub</a> to unit-test <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs">BoardStreamRepository</a></em> on its own. Note how I use stubs in <em>SetupBoardStreamRepository</em> in the following code snippet:</p>{% highlight javascript %}namespace Samples.Sudoku.Test
+    <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs" target="_blank">BoardStreamRepository</a> </em> and <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/IStreamManager.cs" target="_blank"><em>IStreamManager</em></a> are a perfect example for using an auto-generated <a href="http://msdn.microsoft.com/en-us/library/hh549174.aspx" target="_blank">Stub</a> to unit-test <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/BoardStreamRepository.cs">BoardStreamRepository</a></em> on its own. Note how I use stubs in <em>SetupBoardStreamRepository</em> in the following code snippet:</p>{% highlight c# %}namespace Samples.Sudoku.Test
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Samples.Sudoku.Fakes;
@@ -180,7 +180,7 @@ permalink: /blog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
             return new BoardStreamRepository(stub);
         }
     }
-}{% endhighlight %}<h2>Sample 3: Using Shims</h2><p>If you want to test <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a> and <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> but you do not want to build a complex testing environment with samples files on local storage and in Windows Azure Blob Storage, you can use <a href="http://msdn.microsoft.com/en-us/library/hh549176.aspx" target="_blank">Shims</a> to isolate your code. This also has the big advantage of keeping your unit test fast.<br /></p>{% highlight javascript %}[TestMethod]
+}{% endhighlight %}<h2>Sample 3: Using Shims</h2><p>If you want to test <a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/FileStreamManager.cs"><em>FileStreamManager</em></a> and <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> but you do not want to build a complex testing environment with samples files on local storage and in Windows Azure Blob Storage, you can use <a href="http://msdn.microsoft.com/en-us/library/hh549176.aspx" target="_blank">Shims</a> to isolate your code. This also has the big advantage of keeping your unit test fast.<br /></p>{% highlight c# %}[TestMethod]
 [TestCategory("With fakes")]
 public async Task CloudBlobStreamManagerShimmedLoadTest()
 {
@@ -232,7 +232,7 @@ public async Task FileStreamManagerShimmedLoadTest()
 
         Assert.IsTrue(BoardSampleData.sampleBoard.SequenceEqual((byte[])result));
     }
-}{% endhighlight %}<h2>Sample 4: Advanced Shims</h2><p>You might want to test <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> together with the Windows Azure Storage SDK. However, you still might not want to build a test environment in Azure. The solution could be shimming .NET's <em>WebRequest</em> class. The Windows Azure Storage SDK uses it behind the scenes.</p>{% highlight javascript %}[TestMethod]
+}{% endhighlight %}<h2>Sample 4: Advanced Shims</h2><p>You might want to test <em><a href="https://github.com/rstropek/Samples/blob/master/SudokuBoard/Samples.Sudoku/CloudBlobStreamManager.cs">CloudBlobStreamManager</a></em> together with the Windows Azure Storage SDK. However, you still might not want to build a test environment in Azure. The solution could be shimming .NET's <em>WebRequest</em> class. The Windows Azure Storage SDK uses it behind the scenes.</p>{% highlight c# %}[TestMethod]
 [TestCategory("With fakes")]
 public async Task CloudBlobShimmedWebRequestTest()
 {

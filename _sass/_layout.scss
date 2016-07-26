@@ -1,242 +1,208 @@
-/**
- * Site header
- */
-.site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
+@import "_variables.scss";
 
-    // Positioning context for the mobile navigation icon
-    position: relative;
+.tc-banner {
+	background-image: url(/time-cockpit-website/content/images/banner.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 500px;
 }
 
-.site-title {
-    font-size: 26px;
-    font-weight: 300;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
-
-    &,
-    &:visited {
-        color: $grey-color-dark;
-    }
+.blog-overview {
+	img {
+		width: 100%;
+	}
 }
 
-.site-nav {
+p.highlighted {
+	text-align: center;
+	background-color: $main-color;
+	color: #fff;
+	padding: 20px 40px;
+}
+
+p.showcase {
+	background-color: #ededed;
+	padding: 20px 20px;
+}
+
+span.highlightedText {
+	font-size: 30px;
+}
+
+.customerLogos {
+	 a {
+		display: block;
+		height: 100px;
+		margin-bottom: 20px;
+		border: 1px solid #ddd;
+		padding: 10px;
+		text-align: center;
+	}
+
+	img {
+		max-height: 100%;
+		position: relative;
+		top: 50%;
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+}
+
+p.tc-action-button {
+	margin-top: 40px;
+}
+
+input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
+	color: #fff !important;
+	background-color: $main-color;
+	border: none;
+	line-height: 20px;
+	padding: 10px 20px;
+	font-size: 16px;
+	text-transform: uppercase;
+	cursor: pointer;
+	text-decoration: none;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+
+	span.glyphicon {
+		top: 2px;
+		margin-left: 10px;
+	}
+
+	&:hover {
+		background-color: darken($main-color, 20%);
+	}
+}
+
+p.imageCaption {
+    margin-top: -20px;
+    margin-bottom: 20px;
+
+	&, & a {
+		font-size: 11px;
+		line-height: 15px;
+	}
+}
+
+.floatRight {
     float: right;
-    line-height: 56px;
-
-    .menu-icon {
-        display: none;
-    }
-
-    .page-link {
-        color: $text-color;
-        line-height: $base-line-height;
-
-        // Gaps between nav items, but not on the last one
-        &:not(:last-child) {
-            margin-right: 20px;
-        }
-    }
-
-    @include media-query($on-palm) {
-        position: absolute;
-        top: 9px;
-        right: $spacing-unit / 2;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
-        text-align: right;
-
-        .menu-icon {
-            display: block;
-            float: right;
-            width: 36px;
-            height: 26px;
-            line-height: 0;
-            padding-top: 10px;
-            text-align: center;
-
-            > svg {
-                width: 18px;
-                height: 15px;
-
-                path {
-                    fill: $grey-color-dark;
-                }
-            }
-        }
-
-        .trigger {
-            clear: both;
-            display: none;
-        }
-
-        &:hover .trigger {
-            display: block;
-            padding-bottom: 5px;
-        }
-
-        .page-link {
-            display: block;
-            padding: 5px 10px;
-
-            &:not(:last-child) {
-                margin-right: 0;
-            }
-            margin-left: 20px;
-        }
-    }
+    margin-left: 20px;
 }
 
-
-
-/**
- * Site footer
- */
-.site-footer {
-    border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
-}
-
-.footer-heading {
-    font-size: 18px;
-    margin-bottom: $spacing-unit / 2;
-}
-
-.contact-list,
-.social-media-list {
-    list-style: none;
-    margin-left: 0;
-}
-
-.footer-col-wrapper {
-    font-size: 15px;
-    color: $grey-color;
-    margin-left: -$spacing-unit / 2;
-    @extend %clearfix;
-}
-
-.footer-col {
+.floatLeft {
     float: left;
-    margin-bottom: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
+    margin-right: 20px;
 }
 
-.footer-col-1 {
-    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-    width:         calc(35% - (#{$spacing-unit} / 2));
+/* containers */
+.tc-container-white, .tc-container-blue, .tc-container-lightgray, .tc-container-darkgray {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	position: relative;
+
+	> div.container > div.row:first-of-type {
+		margin-top: -40px;
+	}
+
+	> div.container > div.row > div:last-of-type > p:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.tc-container-image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin-top: -60px;
+		margin-bottom: -60px;
+		opacity: 0.3;
+	}
 }
 
-.footer-col-2 {
-    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-    width:         calc(20% - (#{$spacing-unit} / 2));
+.tc-container-blue {
+	background-color: $main-color;
 }
 
-.footer-col-3 {
-    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width:         calc(45% - (#{$spacing-unit} / 2));
+.tc-container-lightgray {
+	background-color: #e0e0e0;
 }
 
-@include media-query($on-laptop) {
-    .footer-col-1,
-    .footer-col-2 {
-        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width:         calc(50% - (#{$spacing-unit} / 2));
-    }
+.tc-container-darkgray {
+	background-color: #444;
 
-    .footer-col-3 {
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
-    }
 }
 
-@include media-query($on-palm) {
-    .footer-col {
-        float: none;
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
-    }
+.tc-container-darkgray, .tc-container-blue {
+	color: #fff;
+
+	h1, h2, h3, a {
+		color: #fff;
+	}
+
+	input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
+		color: $main-color !important;
+		background-color: #fff;
+	}
 }
 
-
-
-/**
- * Page content
- */
-.page-content {
-    padding: $spacing-unit 0;
+/* home */
+.tc-home {
+	.tc-container {
+		.tc-container-image {
+			background-image: url(/time-cockpit-website/content/images/banner.jpg);
+			background-size: cover;
+		}
+	}
 }
 
-.page-heading {
-    font-size: 20px;
+/* home */
+.tc-contact {
+	.tc-container {
+		.tc-container-image {
+			background-image: url(/time-cockpit-website/content/images/banner.jpg);
+			background-size: cover;
+		}
+	}
 }
 
-.post-list {
-    margin-left: 0;
-    list-style: none;
+/* pricing */
+.tc-pricing {
+	.tc-container {
+		.tc-container-image {
+			background-image: url(/time-cockpit-website/content/images/banner.jpg);
+			background-size: cover;
+		}
+	}
 
-    > li {
-        margin-bottom: $spacing-unit;
-    }
-}
+	.tc-pricing-details {
+		padding: 20px 40px;
+		background-color: #fff;
+		color: $base-text-color;
 
-.post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
-}
+		h1 {
+			font-size: 40px;
+			margin-top: 0px;
+		}
 
-.post-link {
-    display: block;
-    font-size: 24px;
-}
+		ul {
+			padding-left: 0;
 
+			li {
+				list-style-type: none;
+				font-size: $larger-font-size;
+				line-height: $larger-line-height;
 
-
-/**
- * Posts
- */
-.post-header {
-    margin-bottom: $spacing-unit;
-}
-
-.post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
-
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
-}
-
-.post-content {
-    margin-bottom: $spacing-unit;
-
-    h2 {
-        font-size: 32px;
-
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
-    }
-
-    h3 {
-        font-size: 26px;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
-    }
-
-    h4 {
-        font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
-    }
+				&:before { 
+					color: $main-color;
+					font-family: "Glyphicons Halflings";
+					content: "\e013"; 
+					padding-right: 15px;
+				}
+			}
+		}
+	}
 }

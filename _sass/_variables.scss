@@ -1,0 +1,23 @@
+$main-color: #25a0da;
+$highlight-color: #72bf44;
+$header-color: #333;
+
+$base-font-family: "Segoe WPC", "Segoe UI", Helvetica, Arial, "Arial Unicode MS", sans-serif;
+$base-font-size: 16px;
+$larger-font-size: 18px;
+$base-line-height: 1.6;
+$larger-line-height: 1.8;
+$base-text-color: #222;
+$footer-text-color: #ddd;
+
+$small-font-size: $base-font-size * 0.875;
+
+$spacing-unit: 30px;
+
+
+$background-color: #fdfdfd;
+$brand-color: #2a7ae2;
+
+$grey-color: #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark: darken($grey-color, 25%);

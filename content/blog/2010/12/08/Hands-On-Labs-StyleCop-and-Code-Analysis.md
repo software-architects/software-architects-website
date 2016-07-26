@@ -19,7 +19,7 @@ permalink: /blog/2010/12/08/Hands-On-Labs-StyleCop-and-Code-Analysis
 </ul><p>Lab step by step description:</p><ul>
   <li>Create a class library project <span class="InlineCode">StyleCopDemo</span>.</li>
   <li>Add the following class to the newly created project:</li>
-</ul>{% highlight javascript %}using System;
+</ul>{% highlight c# %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -87,7 +87,7 @@ namespace styleCopDemo
   <li>Run StyleCop on your project (right-click on project, select <em>Run StyleCop</em>). As you can see StyleCop generated a bunch of warnings.</li>
   <li>Correct all warnings appropriately.</li>
   <li>After that your file should look similar to the following implementation:</li>
-</ul>{% highlight javascript %}//-------------------------------------------------------
+</ul>{% highlight c# %}//-------------------------------------------------------
 // <copyright file="Bucket.cs" company="Contoso Ltd.">
 //     Copyright (c) Contoso Ltd. All rights reserved.
 // </copyright>
@@ -200,7 +200,7 @@ namespace StyleCopDemo
   <li>Edit <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Edit StyleCopDemo.csproj</em>).</li>
   <li>Scroll to the end of the file. Find the line <span class="InlineCode">&lt;Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" /&gt;</span>.</li>
   <li>Immediately after that line add the following line:</li>
-</ul>{% highlight javascript %}<Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.targets" />{% endhighlight %}<ul>
+</ul>{% highlight xml %}<Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.4\Microsoft.StyleCop.targets" />{% endhighlight %}<ul>
   <li>Reload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Reload Project</em>).</li>
   <li>Build your project to see that there are no errors and warnings.</li>
   <li>Break a StyleCop rule (e.g. remove the documentation of a method).</li>
@@ -210,13 +210,13 @@ namespace StyleCopDemo
   <li>Unload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Unload Project</em>).</li>
   <li>Edit <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Edit StyleCopDemo.csproj</em>).</li>
   <li>Find the first <span class="InlineCode">PropertyGroup</span> in the project file and add the following setting:</li>
-</ul>{% highlight javascript %}<StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>{% endhighlight %}<ul>
+</ul>{% highlight xml %}<StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>{% endhighlight %}<ul>
   <li>Reload the <span class="InlineCode">StyleCopDemo</span> project (right-click on project in <em>Solution Explorer</em>, select <em>Reload Project</em>).</li>
   <li>Build your project.
 
 <ul><li>The StyleCop warning should now be an error.</li></ul></li>
   <li>Suppress the warning/error using the <span class="InlineCode">SuppressMessage</span> attribute:</li>
-</ul>{% highlight javascript %}[SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", 
+</ul>{% highlight c# %}[SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", 
   Justification = "No time to write documentation...")]
 public class Bucket<T>
 {
@@ -227,7 +227,7 @@ public class Bucket<T>
 </ul><p>Lab step by step description:</p><ul>
   <li>Add a new class library project to solution from Hands-On Lab 1 (<span class="InlineCode">StyleCopDemo</span>).</li>
   <li>Add the following class to the newly created project:</li>
-</ul>{% highlight javascript %}namespace CodeAnalysisDemo
+</ul>{% highlight c# %}namespace CodeAnalysisDemo
 {
  using System;
  using System.Collections.Generic;
@@ -335,7 +335,7 @@ public class Bucket<T>
   <li>Build your project. As you can see code analysis shows you a bunch of warnings.</li>
   <li>Try to correct all warnings appropriately. If you are not sure what a certain warning means or why it is important check the rule documentation in MSDN: <a href="http://msdn.microsoft.com/en-us/library/ee1hzekz.aspx" target="_blank">http://msdn.microsoft.com/en-us/library/ee1hzekz.aspx</a></li>
   <li>After that your file should look similar to the following implementation:</li>
-</ul>{% highlight javascript %}using System;
+</ul>{% highlight c# %}using System;
 
 [assembly: CLSCompliant(true)]
 

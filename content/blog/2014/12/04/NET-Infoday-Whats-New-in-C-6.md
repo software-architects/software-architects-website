@@ -20,7 +20,7 @@ permalink: /blog/2014/12/04/NET-Infoday-Whats-New-in-C-6
   <li>Static Using Statements - not covered here as we are no big fans of this feature ;-)</li>
   <li>Exception-Handling (async, exception filters)</li>
   <li>String Interpolation</li>
-</ul><p>*) In fact, you can. With Visual Studio 2015, Microsoft puts <a href="https://roslyn.codeplex.com/" target="_blank">Roslyn</a>, their brand new compiler platform for C# and Visual Basic, into production. This new platform is a real game-changer for language- and programming-tools around C# and VB. Our talk and therefore this article do not cover Roslyn.</p><h2>Sample</h2><p>Roman prepared a sample for our talk based on which we show all the new features of C# 6 mentioned above. I added this sample to my <a href="https://github.com/rstropek/Samples/tree/master/WhatsNewInCSharp6" target="_blank">GitHub Samples repository</a>. You can download it from there.</p><h2>Null-conditional Operator</h2><h3>Basic Usage</h3><p>Imagine the following code sample (<em>Program.cs</em>):</p>{% highlight javascript %}public class Program
+</ul><p>*) In fact, you can. With Visual Studio 2015, Microsoft puts <a href="https://roslyn.codeplex.com/" target="_blank">Roslyn</a>, their brand new compiler platform for C# and Visual Basic, into production. This new platform is a real game-changer for language- and programming-tools around C# and VB. Our talk and therefore this article do not cover Roslyn.</p><h2>Sample</h2><p>Roman prepared a sample for our talk based on which we show all the new features of C# 6 mentioned above. I added this sample to my <a href="https://github.com/rstropek/Samples/tree/master/WhatsNewInCSharp6" target="_blank">GitHub Samples repository</a>. You can download it from there.</p><h2>Null-conditional Operator</h2><h3>Basic Usage</h3><p>Imagine the following code sample (<em>Program.cs</em>):</p>{% highlight c# %}public class Program
 {
     private static IList<Theme> themes;
 
@@ -59,7 +59,7 @@ permalink: /blog/2014/12/04/NET-Infoday-Whats-New-in-C-6
   <img src="{{site.baseurl}}/content/images/blog/2014/12/nullcondarrays.png" />
 </p><h3>Null Conditional Operator Behind the Scenes</h3><p>So what happens behind the scene? Let's look at the generated IL code (see following screenshot). Note the <em>brtrue.s</em> statments that are added to handle null values (see <a href="http://en.wikipedia.org/wiki/List_of_CIL_instructions" target="_blank">details about IL statements in Wikipedia</a>). This IL operation goes to the specified target if the value is true (i.e. not null).</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2014/12/ildasm.png" />
-</p><h3>Null Conditional Operator and Delegates</h3><p>The null conditional operator is also usable with delegates. The typical example is an implementation of <em>INotifyPropertyChanged</em> as shown in the following code snippet:</p>{% highlight javascript %}public string Name
+</p><h3>Null Conditional Operator and Delegates</h3><p>The null conditional operator is also usable with delegates. The typical example is an implementation of <em>INotifyPropertyChanged</em> as shown in the following code snippet:</p>{% highlight c# %}public string Name
 {
     get { return NameValue; }
     set
