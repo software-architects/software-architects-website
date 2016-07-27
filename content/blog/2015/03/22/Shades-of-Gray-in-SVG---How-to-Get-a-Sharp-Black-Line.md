@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Shades of Gray in SVG - How to Get a Sharp Black Line
-teaser: In HTML5 the new <svg> element was introduced. It allows you to embed SVG graphics in html. You can build really cool things with svg - from fancy looking interactive charts to games running in the browser. But what if you just want to draw a straight 1px line? Well, that's not that easy. I got lots of different results for different browsers.
+teaser: In HTML5 the new svg element was introduced. It allows you to embed SVG graphics in html. You can build really cool things with svg - from fancy looking interactive charts to games running in the browser. But what if you just want to draw a straight 1px line? Well, that's not that easy. I got lots of different results for different browsers.
 author: Karin Huber
 date: 2015-03-22
 bannerimage: /content/images/blog/2015/03/lines-in-svg.png
