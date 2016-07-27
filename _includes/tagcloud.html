@@ -1,10 +1,25 @@
 ﻿
-{% assign tags = site.tags | sort %}
-{% for tag in tags %}
-<span class="site-tag">
-    <a href="/tag/{{ tag | first | slugify }}/"
-       style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
-        {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
-    </a>
-</span>
+
+{% capture tags %}
+{% for tag in site.tags %}
+{{ tag[0] | downcase }},{{ tag[0] }}{% unless forloop.last %}|{% endunless %}
+{% endfor %}
+{% endcapture %}
+{% assign sortedtags = tags | split:'|' | sort %}
+
+{% for tag in sortedtags %}
+    {% assign taglist = tag | split:',' %}
+    <span class="site-tag">
+        {% assign counter = 0 %}
+        {% for post in site.posts %}
+        {% if post.tags contains taglist[1] %}
+        {% assign counter = counter | plus: 1 %}
+        {% endif %}
+        {% endfor %}
+
+        <a href="{{site.baseurl}}/devblog/tags#{{ taglist[1] }}"
+           style="font-size: {{ counter |  times: 3 | plus: 80  }}%">
+            {{ taglist[1] | replace:'-', ' ' }} ({{ counter }})
+        </a>
+    </span>
 {% endfor %}

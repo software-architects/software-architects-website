@@ -16,6 +16,10 @@ baseurl: "/software-architects-website" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
+gems: [jekyll-paginate]
+paginate: 10
+paginate_path: "/devblog/page:num/"
+
 
 # Build settings
 markdown: kramdown

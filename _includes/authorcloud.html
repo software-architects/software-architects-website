@@ -1,0 +1,10 @@
+﻿
+{% assign authorItems = site.data.authors | sort: "name" %}
+{% for author in authorItems %}
+<div class="site-tag">
+    <a href="{{site.baseurl}}/devblog/authors#{{ author.name }}">
+        {% assign blogposts = site.posts | where: "author",author.name | size %}
+        {{ author.name }} ({{ blogposts }})
+    </a>
+</div>
+{% endfor %}

@@ -1,0 +1,46 @@
+---
+layout: page
+title: Time Cockpit Blog - Tips and News from the Time Cockpit Team
+---
+
+<div class="row">
+    <div class="col-sm-10">
+        <div class="row blog-overview">
+
+            {% for post in paginator.posts %}
+                <div class="col-sm-12"><h2>{{ post.title }}</h2></div>
+                <div class="col-sm-8">
+                    <p>{{ post.date | date_to_long_string }}</p>
+                    <p>{{ post.excerpt }}</p>
+                    <p><a href="{{ post.url | prepend: site.baseurl }}">Read more ...</a></p>
+                </div>
+                <div class="col-sm-4">
+                    {% if post.bannerimage != null %}
+                    <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="pagination">
+            {% if paginator.previous_page %}
+            <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Previous</a>
+            {% else %}
+            <span class="previous">Previous</span>
+            {% endif %}
+            <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+            {% if paginator.next_page %}
+            <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Next</a>
+            {% else %}
+            <span class="next ">Next</span>
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="col-sm-2">
+        {% include tagcloud.html %}
+    </div>
+    <div class="col-sm-2">
+        {% include authorcloud.html %}
+    </div>
+</div>
