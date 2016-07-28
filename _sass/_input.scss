@@ -2,43 +2,42 @@
 
 input, select, textarea {
 	width: 100%;
-    border-width: 1px;
-    border-style: solid;
-    border-color: grey;
+	border-width: 1px;
+	border-style: solid;
+	border-color: grey;
+	padding: 1px 10px;
+	color: $base-text-color;
 
-    &:focus { 
-        border-color:$main-color;
-        border-style: solid;
-        outline-style:none;
-    }
+	&:focus {
+		border-color: $main-color;
+		border-style: solid;
+		outline-style: none;
+	}
+
+	&.tc-touched:invalid {
+		border-color: red;
+	}
 }
 
-input, select, textarea{
-
-    &.tc-touched:invalid{
-        border-color:red;
-    }
+span.tc-error {
+	color: red;
+	display: none;
 }
 
-span.tc-error{
-    color:red;
-    display:none;
+span.tc-error-visible {
+	display: block;
 }
 
-span.tc-error-visible{
-    display:block;
+.confirmationField {
+	height: 0;
+	visibility: hidden;
+	margin: 0;
 }
 
-.confirmationField{
-    height: 0; 
-    visibility: hidden;
-    margin: 0;
+textarea {
+	height: 150px;
 }
 
-textarea{
-    height:150px;
-}
-
-.acceptTermsOfService{
-    font-size:12px;
+.acceptTermsOfService {
+	font-size: 12px;
 }
