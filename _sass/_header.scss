@@ -8,10 +8,6 @@ div.header {
 	z-index: 100;
 	width: 100%;
 
-	> div.container:first-of-type {
-		margin-top: 4px;
-	}
-
 	.navbar {
 		border: none;
 		background-color: transparent;
@@ -34,10 +30,13 @@ div.header {
 	}
 
 	.navbar-default .navbar-nav > li > a, .tc-logo {
-		text-transform: uppercase;
-		color: #fff;
 		font-size: 16px;
 		font-weight: lighter;
+		text-transform: uppercase;
+	}
+
+	.navbar-default .navbar-nav > li > a {
+		color: #fff;
 
 		&:hover {
 			opacity: 0.8;
@@ -51,6 +50,26 @@ div.header {
 				top: 2px;
 				margin-left: 10px;
 			}
+		}
+	}
+
+	#header {
+		height: 50px;
+		overflow: hidden;
+	}
+
+	.tc-logo {
+		height: 50px;
+		line-height: 56px;
+		color: $main-color;
+		
+		&:hover {
+			text-decoration: none;
+		}
+
+		svg {
+			float: left;
+			padding-right: 20px;
 		}
 	}
 
