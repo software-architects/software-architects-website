@@ -1,0 +1,26 @@
+---
+layout: page
+title: Authors
+---
+
+<div class="tags-expo">
+    <div class="tags-expo-section">
+        {% assign authors = site.data.authors | sort: "name" %}
+        {% for author in authors %}
+            <h2 id="{{ author.name }}">{{ author.name }}</h2>
+            <ul class="tags-expo-posts">
+                {% for post in site.posts | sort: "date" reverse %}
+                    {% if post.author contains author.name %}
+                    <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+                        <li>
+                            {{ post.title }}
+                            <small class="post-date">{{ post.date | date_to_string }}</small>
+                        </li>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+
