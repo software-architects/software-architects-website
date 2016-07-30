@@ -60,17 +60,20 @@ div.header {
 	}
 
 	.tc-logo {
-		height: 50px;
-		line-height: 56px;
 		color: $main-color;
+
+		> div {
+			background-image: url(/images/timecockpit-logo-blue.svg);
+			background-position: left center;
+			background-size: 185px 30px;
+			background-repeat: no-repeat;
+			height: 50px;
+			padding-left: 205px;
+			line-height: 56px;
+		}
 		
 		&:hover {
 			text-decoration: none;
-		}
-
-		svg {
-			float: left;
-			padding-right: 20px;
 		}
 	}
 
