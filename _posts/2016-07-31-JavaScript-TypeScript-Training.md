@@ -210,6 +210,22 @@ Read more about [JavaScript's object model](https://developer.mozilla.org/en-US/
 * Exercises
   * Discuss code
   * Demo creating OWIN sample from scratch
-  * Discuss [`Gulpfile`](https://github.com/software-architects/javascript-samples/blob/master/aspnet/Owin/Gulpfile.js), show it in *Visual Studio Task Runner*
+  * Discuss [`Gulpfile`](https://github.com/software-architects/javascript-samples/blob/master/aspnet/Owin/Gulpfile.js)
+    * Show it in *Visual Studio Task Runner*
+    * Discuss [NPM scripts](https://docs.npmjs.com/misc/scripts) as an addition/replacement for Gulp
   * Discuss necessary [changes in `web.config`](https://github.com/software-architects/javascript-samples/blob/master/aspnet/Owin/Web.config#L11-L18)
   
+### ASP.NET Core
+
+* Samples: [NetCore](https://github.com/software-architects/javascript-samples/tree/master/aspnet)
+* NuGet packages
+  * `Microsoft.AspNetCore.StaticFiles`
+* Exercises
+  * Discuss code
+  * Demo creating ASP.NET Core sample from scratch
+  * Demo running ASP.NET Core sample under Linux
+
+### Further Readings
+
+* [Rainer's ASP.NET Core samples on GitHub](https://github.com/rstropek/Samples/tree/master/AspNetCore1Workshop)
+* [ASP.NET Core Documentation](https://docs.asp.net/en/latest/)
