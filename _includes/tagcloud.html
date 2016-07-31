@@ -1,4 +1,4 @@
-﻿<h3>Tags</h3>
+<h3>Tags</h3>
 
 {% capture tags %}
 {% for tag in site.tags %}
@@ -18,7 +18,7 @@
         {% endfor %}
 
         <a href="{{site.baseurl}}/devblog/tags#{{ taglist[1] }}"
-           style="font-size: {{ counter |  times: 3 | plus: 80  }}%">
+           style="font-size: {{ counter |  times: 2 | plus: 85  }}%; line-height: 1.2em;">
             {{ taglist[1] | replace:'-', ' ' }} ({{ counter }})
         </a>
     </span>

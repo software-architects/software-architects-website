@@ -5,16 +5,16 @@ redirect_from:
 - /
 ---
 <div class="row">
-    <div class="col-sm-9">
-        <div class="row blog-overview">
+    <div class="col-sm-8">
+        <div class="row tc-blog-overview">
             {% for post in paginator.posts %}
                 <div class="col-sm-12"><h2>{{ post.title }}</h2></div>
-                <div class="col-sm-8">
+                <div class="col-sm-7">
                     <!--<p>{{ post.date | date_to_long_string }}</p>-->
                     <p>{{ post.excerpt }}</p>
                     <p><a href="{{ post.url | prepend: site.baseurl }}">Read more ...</a></p>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     {% if post.bannerimage != null %}
                     <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
                     {% endif %}
@@ -37,7 +37,8 @@ redirect_from:
         </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
+		{% include timecockpitad.html %}
         {% include tagcloud.html %}
 		{% include authorcloud.html %}
     </div>

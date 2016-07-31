@@ -1,11 +1,5 @@
 @import "_variables.scss";
 
-.blog-overview {
-	img {
-		width: 100%;
-	}
-}
-
 p.highlighted {
 	text-align: center;
 	background-color: $main-color;
@@ -152,13 +146,32 @@ p.imageCaption {
 	}
 }
 
-/* home */
+/* contact */
 .tc-contact {
 	.tc-container {
 		.tc-container-image {
 			background-image: url(/time-cockpit-website/content/images/banner.jpg);
 			background-size: cover;
 		}
+	}
+}
+
+/* blog */
+.tc-blog-overview {
+	img {
+		width: 100%;
+	}
+
+	h2 {
+		background-color: #e6e6e6;
+		padding: 10px 0;
+	}
+}
+
+.tc-time-cockpit-ad {
+	img {
+		margin-top: 40px;
+		width: 100%
 	}
 }
 
