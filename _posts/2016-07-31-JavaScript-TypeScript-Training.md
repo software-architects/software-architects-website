@@ -165,6 +165,14 @@ Read more about [JavaScript's object model](https://developer.mozilla.org/en-US/
   * Discuss `this` capturing in generated JavaScript code
   * Compare generated JavaScript code for `tsc map.ts` and `tsc map.ts --target ES6` and discuss different TypeScript targets.
 
+### async/await
+
+* Samples: [async/await](https://github.com/rstropek/Samples/tree/master/TypeScriptAsyncAwait)
+* Exercises
+  * Discuss code
+  * Discuss [availability of ES2015 feature in browsers](http://kangax.github.io/compat-table/es6/)
+  * Discuss [TypeScript roadmap for async/await in ES5](https://github.com/Microsoft/TypeScript/wiki/Roadmap)
+
 ### Modules
 
 * Sample: [Modules](https://github.com/software-architects/javascript-samples/tree/master/typescript/005%20Modules)
@@ -175,9 +183,33 @@ Read more about [JavaScript's object model](https://developer.mozilla.org/en-US/
   * Discuss ambient modules (`.d.ts`) and the *typings* tool
   * Read details about [modules](http://www.typescriptlang.org/docs/handbook/modules.html)
 
+### Loading Modules with System.js
+
+* Samples: [Loader](https://github.com/software-architects/javascript-samples/tree/master/typescript/006%20Loader)
+* Exercises
+  * Discuss code
+  * Discuss different loader/packager options (e.g. System.js, Webpack)
+
 ### Further Readings, Resources
 
 * [TypeScript Handbook](http://www.typescriptlang.org/docs/handbook/basic-types.html)
 * [Definitely Typed on GitHub](https://github.com/DefinitelyTyped/DefinitelyTyped)
 * [The *typings* tool](https://github.com/typings/typings)
 * [*typings* Registry](https://github.com/typings/registry)
+* [System.js Loader](https://github.com/systemjs/systemjs)
+
+
+## Client-side Develoment with ASP.NET
+
+### OWIN
+
+* Samples: [OWIN](https://github.com/software-architects/javascript-samples/tree/master/aspnet)
+* NuGet packages
+  * `Microsoft.Owin.StaticFiles`
+  * `Microsoft.Owin.Host.SystemWeb` (for IIS integration)
+* Exercises
+  * Discuss code
+  * Demo creating OWIN sample from scratch
+  * Discuss [`Gulpfile`](https://github.com/software-architects/javascript-samples/blob/master/aspnet/Owin/Gulpfile.js), show it in *Visual Studio Task Runner*
+  * Discuss necessary [changes in `web.config`](https://github.com/software-architects/javascript-samples/blob/master/aspnet/Owin/Web.config#L11-L18)
+  
