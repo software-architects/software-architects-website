@@ -10,7 +10,7 @@ tags: [Azure]
 permalink: /devblog/2016/07/11/Quality-Improvements-Azure-Automation-Video
 ---
 
-<p>
+<p class="banner-image">
   <img src="{{site.baseurl}}/content/images/blog/2016/07/clockwork.jpg" />
 </p>
 <p class="imageCaption">
