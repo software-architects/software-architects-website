@@ -175,6 +175,14 @@ p.imageCaption {
 	}
 }
 
+.videoWrapper {
+	width: 100%;
+
+	iframe {
+		width: 100%;
+	}
+}
+
 /* pricing */
 .tc-pricing {
 	.tc-container {
