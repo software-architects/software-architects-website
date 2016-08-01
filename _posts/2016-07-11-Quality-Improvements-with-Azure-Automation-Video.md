@@ -4,11 +4,18 @@ title: Quality Improvements with Azure Automation
 excerpt: To err is human. However, errors should only be made once. Automating routine tasks is a good approach for preventing human mistakes. Microsoft Azure offers lots of possibilities to automate recurring tasks. In this video (German), time cockpit's CEO, Rainer Stropek, describes how you can save time and get more from your Azure investments with automating tasks.
 author: Rainer Stropek
 date: 2016-07-11
-bannerimage: /content/images/blog/2016/07/Azure-Automation-Video.png
+bannerimage: /content/images/blog/2016/07/clockwork-small.jpg
 lang: en
 tags: [Azure]
 permalink: /devblog/2016/07/11/Quality-Improvements-Azure-Automation-Video
 ---
+
+<p>
+  <img src="{{site.baseurl}}/content/images/blog/2016/07/clockwork.jpg" />
+</p>
+<p class="imageCaption">
+  Image source: <a href="https://flic.kr/p/edA7aA" target="_blank">https://flic.kr/p/edA7aA</a>, under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons License</a>
+</p>
 
 ## Introduction
 
