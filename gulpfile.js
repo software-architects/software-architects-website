@@ -36,7 +36,6 @@ gulp.task("images", function () {
     var allFilter = filter(["**/*.jpeg", "**/*.gif", "**/*.jpg", "**/*.png"], { restore: true });
 
     return gulp.src("content/imagesOriginal/**/*")
-        .pipe(newer("content/images"))
         .pipe(allFilter)
         .pipe(imagemin())
         .pipe(allFilter.restore)
