@@ -83,6 +83,41 @@ $(document).ready(function () {
             $("span[data-message-for='" + eventObject.target.id + "']").removeClass("tc-error-visible");
         }
     });
+
+    var result = $(".tc-toc");
+    var setUl = false;
+
+    if (result.length > 0) {
+
+        var text = "<ul>";
+
+        var title = $(".tc-blog-content").find("h2,h3,h4");
+
+        title.each(function (index: number, value: Element) {
+            if (index + 1 < title.length) {
+
+                text += "<li> <a id='link" + index + "' href='#title" + index + "'>" + value.innerHTML + "</a>  </li>";
+                value.setAttribute("id", "title" + index);
+
+                if (title[index + 1].tagName != "H2") {
+                    if (!setUl) {
+                        setUl = true;
+                        text += "<ul>";
+                    }
+                }
+                else {
+                    if (setUl) {
+                        text += "</ul>";
+                        setUl = false;
+                    }
+                }
+            }
+        });
+
+        text += "</ul>";
+
+        result.append(text);
+    }
 });
 
 (function (i, s, o, g, r, a, m) {

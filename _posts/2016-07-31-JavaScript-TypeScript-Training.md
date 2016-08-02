@@ -9,7 +9,7 @@ bannerimagesource:
 lang: en
 tags: [TypeScript]
 permalink: /devblog/2016/07/31/JavaScript-TypeScript-Training
-showtoc: true
+showtoc: false
 ---
 
 ## Introduction
