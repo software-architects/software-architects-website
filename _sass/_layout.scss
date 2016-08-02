@@ -139,6 +139,13 @@ p.imageCaption {
 	}
 }
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
 /* home */
 .tc-home {
 	.tc-container {
@@ -191,6 +198,7 @@ p.imageCaption {
 	.tc-related-post {
 		background-color: #fff;
 		padding: 20px;
+		height: 100%;
 
 		h3 {
 			margin-top: 0;
