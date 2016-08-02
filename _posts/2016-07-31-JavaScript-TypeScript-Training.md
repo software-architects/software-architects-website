@@ -5,10 +5,13 @@ excerpt: We regularly do JavaScript and TypeScript trainings. In this blog artic
 author: Rainer Stropek
 date: 2016-07-31
 bannerimage: 
+bannerimagesource:
 lang: en
 tags: [TypeScript]
 permalink: /devblog/2016/07/31/JavaScript-TypeScript-Training
 ---
+
+{{page.bannerimagesource}}
 
 ## Introduction
 
