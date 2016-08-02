@@ -1,3 +1,4 @@
+
 @import "_variables.scss";
 
 p.highlighted {
@@ -146,6 +147,12 @@ p.imageCaption {
   display:         flex;
 }
 
+@media (max-width: $screen-sm-max) { 
+	.row-eq-height {
+	  display: block;
+	}
+}
+
 /* home */
 .tc-home {
 	.tc-container {
@@ -203,6 +210,7 @@ p.imageCaption {
 		h3 {
 			margin-top: 0;
 			line-height: $base-line-height;
+			word-wrap: break-word;
 		}
 
 		a {
@@ -234,12 +242,25 @@ p.imageCaption {
 			}
 		}
 	}
+
+	@media (max-width: $screen-sm-max) { 
+		.row-eq-height {
+			> div > div {
+				margin-bottom: 20px;
+			}
+
+			> div:last-of-type > div {
+				margin-bottom: 0;
+			}
+		}
+	}
 }
 
 .tc-time-cockpit-ad {
 	img {
 		margin-top: 40px;
-		width: 100%
+		width: 100%;
+		max-width: 400px;
 	}
 }
 
