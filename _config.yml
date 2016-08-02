@@ -17,13 +17,15 @@ url: "http://www.software-architects.com" # the base hostname & protocol for you
 twitter_username: timecockpit
 github_username: software-architects
 
-gems: [jekyll-paginate, jekyll-redirect-from]
+gems: [jekyll-paginate, jekyll-redirect-from, jekyll-sitemap]
 paginate: 10
 paginate_path: "/devblog/page:num/"
+array: []
 
 # Build settings
 redirects: yes
 markdown: kramdown
+encoding: utf-8
 exclude: [
 	software-architects-website.sln,
 	package.json,

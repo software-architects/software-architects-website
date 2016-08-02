@@ -5,6 +5,7 @@ excerpt: We have been experimenting with automated testing of our services again
 author: Philipp Aumayr
 date: 2011-02-14
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2011/02/14/Automated-deploying-and-testing-of-services-in-Azure

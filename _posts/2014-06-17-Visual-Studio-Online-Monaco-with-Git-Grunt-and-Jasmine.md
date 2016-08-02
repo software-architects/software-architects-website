@@ -5,6 +5,7 @@ excerpt: I have already posted an end-to-end sample showing Visual Studio "Monac
 author: Rainer Stropek
 date: 2014-06-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TypeScript,Visual Studio]
 permalink: /devblog/2014/06/17/Visual-Studio-Online-Monaco-with-Git-Grunt-and-Jasmine

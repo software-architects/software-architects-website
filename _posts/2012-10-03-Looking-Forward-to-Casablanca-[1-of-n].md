@@ -5,6 +5,7 @@ excerpt: Those of you who know me, also know my appreciation for c++. Those of y
 author: Philipp Aumayr
 date: 2012-10-03
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C]
 permalink: /devblog/2012/10/03/Looking-Forward-to-Casablanca-[1-of-n]

@@ -5,6 +5,7 @@ excerpt: Beside working on time cockpit I also do some consulting work regarding
 author: Rainer Stropek
 date: 2011-02-16
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2011/02/16/Custom-OData-Provider-for-Windows-Azure-

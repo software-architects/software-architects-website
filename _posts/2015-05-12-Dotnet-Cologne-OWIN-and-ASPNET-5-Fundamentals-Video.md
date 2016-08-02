@@ -5,6 +5,7 @@ excerpt: OWIN decouples ASP.NET web application from a specific web server like 
 author: Rainer Stropek
 date: 2015-05-12
 bannerimage: /content/images/blog/2015/05/Dom-Koeln-cropped.jpg
+bannerimagesource: 
 lang: en
 tags: [.NET,ASP.NET]
 permalink: /devblog/2015/05/12/Dotnet-Cologne-OWIN-and-ASPNET-5-Fundamentals-Video

@@ -5,6 +5,7 @@ excerpt: Yesterday was the day - the Global Windows Azure Bootcamp (GWAB) took p
 author: Rainer Stropek
 date: 2014-03-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2014/03/30/Global-Windows-Azure-Bootcamp-Retrospect

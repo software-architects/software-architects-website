@@ -5,6 +5,7 @@ excerpt: Today I will do a session in a SQLPASS community meeting in Vienna abou
 author: Rainer Stropek
 date: 2013-09-19
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,SQL]
 permalink: /devblog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage

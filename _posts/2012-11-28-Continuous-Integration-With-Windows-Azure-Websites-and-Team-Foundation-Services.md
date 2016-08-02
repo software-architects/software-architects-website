@@ -5,6 +5,7 @@ excerpt: Windows Azure Websites (WAWS) is a great PaaS service in Microsoft's Cl
 author: Rainer Stropek
 date: 2012-11-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [ASP.NET,Azure,TFS]
 permalink: /devblog/2012/11/28/Continuous-Integration-With-Windows-Azure-Websites-and-Team-Foundation-Services

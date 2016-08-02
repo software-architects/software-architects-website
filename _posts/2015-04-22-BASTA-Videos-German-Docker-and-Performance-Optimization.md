@@ -5,6 +5,7 @@ excerpt: At BASTA Spring 2015 some of my session were recorded. The recordings a
 author: Rainer Stropek
 date: 2015-04-22
 bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_cropped.png
+bannerimagesource: 
 lang: en
 tags: [Azure,C#]
 permalink: /devblog/2015/04/22/BASTA-Videos-German-Docker-and-Performance-Optimization

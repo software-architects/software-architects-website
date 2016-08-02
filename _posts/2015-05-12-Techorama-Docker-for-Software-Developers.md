@@ -5,6 +5,7 @@ excerpt: At Techorama conference in Belgium I do a session for developers who he
 author: Rainer Stropek
 date: 2015-05-12
 bannerimage: /content/images/blog/2015/05/Brussels-Atomium-cropped.jpg
+bannerimagesource: 
 lang: en
 tags: [ASP.NET]
 permalink: /devblog/2015/05/12/Techorama-Docker-for-Software-Developers

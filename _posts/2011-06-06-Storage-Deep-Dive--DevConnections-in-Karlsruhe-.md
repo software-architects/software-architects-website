@@ -5,6 +5,7 @@ excerpt: Elasticity is what the world of cloud computing is all about. Do you qu
 author: Rainer Stropek
 date: 2011-06-06
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2011/06/06/Storage-Deep-Dive--DevConnections-in-Karlsruhe-

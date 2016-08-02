@@ -5,6 +5,7 @@ excerpt: At BASTA 2014 I will do a full-day C# workshop. One of the topics will 
 author: Rainer Stropek
 date: 2014-09-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#]
 permalink: /devblog/2014/09/22/C-Parallel-and-Async-Programming

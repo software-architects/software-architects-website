@@ -5,6 +5,7 @@ excerpt: Docker is an important topic for Microsoft especially with the Azure cl
 author: Rainer Stropek
 date: 2015-02-24
 bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_cropped.png
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2015/02/24/BASTA-Spring-2015-Docker

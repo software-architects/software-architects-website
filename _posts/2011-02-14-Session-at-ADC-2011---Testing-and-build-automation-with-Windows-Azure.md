@@ -5,6 +5,7 @@ excerpt: Today I will present about testing and build automation with the Window
 author: Rainer Stropek
 date: 2011-02-14
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2011/02/14/Session-at-ADC-2011---Testing-and-build-automation-with-Windows-Azure

@@ -5,6 +5,7 @@ excerpt: Am 27. September 2012 durfte ich gemeinsam mit Thomas Rümmler von AIT 
 author: Rainer Stropek
 date: 2012-10-02
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2012/10/02/Cloud-Computing---was-bringts-German

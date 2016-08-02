@@ -5,6 +5,7 @@ excerpt: Today I will do a session at a local user group called Technologieplaus
 author: Rainer Stropek
 date: 2015-08-20
 bannerimage: /content/images/blog/2015/08/techplauscherl-00-yeoman.png
+bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
 permalink: /devblog/2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-Azure

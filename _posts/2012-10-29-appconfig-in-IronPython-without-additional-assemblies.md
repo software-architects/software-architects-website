@@ -5,6 +5,7 @@ excerpt: Third-party .net assemblies can be easily used from IronPython. If the 
 author: Simon Opelt
 date: 2012-10-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Iron Python]
 permalink: /devblog/2012/10/29/appconfig-in-IronPython-without-additional-assemblies

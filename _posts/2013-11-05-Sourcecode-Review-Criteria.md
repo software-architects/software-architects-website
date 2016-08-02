@@ -5,6 +5,7 @@ excerpt: Customers regularly hire me to do code reviews for software projects. O
 author: Rainer Stropek
 date: 2013-11-05
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,Project Management,Visual Studio]
 permalink: /devblog/2013/11/05/Sourcecode-Review-Criteria

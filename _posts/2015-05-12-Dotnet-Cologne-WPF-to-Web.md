@@ -5,6 +5,7 @@ excerpt: Changing the UI technology from WPF/Silverlight to HTML/JavaScript in a
 author: Rainer Stropek
 date: 2015-05-12
 bannerimage: /content/images/blog/2015/05/Dom-Koeln-cropped.jpg
+bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit]
 permalink: /devblog/2015/05/12/Dotnet-Cologne-WPF-to-Web

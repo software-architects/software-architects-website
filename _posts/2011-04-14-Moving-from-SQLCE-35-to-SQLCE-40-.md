@@ -5,6 +5,7 @@ excerpt: So today finally came that day, we put our first steps into moving to S
 author: Philipp Aumayr
 date: 2011-04-14
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [SQLCE]
 permalink: /devblog/2011/04/14/Moving-from-SQLCE-35-to-SQLCE-40-

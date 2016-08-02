@@ -5,6 +5,7 @@ excerpt: Yesterday I did a workshop at the Software Architecture Summit in Berli
 author: Rainer Stropek
 date: 2015-09-18
 bannerimage: /content/images/blog/2015/09/restful-web-api-design-title-small.png
+bannerimagesource: 
 lang: en
 tags: [AngularJS,HTML5,OData,TypeScript]
 permalink: /devblog/2015/09/18/RESTful-Web-API-Design

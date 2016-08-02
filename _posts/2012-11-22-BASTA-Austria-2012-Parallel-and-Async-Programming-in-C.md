@@ -5,6 +5,7 @@ excerpt: At BASTA Austria 2012 I did a workshop about parallel and async program
 author: Rainer Stropek
 date: 2012-11-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,WPF]
 permalink: /devblog/2012/11/22/BASTA-Austria-2012-Parallel-and-Async-Programming-in-C

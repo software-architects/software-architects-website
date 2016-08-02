@@ -5,6 +5,7 @@ excerpt: Next weekend I will be speaker at the SQL Server and .NET Developer Con
 author: Rainer Stropek
 date: 2014-03-20
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,Visual Studio]
 permalink: /devblog/2014/03/20/SNEK-Conference-Tools-for-NET-Developers

@@ -5,6 +5,7 @@ excerpt: Quite a while ago - still working with Rarebyte - I was designing a cla
 author: Philipp Aumayr
 date: 2013-05-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [CPP,Visual Studio]
 permalink: /devblog/2013/05/17/Exploring-C-Inheritance-1-of-2

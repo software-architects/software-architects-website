@@ -5,6 +5,7 @@ excerpt: Ok, I feel ashamed. Already more than three weeks have passed since BAS
 author: Rainer Stropek
 date: 2011-10-24
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Presentations]
 permalink: /devblog/2011/10/24/BASTA-2011-Workshop-About-Software-Factories

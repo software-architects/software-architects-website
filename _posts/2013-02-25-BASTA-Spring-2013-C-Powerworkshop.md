@@ -5,6 +5,7 @@ excerpt: Auf der BASTA 2013 Spring Konferenz habe ich einen ganztägigen Worksho
 author: Rainer Stropek
 date: 2013-02-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#]
 permalink: /devblog/2013/02/25/BASTA-Spring-2013-C-Powerworkshop

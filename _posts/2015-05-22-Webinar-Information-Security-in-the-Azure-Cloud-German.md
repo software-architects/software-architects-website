@@ -5,6 +5,7 @@ excerpt: Today Microsoft Austria and I wanted to do a webinar concerning informa
 author: Rainer Stropek
 date: 2015-05-22
 bannerimage: /content/images/blog/2015/05/Webinar-Informationssicherheit-Titel.png
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2015/05/22/Webinar-Information-Security-in-the-Azure-Cloud-German

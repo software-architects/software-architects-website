@@ -1,0 +1,85 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+}
+
+.time {
+    display: inline;
+}
+
+#stopButton {
+    background-color: green; 
+    height: 200px; 
+    width: 200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#stopButtonStyleDiv {
+   position: absolute; 
+   top: 50%; 
+   height: 175px; 
+   margin-top:-87.5px; 
+   margin-left: 25%; 
+   margin-right: 75%;
+}
+
+#startButton {
+    background-color: green; 
+    height: 200px; 
+    width: 200px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 35%; 
+    margin-bottom: 50%; 
+    position: relative;
+}
+
+#startButtonStyleDiv {
+    position: absolute; 
+    top: 50%; 
+    height: 175px; 
+    margin-top:-87.5px; 
+    margin-left: 25%; 
+    margin-right: 75%;
+}
+
+#descriptionText {
+    background-color: #E8E8E8; 
+    width: 210px; 
+    height: 100px;
+}
+
+#loginDiv {
+    width:50%;
+    margin: 0 auto;
+}
+
+#heading {
+    text-align: center; 
+    margin-top: 50%;
+}
+
+#content {
+    width: 65%;
+    margin: 0 auto;
+    margin-top: 30%;
+}
+#buttons {
+    width: 65%;
+    margin: 0 auto;
+}
+
+#time {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#submitButton {
+    display: block;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 40%;
+}

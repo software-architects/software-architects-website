@@ -16,7 +16,8 @@ redirect_from:
                 </div>
                 <div class="col-sm-5">
                     {% if post.bannerimage != null %}
-                    <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+                        <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+                        <span class="tc-image-footer">{{post.bannerimagesource}}</span>
                     {% endif %}
                 </div>
             {% endfor %}
@@ -30,6 +31,7 @@ redirect_from:
 				<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
 				{% endif %}
 				<span class="tc-page-number">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+            
 				{% if paginator.next_page %}
 				<a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
 				{% else %}

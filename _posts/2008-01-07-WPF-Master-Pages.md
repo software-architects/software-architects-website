@@ -5,6 +5,7 @@ excerpt: One of the really great enhancements in ASP.NET was the introduction of
 author: Karin Huber
 date: 2008-01-07
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [WPF]
 permalink: /devblog/2008/01/07/WPF-Master-Pages

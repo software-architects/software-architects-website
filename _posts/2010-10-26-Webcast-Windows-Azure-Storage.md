@@ -5,6 +5,7 @@ excerpt: Yesterday I wrote a tutorial that demonstrates how to use the different
 author: Rainer Stropek
 date: 2010-10-26
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2010/10/26/Webcast-Windows-Azure-Storage

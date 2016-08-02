@@ -5,6 +5,7 @@ excerpt: For a Microsoft event we have been hired to do a full-day workshop abou
 author: Philipp Aumayr
 date: 2013-03-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [CPP,Visual Studio]
 permalink: /devblog/2013/03/25/Workshop-Whats-New-in-Visual-Studio-2012-for-C-Developers

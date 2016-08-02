@@ -5,6 +5,7 @@ excerpt: A week ago we hosted the Austrian event of the Global Azure Bootcamp. I
 author: Rainer Stropek
 date: 2015-05-03
 bannerimage: /content/images/blog/2015/05/Global-Azure-Bootcamp-small.png.jpg
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2015/05/03/Global-Azure-Bootcamp-2015---Slides-and-Photos

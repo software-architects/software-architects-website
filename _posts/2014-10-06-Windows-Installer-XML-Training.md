@@ -5,6 +5,7 @@ excerpt: This week I will do another one of my Windows Installer XML (WiX) train
 author: Rainer Stropek
 date: 2014-10-06
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Visual Studio]
 permalink: /devblog/2014/10/06/Windows-Installer-XML-Training

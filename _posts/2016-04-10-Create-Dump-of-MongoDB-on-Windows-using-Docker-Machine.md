@@ -5,6 +5,7 @@ excerpt: Recently, I have been doing some programming work using the MEAN stack 
 author: Rainer Stropek
 date: 2016-04-10
 bannerimage: /content/images/blog/2016/04/filezilla-docker-machine.png
+bannerimagesource: 
 lang: en
 tags: [About]
 permalink: /devblog/2016/04/10/Create-Dump-of-MongoDB-on-Windows-using-Docker-Machine

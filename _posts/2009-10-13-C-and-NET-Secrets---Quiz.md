@@ -5,6 +5,7 @@ excerpt: We invite you to prove your knowledge about certain subjects concerning
 author: Rainer Stropek
 date: 2009-10-13
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET]
 permalink: /devblog/2009/10/13/C-and-NET-Secrets---Quiz

@@ -5,6 +5,7 @@ excerpt: At the BASTA Spring 2013 conference I had a session about developing cu
 author: Rainer Stropek
 date: 2013-02-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
 permalink: /devblog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers

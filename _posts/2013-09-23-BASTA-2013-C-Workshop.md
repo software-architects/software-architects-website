@@ -5,6 +5,7 @@ excerpt: Meine Vorträge auf der BASTA 2013 starten heute mit einem ganztägigen
 author: Rainer Stropek
 date: 2013-09-23
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,MEF,Visual Studio,WPF]
 permalink: /devblog/2013/09/23/BASTA-2013-C-Workshop

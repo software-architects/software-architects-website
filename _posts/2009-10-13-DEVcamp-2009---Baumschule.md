@@ -5,6 +5,7 @@ excerpt: Auf dem DEVcamp 2009 durfte ich einen Vortrag zum Thema "Baumschule" ha
 author: Rainer Stropek
 date: 2009-10-13
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#]
 permalink: /devblog/2009/10/13/DEVcamp-2009---Baumschule

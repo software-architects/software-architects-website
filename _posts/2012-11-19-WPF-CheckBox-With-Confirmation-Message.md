@@ -5,6 +5,7 @@ excerpt: During BASTA Austria I have been asked a WPF question. How can I implem
 author: Rainer Stropek
 date: 2012-11-19
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,WPF]
 permalink: /devblog/2012/11/19/WPF-CheckBox-With-Confirmation-Message

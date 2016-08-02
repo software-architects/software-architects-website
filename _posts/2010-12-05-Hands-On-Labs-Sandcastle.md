@@ -5,6 +5,7 @@ excerpt: This week I will be one of the speakers at BASTA On Tour in Munich. One
 author: Rainer Stropek
 date: 2010-12-05
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET]
 permalink: /devblog/2010/12/05/Hands-On-Labs-Sandcastle

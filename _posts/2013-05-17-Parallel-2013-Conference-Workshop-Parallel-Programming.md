@@ -5,6 +5,7 @@ excerpt: On May 17th I did a workshop on parallel programming at parallel 2013 c
 author: Rainer Stropek
 date: 2013-05-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,Visual Studio]
 permalink: /devblog/2013/05/17/Parallel-2013-Conference-Workshop-Parallel-Programming

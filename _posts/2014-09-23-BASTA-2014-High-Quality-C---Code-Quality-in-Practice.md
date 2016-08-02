@@ -5,6 +5,7 @@ excerpt: Today I will do a session at German BASTA Conference about C# code qual
 author: Rainer Stropek
 date: 2014-09-23
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#]
 permalink: /devblog/2014/09/23/BASTA-2014-High-Quality-C---Code-Quality-in-Practice

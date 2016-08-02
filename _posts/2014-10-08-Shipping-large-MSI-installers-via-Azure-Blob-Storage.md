@@ -5,6 +5,7 @@ excerpt: Recently I did a WiX (Windows Installer XML) and MSI training at a cust
 author: Rainer Stropek
 date: 2014-10-08
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,Visual Studio]
 permalink: /devblog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Storage

@@ -5,6 +5,7 @@ excerpt: Yesterday I was speaker at the Cloudconf 2013 in Berlin. My first sessi
 author: Rainer Stropek
 date: 2013-12-05
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2013/12/05/Cloudconf-2013-Berlin-Windows-Azure-Active-Directory

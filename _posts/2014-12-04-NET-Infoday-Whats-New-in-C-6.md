@@ -5,6 +5,7 @@ excerpt: At IT-Visions' .NET InfoDay 2015 in Graz, my friend Roman Schacherl and
 author: Rainer Stropek
 date: 2014-12-04
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
 permalink: /devblog/2014/12/04/NET-Infoday-Whats-New-in-C-6

@@ -5,6 +5,7 @@ excerpt: Even though our core dev team is quite small, time cockpit's code base 
 author: Philipp Aumayr
 date: 2011-02-23
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TFS]
 permalink: /devblog/2011/02/23/TFS-Build-and-Checked-In-Assemblies-

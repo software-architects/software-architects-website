@@ -5,6 +5,7 @@ excerpt: Imagine you have two ListBoxes with lots of items. Whenever a user scro
 author: Karin Huber
 date: 2009-10-13
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Silverlight,WPF]
 permalink: /devblog/2009/10/13/Scroll-Synchronization-in-WPF-and-Silverlight

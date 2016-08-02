@@ -5,6 +5,7 @@ excerpt: AngularJS has become a very popular web development framework. Now that
 author: Rainer Stropek
 date: 2014-06-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Mobile,OData,TypeScript]
 permalink: /devblog/2014/06/17/Telerik-Kendo-UI-vs-AngularJS

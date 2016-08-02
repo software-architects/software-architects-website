@@ -5,6 +5,7 @@ excerpt: The Windows Azure platform offers different mechanisms to store data pe
 author: Rainer Stropek
 date: 2010-10-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2010/10/25/Windows-Azure-Storage

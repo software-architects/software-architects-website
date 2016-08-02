@@ -5,6 +5,7 @@ excerpt: Yesterday I did a short session about Linux and Docker on Microsoft Azu
 author: Rainer Stropek
 date: 2015-05-08
 bannerimage: /content/images/blog/2015/05/linux-wochen-wien.png
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2015/05/08/Video-Linux-and-Docker-on-Microsoft-Azure

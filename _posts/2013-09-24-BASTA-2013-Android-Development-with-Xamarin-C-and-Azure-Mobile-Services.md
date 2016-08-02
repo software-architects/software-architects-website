@@ -5,6 +5,7 @@ excerpt: The Xamarin and Mono tools enable C# developers to use their existing k
 author: Rainer Stropek
 date: 2013-09-24
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Android,Azure,Visual Studio]
 permalink: /devblog/2013/09/24/BASTA-2013-Android-Development-with-Xamarin-C-and-Azure-Mobile-Services

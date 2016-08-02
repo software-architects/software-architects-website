@@ -5,6 +5,7 @@ excerpt: I had the opportunity to do two sessions at MVP Summit 2013 in Redmond/
 author: Rainer Stropek
 date: 2013-02-20
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,TypeScript]
 permalink: /devblog/2013/02/20/Windows-Azure-Websites--TypeScript--nodejs--JavaScript-on-Steroids

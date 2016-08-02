@@ -5,6 +5,7 @@ excerpt: At BASTA Austria 2012 I did a session about TypeScript. I introduced th
 author: Rainer Stropek
 date: 2012-11-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TypeScript]
 permalink: /devblog/2012/11/22/BASTA-Austria-2012-TypeScript---JavaScript-on-Steroids

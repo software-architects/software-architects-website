@@ -5,6 +5,7 @@ excerpt: Recently, Microsoft launched their hosted Team Foundation Service which
 author: Philipp Aumayr
 date: 2013-06-10
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#,TFS]
 permalink: /devblog/2013/06/10/Custom-Code-Activities-in-TF-Service-Build

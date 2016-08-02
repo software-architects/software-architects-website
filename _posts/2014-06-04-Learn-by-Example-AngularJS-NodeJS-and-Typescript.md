@@ -5,6 +5,7 @@ excerpt: In this blog post, I would like to summarize a talk I gave at the JavaS
 author: Rainer Stropek
 date: 2014-06-04
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TypeScript,Visual Studio]
 permalink: /devblog/2014/06/04/Learn-by-Example-AngularJS-NodeJS-and-Typescript

@@ -5,6 +5,7 @@ excerpt: This week I will be one of the speakers at BASTA On Tour in Munich. One
 author: Rainer Stropek
 date: 2010-12-07
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET]
 permalink: /devblog/2010/12/07/Hands-On-Labs-Visual-Studio-IDE

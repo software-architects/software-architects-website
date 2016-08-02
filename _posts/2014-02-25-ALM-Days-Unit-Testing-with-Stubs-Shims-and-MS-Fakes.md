@@ -5,6 +5,7 @@ excerpt: At ALM Days my second talk is about unit testing with Microsoft Fakes, 
 author: Rainer Stropek
 date: 2014-02-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
 permalink: /devblog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes

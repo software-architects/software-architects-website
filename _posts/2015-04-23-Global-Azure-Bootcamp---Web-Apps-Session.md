@@ -5,6 +5,7 @@ excerpt: This Saturday, the Global Azure Bootcamp (GAB) will take place. We orga
 author: Rainer Stropek
 date: 2015-04-23
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2015/04/23/Global-Azure-Bootcamp---Web-Apps-Session

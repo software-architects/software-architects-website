@@ -5,6 +5,7 @@ excerpt: In the last months I looked at Docker from a software development persp
 author: Rainer Stropek
 date: 2015-02-05
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,Visual Studio]
 permalink: /devblog/2015/02/05/ASPNET-Docker-and-Linux-in-Azure

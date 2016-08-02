@@ -5,6 +5,7 @@ excerpt: During the last few weeks I have done a few workshops and trainings abo
 author: Rainer Stropek
 date: 2010-12-02
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2010/12/02/Webcast-and-videos-to-learn-about-Azure

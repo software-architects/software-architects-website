@@ -5,6 +5,7 @@ excerpt: Yesterday at the WebTech 2013 conference in Munich I did an interview w
 author: Rainer Stropek
 date: 2013-10-31
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TypeScript]
 permalink: /devblog/2013/10/31/WebTech-2013-Interview-about-TypeScript

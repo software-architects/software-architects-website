@@ -5,6 +5,7 @@ excerpt: Today I am at the NRWConf, a community event of Microsoft-oriented soft
 author: Rainer Stropek
 date: 2010-09-10
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Silverlight,WPF]
 permalink: /devblog/2010/09/10/MVVM-Tutorial-from-Start-to-Finish

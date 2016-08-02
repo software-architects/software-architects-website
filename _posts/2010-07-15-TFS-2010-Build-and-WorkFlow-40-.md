@@ -5,6 +5,7 @@ excerpt: After having released time cockpit 1.0, we decided to finally upgrade t
 author: Philipp Aumayr
 date: 2010-07-15
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TFS]
 permalink: /devblog/2010/07/15/TFS-2010-Build-and-WorkFlow-40-

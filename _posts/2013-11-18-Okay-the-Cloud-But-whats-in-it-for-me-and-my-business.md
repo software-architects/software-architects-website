@@ -5,6 +5,7 @@ excerpt: I was part of a keynote panel for this year's WebTech Conference in Mun
 author: Rainer Stropek
 date: 2013-11-18
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2013/11/18/Okay-the-Cloud-But-whats-in-it-for-me-and-my-business

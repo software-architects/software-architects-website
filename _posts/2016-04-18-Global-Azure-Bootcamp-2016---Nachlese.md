@@ -5,6 +5,7 @@ excerpt: Am Samstag fand das Global Azure Bootcamp in Linz im Wissensturm statt.
 author: Rainer Stropek
 date: 2016-04-18
 bannerimage: /content/images/blog/2016/04/GAB-2016-logo-400x270.png
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2016/04/18/Global-Azure-Bootcamp-2016---Nachlese
