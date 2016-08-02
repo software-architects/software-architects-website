@@ -19,12 +19,6 @@ gulp.task("copyBootstrapFiles", function () {
 	gulp.src("./node_modules/bootstrap-sass/assets/fonts/bootstrap/*.*")
 		.pipe(gulp.dest("./fonts/bootstrap"));
 
-	gulp.src("./node_modules/bootstrap-sass/assets/javascripts/bootstrap.js")
-		.pipe(gulp.dest("./scripts"));
-
-	gulp.src("./node_modules/jquery/dist/jquery.js")
-		.pipe(gulp.dest("./scripts"));
-
 	return gulp.src("./node_modules/bootstrap-sass/assets/stylesheets/**/*.*")
 		.pipe(gulp.dest("./_sass/bootstrap"));
 });
