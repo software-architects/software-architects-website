@@ -20,7 +20,10 @@
 			{% for post in all_posts limit:3 %}
 			<div class="col-sm-4">
 				<div class="tc-related-post">
-					<a href="{{site.baseurl}}{{post.permalink}}">
+					<a href="{{site.baseurl}}{{post.permalink}}"
+						ga-on="click"
+						ga-event-category="Related post"
+						ga-event-action="click">
 						<h3>{{post.title}}</h3>
 						<p>{{post.excerpt}}</p>
 						<div><img src="{{post.bannerimage | prepend: site.baseurl}}" /></div>
