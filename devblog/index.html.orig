@@ -1,0 +1,62 @@
+---
+layout: page
+title: Time Cockpit Blog - Tips and News from the Time Cockpit Team
+redirect_from:
+- /
+---
+<div class="row">
+    <div class="col-sm-8">
+        <div class="row tc-blog-overview">
+            {% for post in paginator.posts %}
+                <div class="col-sm-12"><h2>{{ post.title }}</h2></div>
+                <div class="col-sm-7">
+                    <!--<p>{{ post.date | date_to_long_string }}</p>-->
+                    <p>{{ post.excerpt }}</p>
+                    <p><a href="{{ post.url | prepend: site.baseurl }}">Read more ...</a></p>
+                </div>
+                <div class="col-sm-5">
+                    {% if post.bannerimage != null %}
+                        <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+                        <span class="tc-image-footer">{{post.bannerimagesource}}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+<<<<<<< HEAD
+		<div class="row">
+			<p class="tc-pager">
+				{% if paginator.previous_page %}
+				<a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
+				{% else %}
+				<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
+				{% endif %}
+				<span class="tc-page-number">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+				{% if paginator.next_page %}
+				<a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
+				{% else %}
+				<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+				{% endif %}
+			</p>
+		</div>
+=======
+        <div class="pagination">
+            {% if paginator.previous_page %}
+                <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Previous</a>
+            {% endif %}
+
+            <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+            
+            {% if paginator.next_page %}
+                <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Next</a>
+            {% endif %}
+        </div>
+>>>>>>> aef140d3dbe52ab12de5f2bca05e843219cb970b
+    </div>
+
+    <div class="col-sm-4">
+		{% include timecockpitad.html %}
+        {% include tagcloud.html %}
+		{% include authorcloud.html %}
+    </div>
+</div>

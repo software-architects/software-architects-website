@@ -16,24 +16,31 @@ redirect_from:
                 </div>
                 <div class="col-sm-5">
                     {% if post.bannerimage != null %}
-                        <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
-                        <span class="tc-image-footer">{{post.bannerimagesource}}</span>
+                    <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
                     {% endif %}
                 </div>
             {% endfor %}
         </div>
 
-        <div class="pagination">
-            {% if paginator.previous_page %}
-                <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Previous</a>
-            {% endif %}
-
-            <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-            
-            {% if paginator.next_page %}
-                <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Next</a>
-            {% endif %}
-        </div>
+		<div class="row">
+			<div class="tc-pager">
+				<div>
+					{% if paginator.previous_page %}
+					<a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
+					{% else %}
+					<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
+					{% endif %}
+				</div>
+				<div class="tc-page-number">{{ paginator.page }} / {{ paginator.total_pages }}</div>
+				<div>
+					{% if paginator.next_page %}
+					<a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
+					{% else %}
+					<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+					{% endif %}
+				</div>
+			</div>
+		</div>
     </div>
 
     <div class="col-sm-4">
