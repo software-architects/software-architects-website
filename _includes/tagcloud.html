@@ -12,14 +12,16 @@
     <span class="site-tag">
         {% assign counter = 0 %}
         {% for post in site.posts %}
-        {% if post.tags contains taglist[1] %}
-        {% assign counter = counter | plus: 1 %}
+            {% if post.tags contains taglist[1] %}
+            {% assign counter = counter | plus: 1 %}
         {% endif %}
         {% endfor %}
 
-        <a href="{{site.baseurl}}/devblog/tags#{{ taglist[1] }}"
-           style="font-size: {{ counter |  times: 2 | plus: 85  }}%; line-height: 1.2em;">
-            {{ taglist[1] | replace:'-', ' ' }} ({{ counter }})
-        </a>
+        {% if counter != 0 %}
+            <a href="{{site.baseurl}}/devblog/tags#{{ taglist[1] }}"
+                style="font-size: {{ counter |  times: 2 | plus: 85  }}%; line-height: 1.2em;">
+                {{ taglist[1] | replace:'-', ' ' }} ({{ counter }})
+            </a>
+        {% endif %}
     </span>
 {% endfor %}

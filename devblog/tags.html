@@ -13,8 +13,23 @@ title: Tags
         {% assign sortedtags = tags | split:'|' | sort %}
 
         {% for tag in sortedtags %}
+            {% assign counter = 0 %}
             {% assign taglist = tag | split:',' %}
-            <h2 id="{{ taglist[1] }}">{{ taglist[1] }}</h2>
+
+            {% assign posts = site.posts %}
+            {% for post in posts | sort: "date" reverse %}
+                {% if post.tags contains taglist[1] %}
+                {% assign counter = counter | plus: 1 %}
+            {% endif %}
+            {% endfor %}
+
+            {% if counter != 0 %}
+                <h2 id="{{ taglist[1] }}">{{ taglist[1] }}</h2>
+            {% else %}
+                {%continue %}
+            {% endif %}
+
+            {% assign taglist = tag | split:',' %}
             <ul class="tags-expo-posts">
                 {% for post in site.posts | sort: "date" | reverse %}
                     {% if post.tags contains taglist[1] %}

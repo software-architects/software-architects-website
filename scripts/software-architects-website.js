@@ -1,3 +1,4 @@
+/// <reference path="../typings/jquery/jquery.d.ts" />
 function subscribeToNewsletterWithEmail(email) {
     ga("_trackEvent", "Newsletter", "Subscribe to newsletter time cockpit");
     if (isEmailValid(email)) {
@@ -43,7 +44,7 @@ function isEmailValid(email) {
     return false;
 }
 (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
+    i["GoogleAnalyticsObject"] = r;
     i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments);
     }, i[r].l = 1 * new Date();
@@ -52,6 +53,6 @@ function isEmailValid(email) {
     a.async = 1;
     a.src = g;
     m.parentNode.insertBefore(a, m);
-})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-ga('create', 'UA-3324842-1', 'auto');
-ga('send', 'pageview');
+})(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+ga("create", "UA-3324842-1", "auto");
+ga("send", "pageview");
