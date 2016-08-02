@@ -14,20 +14,20 @@
     {% endif %}
 {% endfor %}
 
-<div class="container-fluid tc-container-lightgray">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="container">
-                <div class="row">
-                    {% for post in all_posts limit:3 %}
-                    <div class="col-sm-4">
-                        <a href="{{site.baseurl}}{{post.permalink}}">{{post.title}} </a>
-                        <br>{{post.excerpt}}<br />
-                        <br> <img src="{{post.bannerimage | prepend: site.baseurl}}" /> <br />
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="tc-container tc-container-lightblue">
+	<div class="container">
+		<div class="row">
+			{% for post in all_posts limit:3 %}
+			<div class="col-sm-4">
+				<div class="tc-related-post">
+					<a href="{{site.baseurl}}{{post.permalink}}">
+						<h3>{{post.title}}</h3>
+						<p>{{post.excerpt}}</p>
+						<div><img src="{{post.bannerimage | prepend: site.baseurl}}" /></div>
+					</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 </div>
