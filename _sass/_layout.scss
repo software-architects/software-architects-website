@@ -182,24 +182,18 @@ p.imageCaption {
 }
 
 .tc-blog {
+	.tc-related-posts-container {
+		.row {
+			margin-top: 0!important;
+		}
+	}
+
 	.tc-related-post {
 		background-color: #fff;
 		padding: 20px;
 
 		h3 {
 			margin-top: 0;
-		}
-
-		.row {
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: -ms-flexbox;
-			display:  flex;
-		}
-
-		.row > [class*='col-'] {
-			display: flex;
-			flex-direction: column;
 		}
 
 		a {
