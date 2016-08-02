@@ -5,6 +5,7 @@ excerpt: I had the chance to do two sessions at Microsoft MVP Summit 2013 in Red
 author: Rainer Stropek
 date: 2013-02-21
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2013/02/21/Using-WAWS-for-Tenant-Isolation

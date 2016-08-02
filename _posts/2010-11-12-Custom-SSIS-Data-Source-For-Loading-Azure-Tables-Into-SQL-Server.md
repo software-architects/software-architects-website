@@ -5,6 +5,7 @@ excerpt: Yesterday the wether in Frankfurt was horrible and so my plane from Ber
 author: Rainer Stropek
 date: 2010-11-12
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2010/11/12/Custom-SSIS-Data-Source-For-Loading-Azure-Tables-Into-SQL-Server

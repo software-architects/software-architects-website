@@ -5,6 +5,7 @@ excerpt:  Tomorrow I will do a power workshop about C# 4 at BASTA Spring 2011 in
 author: Rainer Stropek
 date: 2011-02-20
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET]
 permalink: /devblog/2011/02/20/Powerworkshop-C-4-at-BASTA-Spring-2011

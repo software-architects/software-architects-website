@@ -5,6 +5,7 @@ excerpt: In this article you can view the slides for my WPF & Prism Workshop at 
 author: Rainer Stropek
 date: 2012-11-19
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,MEF,Presentations,Silverlight,WPF]
 permalink: /devblog/2012/11/19/WPF-and-Prism-Workshop-at-BASTA-Austria

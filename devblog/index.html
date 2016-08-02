@@ -16,7 +16,8 @@ redirect_from:
                 </div>
                 <div class="col-sm-5">
                     {% if post.bannerimage != null %}
-                    <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+                        <img src="{{ post.bannerimage | prepend: site.baseurl }}" />
+                        <span class="tc-image-footer">{{post.bannerimagesource}}</span>
                     {% endif %}
                 </div>
             {% endfor %}
@@ -24,15 +25,13 @@ redirect_from:
 
         <div class="pagination">
             {% if paginator.previous_page %}
-            <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Previous</a>
-            {% else %}
-            <span class="previous">Previous</span>
+                <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous">Previous</a>
             {% endif %}
+
             <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+            
             {% if paginator.next_page %}
-            <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Next</a>
-            {% else %}
-            <span class="next ">Next</span>
+                <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next">Next</a>
             {% endif %}
         </div>
     </div>

@@ -5,6 +5,7 @@ excerpt: In the coming two weeks I will do a series of talks at various conferen
 author: Rainer Stropek
 date: 2013-10-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,TypeScript]
 permalink: /devblog/2013/10/17/AngularJS-with-TypeScript-and-Windows-Azure-Mobile-Services

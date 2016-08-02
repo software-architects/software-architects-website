@@ -5,6 +5,7 @@ excerpt: In case you are stumbling across a problem where your build does not su
 author: Philipp Aumayr
 date: 2010-07-15
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TFS]
 permalink: /devblog/2010/07/15/CodeAnalysis-Cloned-Configurations-and-TFS-Build-2010

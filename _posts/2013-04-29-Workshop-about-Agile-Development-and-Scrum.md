@@ -5,6 +5,7 @@ excerpt: Last week I did a workshop for a customer on agile software development
 author: Rainer Stropek
 date: 2013-04-29
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Visual Studio]
 permalink: /devblog/2013/04/29/Workshop-about-Agile-Development-and-Scrum

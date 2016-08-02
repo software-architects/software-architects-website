@@ -5,6 +5,7 @@ excerpt: Today I do a session at Herbstcampus Nürnberg about changes in .NET’
 author: Rainer Stropek
 date: 2013-09-03
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,ASP.NET,Azure,C#,SQL]
 permalink: /devblog/2013/09/03/Saving-Money-in-the-Cloud-with-Async-Programming

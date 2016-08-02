@@ -5,6 +5,7 @@ excerpt: Morgen ist es soweit, das Global Azure Bootcamp 2016 findet statt. 120 
 author: Rainer Stropek
 date: 2016-04-15
 bannerimage: /content/images/blog/2016/04/GAB-2016-logo-400x270.png
+bannerimagesource: 
 lang: en
 tags: []
 permalink: /devblog/2016/04/15/Global-Azure-Bootcamp-2016

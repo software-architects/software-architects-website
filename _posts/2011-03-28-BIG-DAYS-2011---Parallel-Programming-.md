@@ -5,6 +5,7 @@ excerpt: At the BIGDAYS 2011, the largest roadshow of Microsoft in Austria with 
 author: Rainer Stropek
 date: 2011-03-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET]
 permalink: /devblog/2011/03/28/BIG-DAYS-2011---Parallel-Programming-

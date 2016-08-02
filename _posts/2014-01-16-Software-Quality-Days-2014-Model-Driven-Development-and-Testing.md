@@ -5,6 +5,7 @@ excerpt: Yesterday we represented Microsoft and their Team Foundation Server in 
 author: Rainer Stropek
 date: 2014-01-16
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#,TFS,Visual Studio]
 permalink: /devblog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-and-Testing

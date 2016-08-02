@@ -5,6 +5,7 @@ excerpt: SaaS is an important trend in the software industry. In this presentati
 author: Rainer Stropek
 date: 2012-11-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2012/11/27/Presentation-about-Business-Model-Evolution-for-SaaS-Dublin-MS-GISV-Summit-2012

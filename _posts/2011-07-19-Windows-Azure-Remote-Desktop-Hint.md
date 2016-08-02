@@ -5,6 +5,7 @@ excerpt: Just a quick heads up -  "Administrator" is not the best user name you 
 author: Simon Opelt
 date: 2011-07-19
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2011/07/19/Windows-Azure-Remote-Desktop-Hint

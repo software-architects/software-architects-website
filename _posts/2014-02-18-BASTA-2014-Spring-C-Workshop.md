@@ -5,6 +5,7 @@ excerpt: At BASTA 2014 Spring conference I will do a full-day C# workshop again.
 author: Rainer Stropek
 date: 2014-02-18
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
 permalink: /devblog/2014/02/18/BASTA-2014-Spring-C-Workshop

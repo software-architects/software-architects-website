@@ -5,6 +5,7 @@ excerpt: At Microsoft TechEd 2013 I do a session about Continuous Integration wi
 author: Rainer Stropek
 date: 2013-06-26
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,ASP.NET,Azure,C#,TFS,Visual Studio]
 permalink: /devblog/2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foundation-Services-and-Windows-Azure-Websites

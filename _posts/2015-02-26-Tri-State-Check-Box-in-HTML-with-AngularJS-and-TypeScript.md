@@ -5,6 +5,7 @@ excerpt: HTML does not support tri-state checkboxes by default. There is an inde
 author: Karin Huber
 date: 2015-02-26
 bannerimage: /content/images/blog/2015/02/tri-state-check-box.png
+bannerimagesource: 
 lang: en
 tags: [AngularJS,HTML,TypeScript]
 permalink: /devblog/2015/02/26/Tri-State-Check-Box-in-HTML-with-AngularJS-and-TypeScript

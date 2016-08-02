@@ -5,6 +5,7 @@ excerpt: I am currently writing an article about TypeScript for the upcoming iss
 author: Rainer Stropek
 date: 2012-11-02
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TypeScript]
 permalink: /devblog/2012/11/02/Sample-Code-for-TypeScript-Article-in-WindowsDeveloper-Magazine

@@ -158,6 +158,16 @@ p.imageCaption {
 
 /* blog */
 .tc-blog-overview {
+    .tc-blogteaser {
+	    img {
+		    width: 100%;
+	    }
+    }
+
+    .tc-image-footer{
+        font-size: 11px;
+    }
+
 	img {
 		width: 100%;
 	}
@@ -166,6 +176,10 @@ p.imageCaption {
 		background-color: #e6e6e6;
 		padding: 10px 0;
 	}
+
+    .tc-image-footer{
+        font-size: 11px;
+    }
 }
 
 .tc-time-cockpit-ad {

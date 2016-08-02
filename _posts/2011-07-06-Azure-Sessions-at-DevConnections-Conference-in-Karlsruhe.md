@@ -5,6 +5,7 @@ excerpt: On Thursday I will do three sessions about the Microsoft Windows Azure 
 author: Rainer Stropek
 date: 2011-07-06
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,Presentations]
 permalink: /devblog/2011/07/06/Azure-Sessions-at-DevConnections-Conference-in-Karlsruhe

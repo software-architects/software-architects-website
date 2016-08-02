@@ -5,6 +5,7 @@ excerpt: In cloud computing scenarios latencies between the application and data
 author: Philipp Aumayr
 date: 2012-11-22
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [ASP.NET]
 permalink: /devblog/2012/11/22/ADONET-45-Async-Data-Reader-and-IAsyncHttpHandler

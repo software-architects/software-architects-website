@@ -5,6 +5,7 @@ excerpt: At BASTA 2014 I gave an interview about the current state of the Micros
 author: Rainer Stropek
 date: 2014-02-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2014/02/27/BASTA-2014-Video-Interview-about-Windows-Azure

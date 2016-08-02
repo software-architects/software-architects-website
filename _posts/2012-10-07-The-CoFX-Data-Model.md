@@ -5,6 +5,7 @@ excerpt: Extensibility is an important aspect of time cockpit and its underlying
 author: Rainer Stropek
 date: 2012-10-07
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /devblog/2012/10/07/The-CoFX-Data-Model

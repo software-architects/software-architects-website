@@ -5,6 +5,7 @@ excerpt: Today I will do my OData session at BASTA conference in Mainz again. Th
 author: Rainer Stropek
 date: 2014-09-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [About]
 permalink: /devblog/2014/09/25/Custom-OData-Provider-Without-Underlying-DB

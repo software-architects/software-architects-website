@@ -5,6 +5,7 @@ excerpt: Like last year Rainer Stropek presents at NRWConf in Wuppertal. In his 
 author: Rainer Stropek
 date: 2011-09-09
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,Presentations]
 permalink: /devblog/2011/09/09/Session-at-NRWConf-2011

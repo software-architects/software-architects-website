@@ -1,0 +1,10 @@
+<Form ModelEntityName="APP_UserNoteSignal" xmlns="clr-namespace:TimeCockpit.Data.DataModel.View;assembly=TimeCockpit.Data">
+  <Tab Header="Note">
+    <Section Header="Description">
+      <SectionColumn>
+        <DateTimeCell Content="=Current.APP_EventTime" Header="Timestamp" ShowTime="True" />
+        <BoundCell Content="=Current.APP_Note" />
+      </SectionColumn>
+    </Section>
+  </Tab>
+</Form>

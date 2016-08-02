@@ -5,6 +5,7 @@ excerpt: At BASTA Spring 2014 I did a presentation about C# Scripting with Proje
 author: Rainer Stropek
 date: 2014-02-28
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
 permalink: /devblog/2014/02/28/BASTA-Spring-2014-C-Scripting-with-Project-Roslyn

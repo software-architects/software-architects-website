@@ -5,6 +5,7 @@ excerpt: Currently I am at the worldwide finals of Microsoft’s Imagine Cup in 
 author: Rainer Stropek
 date: 2013-07-10
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: []
 permalink: /devblog/2013/07/10/Microsoft-Imagine-Cup-in-St-Petersburg

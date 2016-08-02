@@ -5,6 +5,7 @@ excerpt: Spring time is BASTA time  - -) For many years I have had the possibili
 author: Rainer Stropek
 date: 2015-02-19
 bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_cropped.png
+bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
 permalink: /devblog/2015/02/19/BASTA-Spring-2015-C-Workshop

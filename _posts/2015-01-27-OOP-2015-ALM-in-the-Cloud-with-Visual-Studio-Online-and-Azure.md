@@ -5,6 +5,7 @@ excerpt: At OOP 2015 conference, I will do a session about ALM in the cloud. As 
 author: Rainer Stropek
 date: 2015-01-27
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,Project Management,Visual Studio]
 permalink: /devblog/2015/01/27/OOP-2015-ALM-in-the-Cloud-with-Visual-Studio-Online-and-Azure

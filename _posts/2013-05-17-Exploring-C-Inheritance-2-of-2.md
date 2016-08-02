@@ -5,6 +5,7 @@ excerpt: In the first entry discussing C++ inheritance, I covered how basic inhe
 author: Philipp Aumayr
 date: 2013-05-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [CPP,Visual Studio]
 permalink: /devblog/2013/05/17/Exploring-C-Inheritance-2-of-2

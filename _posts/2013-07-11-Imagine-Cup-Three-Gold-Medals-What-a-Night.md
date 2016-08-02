@@ -5,6 +5,7 @@ excerpt: Today was the day of the truth. How would my Indian and Austrian mentee
 author: Rainer Stropek
 date: 2013-07-11
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: []
 permalink: /devblog/2013/07/11/Imagine-Cup-Three-Gold-Medals-What-a-Night

@@ -5,6 +5,7 @@ excerpt: In this article I want to describe the functions of XAML, WPF and Silve
 author: Rainer Stropek
 date: 2008-01-13
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [WPF]
 permalink: /devblog/2008/01/13/Graphic-In-XAML-And-WPF

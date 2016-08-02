@@ -5,6 +5,7 @@ excerpt: On January, 25th the first IT-Visions information day has taken place i
 author: Rainer Stropek
 date: 2016-01-31
 bannerimage: /content/images/blog/2016/01/it-visions-logo.gif
+bannerimagesource: 
 lang: en
 tags: []
 permalink: /devblog/2016/01/31/First-IT-Visions-Information-Day-in-Linz

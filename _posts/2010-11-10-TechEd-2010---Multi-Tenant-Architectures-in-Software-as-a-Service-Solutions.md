@@ -5,6 +5,7 @@ excerpt: Today I will do a session at Microsoft TechEd Europe 2010 in Berlin. In
 author: Rainer Stropek
 date: 2010-11-10
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [time cockpit]
 permalink: /devblog/2010/11/10/TechEd-2010---Multi-Tenant-Architectures-in-Software-as-a-Service-Solutions

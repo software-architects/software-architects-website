@@ -5,6 +5,7 @@ excerpt: In my GitHub Samples repository I share all my newer samples and slide 
 author: Rainer Stropek
 date: 2015-01-14
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
 permalink: /devblog/2015/01/14/Updated-samples-for-Windows-Installer-XML-WiX

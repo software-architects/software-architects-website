@@ -5,6 +5,7 @@ excerpt: Because of a training I had to do recently, I took my existing PInvoke 
 author: Rainer Stropek
 date: 2014-03-03
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
 permalink: /devblog/2014/03/03/PInvoke---Interoperability-between-C-and-C

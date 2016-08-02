@@ -5,6 +5,7 @@ excerpt: One of our partners, IT-Visions, invited me to speak at their VS2013/Wi
 author: Rainer Stropek
 date: 2013-11-04
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,Mobile,Visual Studio]
 permalink: /devblog/2013/11/04/Whats-New-For-Devs-in-Win81

@@ -5,6 +5,7 @@ excerpt: Tomorrow I will do another Microsoft Azure training for sales executive
 author: Rainer Stropek
 date: 2014-09-17
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2014/09/17/Microsoft-Azure-Sales-Training-Resources

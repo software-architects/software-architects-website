@@ -5,6 +5,7 @@ excerpt: Tomorrow I will do a full-day workshop about C# at BASTA Germany. Over 
 author: Rainer Stropek
 date: 2014-09-21
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
 permalink: /devblog/2014/09/21/BASTA-2014-C-Fitness

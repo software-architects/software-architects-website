@@ -5,6 +5,7 @@ excerpt: Today I am here at the WebTech Conference in Munich speaking about clou
 author: Rainer Stropek
 date: 2013-10-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,TypeScript]
 permalink: /devblog/2013/10/30/WebTech-Conference-Munich

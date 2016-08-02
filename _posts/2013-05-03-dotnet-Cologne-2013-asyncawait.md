@@ -5,6 +5,7 @@ excerpt: This year at dotnet Cologne I have proposed a 60 minutes live-coding ta
 author: Rainer Stropek
 date: 2013-05-03
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,C#,Visual Studio,WPF]
 permalink: /devblog/2013/05/03/dotnet-Cologne-2013-asyncawait

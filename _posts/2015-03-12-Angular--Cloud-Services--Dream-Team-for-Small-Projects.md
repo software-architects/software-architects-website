@@ -5,6 +5,7 @@ excerpt: For one of my private hobbies (keeping honey bees), I recently needed a
 author: Rainer Stropek
 date: 2015-03-12
 bannerimage: /content/images/blog/2015/03/RegisterThumb.jpg
+bannerimagesource: 
 lang: en
 tags: [AngularJS,Azure]
 permalink: /devblog/2015/03/12/Angular--Cloud-Services--Dream-Team-for-Small-Projects

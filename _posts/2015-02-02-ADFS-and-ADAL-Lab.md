@@ -5,6 +5,7 @@ excerpt: In this blog article I summarize important links you will need when bui
 author: Rainer Stropek
 date: 2015-02-02
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,Visual Studio]
 permalink: /devblog/2015/02/02/ADFS-and-ADAL-Lab

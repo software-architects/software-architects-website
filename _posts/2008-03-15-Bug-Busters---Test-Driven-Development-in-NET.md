@@ -5,6 +5,7 @@ excerpt: In this article Rainer Stropek and Karin Huber show how Test Driven Dev
 author: Rainer Stropek
 date: 2008-03-15
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET]
 permalink: /devblog/2008/03/15/Bug-Busters---Test-Driven-Development-in-NET

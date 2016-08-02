@@ -5,6 +5,7 @@ excerpt: Gleich geht es auf der BASTA 2014 in Mainz auf die große Bühne für d
 author: Rainer Stropek
 date: 2014-09-23
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Azure]
 permalink: /devblog/2014/09/23/BASTA-2014-Keynote-Die-neue-Offenheit

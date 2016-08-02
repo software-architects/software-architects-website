@@ -5,6 +5,7 @@ excerpt: OData is based on REST but adds necessary standards for fully fledged d
 author: Rainer Stropek
 date: 2014-06-05
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [OData]
 permalink: /devblog/2014/06/05/Video-Introduction-to-OData-Web-APIs

@@ -5,6 +5,7 @@ excerpt: AngularJS samples written in TypeScript are not that common on the inte
 author: Rainer Stropek
 date: 2014-10-24
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TypeScript]
 permalink: /devblog/2014/10/24/AngularJS-Provider-in-TypeScript

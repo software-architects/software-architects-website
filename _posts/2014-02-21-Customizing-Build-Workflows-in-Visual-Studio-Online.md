@@ -5,6 +5,7 @@ excerpt: At TechEd 2013 I did a talk about build in the cloud. For ALM Days next
 author: Rainer Stropek
 date: 2014-02-21
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure,TFS,Visual Studio]
 permalink: /devblog/2014/02/21/Customizing-Build-Workflows-in-Visual-Studio-Online

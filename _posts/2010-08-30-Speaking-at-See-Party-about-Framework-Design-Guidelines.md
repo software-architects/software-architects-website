@@ -5,6 +5,7 @@ excerpt: On saturday I had the opportunity to speak about Framework Design Guide
 author: Rainer Stropek
 date: 2010-08-30
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET]
 permalink: /devblog/2010/08/30/Speaking-at-See-Party-about-Framework-Design-Guidelines

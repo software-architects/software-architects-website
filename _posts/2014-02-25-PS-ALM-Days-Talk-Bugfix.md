@@ -5,6 +5,7 @@ excerpt: My ALM Days talk about building in the cloud went fine. However, the la
 author: Rainer Stropek
 date: 2014-02-25
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [TFS,Visual Studio]
 permalink: /devblog/2014/02/25/PS-ALM-Days-Talk-Bugfix

@@ -5,6 +5,7 @@ excerpt: In September 2012 I did  a session on Microsoft Windows Azure's Table S
 author: Rainer Stropek
 date: 2012-12-20
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
 permalink: /devblog/2012/12/20/Windows-Azure-Table-Service---An-Example

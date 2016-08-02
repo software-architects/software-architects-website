@@ -5,6 +5,7 @@ excerpt: Today I will do a workshop about the Windows Azure Platform at OOP 2011
 author: Rainer Stropek
 date: 2011-01-24
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2011/01/24/Windows-Azure-Workshop-at-OOP-2011

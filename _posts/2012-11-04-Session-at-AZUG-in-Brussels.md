@@ -5,6 +5,7 @@ excerpt: On October 25th 2012 I did a session at the Azure user group in Brussel
 author: Rainer Stropek
 date: 2012-11-04
 bannerimage: 
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2012/11/04/Session-at-AZUG-in-Brussels

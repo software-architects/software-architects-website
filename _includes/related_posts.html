@@ -1,0 +1,33 @@
+{% assign all_posts = site.array %}
+
+{% for post in site.posts | sort: post.date reverse %}
+    {% if post.id == page.id %}
+        {% continue %}
+    {% endif %}
+    
+    {% if all_posts.size < 3 %}    
+        {% for tag in page.tags %}
+            {% if post.tags contains tag %}
+                {% assign all_posts = all_posts | push: post %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+<div class="container-fluid tc-container-lightgray">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="container">
+                <div class="row">
+                    {% for post in all_posts limit:3 %}
+                    <div class="col-sm-4">
+                        <a href="{{site.baseurl}}{{post.permalink}}">{{post.title}} </a>
+                        <br>{{post.excerpt}}<br />
+                        <br> <img src="{{post.bannerimage | prepend: site.baseurl}}" /> <br />
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
