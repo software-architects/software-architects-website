@@ -25,6 +25,7 @@
     "gulp-filter": "^4.0.0",
     "gulp-imagemin": "^3.0.2",
     "gulp-newer": "^1.2.0",
+    "gulp-stripbom": "^1.0.4",
     "gulp-typescript": "^2.13.6",
     "gulp-uglify": "^2.0.0",
     "pump": "^1.0.1",

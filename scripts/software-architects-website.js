@@ -15,11 +15,11 @@ function subscribeToNewsletterWithEmail(email) {
             success: function (data) {
                 if (data["result"] != "success") {
                     ga("send", "event", "Subscribe to newsletter button", "Error occurred");
-                    alert(data["msg"]);
+                    showErrorMessage(data["msg"]);
                 }
                 else {
                     ga("send", "event", "Subscribe to newsletter button", "Subscribed successfully");
-                    alert("Thanks for your registration! You are almost finished. We need to confirm your email address. To complete the subscription process, please click the link in the email we just sent you.");
+                    $('#successModal').modal();
                 }
                 var input = $("#newletterEmail,#mce-EMAIL");
                 input.each(function (element) {
@@ -35,9 +35,15 @@ function subscribeToNewsletterWithEmail(email) {
             error.value = "Please enter a valid email address.";
         }
         else {
-            alert("Please enter a valid email address.");
+            showErrorMessage("Please enter a valid email address.");
         }
     }
+}
+function showErrorMessage(text) {
+    //var rxSelf1 = new RegExp('[Ss]elfhtml');
+    //if(text.match(/<a.*>/g) == null)
+    $(".tc-error-message").append(text);
+    $('#errorModal').modal();
 }
 function subscribeToNewsletter() {
     var email = document.getElementById("mce-EMAIL");

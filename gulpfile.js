@@ -10,8 +10,9 @@ var filter = require("gulp-filter");
 var newer = require("gulp-newer");
 var uglify = require("gulp-uglify");
 var pump = require("pump");
+var stripBom = require("gulp-stripbom");
 
-gulp.task("default", ["copyBootstrapFiles","buildTypescript"], function () {
+gulp.task("default", ["copyBootstrapFiles","buildTypescript","removeBom"], function () {
     // place code for your default task here
 });
 
@@ -36,6 +37,7 @@ gulp.task("images", function () {
     var allFilter = filter(["**/*.jpeg", "**/*.gif", "**/*.jpg", "**/*.png"], { restore: true });
 
     return gulp.src("content/imagesOriginal/**/*")
+        .pipe(newer("content/images"))
         .pipe(allFilter)
         .pipe(imagemin())
         .pipe(allFilter.restore)
@@ -50,4 +52,11 @@ gulp.task("compress", function (cb) {
     ],
       cb
     );
+});
+
+gulp.task("removeBom", function () {
+
+    return gulp.src("**!(.sln)/*!(.sln)")
+            .pipe(stripBom())
+            .pipe(gulp.dest("."));
 });
