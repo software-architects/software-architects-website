@@ -199,9 +199,10 @@ Read more about [JavaScript's object model](https://developer.mozilla.org/en-US/
 * [The *typings* tool](https://github.com/typings/typings)
 * [*typings* Registry](https://github.com/typings/registry)
 * [System.js Loader](https://github.com/systemjs/systemjs)
+* [TSLint](https://palantir.github.io/tslint/) (checks your TypeScript code for readability, maintainability, and functionality errors)
 
 
-## Client-side Develoment with ASP.NET
+## Client-side Development with ASP.NET
 
 ### OWIN
 
