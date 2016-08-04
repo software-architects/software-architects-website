@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/Dom-Koeln-cropped.jpg
 bannerimagesource: 
 lang: en
 tags: [.NET,ASP.NET]
+ref: 
 permalink: /devblog/2015/05/12/Dotnet-Cologne-OWIN-and-ASPNET-5-Fundamentals-Video
 ---
 

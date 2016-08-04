@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,Visual Studio]
+ref: 
 permalink: /devblog/2014/03/20/SNEK-Conference-Tools-for-NET-Developers
 ---
 

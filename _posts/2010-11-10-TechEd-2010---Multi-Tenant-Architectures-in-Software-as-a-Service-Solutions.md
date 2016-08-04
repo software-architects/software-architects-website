@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /devblog/2010/11/10/TechEd-2010---Multi-Tenant-Architectures-in-Software-as-a-Service-Solutions
 ---
 

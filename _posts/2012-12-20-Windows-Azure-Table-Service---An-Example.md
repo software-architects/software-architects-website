@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
+ref: 
 permalink: /devblog/2012/12/20/Windows-Azure-Table-Service---An-Example
 ---
 

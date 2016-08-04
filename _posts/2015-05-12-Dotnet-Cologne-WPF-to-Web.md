@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/Dom-Koeln-cropped.jpg
 bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit]
+ref: 
 permalink: /devblog/2015/05/12/Dotnet-Cologne-WPF-to-Web
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2014/09/17/Microsoft-Azure-Sales-Training-Resources
 ---
 

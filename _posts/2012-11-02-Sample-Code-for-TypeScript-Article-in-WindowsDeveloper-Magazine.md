@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TypeScript]
+ref: 
 permalink: /devblog/2012/11/02/Sample-Code-for-TypeScript-Article-in-WindowsDeveloper-Magazine
 ---
 

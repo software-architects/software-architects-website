@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2013/02/21/Using-WAWS-for-Tenant-Isolation
 ---
 

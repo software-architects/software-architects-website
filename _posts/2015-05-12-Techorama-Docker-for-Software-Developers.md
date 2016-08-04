@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/Brussels-Atomium-cropped.jpg
 bannerimagesource: 
 lang: en
 tags: [ASP.NET]
+ref: 
 permalink: /devblog/2015/05/12/Techorama-Docker-for-Software-Developers
 ---
 

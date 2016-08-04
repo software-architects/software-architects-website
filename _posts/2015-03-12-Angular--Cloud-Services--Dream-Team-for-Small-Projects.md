@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/03/RegisterThumb.jpg
 bannerimagesource: 
 lang: en
 tags: [AngularJS,Azure]
+ref: 
 permalink: /devblog/2015/03/12/Angular--Cloud-Services--Dream-Team-for-Small-Projects
 ---
 

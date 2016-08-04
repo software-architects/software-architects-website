@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2014/02/27/BASTA-2014-Video-Interview-about-Windows-Azure
 ---
 

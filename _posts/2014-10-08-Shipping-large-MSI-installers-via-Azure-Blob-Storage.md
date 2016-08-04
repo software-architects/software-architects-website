@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,Visual Studio]
+ref: 
 permalink: /devblog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Storage
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
+ref: 
 permalink: /devblog/2015/01/14/Updated-samples-for-Windows-Installer-XML-WiX
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2012/11/04/Session-at-AZUG-in-Brussels
 ---
 

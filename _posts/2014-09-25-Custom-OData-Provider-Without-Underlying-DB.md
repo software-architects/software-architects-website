@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [About]
+ref: 
 permalink: /devblog/2014/09/25/Custom-OData-Provider-Without-Underlying-DB
 ---
 

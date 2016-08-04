@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,WPF]
+ref: 
 permalink: /devblog/2012/11/22/BASTA-Austria-2012-Parallel-and-Async-Programming-in-C
 ---
 

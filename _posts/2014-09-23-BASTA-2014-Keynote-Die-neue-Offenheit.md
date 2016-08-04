@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure]
+ref: 
 permalink: /devblog/2014/09/23/BASTA-2014-Keynote-Die-neue-Offenheit
 ---
 

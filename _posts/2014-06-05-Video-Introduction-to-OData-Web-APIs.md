@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [OData]
+ref: 
 permalink: /devblog/2014/06/05/Video-Introduction-to-OData-Web-APIs
 ---
 

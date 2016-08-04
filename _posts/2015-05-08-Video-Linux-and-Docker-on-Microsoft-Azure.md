@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/linux-wochen-wien.png
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2015/05/08/Video-Linux-and-Docker-on-Microsoft-Azure
 ---
 

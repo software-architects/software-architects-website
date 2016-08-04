@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Visual Studio]
+ref: 
 permalink: /devblog/2013/04/29/Workshop-about-Agile-Development-and-Scrum
 ---
 

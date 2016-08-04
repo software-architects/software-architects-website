@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,SQL]
+ref: 
 permalink: /devblog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TypeScript]
+ref: 
 permalink: /devblog/2012/11/22/BASTA-Austria-2012-TypeScript---JavaScript-on-Steroids
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/08/techplauscherl-00-yeoman.png
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
+ref: 
 permalink: /devblog/2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-Azure
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,Project Management,Visual Studio]
+ref: 
 permalink: /devblog/2013/11/05/Sourcecode-Review-Criteria
 ---
 

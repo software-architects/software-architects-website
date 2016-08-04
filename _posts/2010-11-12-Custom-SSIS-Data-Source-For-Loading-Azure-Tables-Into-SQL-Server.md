@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2010/11/12/Custom-SSIS-Data-Source-For-Loading-Azure-Tables-Into-SQL-Server
 ---
 

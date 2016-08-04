@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,Visual Studio]
+ref: 
 permalink: /devblog/2015/02/02/ADFS-and-ADAL-Lab
 ---
 

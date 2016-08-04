@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [ASP.NET,Azure,TFS]
+ref: 
 permalink: /devblog/2012/11/28/Continuous-Integration-With-Windows-Azure-Websites-and-Team-Foundation-Services
 ---
 

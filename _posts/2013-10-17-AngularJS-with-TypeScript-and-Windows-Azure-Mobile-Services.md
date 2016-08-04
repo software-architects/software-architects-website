@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,TypeScript]
+ref: 
 permalink: /devblog/2013/10/17/AngularJS-with-TypeScript-and-Windows-Azure-Mobile-Services
 ---
 

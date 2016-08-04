@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#,TFS]
+ref: 
 permalink: /devblog/2013/06/10/Custom-Code-Activities-in-TF-Service-Build
 ---
 

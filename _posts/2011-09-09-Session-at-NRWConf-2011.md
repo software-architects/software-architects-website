@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,Presentations]
+ref: 
 permalink: /devblog/2011/09/09/Session-at-NRWConf-2011
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2012/11/27/Presentation-about-Business-Model-Evolution-for-SaaS-Dublin-MS-GISV-Summit-2012
 ---
 

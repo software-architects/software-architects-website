@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2013/11/18/Okay-the-Cloud-But-whats-in-it-for-me-and-my-business
 ---
 

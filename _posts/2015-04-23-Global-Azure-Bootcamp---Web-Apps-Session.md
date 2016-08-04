@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2015/04/23/Global-Azure-Bootcamp---Web-Apps-Session
 ---
 

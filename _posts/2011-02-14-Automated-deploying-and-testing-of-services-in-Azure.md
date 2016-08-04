@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2011/02/14/Automated-deploying-and-testing-of-services-in-Azure
 ---
 

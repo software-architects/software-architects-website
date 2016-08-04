@@ -40,8 +40,7 @@ function subscribeToNewsletterWithEmail(email) {
     }
 }
 function showErrorMessage(text) {
-    //var rxSelf1 = new RegExp('[Ss]elfhtml');
-    //if(text.match(/<a.*>/g) == null)
+    $(".tc-error-message").empty();
     $(".tc-error-message").append(text);
     $('#errorModal').modal();
 }

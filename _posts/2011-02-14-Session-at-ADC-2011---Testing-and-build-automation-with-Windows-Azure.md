@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2011/02/14/Session-at-ADC-2011---Testing-and-build-automation-with-Windows-Azure
 ---
 

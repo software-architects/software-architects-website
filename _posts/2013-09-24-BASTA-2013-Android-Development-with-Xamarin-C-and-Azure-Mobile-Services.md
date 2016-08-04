@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Android,Azure,Visual Studio]
+ref: 
 permalink: /devblog/2013/09/24/BASTA-2013-Android-Development-with-Xamarin-C-and-Azure-Mobile-Services
 ---
 

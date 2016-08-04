@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2011/06/06/Storage-Deep-Dive--DevConnections-in-Karlsruhe-
 ---
 

@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_crop
 bannerimagesource: 
 lang: en
 tags: [Azure,C#]
+ref: 
 permalink: /devblog/2015/04/22/BASTA-Videos-German-Docker-and-Performance-Optimization
 ---
 

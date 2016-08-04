@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/Webinar-Informationssicherheit-Titel.p
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2015/05/22/Webinar-Information-Security-in-the-Azure-Cloud-German
 ---
 

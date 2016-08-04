@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET]
+ref: 
 permalink: /devblog/2011/03/28/BIG-DAYS-2011---Parallel-Programming-
 ---
 

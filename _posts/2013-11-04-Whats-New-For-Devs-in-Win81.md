@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,Mobile,Visual Studio]
+ref: 
 permalink: /devblog/2013/11/04/Whats-New-For-Devs-in-Win81
 ---
 

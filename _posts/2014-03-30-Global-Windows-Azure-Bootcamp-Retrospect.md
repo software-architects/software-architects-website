@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2014/03/30/Global-Windows-Azure-Bootcamp-Retrospect
 ---
 

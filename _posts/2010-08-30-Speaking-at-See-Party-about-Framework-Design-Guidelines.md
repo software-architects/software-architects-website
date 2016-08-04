@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET]
+ref: 
 permalink: /devblog/2010/08/30/Speaking-at-See-Party-about-Framework-Design-Guidelines
 ---
 

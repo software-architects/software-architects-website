@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
+ref: 
 permalink: /devblog/2014/02/25/ALM-Days-Unit-Testing-with-Stubs-Shims-and-MS-Fakes
 ---
 

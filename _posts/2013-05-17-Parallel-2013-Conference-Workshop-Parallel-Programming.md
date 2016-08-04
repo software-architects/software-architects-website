@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,Visual Studio]
+ref: 
 permalink: /devblog/2013/05/17/Parallel-2013-Conference-Workshop-Parallel-Programming
 ---
 

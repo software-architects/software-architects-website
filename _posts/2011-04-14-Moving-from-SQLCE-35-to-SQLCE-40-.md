@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [SQLCE]
+ref: 
 permalink: /devblog/2011/04/14/Moving-from-SQLCE-35-to-SQLCE-40-
 ---
 

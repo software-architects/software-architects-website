@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TFS]
+ref: 
 permalink: /devblog/2010/07/15/CodeAnalysis-Cloned-Configurations-and-TFS-Build-2010
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2011/01/24/Windows-Azure-Workshop-at-OOP-2011
 ---
 

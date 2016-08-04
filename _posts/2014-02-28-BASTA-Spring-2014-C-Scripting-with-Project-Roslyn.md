@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
+ref: 
 permalink: /devblog/2014/02/28/BASTA-Spring-2014-C-Scripting-with-Project-Roslyn
 ---
 

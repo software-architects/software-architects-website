@@ -44,6 +44,7 @@ function subscribeToNewsletterWithEmail(email: string) {
 
 function showErrorMessage(text: any) {
 
+    $(".tc-error-message").empty();
     $(".tc-error-message").append(text);
     $('#errorModal').modal();
 }

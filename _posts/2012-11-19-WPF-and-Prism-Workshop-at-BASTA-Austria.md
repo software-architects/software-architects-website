@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,MEF,Presentations,Silverlight,WPF]
+ref: 
 permalink: /devblog/2012/11/19/WPF-and-Prism-Workshop-at-BASTA-Austria
 ---
 

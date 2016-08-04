@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET]
+ref: 
 permalink: /devblog/2010/12/07/Hands-On-Labs-Visual-Studio-IDE
 ---
 

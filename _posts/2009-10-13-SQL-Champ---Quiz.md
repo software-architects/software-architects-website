@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [SQL]
+ref: 
 permalink: /devblog/2009/10/13/SQL-Champ---Quiz
 ---
 

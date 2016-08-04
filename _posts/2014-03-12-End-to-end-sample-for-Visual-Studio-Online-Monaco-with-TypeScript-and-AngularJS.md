@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,time cockpit,TypeScript,Visual Studio]
+ref: 
 permalink: /devblog/2014/03/12/End-to-end-sample-for-Visual-Studio-Online-Monaco-with-TypeScript-and-AngularJS
 ---
 

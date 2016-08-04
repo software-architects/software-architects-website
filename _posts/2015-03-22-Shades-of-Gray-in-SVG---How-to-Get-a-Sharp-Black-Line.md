@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/03/lines-in-svg.png
 bannerimagesource: 
 lang: en
 tags: [HTML,HTML5,SVG]
+ref: 
 permalink: /devblog/2015/03/22/Shades-of-Gray-in-SVG---How-to-Get-a-Sharp-Black-Line
 ---
 

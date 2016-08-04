@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [CPP,Visual Studio]
+ref: 
 permalink: /devblog/2013/03/25/Workshop-Whats-New-in-Visual-Studio-2012-for-C-Developers
 ---
 

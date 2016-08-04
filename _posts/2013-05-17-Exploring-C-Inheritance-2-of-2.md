@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [CPP,Visual Studio]
+ref: 
 permalink: /devblog/2013/05/17/Exploring-C-Inheritance-2-of-2
 ---
 

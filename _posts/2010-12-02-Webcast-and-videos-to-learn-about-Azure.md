@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2010/12/02/Webcast-and-videos-to-learn-about-Azure
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
+ref: 
 permalink: /devblog/2014/09/22/Profiling-of-DB-Related-C-Applications
 ---
 

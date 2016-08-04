@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/02/BASTA_SE_15_Speakerbutton_300x250_crop
 bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
+ref: 
 permalink: /devblog/2015/02/25/BASTA-Spring-2015-C-and-NET-Performancetuning
 ---
 

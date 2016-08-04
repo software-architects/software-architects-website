@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Silverlight,WPF]
+ref: 
 permalink: /devblog/2010/09/10/MVVM-Tutorial-from-Start-to-Finish
 ---
 

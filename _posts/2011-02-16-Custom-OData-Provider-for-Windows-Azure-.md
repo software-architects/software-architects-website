@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2011/02/16/Custom-OData-Provider-for-Windows-Azure-
 ---
 

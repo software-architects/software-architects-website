@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TypeScript,Visual Studio]
+ref: 
 permalink: /devblog/2014/06/04/Learn-by-Example-AngularJS-NodeJS-and-Typescript
 ---
 

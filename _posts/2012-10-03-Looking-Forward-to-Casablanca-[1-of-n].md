@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [C]
+ref: 
 permalink: /devblog/2012/10/03/Looking-Forward-to-Casablanca-[1-of-n]
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Presentations]
+ref: 
 permalink: /devblog/2011/10/24/BASTA-2011-Workshop-About-Software-Factories
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Mobile,OData,TypeScript]
+ref: 
 permalink: /devblog/2014/06/17/Telerik-Kendo-UI-vs-AngularJS
 ---
 

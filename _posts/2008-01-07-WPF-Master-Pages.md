@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [WPF]
+ref: 
 permalink: /devblog/2008/01/07/WPF-Master-Pages
 ---
 

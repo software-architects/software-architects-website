@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,TFS,Visual Studio]
+ref: 
 permalink: /devblog/2014/02/21/Customizing-Build-Workflows-in-Visual-Studio-Online
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TFS]
+ref: 
 permalink: /devblog/2011/02/23/TFS-Build-and-Checked-In-Assemblies-
 ---
 

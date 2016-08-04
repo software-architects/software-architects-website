@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,TypeScript]
+ref: 
 permalink: /devblog/2013/10/30/WebTech-Conference-Munich
 ---
 

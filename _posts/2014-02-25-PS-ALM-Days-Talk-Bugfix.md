@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TFS,Visual Studio]
+ref: 
 permalink: /devblog/2014/02/25/PS-ALM-Days-Talk-Bugfix
 ---
 

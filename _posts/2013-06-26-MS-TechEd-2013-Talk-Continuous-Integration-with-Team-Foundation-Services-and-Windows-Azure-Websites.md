@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,ASP.NET,Azure,C#,TFS,Visual Studio]
+ref: 
 permalink: /devblog/2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foundation-Services-and-Windows-Azure-Websites
 ---
 

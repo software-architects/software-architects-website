@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
+ref: 
 permalink: /devblog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers
 ---
 

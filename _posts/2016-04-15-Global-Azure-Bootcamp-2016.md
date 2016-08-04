@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2016/04/GAB-2016-logo-400x270.png
 bannerimagesource: 
 lang: en
 tags: []
+ref: 
 permalink: /devblog/2016/04/15/Global-Azure-Bootcamp-2016
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [MEF]
+ref: 
 permalink: /devblog/2010/12/06/Hand-On-Labs-MEF
 ---
 

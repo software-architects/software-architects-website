@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Visual Studio]
+ref: 
 permalink: /devblog/2014/10/06/Windows-Installer-XML-Training
 ---
 

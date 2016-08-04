@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,ASP.NET,Azure,C#,SQL]
+ref: 
 permalink: /devblog/2013/09/03/Saving-Money-in-the-Cloud-with-Async-Programming
 ---
 

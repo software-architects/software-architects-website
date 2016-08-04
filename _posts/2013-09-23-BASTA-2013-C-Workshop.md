@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,MEF,Visual Studio,WPF]
+ref: 
 permalink: /devblog/2013/09/23/BASTA-2013-C-Workshop
 ---
 

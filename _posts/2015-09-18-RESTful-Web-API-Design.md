@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/09/restful-web-api-design-title-small.png
 bannerimagesource: 
 lang: en
 tags: [AngularJS,HTML5,OData,TypeScript]
+ref: 
 permalink: /devblog/2015/09/18/RESTful-Web-API-Design
 ---
 

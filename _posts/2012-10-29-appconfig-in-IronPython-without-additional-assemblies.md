@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Iron Python]
+ref: 
 permalink: /devblog/2012/10/29/appconfig-in-IronPython-without-additional-assemblies
 ---
 

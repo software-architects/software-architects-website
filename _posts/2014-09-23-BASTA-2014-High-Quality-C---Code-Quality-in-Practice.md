@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [C#]
+ref: 
 permalink: /devblog/2014/09/23/BASTA-2014-High-Quality-C---Code-Quality-in-Practice
 ---
 

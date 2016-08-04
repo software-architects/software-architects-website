@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2011/07/19/Windows-Azure-Remote-Desktop-Hint
 ---
 

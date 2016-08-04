@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET]
+ref: 
 permalink: /devblog/2010/12/08/Hands-On-Labs-StyleCop-and-Code-Analysis
 ---
 

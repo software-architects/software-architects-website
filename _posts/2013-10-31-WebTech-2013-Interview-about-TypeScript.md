@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TypeScript]
+ref: 
 permalink: /devblog/2013/10/31/WebTech-2013-Interview-about-TypeScript
 ---
 

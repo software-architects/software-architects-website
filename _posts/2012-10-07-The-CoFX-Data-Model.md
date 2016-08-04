@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [time cockpit]
+ref: 
 permalink: /devblog/2012/10/07/The-CoFX-Data-Model
 ---
 

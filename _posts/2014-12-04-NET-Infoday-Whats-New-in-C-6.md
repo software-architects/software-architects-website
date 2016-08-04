@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [C#,Visual Studio]
+ref: 
 permalink: /devblog/2014/12/04/NET-Infoday-Whats-New-in-C-6
 ---
 

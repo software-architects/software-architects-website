@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,Azure,C#]
+ref: 
 permalink: /devblog/2014/09/21/BASTA-2014-C-Fitness
 ---
 

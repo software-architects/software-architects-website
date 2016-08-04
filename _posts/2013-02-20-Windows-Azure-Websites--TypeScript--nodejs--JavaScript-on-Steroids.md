@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,TypeScript]
+ref: 
 permalink: /devblog/2013/02/20/Windows-Azure-Websites--TypeScript--nodejs--JavaScript-on-Steroids
 ---
 

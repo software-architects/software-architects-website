@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,WPF]
+ref: 
 permalink: /devblog/2012/11/19/WPF-CheckBox-With-Confirmation-Message
 ---
 

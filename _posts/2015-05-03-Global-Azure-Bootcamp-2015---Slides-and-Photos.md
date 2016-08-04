@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/05/Global-Azure-Bootcamp-small.png.jpg
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2015/05/03/Global-Azure-Bootcamp-2015---Slides-and-Photos
 ---
 

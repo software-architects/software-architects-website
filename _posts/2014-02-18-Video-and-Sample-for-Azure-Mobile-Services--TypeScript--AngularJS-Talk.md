@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [TypeScript,Visual Studio]
+ref: 
 permalink: /devblog/2014/02/18/Video-and-Sample-for-Azure-Mobile-Services--TypeScript--AngularJS-Talk
 ---
 

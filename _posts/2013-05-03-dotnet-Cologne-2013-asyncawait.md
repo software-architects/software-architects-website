@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET,C#,Visual Studio,WPF]
+ref: 
 permalink: /devblog/2013/05/03/dotnet-Cologne-2013-asyncawait
 ---
 

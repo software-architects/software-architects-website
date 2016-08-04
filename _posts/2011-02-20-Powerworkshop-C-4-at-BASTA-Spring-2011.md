@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [.NET]
+ref: 
 permalink: /devblog/2011/02/20/Powerworkshop-C-4-at-BASTA-Spring-2011
 ---
 

@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure]
+ref: 
 permalink: /devblog/2013/12/05/Cloudconf-2013-Berlin-Windows-Azure-Active-Directory
 ---
 

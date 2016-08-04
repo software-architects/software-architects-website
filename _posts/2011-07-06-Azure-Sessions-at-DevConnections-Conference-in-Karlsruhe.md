@@ -8,6 +8,7 @@ bannerimage:
 bannerimagesource: 
 lang: en
 tags: [Azure,Presentations]
+ref: 
 permalink: /devblog/2011/07/06/Azure-Sessions-at-DevConnections-Conference-in-Karlsruhe
 ---
 

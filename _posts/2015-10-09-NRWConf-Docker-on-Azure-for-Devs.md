@@ -8,6 +8,7 @@ bannerimage: /content/images/blog/2015/09/Docker_(container_engine)_logo_small.p
 bannerimagesource: Image source -  <a href="https://de.wikipedia.org/wiki/Docker_(Software)#/media/File:Docker_(container_engine)_logo.png" target="_blank">https://de.wikipedia.org/wiki/Docker_(Software)#/media/File:Docker_(container_engine)_logo.png</a>
 lang: en
 tags: [About]
+ref: 
 permalink: /devblog/2015/10/09/NRWConf-Docker-on-Azure-for-Devs
 ---
 
