@@ -12,7 +12,7 @@ var uglify = require("gulp-uglify");
 var pump = require("pump");
 var stripBom = require("gulp-stripbom");
 
-gulp.task("default", ["copyBootstrapFiles","buildTypescript","removeBom"], function () {
+gulp.task("default", ["copyBootstrapFiles", "buildTypescript", "images", "compress", "removeBom"], function () {
     // place code for your default task here
 });
 
