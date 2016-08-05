@@ -84,7 +84,7 @@ $(document).ready(function () {
     var setUl = false;
     if (result.length > 0) {
         var text = "<ul>";
-        var title = $(".tc-blog-content").find("h2, h3, h4");
+        var title = $(".col-sm-8").find("h2, h3, h4");
         title.each(function (index, value) {
             if (index + 1 < title.length) {
                 text += "<li> <a id='link" + index + "' href='#title" + index + "'>" + value.innerHTML + "</a>  </li>";
@@ -105,6 +105,12 @@ $(document).ready(function () {
         });
         text += "</ul>";
         result.append(text);
+        $("#summaryAffix").affix({
+            offset: {
+                top: $(".header").outerHeight(true),
+                bottom: $(".tc-container.tc-container-lightblue.tc-related-posts-container").outerHeight(true) + $(".footer").outerHeight(true)
+            }
+        });
     }
 });
 (function (i, s, o, g, r, any, a, m) {

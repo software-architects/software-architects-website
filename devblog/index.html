@@ -26,17 +26,17 @@ redirect_from:
 			<div class="tc-pager">
 				<div>
 					{% if paginator.previous_page %}
-					<a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
+					    <a href="{{site.baseurl}}{{ paginator.previous_page_path }}" class="previous"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span></a>
 					{% else %}
-					<span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
+					    <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
 					{% endif %}
 				</div>
 				<div class="tc-page-number">{{ paginator.page }} / {{ paginator.total_pages }}</div>
 				<div>
 					{% if paginator.next_page %}
-					<a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
+					    <a href="{{site.baseurl}}{{ paginator.next_page_path }}" class="next"><span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span></a>
 					{% else %}
-					<span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+					    <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
 					{% endif %}
 				</div>
 			</div>

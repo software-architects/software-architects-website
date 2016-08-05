@@ -1,5 +1,6 @@
 <h3>Tags</h3>
 
+<!-- get the tag in the right case -->
 {% capture tags %}
 {% for tag in site.tags %}
 {{ tag[0] | downcase }},{{ tag[0] }}{% unless forloop.last %}|{% endunless %}

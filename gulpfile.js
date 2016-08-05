@@ -33,6 +33,7 @@ gulp.task("buildTypescript", function () {
         .pipe(gulp.dest("scripts"));
 });
 
+//Compress all images
 gulp.task("images", function () {
     var allFilter = filter(["**/*.jpeg", "**/*.gif", "**/*.jpg", "**/*.png"], { restore: true });
 
@@ -44,6 +45,7 @@ gulp.task("images", function () {
         .pipe(gulp.dest("content/images"))
 });
 
+//Compress all javascript files
 gulp.task("compress", function (cb) {
     pump([
           gulp.src("scripts/**/*"),
@@ -54,6 +56,7 @@ gulp.task("compress", function (cb) {
     );
 });
 
+//Remove the byte order mark from all files
 gulp.task("removeBom", function () {
 
     return gulp.src("**!(.sln)/*!(.sln)")
