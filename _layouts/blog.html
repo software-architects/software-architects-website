@@ -7,21 +7,18 @@ layout: default
 			<div class="row">
 				<div class="col-sm-8">
 					<h1>{{ page.title }}</h1>
-
 					{{ content }}
 				</div>
 				<div class="col-sm-4">
-                    <!--<div data-spy="affix" id="summaryAffix">-->
-                        {% if page.showtoc == true %}
-                           <h3>Content</h3>
-                            <div class="tc-toc"></div>
-                        {% endif %}
+                    {% if page.showtoc == true %}
+                        <h3>Content</h3>
+                        <div class="tc-toc"></div>
+                    {% endif %}
 
-                        {% include timecockpitad.html %}
-                        {% include tagcloud.html %}
-                        {% include authorcloud.html %}
-                    <!--></div><!-->
-				</div>
+                    {% include timecockpitad.html %}
+                    {% include tagcloud.html %}
+                    {% include authorcloud.html %}
+			    </div>
 			</div>
 		</div>
 	</div>

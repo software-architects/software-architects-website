@@ -27,7 +27,7 @@ title: Tags
             {% if counter != 0 %}
                 <h2 id="{{ taglist[1] }}">{{ taglist[1] }}</h2>
             {% else %}
-                {%continue %}
+                {% continue %}
             {% endif %}
 
             {% assign taglist = tag | split:',' %}
