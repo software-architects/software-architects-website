@@ -58,6 +58,8 @@ input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+    border-radius: $border-radius-button;
+    transition: background-color .2s ease-in-out;
 
 	span.glyphicon {
 		top: 2px;
@@ -65,7 +67,7 @@ input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
 	}
 
 	&:hover {
-		background-color: darken($main-color, 20%);
+		background-color: darken($main-color, 10%);
 	}
 }
 
@@ -207,7 +209,7 @@ p.imageCaption {
         -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.33);
         box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.33);
         border-radius: $border-radius;
-        transition: transform .3s ease-in-out;
+        transition: transform .2s ease-in-out;
 
         &:hover {
             transform: scale(1.03);

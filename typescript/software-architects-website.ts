@@ -83,60 +83,60 @@ function sendForm(eventData: any) {
 
 
 
-$(document).ready(function () {
-    // add error handling to forms
-    $("input,select,textarea").blur((eventObject: JQueryEventObject) => {
-        $(eventObject.target).addClass("tc-touched");
+//$(document).ready(function () {
+//    // add error handling for forms
+//    //$("input,select,textarea").blur((eventObject: JQueryEventObject) => {
+//    //    $(eventObject.target).addClass("tc-touched");
 
-        if ($(eventObject.target).is(":invalid")) {
-            $("span[data-message-for='" + eventObject.target.id + "']").addClass("tc-error-visible");
-        }
-        else {
-            $("span[data-message-for='" + eventObject.target.id + "']").removeClass("tc-error-visible");
-        }
-    });
+//    //    if ($(eventObject.target).is(":invalid")) {
+//    //        $("span[data-message-for='" + eventObject.target.id + "']").addClass("tc-error-visible");
+//    //    }
+//    //    else {
+//    //        $("span[data-message-for='" + eventObject.target.id + "']").removeClass("tc-error-visible");
+//    //    }
+//    //});
 
-    // add table of contents to blog articles
-    var result = $(".tc-toc");
-    var setUl = false;
+//    // add table of contents to blog articles
+//    var result = $(".tc-toc");
+//    var setUl = false;
 
-    if (result.length > 0) {
-        var text = "<ul>";
-        var title = $(".col-sm-8").find("h2, h3, h4");
+//    if (result.length > 0) {
+//        var text = "<ul>";
+//        var title = $(".col-sm-8").find("h2, h3, h4");
 
-        title.each((index: number, value: Element) => {
-            if (index + 1 < title.length) {
+//        title.each((index: number, value: Element) => {
+//            if (index + 1 < title.length) {
 
-                text += "<li> <a id='link" + index + "' href='#title" + index + "'>" + value.innerHTML + "</a>  </li>";
-                value.setAttribute("id", "title" + index);
+//                text += "<li> <a id='link" + index + "' href='#title" + index + "'>" + value.innerHTML + "</a>  </li>";
+//                value.setAttribute("id", "title" + index);
 
-                if (title[index + 1].tagName != "H2") {
-                    if (!setUl) {
-                        setUl = true;
-                        text += "<ul>";
-                    }
-                } else {
-                    if (setUl) {
-                        text += "</ul>";
-                        setUl = false;
-                    }
-                }
-            }
-        });
+//                if (title[index + 1].tagName != "H2") {
+//                    if (!setUl) {
+//                        setUl = true;
+//                        text += "<ul>";
+//                    }
+//                } else {
+//                    if (setUl) {
+//                        text += "</ul>";
+//                        setUl = false;
+//                    }
+//                }
+//            }
+//        });
 
-        text += "</ul>";
-        result.append(text);
+//        text += "</ul>";
+//        result.append(text);
 
-        //setting top and bottom for affix
-        $("#summaryAffix").affix({
-            offset:
-            {
-                top: $(".header").outerHeight(true),
-                bottom: $(".tc-container.tc-container-lightblue.tc-related-posts-container").outerHeight(true) + $(".footer").outerHeight(true)
-            }
-        });
-    }
-});
+//        //setting top and bottom for affix
+//        //$("#summaryAffix").affix({
+//        //    offset:
+//        //    {
+//        //        top: $(".header").outerHeight(true),
+//        //        bottom: $(".tc-container.tc-container-lightblue.tc-related-posts-container").outerHeight(true) + $(".footer").outerHeight(true)
+//        //    }
+//        //});
+//    }
+//});
 
 (function (i: any, s: any, o: any, g: any, r: any: any, a: any, m: any) {
 i["GoogleAnalyticsObject"] = r; i[r] = i[r] || function () {
