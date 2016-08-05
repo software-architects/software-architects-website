@@ -14,8 +14,13 @@
     {% endif %}
 {% endfor %}
 
-<div class="tc-container tc-container-lightblue tc-related-posts-container" id="tc-related-posts-container">
+<div class="tc-container tc-container-blue tc-related-posts-container" id="tc-related-posts-container">
 	<div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Related Posts</h3>
+            </div>
+        </div>
 		<div class="row row-eq-height">
 			{% for post in all_posts limit:3 %}
 			<div class="col-sm-4">
