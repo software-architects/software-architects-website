@@ -70,17 +70,10 @@ permalink: /devblog/2016/04/18/Global-Azure-Bootcamp-2016---Nachlese
 	<div class="col-xs-6 col-sm-4 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-24.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-24.jpg" /></a></div>
 	<div class="col-xs-6 col-sm-4 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-25.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-25.jpg" /></a></div>
 	<div class="col-xs-6 col-sm-4 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-27.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-27.jpg" /></a></div>
+</div>
+<div class="row tc-image-gallery">
 	<div class="col-xs-6 col-sm-4 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-2.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-2.jpg" /></a></div>
 	<div class="col-xs-6 col-sm-4 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-19.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-19.jpg" /></a></div>
 	<div class="col-xs-6 col-sm-4 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-20.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-20.jpg" /></a></div>
 	<div class="col-xs-6 col-sm-4 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-26.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/GAB/2016-04-08 CoderDojo-26.jpg" /></a></div>
 </div>
-
-<function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaFolder" value="MediaArchive:fbed2258-6c4b-48f0-80c6-e21d31652b99" />
-  <param name="ThumbnailMaxWidth" value="128" />
-  <param name="ThumbnailMaxHeight" value="128" />
-  <param name="ImageMaxWidth" value="1280" />
-  <param name="ImageMaxHeight" value="1024" />
-  <param name="AutoSquareThumbnails" value="True" />
-</function>
