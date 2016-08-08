@@ -2,83 +2,83 @@
 @import "_variables.scss";
 
 p.highlighted {
-	text-align: center;
-	background-color: $main-color;
-	color: #fff;
-	padding: 20px 40px;
-    border-radius: $border-radius;
+    text-align: center;
+    background-color: $main-color;
+    color: #fff;
+    padding: 20px 40px;
+    /*border-radius: $border-radius;*/
 }
 
 p.showcase {
-	background-color: #ededed;
-	padding: 20px 20px;
-    border-radius: $border-radius;
+    background-color: #ededed;
+    padding: 20px 20px;
+    /*border-radius: $border-radius;*/
 }
 
 span.highlightedText {
-	font-size: 30px;
+    font-size: 30px;
 }
 
 .customerLogos {
-	 a {
-		display: block;
-		height: 100px;
-		margin-bottom: 20px;
-		border: 1px solid #ddd;
-		padding: 10px;
-		text-align: center;
-	}
+    a {
+        display: block;
+        height: 100px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
 
-	img {
-		max-height: 100%;
-		position: relative;
-		top: 50%;
-		-moz-transform: translateY(-50%);
-		-ms-transform: translateY(-50%);
-		-o-transform: translateY(-50%);
-		-webkit-transform: translateY(-50%);
-		transform: translateY(-50%);
-	}
+    img {
+        max-height: 100%;
+        position: relative;
+        top: 50%;
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
 }
 
 p.tc-action-button {
-	margin-top: 40px;
+    margin-top: 40px;
 }
 
 input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
-	color: #fff !important;
-	background-color: $main-color;
-	border: none;
-	line-height: 20px;
-	padding: 10px 20px;
-	font-size: 16px;
-	text-transform: uppercase;
-	cursor: pointer;
-	text-decoration: none;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+    color: #fff !important;
+    background-color: $main-color;
+    border: none;
+    line-height: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     border-radius: $border-radius-button;
     transition: background-color .2s ease-in-out;
 
-	span.glyphicon {
-		top: 2px;
-		margin-left: 10px;
-	}
+    span.glyphicon {
+        top: 2px;
+        margin-left: 10px;
+    }
 
-	&:hover {
-		background-color: darken($main-color, 10%);
-	}
+    &:hover {
+        background-color: darken($main-color, 10%);
+    }
 }
 
 p.imageCaption {
     margin-top: -20px;
     margin-bottom: 20px;
 
-	&, & a {
-		font-size: 11px;
-		line-height: 15px;
-	}
+    &, & a {
+        font-size: 11px;
+        line-height: 15px;
+    }
 }
 
 .floatRight {
@@ -93,264 +93,275 @@ p.imageCaption {
 
 /* containers */
 .tc-container-white, .tc-container-blue, .tc-container-lightgray, .tc-container-darkgray, .tc-container-lightblue {
-	padding-top: 60px;
-	padding-bottom: 60px;
-	position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
 
-	> div.container > div.row:first-of-type {
-		margin-top: -40px;
-	}
+    > div.container > div.row:first-of-type {
+        margin-top: -40px;
+    }
 
-	> div.container > div.row > div:last-of-type > p:last-of-type {
-		margin-bottom: 0;
-	}
+    > div.container > div.row > div:last-of-type > p:last-of-type {
+        margin-bottom: 0;
+    }
 
-	.tc-container-image {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		margin-top: -60px;
-		margin-bottom: -60px;
-		opacity: 0.3;
-	}
+    .tc-container-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin-top: -60px;
+        margin-bottom: -60px;
+        opacity: 0.3;
+    }
 }
 
 .tc-container-blue {
-	background-color: $main-color;
+    background-color: $main-color;
 }
 
 .tc-container-lightgray {
-	background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
 
 .tc-container-darkgray {
-	background-color: #444;
+    background-color: #444;
 }
 
 .tc-container-lightblue {
-	background-color: lighten($main-color, 35%);
+    background-color: lighten($main-color, 35%);
 }
 
 .tc-container-darkgray, .tc-container-blue {
-	color: #fff;
+    color: #fff;
 
-	h1, h2, h3, a {
-		color: #fff;
-	}
+    h1, h2, h3, a {
+        color: #fff;
+    }
 
-	input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
-		color: $main-color !important;
-		background-color: #fff;
-	}
+    input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
+        color: $main-color !important;
+        background-color: #fff;
+    }
 }
 
 .row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 }
 
-@media (max-width: $screen-xs-max) { 
-	.row-eq-height {
-	  display: block;
-	}
+@media (max-width: $screen-xs-max) {
+    .row-eq-height {
+        display: block;
+    }
 }
 
 /* home */
 .tc-home {
-	.tc-container {
-		.tc-container-image {
-			background-image: url(/time-cockpit-website/content/images/banner.jpg);
-			background-size: cover;
-		}
-	}
+    .tc-container {
+        .tc-container-image {
+            background-image: url(/time-cockpit-website/content/images/banner.jpg);
+            background-size: cover;
+        }
+    }
 }
 
 /* contact */
 .tc-contact {
-	.tc-container {
-		.tc-container-image {
-			background-image: url(/time-cockpit-website/content/images/banner.jpg);
-			background-size: cover;
-		}
-	}
+    .tc-container {
+        .tc-container-image {
+            background-image: url(/time-cockpit-website/content/images/banner.jpg);
+            background-size: cover;
+        }
+    }
 }
 
 /* blog */
 .tc-blog-overview {
     .tc-blogteaser {
-	    img {
-		    width: 100%;
-	    }
+        img {
+            width: 100%;
+        }
     }
 
-    .tc-image-footer{
+    .tc-image-footer {
         font-size: 11px;
     }
 
-	img {
-		width: 100%;
-	}
+    img {
+        width: 100%;
+    }
 
-	h2 {
-		background-color: #e6e6e6;
-		padding: 10px 0;
-	}
+    h2 {
+        background-color: #e6e6e6;
+        padding: 10px 0;
+    }
 }
 
 .tc-blog {
-	.tc-related-post {
-		background-color: #fff;
-		padding: 20px;
-		height: 100%;
+    .tc-related-post {
+        background-color: #fff;
+        padding: 20px;
+        height: 100%;
         font-size: 14px;
-        -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.33);
-        -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.33);
-        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.33);
-        border-radius: $border-radius;
-        transition: transform .2s ease-in-out;
+        -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.25);
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.25);
+        //transition: transform .2s ease-in-out;
 
-        &:hover {
+        /*&:hover {
             transform: scale(1.03);
+        }*/
+
+        h3 {
+            margin-top: 0;
+            line-height: $base-line-height;
+            word-wrap: break-word;
         }
 
-		h3 {
-			margin-top: 0;
-			line-height: $base-line-height;
-			word-wrap: break-word;
-		}
+        a {
+            text-decoration: none;
+            color: $base-text-color;
 
-		a {
-			text-decoration: none;
-			color: $base-text-color;
+            h3 {
+                font-size: 16px;
+                color: $header-color;
+            }
+        }
 
-			h3 {
-				font-size: 16px;
-				color: $header-color;
-			}
-		}
+        div {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
 
-		div {
-			width: 100%;
-			height: 200px;
-			overflow: hidden;
-			background-color: #fff;
-			padding: 20px;
-			text-align: center;
-			vertical-align: middle;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+    }
 
-			img {
-				max-width: 100%;
-				max-height: 100%;
-			}
-		}
-	}
+    @media (max-width: $screen-xs-max) {
+        .row-eq-height {
+            > div > div {
+                margin-bottom: 20px;
+            }
 
-	@media (max-width: $screen-xs-max) { 
-		.row-eq-height {
-			> div > div {
-				margin-bottom: 20px;
-			}
-
-			> div:last-of-type > div {
-				margin-bottom: 0;
-			}
-		}
-	}
+            > div:last-of-type > div {
+                margin-bottom: 0;
+            }
+        }
+    }
 }
 
 .tc-time-cockpit-ad {
-	img {
-		margin-top: 40px;
-		width: 100%;
-		max-width: 400px;
-	}
+    img {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 400px;
+    }
 }
 
 .tc-pager {
-	text-align: center;
-	line-height: 30px;
-	vertical-align: top;
+    text-align: center;
+    line-height: 30px;
+    vertical-align: top;
 
-	div {
-		display: inline-block;
-	}
+    div {
+        display: inline-block;
+    }
 
-	.tc-page-number {
-		padding-left: 20px;
-		padding-right: 20px;
-		display: inline-block;
-	}
+    .tc-page-number {
+        padding-left: 20px;
+        padding-right: 20px;
+        display: inline-block;
+    }
 
-	.glyphicon {
-		top: 10px;
-		color: #999;
-		font-size: 30px;
-	}
+    .glyphicon {
+        top: 10px;
+        color: #999;
+        font-size: 30px;
+    }
 
-	a .glyphicon {
-		color: $main-color;
-	}
+    a .glyphicon {
+        color: $main-color;
+    }
 }
 
 .videoWrapper {
-	width: 100%;
+    width: 100%;
 
-	iframe {
-		width: 100%;
-	}
+    iframe {
+        width: 100%;
+    }
 }
 
 .banner-image img {
-	width: 100%;
+    width: 100%;
+}
+
+/* image gallery */
+.tc-image-gallery {
+    img {
+        border: solid 1px #ddd;
+        padding: 5px;
+        margin-bottom: 10px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    }
 }
 
 /* pricing */
 .tc-pricing {
-	.tc-container {
-		.tc-container-image {
-			background-image: url(/time-cockpit-website/content/images/banner.jpg);
-			background-size: cover;
-		}
-	}
+    .tc-container {
+        .tc-container-image {
+            background-image: url(/time-cockpit-website/content/images/banner.jpg);
+            background-size: cover;
+        }
+    }
 
-	.tc-pricing-details {
-		padding: 20px 40px;
-		background-color: #fff;
-		color: $base-text-color;
+    .tc-pricing-details {
+        padding: 20px 40px;
+        background-color: #fff;
+        color: $base-text-color;
 
-		h1 {
-			font-size: 40px;
-			margin-top: 0px;
-		}
+        h1 {
+            font-size: 40px;
+            margin-top: 0px;
+        }
 
-		ul {
-			padding-left: 0;
+        ul {
+            padding-left: 0;
 
-			li {
-				list-style-type: none;
-				font-size: $larger-font-size;
-				line-height: $larger-line-height;
+            li {
+                list-style-type: none;
+                font-size: $larger-font-size;
+                line-height: $larger-line-height;
 
-				&:before { 
-					color: $main-color;
-					font-family: "Glyphicons Halflings";
-					content: "\e013"; 
-					padding-right: 15px;
-				}
-			}
-		}
-	}
+                &:before {
+                    color: $main-color;
+                    font-family: "Glyphicons Halflings";
+                    content: "\e013";
+                    padding-right: 15px;
+                }
+            }
+        }
+    }
 }
 
 
-.affix{
-    position:fixed;
+.affix {
+    position: fixed;
     width: 293.33px;
 }
 
-.affix-bottom{
-    position:absolute;
+.affix-bottom {
+    position: absolute;
     bottom: auto;
 }

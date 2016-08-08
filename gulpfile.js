@@ -12,7 +12,8 @@ var uglify = require("gulp-uglify");
 var pump = require("pump");
 var stripBom = require("gulp-stripbom");
 
-gulp.task("default", ["copyBootstrapFiles", "buildTypescript", "images", "compress", "removeBom"], function () {
+//"compress",
+gulp.task("default", ["copyBootstrapFiles", "copyLightboxFiles", "buildTypescript", "images", "removeBom"], function () {
     // place code for your default task here
 });
 
@@ -22,6 +23,17 @@ gulp.task("copyBootstrapFiles", function () {
 
 	return gulp.src("./node_modules/bootstrap-sass/assets/stylesheets/**/*.*")
 		.pipe(gulp.dest("./_sass/bootstrap"));
+});
+
+gulp.task("copyLightboxFiles", function () {
+    gulp.src(["./node_modules/lightbox2/dist/js/lightbox.min.js", "./node_modules/lightbox2/dist/js/lightbox.min.map"])
+		.pipe(gulp.dest("./scripts"));
+
+    gulp.src("./node_modules/lightbox2/dist/css/*.min.css")
+		.pipe(gulp.dest("./css"));
+
+    return gulp.src("./node_modules/lightbox2/dist/images/*.*")
+		.pipe(gulp.dest("./images"));
 });
 
 gulp.task("buildTypescript", function () {
