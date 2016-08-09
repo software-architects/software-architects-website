@@ -201,10 +201,15 @@ p.imageCaption {
         background-color: #e6e6e6;
         padding: 10px;
     }
+
+	a {
+		font-weight: lighter;
+	}
 }
 
 .tc-blog {
     .tc-related-post {
+		cursor: pointer;
         background-color: #fff;
         padding: 20px;
         height: 100%;
@@ -259,6 +264,24 @@ p.imageCaption {
             }
         }
     }
+}
+
+.tc-blog-tag-overview {
+	ul {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	a {
+		span.tc-post-date {
+			width: 110px;
+			display: inline-block;
+		}
+
+		&:hover, &:hover span.tc-post-date {
+			text-decoration: underline;
+		}
+	}
 }
 
 .tc-blog-details {
