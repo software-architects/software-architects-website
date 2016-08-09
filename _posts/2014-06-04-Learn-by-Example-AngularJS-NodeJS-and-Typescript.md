@@ -12,13 +12,11 @@ ref:
 permalink: /devblog/2014/06/04/Learn-by-Example-AngularJS-NodeJS-and-Typescript
 ---
 
-<p>In this blog post, I would like to summarize a talk I gave at the <a href="http://phpconference.com/2014se/en/special-days/javascript-day" target="_blank">JavaScript Day of the International PHP Conference</a> in Berlin 2014. The idea of the talk is to demonstrate the power of <a href="http://nodejs.org/" target="_blank">NodeJS</a> + <a href="http://www.typescriptlang.org" target="_blank">TypeScript</a> + <a href="https://angularjs.org/" target="_blank">AngularJS</a>.</p><p class="showcase">The entire code is available in my <a href="https://github.com/rstropek/Samples/tree/master/AngularRegistrationSample" target="_blank">GitHub repository</a>.</p><h2>Step 1: Let’s Build a Web API</h2><p>As a first step in our sample we want to create a small web API using NodeJS + TypeScript. Recently, Microsoft has launched its <a href="https://nodejstools.codeplex.com/" target="_blank"><em>NodeJS Tools for Visual Studio</em></a>. So if you are used to developing with Visual Studio, you can stick to the IDE you are used to even when writing NodeJS code.</p><p>As a starting point we create a new NodeJS application called <em>Server</em> in Visual Studio. Note that you have to have the NodeJS Tools installed in Visual Studio 2013 Update 2 for that.</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:eb76e872-1c8d-4d3c-9038-817a4104399b" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="800" />
-  <param name="ImageMaxWidth" value="1920" />
-  <param name="ImageMaxHeight" value="1280" />
-</function><p>The resulting project contains a lot of stuff that we do not need for our example. You can clean up the project and delete all HTML/CSS-generation-related stuff until your project structure looks something like this:</p><p>
+<p>In this blog post, I would like to summarize a talk I gave at the <a href="http://phpconference.com/2014se/en/special-days/javascript-day" target="_blank">JavaScript Day of the International PHP Conference</a> in Berlin 2014. The idea of the talk is to demonstrate the power of <a href="http://nodejs.org/" target="_blank">NodeJS</a> + <a href="http://www.typescriptlang.org" target="_blank">TypeScript</a> + <a href="https://angularjs.org/" target="_blank">AngularJS</a>.</p><p class="showcase">The entire code is available in my <a href="https://github.com/rstropek/Samples/tree/master/AngularRegistrationSample" target="_blank">GitHub repository</a>.</p><h2>Step 1: Let’s Build a Web API</h2><p>As a first step in our sample we want to create a small web API using NodeJS + TypeScript. Recently, Microsoft has launched its <a href="https://nodejstools.codeplex.com/" target="_blank"><em>NodeJS Tools for Visual Studio</em></a>. So if you are used to developing with Visual Studio, you can stick to the IDE you are used to even when writing NodeJS code.</p><p>As a starting point we create a new NodeJS application called <em>Server</em> in Visual Studio. Note that you have to have the NodeJS Tools installed in Visual Studio 2013 Update 2 for that.</p>
+
+<p><a data-lightbox="createproject" href="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_CreateProject.png"><img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_CreateProject.png" /></a></p>
+
+<p>The resulting project contains a lot of stuff that we do not need for our example. You can clean up the project and delete all HTML/CSS-generation-related stuff until your project structure looks something like this:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_CleanedProject.png" />
 </p><p>The project template already added the express framework. It enables us to build web APIs without having to care for all the low-level details. As we are not only going to implement GET requests but POST requests (for inserting new data), too, we will need to parse JSON in the HTTP request body. For that, we need the <em>body-parser</em> module, too. Therefore we have to extend the <em>package.json</em> file a bit:</p>{% highlight javascript %}{
   "name": "AngularRegistrationSample",
@@ -33,13 +31,11 @@ permalink: /devblog/2014/06/04/Learn-by-Example-AngularJS-NodeJS-and-Typescript
     "body-parser": "^1.3.0",
     "express": "^3.10.2"
   }
-}{% endhighlight %}<p>Well, strictly speaking we would not have to edit <em>package.json</em> by hand. We also do not need to call <em>npm install</em> in a command line prompt to download the additional package. The NodeJS tools integrate these things directly into Visual Studio (similar to NuGet which some of you might know from .NET development).</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:496cd930-6811-4f7d-90f0-250c14548185" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="800" />
-  <param name="ImageMaxWidth" value="1920" />
-  <param name="ImageMaxHeight" value="1280" />
-</function><p>Now we can implement our web API. Here is the source code. Please take a look at the comments. They will lead you through this sample step by step.</p><p class="showcase">The important part to note here is the Typescript integration. On the server side, we use a Typescript <em>interface</em> to define a data structure for our web API. Additionally, we add a <em>class</em> with business logic.</p><p>Remember these types, we will reuse exactly the same code on the client-side later. That’s the beauty of having the same language – Typescript – on the client and the server.</p>{% highlight javascript %}// Import express with body parsers (for handling JSON)
+}{% endhighlight %}<p>Well, strictly speaking we would not have to edit <em>package.json</em> by hand. We also do not need to call <em>npm install</em> in a command line prompt to download the additional package. The NodeJS tools integrate these things directly into Visual Studio (similar to NuGet which some of you might know from .NET development).</p>
+
+<p><a data-lightbox="npm" href="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_NpmInVisualStudio.png"><img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_NpmInVisualStudio.png" /></a></p>
+
+<p>Now we can implement our web API. Here is the source code. Please take a look at the comments. They will lead you through this sample step by step.</p><p class="showcase">The important part to note here is the Typescript integration. On the server side, we use a Typescript <em>interface</em> to define a data structure for our web API. Additionally, we add a <em>class</em> with business logic.</p><p>Remember these types, we will reuse exactly the same code on the client-side later. That’s the beauty of having the same language – Typescript – on the client and the server.</p>{% highlight javascript %}// Import express with body parsers (for handling JSON)
 import express = require('express');
 var bodyParser = require('body-parser');
 
@@ -101,19 +97,15 @@ app.post("/api/register", (req, res) => {
 });
 
 // Listen for HTTP traffic
-app.listen(process.env.PORT || 3000);{% endhighlight %}<h2>Step 2: Test Your Web API</h2><p>With the NodeJS Tools for Visual Studio you can debug your code just be hitting F5. Try to set breakpoints in your Typescript NodeJS code. It will work just fine. You can even use features like <em>Watch Expressions</em>, etc. Nice, isn’t it?</p><p>The following screenshot shows how to create test calls to your web API with <em>Fiddler</em>. It also shows how the request hits a breakpoint in NodeJS Typescript code in Visual Studio and demonstrates watch expressions.</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:99209756-70ca-4157-b8df-db21040ab181" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="800" />
-  <param name="ImageMaxWidth" value="1920" />
-  <param name="ImageMaxHeight" value="1280" />
-</function><h2>Step 3: Build the Client</h2><h3>Preparing the Project</h3><p>Next, we create a client application using AngularJS and Typescript. For that, create a new Typescript project called <em>Client</em> in Visual Studio:</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:27d68f3d-a479-47f3-bf0b-4a2e49d1a271" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="800" />
-  <param name="ImageMaxWidth" value="1920" />
-  <param name="ImageMaxHeight" value="1280" />
-</function><p>We need a few more components for our clients. In contrast to NodeJS where we used <em>NPM</em> (<em>Node Package Manager</em>), we now use <em>NuGet</em>. You can either right-click on the project, select <em>Manage NuGet Packages</em> and select the packages by hand or you can copy/past the following code in your <em>packages.config</em> file:</p>{% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
+app.listen(process.env.PORT || 3000);{% endhighlight %}<h2>Step 2: Test Your Web API</h2><p>With the NodeJS Tools for Visual Studio you can debug your code just be hitting F5. Try to set breakpoints in your Typescript NodeJS code. It will work just fine. You can even use features like <em>Watch Expressions</em>, etc. Nice, isn’t it?</p><p>The following screenshot shows how to create test calls to your web API with <em>Fiddler</em>. It also shows how the request hits a breakpoint in NodeJS Typescript code in Visual Studio and demonstrates watch expressions.</p>
+
+<p><a data-lightbox="fiddler" href="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_DebugNodeJSFiddler.png"><img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_DebugNodeJSFiddler.png" /></a></p>
+
+<h2>Step 3: Build the Client</h2><h3>Preparing the Project</h3><p>Next, we create a client application using AngularJS and Typescript. For that, create a new Typescript project called <em>Client</em> in Visual Studio:</p>
+
+<p><a data-lightbox="createclient" href="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_CreateClient.png"><img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_CreateClient.png" /></a></p>
+
+<p>We need a few more components for our clients. In contrast to NodeJS where we used <em>NPM</em> (<em>Node Package Manager</em>), we now use <em>NuGet</em>. You can either right-click on the project, select <em>Manage NuGet Packages</em> and select the packages by hand or you can copy/past the following code in your <em>packages.config</em> file:</p>{% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
 <packages>
   <package id="angularjs" version="1.2.16" targetFramework="net451" />
   <package id="angularjs.TypeScript.DefinitelyTyped" version="1.0.4" targetFramework="net451" />
@@ -277,19 +269,15 @@ class RegisterViewModel {
 var app = express();
 app.use(bodyParser());
 app.use(express.static("../Client")); // <== ADD THIS LINE
-...{% endhighlight %}<p>That’s it. You can try your client. The following screenshot shows our client in Chrome’s debugger where you can watch the REST API work in the background.</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:0745f82c-c003-4541-bcd6-6fe2001bbb55" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="2000" />
-  <param name="ImageMaxWidth" value="1920" />
-  <param name="ImageMaxHeight" value="1280" />
-</function><p>The following screenshot shows the registration form:</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:fd6fb1b9-6424-4445-8a89-33eea1433a61" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="800" />
-  <param name="ImageMaxWidth" value="1920" />
-  <param name="ImageMaxHeight" value="1280" />
-</function><p>Play with your application. Try debugging NodeJS and client-side Typescript code. Test your business logic. Maybe add another controller. If you want to experiment, add basic authentication to your web API and create a third view for logging in.</p><h2>Top Five Take-Aways</h2><ol>
+...{% endhighlight %}<p>That’s it. You can try your client. The following screenshot shows our client in Chrome’s debugger where you can watch the REST API work in the background.</p>
+
+<p><a data-lightbox="clientwithresult" href="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_ClientWithResult.png"><img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_ClientWithResult.png" /></a></p>
+
+<p>The following screenshot shows the registration form:</p>
+
+<p><a data-lightbox="registration" href="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_Registration.png"><img src="{{site.baseurl}}/content/images/blog/2014/06/NodeJSAngular/NodeAngular_Registration.png" /></a></p>
+
+<p>Play with your application. Try debugging NodeJS and client-side Typescript code. Test your business logic. Maybe add another controller. If you want to experiment, add basic authentication to your web API and create a third view for logging in.</p><h2>Top Five Take-Aways</h2><ol>
   <li>NodeJS + Typescript development now works perfectly fine with the new NodeJS Tools for Visual Studio.</li>
   <li>Typescript gives you type-safety – on the server as well as on the client.</li>
   <li>Easily share data structures (interfaces) and business logic between client and server. This reduces implementation effort.</li>

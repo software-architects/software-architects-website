@@ -92,4 +92,4 @@ permalink: /devblog/2014/12/04/NET-Infoday-Whats-New-in-C-6
   <img src="{{site.baseurl}}/content/images/blog/2014/12/exceptionHandling.png" />
 </p><h2>Start Evaluating C# 6 and VS2015</h2><p>Interested? You can easily try Visual Studio 2015 Preview in <a href="https://azure.microsoft.com" target="_blank">Microsoft Azure</a>. Microsoft provides a ready-made VM image that is ready for your experiments within a few minutes:</p>
 
-<a data-lightbox="infoday" href="{{site.baseurl}}/content/images/blog/2014/12/vs2015previewazure.png"><img src="{{site.baseurl}}/content/images/blog/2014/12/vs2015previewazure.png" /></a>
+<p><a data-lightbox="infoday" href="{{site.baseurl}}/content/images/blog/2014/12/vs2015previewazure.png"><img src="{{site.baseurl}}/content/images/blog/2014/12/vs2015previewazure.png" /></a></p>

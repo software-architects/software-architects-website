@@ -7,7 +7,7 @@ date: 2016-04-10
 bannerimage: /content/images/blog/2016/04/filezilla-docker-machine.png
 bannerimagesource: 
 lang: en
-tags: [About]
+tags: [Docker]
 ref: 
 permalink: /devblog/2016/04/10/Create-Dump-of-MongoDB-on-Windows-using-Docker-Machine
 ---
