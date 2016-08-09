@@ -90,10 +90,6 @@ permalink: /devblog/2014/12/04/NET-Infoday-Whats-New-in-C-6
   <img src="{{site.baseurl}}/content/images/blog/2014/12/StringInterpolation.png" />
 </p><h2>Exception Handling</h2><p>Last but not least Microsoft has enhanced C#'s exception handling code. Firstly, C# 6 enables you to use async methods with <em>await</em> inside of a catch block. Think of an async logging API you would like to use. C# makes consuing it very easy. Additionally, C# 6 allows us to filter the exceptions that should be caught not only based on the exception's type.</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2014/12/exceptionHandling.png" />
-</p><h2>Start Evaluating C# 6 and VS2015</h2><p>Interested? You can easily try Visual Studio 2015 Preview in <a href="https://azure.microsoft.com" target="_blank">Microsoft Azure</a>. Microsoft provides a ready-made VM image that is ready for your experiments within a few minutes:</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:58fc1066-2d64-4496-b3b8-fe25c17ea102" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="800" />
-  <param name="ImageMaxWidth" value="1280" />
-  <param name="ImageMaxHeight" value="800" />
-</function>
+</p><h2>Start Evaluating C# 6 and VS2015</h2><p>Interested? You can easily try Visual Studio 2015 Preview in <a href="https://azure.microsoft.com" target="_blank">Microsoft Azure</a>. Microsoft provides a ready-made VM image that is ready for your experiments within a few minutes:</p>
+
+<a data-lightbox="infoday" href="{{site.baseurl}}/content/images/blog/2014/12/vs2015previewazure.png"><img src="{{site.baseurl}}/content/images/blog/2014/12/vs2015previewazure.png" /></a>

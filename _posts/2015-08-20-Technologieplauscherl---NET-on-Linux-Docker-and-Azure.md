@@ -43,14 +43,7 @@ permalink: /devblog/2015/08/20/Technologieplauscherl---NET-on-Linux-Docker-and-A
   <li>Use your web browser to open <em>http://localhost:5000/</em>. You should see the ASP.NET web application</li>
 </ul><h2>Demo 3 - Using Docker on Azure</h2><p>If you tried the samples shown above yourself, you have seen that setting up your Linux box to run ASP.NET is not super simple. You can use <a href="https://docker.com" target="_blank">Docker</a> to make your life easier.</p><p class="showcase">If you are not familiar with Docker, take a look at my <a href="https://channel9.msdn.com/Series/Visual-Studio-Germany/How-to-Run-ASPNET-vNext-in-Azure-Using-Docker-Containers" target="_blank">intro video on Channel9</a>.</p><p>Microsoft has a partnership with Docker and offers a <a href="https://hub.docker.com/r/microsoft/aspnet/" target="_blank">ready-made image for running ASP.NET applications</a>. You don't even have to setup Docker on your machine. In <a href="http://azure.microsoft.com" target="_blank">Azure</a>, Microsoft provides a ready-made Linux image with Docker installed and configured.</p>
 
-<function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaFolder" value="" />
-  <param name="MediaImage" value="MediaArchive:b1233804-5e69-4752-874c-d41e9698a52a" />
-  <param name="ThumbnailMaxWidth" value="800" />
-  <param name="ThumbnailMaxHeight" value="800" />
-  <param name="ImageMaxWidth" value="1440" />
-  <param name="ImageMaxHeight" value="1024" />
-</function>
+<a data-lightbox="techplauscherl-03" href="{{site.baseurl}}/content/images/blog/2015/08/techplauscherl-03-azure.png"><img src="{{site.baseurl}}/content/images/blog/2015/08/techplauscherl-03-azure.png" /></a>
 
 <ul>
   <li>Create an Ubuntu VM with Docker in Azure.</li>

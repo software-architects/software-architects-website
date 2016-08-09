@@ -76,13 +76,11 @@ permalink: /devblog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Stor
   <img src="{{site.baseurl}}/content/images/blog/2014/10/PublicRead.png" />
 </p><ul>
   <li>Upload your installer files to the container (click on image to enlarge):</li>
-</ul><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:00ff56df-e753-4f01-8a17-256b4d76a195" />
-  <param name="ThumbnailMaxWidth" value="650" />
-  <param name="ThumbnailMaxHeight" value="650" />
-  <param name="ImageMaxWidth" value="1280" />
-  <param name="ImageMaxHeight" value="1024" />
-</function><h2>Running the MSI Installer</h2><p>Now that we have the MSI installer in Azure Blob Storage we can install our software from there. To make sure that Windows only downloads what it really needs, you should use a web debugger like <a href="http://www.telerik.com/fiddler" target="_blank">Fiddler</a> to check what's going on.</p><p>Note that you must not click on a link to the MSI installer in a browser. In that case, the browser would download the MSI and run it from a local location. Instead, we start the install directly from the URI:</p><p>
+</ul>
+
+<a data-lightbox="upload" href="{{site.baseurl}}/content/images/blog/2014/10/upload.png"><img src="{{site.baseurl}}/content/images/blog/2014/10/upload.png" /></a>
+
+<h2>Running the MSI Installer</h2><p>Now that we have the MSI installer in Azure Blob Storage we can install our software from there. To make sure that Windows only downloads what it really needs, you should use a web debugger like <a href="http://www.telerik.com/fiddler" target="_blank">Fiddler</a> to check what's going on.</p><p>Note that you must not click on a link to the MSI installer in a browser. In that case, the browser would download the MSI and run it from a local location. Instead, we start the install directly from the URI:</p><p>
   <em>msiexec /i https://yourserver.blob.core.windows.net/msiinstaller/CompositeWpfApp.Install.msi ADDLOCAL=Shell REMOVE=SDK,Extension</em>
 </p><p>Note that the command line does only install the <em>Shell</em> feature, i.e. only files referencing disk 1. If you run it, fiddler will show that Windows only downloads disk 1:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2014/10/Disk1.png" />
