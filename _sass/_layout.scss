@@ -179,6 +179,10 @@ p.imageCaption {
 
 /* blog */
 .tc-blog-overview {
+	> div.row {
+		cursor: pointer;
+	}
+
     .tc-blogteaser {
         img {
             width: 100%;
@@ -195,12 +199,17 @@ p.imageCaption {
 
     h2 {
         background-color: #e6e6e6;
-        padding: 10px 0;
+        padding: 10px;
     }
+
+	a {
+		font-weight: lighter;
+	}
 }
 
 .tc-blog {
     .tc-related-post {
+		cursor: pointer;
         background-color: #fff;
         padding: 20px;
         height: 100%;
@@ -208,11 +217,6 @@ p.imageCaption {
         -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.25);
         -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.25);
         box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.25);
-        //transition: transform .2s ease-in-out;
-
-        /*&:hover {
-            transform: scale(1.03);
-        }*/
 
         h3 {
             margin-top: 0;
@@ -220,8 +224,11 @@ p.imageCaption {
             word-wrap: break-word;
         }
 
-        a {
-            text-decoration: none;
+		a {
+			color: $main-color;
+		}
+
+        div {
             color: $base-text-color;
 
             h3 {
@@ -230,7 +237,7 @@ p.imageCaption {
             }
         }
 
-        div {
+        div.tc-image {
             width: 100%;
             height: 200px;
             overflow: hidden;
@@ -257,6 +264,38 @@ p.imageCaption {
             }
         }
     }
+}
+
+.tc-blog-tag-overview {
+	ul {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	a {
+		span.tc-post-date {
+			width: 110px;
+			display: inline-block;
+		}
+
+		&:hover, &:hover span.tc-post-date {
+			text-decoration: underline;
+		}
+	}
+}
+
+.tc-blog-details {
+	font-weight: lighter;
+	font-size: $small-font-size;
+	margin-top: -0.2em;
+	line-height: 1.4em;
+}
+
+:target:before {
+  content: "";
+  display: block;
+  height: 160px; /* fixed header height*/
+  margin: -160px 0 0; /* negative fixed header height */
 }
 
 .tc-time-cockpit-ad {

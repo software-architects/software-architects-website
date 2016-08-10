@@ -7,7 +7,7 @@ date: 2014-09-25
 bannerimage: 
 bannerimagesource: 
 lang: en
-tags: [About]
+tags: [OData]
 ref: 
 permalink: /devblog/2014/09/25/Custom-OData-Provider-Without-Underlying-DB
 ---
