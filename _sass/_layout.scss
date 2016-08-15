@@ -235,6 +235,14 @@ table {
 }
 
 .tc-blog {
+    .tc-related-posts-container {
+        h3:first-of-type {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+    }
+
     .tc-related-post {
 		cursor: pointer;
         background-color: #fff;
