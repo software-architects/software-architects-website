@@ -132,18 +132,6 @@ $(document).ready(function () {
                 if (!header.attributes["id"]) {
                     header.setAttribute("id", id);
                 }
-
-                //if (headers[index].tagName != "H2") {
-                //    if (!setUl) {
-                //        setUl = true;
-                //        text += "<ul>";
-                //    }
-                //} else {
-                //    if (setUl) {
-                //        text += "</ul>";
-                //        setUl = false;
-                //    }
-                //}
             }
         });
 
