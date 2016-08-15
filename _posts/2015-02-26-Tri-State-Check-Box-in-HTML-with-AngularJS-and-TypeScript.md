@@ -12,9 +12,16 @@ ref:
 permalink: /devblog/2015/02/26/Tri-State-Check-Box-in-HTML-with-AngularJS-and-TypeScript
 ---
 
-<p>HTML does not support tri-state checkboxes by default. There is an indeterminate attribute to indicate that the value is undefined but there is no way to set a checkbox back to indeterminate through the user interface once it has been checked or unchecked. The attribute can only be changed with JavaScript.</p><h2>Current State in HTML and JavaScript</h2><p>The following screenshot shows how the three states of a checkbox are visualized in Internet Explorer 11. Other browsers visualize the states slightly different.</p><p>
+<p>HTML does not support tri-state checkboxes by default. There is an indeterminate attribute to indicate that the value is undefined but there is no way to set a checkbox back to indeterminate through the user interface once it has been checked or unchecked. The attribute can only be changed with JavaScript.</p>
+
+<h2>Current State in HTML and JavaScript</h2>
+
+<p>The following screenshot shows how the three states of a checkbox are visualized in Internet Explorer 11. Other browsers visualize the states slightly different.</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2015/02/check-box-states.png" />
-</p><p>This is how the HTML for the tree checkboxes looks like:</p>{% highlight xhtml %}<!DOCTYPE html>
+</p><p>This is how the HTML for the tree checkboxes looks like:</p>
+
+{% highlight xhtml %}
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Check Box States</title>
@@ -29,8 +36,18 @@ permalink: /devblog/2015/02/26/Tri-State-Check-Box-in-HTML-with-AngularJS-and-Ty
     <p><input type="checkbox" checked="checked" /> Checked checkbox</p>
     <p><input type="checkbox" /> Unchecked checkbox</p>
 </body>
-</html>{% endhighlight %}<p>As the indeterminate state cannot be set in HTML, it has to be set in the <em>window.onload</em> function with JavaScript and it cannot be set back to indeterminate by a user once it has lost the indeterminate state.</p><h2>Building the AngularJS TriStateCheckBox Directive</h2><p>The directive offers two properties to bind against: <em>isThreeState</em> and <em>isChecked</em>. The <em>CheckBoxScopeDeclaration</em> class specifies these properties.</p><p>The <em>$scope</em> of the directive of type <em>ICheckBoxScope</em> holds the current values for these two properties. Additionally it offers a function <em>updateState</em>, which is used in the template of the directive to update the <em>isChecked</em> property whenever the checkbox is clicked.</p><p>The linking function of the directive finds the <em>HTMLInputElement</em> for the checkbox. This is required as the indeterminate state of the checkbox can only be set from JavaScript. So it is not possible to do this via data binding. Additionally, it defines the updateState function and adds a <em>$watch</em> listener for the <em>isChecked</em> property. Whenever the value is set to <em>null</em> or <em>undefined</em> and the <em>isThreeState</em> property is set to <em>true</em>, the checkbox is set back to indeterminate state.</p><h2>
-  {% highlight javascript %}/// <reference path="../../Scripts/typings/jquery/jquery.d.ts" />
+</html>{% endhighlight %}
+
+<p>As the indeterminate state cannot be set in HTML, it has to be set in the <em>window.onload</em> function with JavaScript and it cannot be set back to indeterminate by a user once it has lost the indeterminate state.</p>
+
+<h2>Building the AngularJS TriStateCheckBox Directive</h2>
+
+<p>The directive offers two properties to bind against: <em>isThreeState</em> and <em>isChecked</em>. The <em>CheckBoxScopeDeclaration</em> class specifies these properties.</p>
+
+<p>The <em>$scope</em> of the directive of type <em>ICheckBoxScope</em> holds the current values for these two properties. Additionally it offers a function <em>updateState</em>, which is used in the template of the directive to update the <em>isChecked</em> property whenever the checkbox is clicked.</p><p>The linking function of the directive finds the <em>HTMLInputElement</em> for the checkbox. This is required as the indeterminate state of the checkbox can only be set from JavaScript. So it is not possible to do this via data binding. Additionally, it defines the updateState function and adds a <em>$watch</em> listener for the <em>isChecked</em> property. Whenever the value is set to <em>null</em> or <em>undefined</em> and the <em>isThreeState</em> property is set to <em>true</em>, the checkbox is set back to indeterminate state.</p>
+  
+{% highlight javascript %}
+/// <reference path="../../Scripts/typings/jquery/jquery.d.ts" />
 /// <reference path="../../Scripts/typings/angularjs/angular.d.ts" /> 
 
 module Samples.Controls {
@@ -143,4 +160,9 @@ module Samples.Controls {
 }]);
 {% endhighlight %}<p>Here is the result for the view and the controller:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2015/02/tri-state-check-box.png" />
-</p><h2>Limitations</h2><p>The indeterminate state of the checkbox is not displayed correctly in Safari. There is no visual difference between an unchecked checkbox and an indeterminate checkbox. To make it work in Safari too, you can replace the checkbox visualization of the browser with your own. There is a simple and nice implementation at <a href="http://w3facility.org/question/custom-html-checkbox-symbols-with-keyboard-navigation-support/" target="_blank">http://w3facility.org/question/custom-html-checkbox-symbols-with-keyboard-navigation-support/</a>.</p><h2>Try in JSFiddle</h2><iframe width="100%" height="500" src="https://jsfiddle.net/karin112358/zqgo4j12/embedded/result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe><h2>Download Source Code</h2><p>You can get the complete source code for the directive and the HTML sample pages at <a href="https://github.com/karin112358/Samples/tree/master/AngularJS/TriStateCheckBox">https://github.com/karin112358/Samples/tree/master/AngularJS/TriStateCheckBox</a>. There you will find both the TypeScript file and the automatically generated JavaScript file for the directive.</p>
+</p><h2>Limitations</h2><p>The indeterminate state of the checkbox is not displayed correctly in Safari. There is no visual difference between an unchecked checkbox and an indeterminate checkbox. To make it work in Safari too, you can replace the checkbox visualization of the browser with your own. There is a simple and nice implementation at <a href="http://w3facility.org/question/custom-html-checkbox-symbols-with-keyboard-navigation-support/" target="_blank">http://w3facility.org/question/custom-html-checkbox-symbols-with-keyboard-navigation-support/</a>.</p>
+
+<h2>Try in JSFiddle</h2>
+<iframe width="100%" height="500" src="https://jsfiddle.net/karin112358/zqgo4j12/embedded/result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h2>Download Source Code</h2><p>You can get the complete source code for the directive and the HTML sample pages at <a href="https://github.com/karin112358/Samples/tree/master/AngularJS/TriStateCheckBox">https://github.com/karin112358/Samples/tree/master/AngularJS/TriStateCheckBox</a>. There you will find both the TypeScript file and the automatically generated JavaScript file for the directive.</p>
