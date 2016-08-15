@@ -12,11 +12,13 @@ ref:
 permalink: /devblog/2016/01/31/First-IT-Visions-Information-Day-in-Linz
 ---
 
-<p>
-  <a href="http://www.it-visions.at/" target="_blank">
-    <img class="floatRight" src="{{site.baseurl}}/content/images/blog/2016/01/it-visions-logo-small.png?mw=260&amp;mh=45" />
-  </a>On January, 25th the first <a href="http://www.it-visions.at/" target="_blank">IT-Visions</a> information day has taken place in Linz. Roman Schacherl, Raphael Schwarz (codeworx) and Rainer Stropek were talking about what's new in .NET, ASP.NET and Visual Studio 2015, in Microsoft Azure, in mobile development and Universal Windows Platform.</p><h2>Download Slides and Samples
-<br /></h2><table class="infoTable" style="width: 100%;" data-mce-style="width: 100%;">
+[![IT Visions]({{site.baseurl}}/content/images/blog/2016/01/it-visions-logo-small.png)](http://www.it-visions.at/){:target="blank"}
+{: .floatRight}
+
+On January, 25th the first <a href="http://www.it-visions.at/" target="_blank">IT-Visions</a> information day has taken place in Linz. Roman Schacherl, Raphael Schwarz (codeworx) and Rainer Stropek were talking about what's new in .NET, ASP.NET and Visual Studio 2015, in Microsoft Azure, in mobile development and Universal Windows Platform.
+
+<h2>Download Slides and Samples</h2>
+<table>
   <thead>
     <tr>
       <th style="text-align: left;" data-mce-style="text-align: left;">Session</th>

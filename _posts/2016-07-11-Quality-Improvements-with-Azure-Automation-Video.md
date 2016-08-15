@@ -5,17 +5,17 @@ excerpt: To err is human. However, errors should only be made once. Automating r
 author: Rainer Stropek
 date: 2016-07-11
 bannerimage: /content/images/blog/2016/07/clockwork-small.jpg
+bannerimagesource: 
 lang: en
 tags: [Azure]
 permalink: /devblog/2016/07/11/Quality-Improvements-Azure-Automation-Video
 ---
 
-<p class="banner-image">
-  <img src="{{site.baseurl}}/content/images/blog/2016/07/clockwork.jpg" />
-</p>
-<p class="imageCaption">
-  Image source: <a href="https://flic.kr/p/edA7aA" target="_blank">https://flic.kr/p/edA7aA</a>, under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Creative Commons License</a>
-</p>
+![]({{site.baseurl}}/content/images/blog/2016/07/clockwork.jpg)
+{:class="banner-image"}
+
+Image source: <https://flic.kr/p/edA7aA>, unter [Creative Commons License](https://creativecommons.org/licenses/by/2.0/)
+{:class="image-caption"}
 
 ## Introduction
 

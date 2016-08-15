@@ -71,7 +71,7 @@ input[type=button], input[type=submit], a.linkButton, a.linkButtonMain {
     }
 }
 
-p.imageCaption {
+p.imageCaption, p.image-caption {
     margin-top: -20px;
     margin-bottom: 20px;
 
@@ -154,6 +154,33 @@ p.imageCaption {
 @media (max-width: $screen-xs-max) {
     .row-eq-height {
         display: block;
+    }
+}
+
+/* tables */
+table {
+    width: 100%;
+
+    tr {
+        th, td {
+            padding: 2px 10px;
+
+            &:first-of-type {
+                padding-left: 5px;
+            }
+
+            &:last-of-type {
+                padding-right: 5px;
+            }
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        td {
+            border-bottom: 1px solid #ccc;
+        }
     }
 }
 
@@ -266,6 +293,20 @@ p.imageCaption {
     }
 }
 
+.tc-sidebar {
+    font-size: $small-font-size;
+}
+
+.tc-toc {
+    ul {
+		list-style-type: none;
+	}
+
+    > ul {
+        padding-left: 0;
+    }
+}
+
 .tc-blog-tag-overview {
 	ul {
 		list-style-type: none;
@@ -300,7 +341,7 @@ p.imageCaption {
 
 .tc-time-cockpit-ad {
     img {
-        margin-top: 40px;
+        margin-top: 20px;
         width: 100%;
         max-width: 400px;
     }
@@ -328,7 +369,12 @@ p.imageCaption {
     }
 
     a .glyphicon {
+        transition: color .2s ease-in-out;
         color: $main-color;
+
+        &:hover {
+            color: darken($main-color, 10%);
+        }
     }
 }
 

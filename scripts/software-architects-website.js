@@ -68,52 +68,54 @@ function sendForm(eventData) {
     form.submit();
     return true;
 }
-//$(document).ready(function () {
-//    // add error handling for forms
-//    //$("input,select,textarea").blur((eventObject: JQueryEventObject) => {
-//    //    $(eventObject.target).addClass("tc-touched");
-//    //    if ($(eventObject.target).is(":invalid")) {
-//    //        $("span[data-message-for='" + eventObject.target.id + "']").addClass("tc-error-visible");
-//    //    }
-//    //    else {
-//    //        $("span[data-message-for='" + eventObject.target.id + "']").removeClass("tc-error-visible");
-//    //    }
-//    //});
-//    // add table of contents to blog articles
-//    var result = $(".tc-toc");
-//    var setUl = false;
-//    if (result.length > 0) {
-//        var text = "<ul>";
-//        var title = $(".col-sm-8").find("h2, h3, h4");
-//        title.each((index: number, value: Element) => {
-//            if (index + 1 < title.length) {
-//                text += "<li> <a id='link" + index + "' href='#title" + index + "'>" + value.innerHTML + "</a>  </li>";
-//                value.setAttribute("id", "title" + index);
-//                if (title[index + 1].tagName != "H2") {
-//                    if (!setUl) {
-//                        setUl = true;
-//                        text += "<ul>";
-//                    }
-//                } else {
-//                    if (setUl) {
-//                        text += "</ul>";
-//                        setUl = false;
-//                    }
-//                }
-//            }
-//        });
-//        text += "</ul>";
-//        result.append(text);
-//        //setting top and bottom for affix
-//        //$("#summaryAffix").affix({
-//        //    offset:
-//        //    {
-//        //        top: $(".header").outerHeight(true),
-//        //        bottom: $(".tc-container.tc-container-lightblue.tc-related-posts-container").outerHeight(true) + $(".footer").outerHeight(true)
-//        //    }
-//        //});
-//    }
-//});
+$(document).ready(function () {
+    // add error handling for forms
+    //$("input,select,textarea").blur((eventObject: JQueryEventObject) => {
+    //    $(eventObject.target).addClass("tc-touched");
+    //    if ($(eventObject.target).is(":invalid")) {
+    //        $("span[data-message-for='" + eventObject.target.id + "']").addClass("tc-error-visible");
+    //    }
+    //    else {
+    //        $("span[data-message-for='" + eventObject.target.id + "']").removeClass("tc-error-visible");
+    //    }
+    //});
+    // add table of contents to blog articles
+    var result = $(".tc-toc");
+    var setUl = false;
+    if (result.length > 0) {
+        var text = "<ul>";
+        var headers = $(".tc-content").find("h2, h3, h4");
+        headers.each(function (index, header) {
+            if (index < headers.length) {
+                var id = "header" + index.toString();
+                if (header.attributes["id"]) {
+                    id = header.attributes["id"].value;
+                }
+                var tag = headers[index].tagName;
+                var previousTag = "H2";
+                if (index > 0) {
+                    previousTag = headers[index - 1].tagName;
+                }
+                var level = parseInt(tag.replace(/H/, ""));
+                var previousLevel = parseInt(previousTag.replace(/H/, ""));
+                if (level > previousLevel) {
+                    for (var i = 0; i < level - previousLevel; i++) {
+                        text += "<ul>";
+                    }
+                }
+                else if (level < previousLevel) {
+                    text += "</ul>";
+                }
+                text += "<li><a href='#" + id + "'>" + header.innerHTML + "</a></li>";
+                if (!header.attributes["id"]) {
+                    header.setAttribute("id", id);
+                }
+            }
+        });
+        text += "</ul>";
+        result.append(text);
+    }
+});
 (function (i, s, o, g, r, any, a, m) {
     i["GoogleAnalyticsObject"] = r;
     i[r] = i[r] || function () {

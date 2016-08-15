@@ -17,6 +17,7 @@ url: "http://www.software-architects.com" # the base hostname & protocol for you
 twitter_username: timecockpit
 github_username: software-architects
 
+encoding: utf-8
 gems: [jekyll-paginate, jekyll-redirect-from, jekyll-sitemap]
 paginate: 10
 paginate_path: "/devblog/page:num/"

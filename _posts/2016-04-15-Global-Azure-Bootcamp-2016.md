@@ -7,14 +7,14 @@ date: 2016-04-15
 bannerimage: /content/images/blog/2016/04/GAB-2016-logo-400x270.png
 bannerimagesource: 
 lang: en
-tags: []
+tags: [Azure]
 ref: 
 permalink: /devblog/2016/04/15/Global-Azure-Bootcamp-2016
 ---
 
-<p>
-  <img src="{{site.baseurl}}/content/images/blog/2016/04/GAB-2016-logo-800x540.png" />
-</p><p>Morgen ist es soweit, das Global Azure Bootcamp 2016 findet statt. 120 angemeldete Teilnehmerinnen und Teilnehmer, 23 Sessions - wir werden dieses Jahr alle Rekorde aus den Vorjahren sprengen. In diesem Blogartikel fassen wir die wichtigsten Informationen und Links für morgen zusammen.</p><p class="highlighted">Feedback ist uns wichtig. Es würde uns freuen, wenn du dir die Zeit nimmst, unseren <a href="http://bit.ly/gab16feedback" target="_blank">Feedbackbogen</a> am Ende des Events auszufüllen.</p><h2>Veranstaltungsort: Wissensturm Linz</h2><ul>
+![GAB]({{site.baseurl}}/content/images/blog/2016/04/GAB-2016-logo-800x540.png)
+
+<p>Morgen ist es soweit, das Global Azure Bootcamp 2016 findet statt. 120 angemeldete Teilnehmerinnen und Teilnehmer, 23 Sessions - wir werden dieses Jahr alle Rekorde aus den Vorjahren sprengen. In diesem Blogartikel fassen wir die wichtigsten Informationen und Links für morgen zusammen.</p><p class="highlighted">Feedback ist uns wichtig. Es würde uns freuen, wenn du dir die Zeit nimmst, unseren <a href="http://bit.ly/gab16feedback" target="_blank">Feedbackbogen</a> am Ende des Events auszufüllen.</p><h2>Veranstaltungsort: Wissensturm Linz</h2><ul>
   <li>Adresse: Kärtnerstraße 26, 4020 Linz (<a href="https://goo.gl/maps/o3pfoB8U5ZJ2" target="_blank">Google Maps</a>)</li>
   <li>
     <a href="http://www.linz.at/wissensturm/anreise.asp" target="_blank">Informationen zur Anreise mit öffentlichen Verkehrsmitteln und mit dem Auto</a>

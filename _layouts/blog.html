@@ -5,15 +5,13 @@ layout: default
 	<div class="tc-container-white">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-sm-8 tc-content">
 					<h1>{{ page.title }}</h1>
 					{{ content }}
 				</div>
-				<div class="col-sm-4">
-                    {% if page.showtoc == true %}
-                        <h3>Content</h3>
-                        <div class="tc-toc"></div>
-                    {% endif %}
+				<div class="col-sm-4 tc-sidebar">
+                    <h3>Content</h3>
+                    <div class="tc-toc"></div>
 
                     {% include timecockpitad.html %}
                     {% include tagcloud.html %}

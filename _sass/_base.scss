@@ -32,6 +32,10 @@ h3, h3 a {
 	font-size: 20px;
 }
 
+h4, h4 a {
+	font-size: $font-size-base;
+}
+
 @media (max-width: $screen-sm-max) { 
 	h1, h1 a {
 		font-size: 26px;
@@ -83,6 +87,10 @@ blockquote {
 			filter: grayscale(0%);
 		}
 	}
+}
+
+iframe {
+    max-width: 100%;
 }
 
 div.content {
