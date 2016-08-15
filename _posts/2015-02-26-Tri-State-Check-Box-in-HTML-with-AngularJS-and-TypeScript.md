@@ -130,8 +130,11 @@ module Samples.Controls {
             }
         }
     }
-}{% endhighlight %}How to Use the Directive in HTML
-		</h2><p>The goal for the directive built with AngularJS and TypeScript was to:</p><ul>
+}{% endhighlight %}
+
+<h2>How to Use the Directive in HTML</h2>
+<p>The goal for the directive built with AngularJS and TypeScript was to:</p>
+<ul>
   <li>be able to set all three states directly in HTML without the need for JavaScript</li>
   <li>allow data binding in AngularJS</li>
 </ul><p>The first HTML snippet shows how the directive can be used to set the values in HTML:</p>{% highlight xhtml %}<div class="col-md-4">
