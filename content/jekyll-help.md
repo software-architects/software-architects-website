@@ -170,8 +170,37 @@ TODO
 
 ### Slimbox Images
 
-Find `<function name="Composite.Media.ImageGallery.Slimbox2"` in folder `_posts` and replace function block by the following code:
+Find `<function name="Composite.Media.ImageGallery.Slimbox2"` in folder `_posts` in files with extension .md.
 
-```
+#### Slimbox Images With MediaImage
+
+Replace function blocks for single images with the following code:
+
+```html
 <a data-lightbox="bugfix" href="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png"><img src="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png" /></a>
 ```
+
+Make sure to replace the following three items:
+
+* data-lightbox: a unique name for the lightbox (no blanks or special characters)
+* href: url for the image
+* src: url for the image
+
+#### Slimbox Images With MediaFolder
+
+Replace function blocks for folders with the following code:
+
+```html
+<div class="row tc-image-gallery">
+    <div class="col-xs-6 col-sm-3 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/image1.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/image1.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-3 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/image2.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/image2.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-3 col-md-3"><a data-lightbox="gab" href="{{site.baseurl}}/content/images/blog/2016/04/image3.jpg"><img src="{{site.baseurl}}/content/images/blog/2016/04/image3.jpg" /></a></div>
+</div>
+```
+
+You have to add all images for a folder manually.
+
+The classes col-xs-\*, col-sm-\*, col-md-\* and col-lg-\* specify the number of columns for an image. \* must be a number between 1 and 12. Specify a least col-xs-\* and col-sm-\*. If col-md-\* or col-lg-\* are not specified they are equal to the next smaller class.
+
+You can find more details about the Bootstrap grid system at <http://getbootstrap.com/css/#grid>.
+
