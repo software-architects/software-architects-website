@@ -26,6 +26,7 @@ array: []
 # Build settings
 redirects: yes
 markdown: kramdown
+highlighter: rouge
 encoding: utf-8
 exclude: [
 	software-architects-website.sln,

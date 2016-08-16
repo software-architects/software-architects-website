@@ -95,10 +95,32 @@ Used to implement optimistic locking.</li>
   <p class="Code">We have to write a website that can be used to upload customer orders in the form of CSV files. Every file can contain multiple orders.</p>
   <p>Let's think about what Azure storage technology we should use in this case. The first one is easy: At the end of the import process it makes sense to store the resulting orders in SQL Azure in order to be able to do e.g. reporting. I want to keep the noise-ratio low and therefore we just use plain old ADO.NET + a stored proc for database access. In practise it is likely that you add a data access layer based on e.g. Entity Framework.</p>
   <p>So here is the T-SQL script that we use to create the order table and the stored proc that creates orders in the table. Note that our order table is very simple and small. To make runtime results a little more realistic I added a <span class="InlineCode">WAITFOR DELAY</span> statement to the procedure. You can take this T-SQL code and run it against your personal SQL Azure database.</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="CREATE TABLE StorageDemo_CustomerOrder (&#xA; OrderID UNIQUEIDENTIFIER PRIMARY KEY,&#xA; OrderDate DATE NOT NULL,&#xA; CustomerName NVARCHAR(200) NOT NULL,&#xA; Amount DECIMAL(18,6) NOT NULL&#xA;);&#xA;GO&#xA;&#xA;CREATE PROCEDURE StorageDemo_AddCustomerOrder(&#xA; @OrderDate DATE,&#xA; @CustomerName NVARCHAR(200),&#xA; @Amount DECIMAL(18,6))&#xA;AS&#xA; SET NOCOUNT ON;&#xA; WAITFOR DELAY '00:00:00.1';&#xA; &#xA; IF @CustomerName LIKE '%FAIL%'&#xA;  RAISERROR('Illegal customer order.', 18, 1);&#xA; ELSE&#xA;  INSERT INTO StorageDemo_CustomerOrder (OrderID, OrderDate, CustomerName, Amount)&#xA;  VALUES (NEWID(), @OrderDate, @CustomerName, @Amount);&#xA;GO" />
-    <param name="CodeType" value="sql" />
-  </function>
+
+{% highlight sql %}
+CREATE TABLE StorageDemo_CustomerOrder (
+ OrderID UNIQUEIDENTIFIER PRIMARY KEY,
+ OrderDate DATE NOT NULL,
+ CustomerName NVARCHAR(200) NOT NULL,
+ Amount DECIMAL(18,6) NOT NULL
+);
+GO
+
+CREATE PROCEDURE StorageDemo_AddCustomerOrder(
+ @OrderDate DATE,
+ @CustomerName NVARCHAR(200),
+ @Amount DECIMAL(18,6))
+AS
+ SET NOCOUNT ON;
+ WAITFOR DELAY '00:00:00.1';
+ 
+ IF @CustomerName LIKE '%FAIL%'
+  RAISERROR('Illegal customer order.', 18, 1);
+ ELSE
+  INSERT INTO StorageDemo_CustomerOrder (OrderID, OrderDate, CustomerName, Amount)
+  VALUES (NEWID(), @OrderDate, @CustomerName, @Amount);
+GO
+{% endhighlight %}
+
   <p>Next we have to set up our solution. We need an Azure project with a single web role. To create the solution perform the following steps:</p>
   <ul>
     <li>Create a new <em>Cloud</em> project in Visual Studio (you have to have Windows Azure SDK installed for that)</li>

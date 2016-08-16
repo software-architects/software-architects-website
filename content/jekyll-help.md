@@ -21,6 +21,8 @@ At [Jekyll on Windows](http://jekyll-windows.juthilo.com/) there is a good insta
   * Run `gem install jekyll`
   * Run `gem install wdm`
   * Run `gem install jekyll-paginate`
+  * Run `gem install jekyll-redirect-from`
+  * Run `gem install jekyll-sitemap`
 
 ## Run Jekyll
 
@@ -204,3 +206,18 @@ The classes col-xs-\*, col-sm-\*, col-md-\* and col-lg-\* specify the number of 
 
 You can find more details about the Bootstrap grid system at <http://getbootstrap.com/css/#grid>.
 
+### Syntax Highlighter
+
+Find `<function name="Composite.Web.Html.SyntaxHighlighter"` in folder `_posts` in files with extension .md.
+
+Replace the function block with the following code:
+
+{% raw %}
+```html
+{% highlight language %}
+...
+{% endhighlight %}
+```
+{% endraw %}
+
+Replace language with the value from `<param name="CodeType" value="xml" />`.
