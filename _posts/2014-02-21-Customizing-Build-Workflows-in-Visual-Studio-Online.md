@@ -51,12 +51,6 @@ permalink: /devblog/2014/02/21/Customizing-Build-Workflows-in-Visual-Studio-Onli
 <br /></li>
 </ul>
 
-<function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:a4238ec0-5cdd-4b56-8933-95be0d7d3ea4" />
-  <param name="ThumbnailMaxWidth" value="650" />
-  <param name="ImageMaxWidth" value="1920" />
-  <param name="ImageMaxHeight" value="1280" />
-</function>
 <a data-lightbox="BuildController" href="{{site.baseurl}}/content/images/blog/2014/02/BuildController.png"><img src="{{site.baseurl}}/content/images/blog/2014/02/Buildcontroller.png" /></a>
 
 <ul>
