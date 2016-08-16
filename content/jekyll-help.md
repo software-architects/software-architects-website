@@ -14,12 +14,13 @@ At [Jekyll on Windows](http://jekyll-windows.juthilo.com/) there is a good insta
 * [Ruby](http://rubyinstaller.org/downloads/) (make sure to check "Add Ruby executables to your PATH")
 * [Ruby DevKit](http://rubyinstaller.org/downloads/)
   * Enter a path that has no spaces in it like C:\RubyDevKit\. Click Extract and wait until the process is finished.
-  * Open a line tool and navigate to the folder you extracted the DevKit into.
+  * Open a command line tool and navigate to the folder you extracted the DevKit into.
   * Run `ruby dk.rb init`
   * Run `ruby dk.rb install`
 * Jekyll
   * Run `gem install jekyll`
   * Run `gem install wdm`
+  * Run `gem install jekyll-paginate`
 
 ## Run Jekyll
 
