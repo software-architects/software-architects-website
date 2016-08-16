@@ -49,12 +49,17 @@ permalink: /devblog/2014/02/21/Customizing-Build-Workflows-in-Visual-Studio-Onli
   <li>First you have to check in the DLL containing the custom build activity (<em>GenerateVersionFileActivity.dll</em>) in Git. Remember the directory into which you put the DLL.</li>
   <li>Next you have to tell Visual Studio Online where to look for custom build activities (click to enlarge):
 <br /></li>
-</ul><function name="Composite.Media.ImageGallery.Slimbox2">
+</ul>
+
+<function name="Composite.Media.ImageGallery.Slimbox2">
   <param name="MediaImage" value="MediaArchive:a4238ec0-5cdd-4b56-8933-95be0d7d3ea4" />
   <param name="ThumbnailMaxWidth" value="650" />
   <param name="ImageMaxWidth" value="1920" />
   <param name="ImageMaxHeight" value="1280" />
-</function><ul>
+</function>
+<a data-lightbox="BuildController" href="{{site.baseurl}}/content/images/blog/2014/02/BuildController.png"><img src="{{site.baseurl}}/content/images/blog/2014/02/Buildcontroller.png" /></a>
+
+<ul>
   <li>Next you have to check in the XAML file with the custom build workflow.</li>
   <li>Last but not least you have to change your build configuration so that it executes your custom build workflow instead of the standard one:
 <br /><img src="{{site.baseurl}}/content/images/blog/2014/02/CustomBuildWorkflow.png?mw=650" /><br /></li>
