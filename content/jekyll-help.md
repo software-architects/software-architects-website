@@ -1,6 +1,7 @@
 ---
 layout: pageWithToc
 title: Help
+excerpt: Documentation for software architects websites
 permalink: /jekyll-help
 ---
 
@@ -86,6 +87,14 @@ You can use the id for hyperlinks:
 (Link to Start Jekyll Server)[#start-jekyll-server]
 ```
 
+### Paragraphs
+
+TODO
+
+#### Styles
+
+TODO
+
 ### Lists
 
 ```
@@ -101,7 +110,7 @@ Ordered list:
 1. Second item
 1. Third item
 
-List with subitems, use two blanks to generate a subitem:
+List with subitems, use four blanks to generate a subitem:
 
 1. First item
   1. First subitem
@@ -148,6 +157,10 @@ TODO
 
 TODO
 
-### Styles
+#### Styles
+
+TODO
+
+### Code
 
 TODO

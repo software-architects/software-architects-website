@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "editor.wrappingColumn": 0,
+    "markdown.styles": [
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+        "../_site/css/main.css",
+        "../css/editor.css"
+    ]
+}
