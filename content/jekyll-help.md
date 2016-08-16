@@ -165,3 +165,13 @@ TODO
 ### Code
 
 TODO
+
+## Repair Old Blog Entries
+
+### Slimbox Images
+
+Find `<function name="Composite.Media.ImageGallery.Slimbox2"` in folder `_posts` and replace function block by the following code:
+
+```
+<a data-lightbox="bugfix" href="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png"><img src="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png" /></a>
+```

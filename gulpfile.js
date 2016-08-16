@@ -13,8 +13,12 @@ var pump = require("pump");
 var stripBom = require("gulp-stripbom");
 
 //"compress",
-gulp.task("default", ["copyBootstrapFiles", "copyLightboxFiles", "buildTypescript", "images", "removeBom"], function () {
+gulp.task("default", ["copyBootstrapFiles", "copyLightboxFiles", "buildTypescript"], function () {
     // place code for your default task here
+});
+
+gulp.task("all", ["copyBootstrapFiles", "copyLightboxFiles", "buildTypescript", "images", "removeBom"], function () {
+	// place code for your default task here
 });
 
 gulp.task("copyBootstrapFiles", function () {
