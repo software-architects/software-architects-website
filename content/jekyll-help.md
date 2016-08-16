@@ -14,12 +14,13 @@ At [Jekyll on Windows](http://jekyll-windows.juthilo.com/) there is a good insta
 * [Ruby](http://rubyinstaller.org/downloads/) (make sure to check "Add Ruby executables to your PATH")
 * [Ruby DevKit](http://rubyinstaller.org/downloads/)
   * Enter a path that has no spaces in it like C:\RubyDevKit\. Click Extract and wait until the process is finished.
-  * Open a line tool and navigate to the folder you extracted the DevKit into.
+  * Open a command line tool and navigate to the folder you extracted the DevKit into.
   * Run `ruby dk.rb init`
   * Run `ruby dk.rb install`
 * Jekyll
   * Run `gem install jekyll`
   * Run `gem install wdm`
+  * Run `gem install jekyll-paginate`
 
 ## Run Jekyll
 
@@ -164,3 +165,13 @@ TODO
 ### Code
 
 TODO
+
+## Repair Old Blog Entries
+
+### Slimbox Images
+
+Find `<function name="Composite.Media.ImageGallery.Slimbox2"` in folder `_posts` and replace function block by the following code:
+
+```
+<a data-lightbox="bugfix" href="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png"><img src="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png" /></a>
+```
