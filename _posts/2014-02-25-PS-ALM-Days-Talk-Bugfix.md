@@ -19,3 +19,4 @@ permalink: /devblog/2014/02/25/PS-ALM-Days-Talk-Bugfix
   <param name="ImageMaxWidth" value="1920" />
   <param name="ImageMaxHeight" value="1280" />
 </function>
+<a data-lightbox="bugfix" href="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png"><img src="{{site.baseurl}}/content/images/blog/2014/02/bugfix.png" /></a>
