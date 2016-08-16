@@ -1,7 +1,7 @@
 ---
 layout: pageWithToc
 title: Help
-permalink: /help
+permalink: /jekyll-help
 ---
 
 # Help
