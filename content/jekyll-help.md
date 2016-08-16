@@ -27,7 +27,7 @@ At [Jekyll on Windows](http://jekyll-windows.juthilo.com/) there is a good insta
 ## Run Jekyll
 
 Make sure to save all files with encoding **Unicode (UTF-8 without signature) - Codepage 65001**. If files are saved with the wrong encoding, 
-the build may break or it also may run successfully but files are missing in the output folder.
+the build may break or it also may run successfully but files are missing in the output folder (_site).
 
 ### Build
 
