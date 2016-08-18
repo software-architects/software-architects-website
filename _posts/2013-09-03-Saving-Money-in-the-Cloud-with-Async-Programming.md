@@ -131,19 +131,23 @@ static async Task PerformHighLatencyOperationsAsync()
     var value = await PerformHighLatencyGetAsync();
     Console.WriteLine(await PerformHighLatencyPowerAsync(value));
 }
-…{% endhighlight %}<p>You will still get the result of <em>PerformHighLatencyOperationsAsync</em> but the main thread is blocked until this method has finished. This is definitively not what we wanted.</p><p>Did you note that I changed the return type of <em>PerformHighLatencyOperationsAsync</em> to <em>Task</em> in the previous example? How can this work if the method does not explicitly return a <em>Task</em> object in its code? .NET is again doing the magic. When .NET reaches the first <em>await</em> statement, it does not only return from the corresponding method. It also automatically returns a Task on which the caller can e.g. wait. This fact will become important when we talk about async unit tests in a second.</p><h2>Async Web API</h2><h3>Introduction</h3><p>Now it is time to save money as promised. I will show you how to build an ASP.NET MVC Web API that can be deployed to Windows Azure Website. It will interact with a database. This means it contains high latency operations. In order to save resources in the cloud we need to program asynchronously. Thanks to Entity Framework 6 this can be done using the <em>Task Asynchronous Pattern</em> introduced before.</p><h3>Step 1: Create ASP.NET MVC 4 Project</h3><p>The first step is creating an ASP.NET MVC 4 Web API project (click to enlarge image):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:b2ba88ef-1643-4597-8dd1-8e26ba6e475b" />
-  <param name="ThumbnailMaxWidth" value="500" />
-</function><p>I will not go into details about ASP.NET MVC 4. This is out of scope of this article. If this technology is new to you, I encourage you to read more about it in Microsoft’s MSDN library.</p><h3>Step 2: Create Data Access Layer</h3><p>Next we need to build a data access layer. In our case we create a very simple database with a single table storing blog posts. For demo purposes I will use blog posts from my private blog <a href="http://bienenimgarten.wordpress.com/" target="_blank">http://bienenimgarten.wordpress.com</a> where my spouse and I write about gardening and bee keeping.</p><p>We start by adding Entity Framework 6 to our project.</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:1646a18a-96b9-4fd4-8a9f-1023bf7a2dc3" />
-  <param name="ThumbnailMaxWidth" value="500" />
-</function><p>You can easily search for “entity framework”. Make sure you select “Include Prerelease”.</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:5a42e916-346e-430a-a92d-d4c3aaf8871f" />
-  <param name="ThumbnailMaxWidth" value="500" />
-</function><p>Make sure you add EF 6 to both projects in your solution:</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:a0ebdc85-6cdd-4808-9ecf-8dd6c44d221a" />
-  <param name="ThumbnailMaxWidth" value="500" />
-</function><p>Now we have EF 6 added to our project, we can build a data access layer. I will use the code first approach here and let EF create the necessary tables. Here is the class representing the database table for blog posts:</p>{% highlight c# %}using System.ComponentModel.DataAnnotations;
+…{% endhighlight %}<p>You will still get the result of <em>PerformHighLatencyOperationsAsync</em> but the main thread is blocked until this method has finished. This is definitively not what we wanted.</p><p>Did you note that I changed the return type of <em>PerformHighLatencyOperationsAsync</em> to <em>Task</em> in the previous example? How can this work if the method does not explicitly return a <em>Task</em> object in its code? .NET is again doing the magic. When .NET reaches the first <em>await</em> statement, it does not only return from the corresponding method. It also automatically returns a Task on which the caller can e.g. wait. This fact will become important when we talk about async unit tests in a second.</p><h2>Async Web API</h2><h3>Introduction</h3><p>Now it is time to save money as promised. I will show you how to build an ASP.NET MVC Web API that can be deployed to Windows Azure Website. It will interact with a database. This means it contains high latency operations. In order to save resources in the cloud we need to program asynchronously. Thanks to Entity Framework 6 this can be done using the <em>Task Asynchronous Pattern</em> introduced before.</p><h3>Step 1: Create ASP.NET MVC 4 Project</h3><p>The first step is creating an ASP.NET MVC 4 Web API project (click to enlarge image):</p>
+
+<a data-lightbox="AsyncMvc" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic1_Mvc4WebApi.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic1_Mvc4WebApi.png" /></a>
+
+<p>I will not go into details about ASP.NET MVC 4. This is out of scope of this article. If this technology is new to you, I encourage you to read more about it in Microsoft’s MSDN library.</p><h3>Step 2: Create Data Access Layer</h3><p>Next we need to build a data access layer. In our case we create a very simple database with a single table storing blog posts. For demo purposes I will use blog posts from my private blog <a href="http://bienenimgarten.wordpress.com/" target="_blank">http://bienenimgarten.wordpress.com</a> where my spouse and I write about gardening and bee keeping.</p><p>We start by adding Entity Framework 6 to our project.</p>
+
+<a data-lightbox="AsyncNuget" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic2_ManageNuget.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic2_ManageNuget.png" /></a>
+
+<p>You can easily search for “entity framework”. Make sure you select “Include Prerelease”.</p>
+
+<a data-lightbox="AsyncSearch" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic3_NugetSearch.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic3_NugetSearch.png" /></a>
+
+<p>Make sure you add EF 6 to both projects in your solution:</p>
+
+<a data-lightbox="NuGet" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic4_NuGetBothProjects.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic4_NuGetBothProjects.png" /></a>
+
+<p>Now we have EF 6 added to our project, we can build a data access layer. I will use the code first approach here and let EF create the necessary tables. Here is the class representing the database table for blog posts:</p>{% highlight c# %}using System.ComponentModel.DataAnnotations;
 
 namespace BeeInMyGarden.Data
 {
@@ -300,24 +304,42 @@ namespace MvcApplication2.Controllers
 }{% endhighlight %}<p>The important point here is that the test method is marked as <em>async Task</em>. Visual Studio’s test engine recognizes this method as an async test and will behave accordingly. Run your test and you will see that everything works nicely.</p><h2>Step 5: Deploy It</h2><p>Our implementation is ready to run in the cloud. In order to try it you need a Windows Azure subscription which you can get from <a href="http://www.windowsazure.com/">http://www.windowsazure.com</a>. If you are new to Widows Azure, you can try your first steps with the free offer or with the free resources you get as part of your MSDN subscription.</p><p>Here is a checklist what you have to do to run the Web API in Windows Azure:</p><ol>
   <li>Open the Windows Azure management portal at <a href="https://manage.windowsazure.com/">https://manage.windowsazure.com</a>.</li>
   <li>Create a Windows Azure SQL Database that you can use for storing the blog posts.
-<br /><function name="Composite.Media.ImageGallery.Slimbox2"><param name="MediaImage" value="MediaArchive:432eb06c-ae98-4a80-bd58-ad0d552b437d" /><param name="ThumbnailMaxWidth" value="500" /></function> </li>
+<br />
+
+<a data-lightbox="CreateAzure" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic6_CreateAzureDB.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic6_CreateAzureDB.png" /></a>
+
+</li>
   <li>Create a Windows Azure Website to which you can deploy your project.
 <br /></li>
   <li>Link the Windows Azure Website with the database created in step 2. This will help you during deployment.
-<br /><function name="Composite.Media.ImageGallery.Slimbox2"><param name="MediaImage" value="MediaArchive:2cd51b5c-f63e-41fd-a28e-4ec8f0bbf45b" /><param name="ThumbnailMaxWidth" value="500" /></function> </li>
+<br />
+
+<a data-lightbox="AsyncPic" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic8_Link.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic8_Link.png" /></a>
+
+</li>
   <li>Download the publish settings file for your Windows Azure Website.
-<br /><function name="Composite.Media.ImageGallery.Slimbox2"><param name="MediaImage" value="MediaArchive:48854f76-6d2a-4117-b1b8-cc62ca83b9ec" /><param name="ThumbnailMaxWidth" value="500" /></function> </li>
+<br />
+
+<a data-lightbox="PublishProfile" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic7_PublishProfile.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic7_PublishProfile.png" /></a>
+
+</li>
   <li>Right-click your MVC project and select <em>Publish.
-<br /><function name="Composite.Media.ImageGallery.Slimbox2"><param name="MediaImage" value="MediaArchive:ec4a7df8-96bc-48c8-b3e5-fed40901384d" /><param name="ThumbnailMaxWidth" value="500" /></function> </em></li>
+<br />
+
+<a data-lightbox="PublishAzure" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic5_PublishAzure.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic5_PublishAzure.png" /></a>
+
+</em></li>
   <li>Import the publish settings you downloaded from Windows Azure.</li>
   <li>During deployment you can change the database connection string in your <em>web.config</em> file so that it does no longer point to your local database but to the SQL database in the cloud that you created in step 2.</li>
-</ol><p>Complete the publishing wizard, wait a few seconds and you can try your Web API in the cloud. I usually use Fiddler for this. Here you see the request in Fiddler: </p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:4d5f5c4b-2c9a-48b2-91bb-b5010d0d352d" />
-  <param name="ThumbnailMaxWidth" value="500" />
-</function><p>And this is how the JSON response looks like in Fiddler:</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:f71ebfe6-4252-4d2a-b71d-6075d9227092" />
-  <param name="ThumbnailMaxWidth" value="500" />
-</function><h2>Async UI Programming</h2><p>Now that we have built and deployed the async Web API, we could consume it in a Windows app. To keep things simple I will show you some WPF code. You could do exactly the same in a Windows Store app.</p><p>On the server side we used async programming to raise efficiency. On the client side we use async typically to keep our app responsive. The UI thread should not be blocked for a longer time. All high latency operations must be done in background threads. Only the UI interaction code should run on the UI thread. The good news is that .NET <em>async</em> keyword brings us back on the UI thread after the background task if we used it in the UI thread originally. Therefore we can just use <em>async</em> and we do not have to bother with explicitly switching to the UI thread.</p><p>The following very simple code snippet shows a typical view model used for a Windows app. In order to keep the amount of code I have to write as small as possible, I used the <a href="http://msdn.microsoft.com/en-us/library/gg406140.aspx" target="_blank">Prism library</a> for MVVM and <a href="http://james.newtonking.com/projects/json-net.aspx" target="_blank">Json.net</a> for parsing the Web API's JSON result.</p>{% highlight c# %}using BeeInMyGarden.Data;
+</ol><p>Complete the publishing wizard, wait a few seconds and you can try your Web API in the cloud. I usually use Fiddler for this. Here you see the request in Fiddler: </p>
+
+<a data-lightbox="AsyncFiddler" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic9_Fiddler.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic9_Fiddler.png" /></a>
+
+<p>And this is how the JSON response looks like in Fiddler:</p>
+
+<a data-lightbox="AsyncFiddler" href="/content/images/blog/2013/08/AsyncArticle/AsyncPic10_Fiddler2.png"><img src="/content/images/blog/2013/08/AsyncArticle/AsyncPic10_Fiddler2.png" /></a>
+
+<h2>Async UI Programming</h2><p>Now that we have built and deployed the async Web API, we could consume it in a Windows app. To keep things simple I will show you some WPF code. You could do exactly the same in a Windows Store app.</p><p>On the server side we used async programming to raise efficiency. On the client side we use async typically to keep our app responsive. The UI thread should not be blocked for a longer time. All high latency operations must be done in background threads. Only the UI interaction code should run on the UI thread. The good news is that .NET <em>async</em> keyword brings us back on the UI thread after the background task if we used it in the UI thread originally. Therefore we can just use <em>async</em> and we do not have to bother with explicitly switching to the UI thread.</p><p>The following very simple code snippet shows a typical view model used for a Windows app. In order to keep the amount of code I have to write as small as possible, I used the <a href="http://msdn.microsoft.com/en-us/library/gg406140.aspx" target="_blank">Prism library</a> for MVVM and <a href="http://james.newtonking.com/projects/json-net.aspx" target="_blank">Json.net</a> for parsing the Web API's JSON result.</p>{% highlight c# %}using BeeInMyGarden.Data;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
 using Newtonsoft.Json;

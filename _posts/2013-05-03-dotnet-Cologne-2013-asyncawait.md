@@ -76,7 +76,8 @@ namespace AsyncAwaitDemo
             return true;
         }
     }
-}{% endhighlight %}<p>The user interface is very simple - just a button:</p>{% highlight xml %}<Window x:Class="AsyncAwaitDemo.MainWindow"
+}{% endhighlight %}
+<p>The user interface is very simple - just a button:</p>{% highlight xml %}<Window x:Class="AsyncAwaitDemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
@@ -89,11 +90,23 @@ namespace AsyncAwaitDemo
         <Button Command="{Binding Path=ConnectAndUpdateSync}">Connect to sensor and upload firmware</Button>
     </StackPanel>
 </Window>{% endhighlight %}<p>Of course the UI logic is implemented in a ViewModel class:</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System.Windows;&#xA;&#xA;namespace AsyncAwaitDemo&#xA;{&#xA;    public partial class MainWindow : Window&#xA;    {&#xA;        public MainWindow()&#xA;        {&#xA;            InitializeComponent();&#xA;            this.DataContext = new MainWindowViewModel();&#xA;        }&#xA;    }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
-  {% highlight c# %}using System;
+  
+  {% highlight c# %}using System.Windows;
+
+namespace AsyncAwaitDemo
+{
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
+        }
+    }
+}
+{% endhighlight %}
+
+{% highlight c# %}using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
@@ -403,11 +416,79 @@ namespace AsyncAwaitDemo
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
-}{% endhighlight %}<p>In the UI I use visual states:</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&lt;Window x:Class=&quot;AsyncAwaitDemo.MainWindow&quot;&#xA;        xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#xA;        xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#xA;        Title=&quot;MainWindow&quot; Height=&quot;350&quot; Width=&quot;525&quot;&gt;&#xA;    &lt;VisualStateManager.VisualStateGroups&gt;&#xA;        &lt;VisualStateGroup Name=&quot;ConnectingStates&quot;&gt;&#xA;            &lt;VisualState Name=&quot;Initial&quot;&gt;&#xA;            &lt;/VisualState&gt;&#xA;            &lt;VisualState Name=&quot;Updating&quot;&gt;&#xA;                &lt;Storyboard&gt;&#xA;                    &lt;ColorAnimationUsingKeyFrames Storyboard.TargetName=&quot;Indicator&quot;&#xA;                                                  Storyboard.TargetProperty=&quot;Color&quot;&#xA;                                                  RepeatBehavior=&quot;Forever&quot; &gt;&#xA;                        &lt;DiscreteColorKeyFrame Value=&quot;Green&quot; KeyTime=&quot;00:00:00.5&quot; /&gt;&#xA;                        &lt;DiscreteColorKeyFrame Value=&quot;Red&quot; KeyTime=&quot;00:00:01.0&quot; /&gt;&#xA;                    &lt;/ColorAnimationUsingKeyFrames&gt;&#xA;                    &lt;ObjectAnimationUsingKeyFrames Storyboard.TargetName=&quot;CancelButton&quot;&#xA;                                                   Storyboard.TargetProperty=&quot;Visibility&quot;&gt;&#xA;                        &lt;DiscreteObjectKeyFrame Value=&quot;{x:Static Visibility.Visible}&quot; KeyTime=&quot;00:00:00&quot; /&gt;&#xA;                    &lt;/ObjectAnimationUsingKeyFrames&gt;&#xA;                &lt;/Storyboard&gt;&#xA;            &lt;/VisualState&gt;&#xA;            &lt;VisualState Name=&quot;Cancelled&quot;&gt;&#xA;                &lt;Storyboard&gt;&#xA;                    &lt;ColorAnimation Storyboard.TargetName=&quot;Indicator&quot;&#xA;                                    Storyboard.TargetProperty=&quot;Color&quot;&#xA;                                    To=&quot;Red&quot;&#xA;                                    Duration=&quot;0&quot; /&gt;&#xA;                &lt;/Storyboard&gt;&#xA;            &lt;/VisualState&gt;&#xA;            &lt;VisualState Name=&quot;Updated&quot;&gt;&#xA;                &lt;Storyboard&gt;&#xA;                    &lt;ColorAnimation Storyboard.TargetName=&quot;Indicator&quot;&#xA;                                    Storyboard.TargetProperty=&quot;Color&quot;&#xA;                                    To=&quot;Green&quot;&#xA;                                    Duration=&quot;0&quot; /&gt;&#xA;                &lt;/Storyboard&gt;&#xA;            &lt;/VisualState&gt;&#xA;        &lt;/VisualStateGroup&gt;&#xA;    &lt;/VisualStateManager.VisualStateGroups&gt;&#xA;    &lt;Window.Resources&gt;&#xA;        &lt;Style TargetType=&quot;Button&quot;&gt;&#xA;            &lt;Setter Property=&quot;Margin&quot; Value=&quot;3&quot; /&gt;&#xA;        &lt;/Style&gt;&#xA;    &lt;/Window.Resources&gt;&#xA;    &lt;StackPanel&gt;&#xA;        &lt;Button Command=&quot;{Binding Path=ConnectAndUpdateSync}&quot;&gt;Connect to sensor and upload firmware&lt;/Button&gt;&#xA;&#xA;        &lt;Grid Margin=&quot;0, 20, 0, 0&quot;&gt;&#xA;            &lt;Grid.RowDefinitions&gt;&#xA;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#xA;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#xA;            &lt;/Grid.RowDefinitions&gt;&#xA;            &lt;Grid.ColumnDefinitions&gt;&#xA;                &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;&#xA;                &lt;ColumnDefinition Width=&quot;*&quot; /&gt;&#xA;            &lt;/Grid.ColumnDefinitions&gt;&#xA;            &lt;Ellipse Name=&quot;ConnectionIndicator&quot; Width=&quot;50&quot; Height=&quot;50&quot;&gt;&#xA;                &lt;Ellipse.Fill&gt;&#xA;                    &lt;SolidColorBrush Color=&quot;Gray&quot; x:Name=&quot;Indicator&quot; /&gt;&#xA;                &lt;/Ellipse.Fill&gt;&#xA;            &lt;/Ellipse&gt;&#xA;            &lt;ProgressBar Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;{Binding Path=Progress}&quot; &#xA;                         MinHeight=&quot;20&quot; MinWidth=&quot;200&quot; Grid.Row=&quot;1&quot; Margin=&quot;3&quot; /&gt;&#xA;            &lt;Button Command=&quot;{Binding Path=ConnectAndUpdateAsync}&quot; Grid.Column=&quot;1&quot;&gt;Connect and Update&lt;/Button&gt;&#xA;            &lt;Button Name=&quot;CancelButton&quot; Command=&quot;{Binding Path=CancelConnectAndUpdateAsync}&quot; Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&#xA;                    Visibility=&quot;Hidden&quot;&gt;Cancel&lt;/Button&gt;&#xA;        &lt;/Grid&gt;&#xA;    &lt;/StackPanel&gt;&#xA;&lt;/Window&gt;" />
-    <param name="CodeType" value="xml" />
-  </function>
+}{% endhighlight %}
+<p>In the UI I use visual states:</p><p>
+ 
+  {% highlight xml %}<Window x:Class="AsyncAwaitDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup Name="ConnectingStates">
+            <VisualState Name="Initial">
+            </VisualState>
+            <VisualState Name="Updating">
+                <Storyboard>
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetName="Indicator"
+                                                  Storyboard.TargetProperty="Color"
+                                                  RepeatBehavior="Forever" >
+                        <DiscreteColorKeyFrame Value="Green" KeyTime="00:00:00.5" />
+                        <DiscreteColorKeyFrame Value="Red" KeyTime="00:00:01.0" />
+                    </ColorAnimationUsingKeyFrames>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CancelButton"
+                                                   Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame Value="{x:Static Visibility.Visible}" KeyTime="00:00:00" />
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </VisualState>
+            <VisualState Name="Cancelled">
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetName="Indicator"
+                                    Storyboard.TargetProperty="Color"
+                                    To="Red"
+                                    Duration="0" />
+                </Storyboard>
+            </VisualState>
+            <VisualState Name="Updated">
+                <Storyboard>
+                    <ColorAnimation Storyboard.TargetName="Indicator"
+                                    Storyboard.TargetProperty="Color"
+                                    To="Green"
+                                    Duration="0" />
+                </Storyboard>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3" />
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <Button Command="{Binding Path=ConnectAndUpdateSync}">Connect to sensor and upload firmware</Button>
+
+        <Grid Margin="0, 20, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Ellipse Name="ConnectionIndicator" Width="50" Height="50">
+                <Ellipse.Fill>
+                    <SolidColorBrush Color="Gray" x:Name="Indicator" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <ProgressBar Minimum="0" Maximum="100" Value="{Binding Path=Progress}" 
+                         MinHeight="20" MinWidth="200" Grid.Row="1" Margin="3" />
+            <Button Command="{Binding Path=ConnectAndUpdateAsync}" Grid.Column="1">Connect and Update</Button>
+            <Button Name="CancelButton" Command="{Binding Path=CancelConnectAndUpdateAsync}" Grid.Column="1" Grid.Row="1"
+                    Visibility="Hidden">Cancel</Button>
+        </Grid>
+    </StackPanel>
+</Window>{% endhighlight %}
   {% highlight c# %}using System.Windows;
 
 namespace AsyncAwaitDemo

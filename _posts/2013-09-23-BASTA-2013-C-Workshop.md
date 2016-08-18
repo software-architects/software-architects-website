@@ -44,11 +44,28 @@ permalink: /devblog/2013/09/23/BASTA-2013-C-Workshop
         <file src="content\app.config.transform" target="content\" />
         <file src="content\Tool1.cs.pp" target="content\" />
     </files>
-</package>{% endhighlight %}<p>Here are the two (very simple) content files. The first one is <em>Tool1.cs.pp</em>, the second one <em>app.config.transform</em>:</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="//------------------------------------------------------------------------------------------------------------&#xA;// &lt;copyright file=&quot;Tool1.cs&quot; company=&quot;software architects gmbh&quot;&gt;&#xA;//     Copyright (c) software architects gmbh. All rights reserved.&#xA;// &lt;/copyright&gt;&#xA;//------------------------------------------------------------------------------------------------------------&#xA;&#xA;namespace $rootnamespace${body}#xA;{&#xA;    using ToolsLib;&#xA;&#xA;    public class Tool1 : Tool&#xA;    {&#xA;        public override void DoSomething()&#xA;        {&#xA;        }&#xA;    }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+</package>{% endhighlight %}
+<p>Here are the two (very simple) content files. The first one is <em>Tool1.cs.pp</em>, the second one <em>app.config.transform</em>:</p><p>
+
+{% highlight c# %}
+//------------------------------------------------------------------------------------------------------------
+// <copyright file="Tool1.cs" company="software architects gmbh">
+//     Copyright (c) software architects gmbh. All rights reserved.
+// </copyright>
+//------------------------------------------------------------------------------------------------------------
+
+namespace $rootnamespace${body}#xA;{
+    using ToolsLib;
+
+    public class Tool1 : Tool
+    {
+        public override void DoSomething()
+        {
+        }
+    }
+}
+{% endhighlight %}
+
   {% highlight xml %}<configuration>
     <appSettings>
         <add key="ToolPath" value="c:\temp" />

@@ -12,10 +12,21 @@ ref:
 permalink: /devblog/2013/09/19/SQLPASS-Session-about-Windows-Azure-Table-Storage
 ---
 
-<p>Today I will do a session in a <a href="http://www.sqlpass.org" target="_blank">SQLPASS</a> community <a href="http://austria.sqlpass.org/" target="_blank">meeting in Vienna</a> about Windows Azure Table Storage. The audience mainly consists of SQL experts and I have been invited to describe similarities and differences of SQL Azure and Table Storage. In this article I want to summarize important links that people who are interested in the details could use. Additionally I publish the source code of the sample that I am going to show.</p><p>Note that the sample is built with the hot and new 2.1 release of Azure's .NET Storage Client. Therefore it can use nice features like async API, building queries with IQueryable, Shared Access Signatures for table storage, etc.</p><p>Here are some photos from the event (click to enlarge). You can view the photos in full resolution <a href="http://www.flickr.com/photos/rainerstropek/" target="_blank">in my Flickr album</a>.</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaFolder" value="MediaArchive:66f02333-7931-4f09-8c07-1d83a71a7531" />
-  <param name="ThumbnailMaxHeight" value="75" />
-</function><h2>The Basics</h2><ul>
+<p>Today I will do a session in a <a href="http://www.sqlpass.org" target="_blank">SQLPASS</a> community <a href="http://austria.sqlpass.org/" target="_blank">meeting in Vienna</a> about Windows Azure Table Storage. The audience mainly consists of SQL experts and I have been invited to describe similarities and differences of SQL Azure and Table Storage. In this article I want to summarize important links that people who are interested in the details could use. Additionally I publish the source code of the sample that I am going to show.</p><p>Note that the sample is built with the hot and new 2.1 release of Azure's .NET Storage Client. Therefore it can use nice features like async API, building queries with IQueryable, Shared Access Signatures for table storage, etc.</p><p>Here are some photos from the event (click to enlarge). You can view the photos in full resolution <a href="http://www.flickr.com/photos/rainerstropek/" target="_blank">in my Flickr album</a>.</p>
+
+<div class="row tc-image-gallery">
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 1.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 1.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 2.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 2.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 3.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 3.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 4.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 4.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 5.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 5.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 6.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 6.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 7.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 7.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 8.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 8.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 9.jpg"><img src="/content/images/blog/2013/09/SQLPASSMeeting/2013-09-19 SQLPASS Vienna 9.jpg" /></a></div>
+</div>
+
+<h2>The Basics</h2><ul>
   <li>
     <a href="http://www.windowsazure.com/en-us/services/data-management/" target="_blank">Introduction about data management offerings in Windows Azure</a> covering SQL Databases and Table Storage</li>
   <li>
