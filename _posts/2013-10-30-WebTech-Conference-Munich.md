@@ -28,8 +28,12 @@ permalink: /devblog/2013/10/30/WebTech-Conference-Munich
   <li>
     <a href="http://www.software-architects.com/devblog/2013/10/17/AngularJS-with-TypeScript-and-Windows-Azure-Mobile-Services" target="_blank">AngularJS with TypeScript and Windows Azure Mobile Services</a>
   </li>
-</ul><h2>Photos</h2><p>I took some photos during the event. You can find them in full resolution in my <a href="http://flic.kr/s/aHsjLBFMAx" target="_blank">Flickr album</a>. You can also view smaller versions in the following image library (click to enlarge):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaFolder" value="MediaArchive:778bdd35-e7c1-4b1e-811c-3965ec340e75" />
-  <param name="ThumbnailMaxWidth" value="200" />
-  <param name="ThumbnailMaxHeight" value="200" />
-</function>
+</ul><h2>Photos</h2><p>I took some photos during the event. You can find them in full resolution in my <a href="http://flic.kr/s/aHsjLBFMAx" target="_blank">Flickr album</a>. You can also view smaller versions in the following image library (click to enlarge):</p>
+
+<div class="row tc-image-gallery">
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 1.jpg"><img src="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 1.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 10.jpg"><img src="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 10.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 2.jpg"><img src="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 2.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 3.jpg"><img src="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 3.jpg" /></a></div>
+    <div class="col-xs-6 col-sm-4 col-md-4"><a data-lightbox="gab" href="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 4.jpg"><img src="/content/images/blog/2013/10/WebTechConf/2013-10-30 IPC Muenchen 4.jpg" /></a></div>
+</div>

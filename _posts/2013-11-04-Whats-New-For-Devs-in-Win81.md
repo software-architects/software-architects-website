@@ -16,13 +16,11 @@ permalink: /devblog/2013/11/04/Whats-New-For-Devs-in-Win81
   <strong>
     <a href="https://de.slideshare.net/rstropek/news-in-windows-81" title="What's New in Visual Studio 2013 for C# Developers" target="_blank">What's New in Visual Studio 2013 for C# Developers</a>
   </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2>Sample Code</h2><p class="showcase">Note that the sample is just demonstrating features. It is not fully functional and definitely not production-ready code!</p><p>
-  <a href="{{site.baseurl}}/content/images/blog/2013/11/HiveManagerSample.zip" target="_blank">Download the sample code</a> (Visual Studio 2013 project including a Mobile Service custom API written in JavaScript).</p><p>Do you like the images? You find more in my <a href="http://www.flickr.com/photos/rainerstropek" target="_blank">Flickr album</a> and my <a href="http://bienenimgarten.wordpress.com/" target="_blank">private blog about keeping honey bees</a> (German).</p><h2>Session Recording (German)</h2><iframe width="640" height="480" src="//www.youtube.com/embed/4sFgmnNZItY?rel=0" frameborder="0" allowfullscreen="allowfullscreen"></iframe><h2>Sample Walkthrough</h2><p>My goal in this session was to put a lot of Windows 8.1 + VS2013 + Azure Mobile Services news into one sample. As my hobby is bee keeping, I decided to build a "hive manager". This is how the app should look like (click to enlarge):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:67b0c7bf-450c-495d-979e-189faf93885b" />
-  <param name="ThumbnailMaxWidth" value="600" />
-  <param name="ThumbnailMaxHeight" value="600" />
-  <param name="ImageMaxWidth" value="1000" />
-  <param name="ImageMaxHeight" value="800" />
-</function><p>The sample demonstrates the following topics:</p><ul>
+  <a href="{{site.baseurl}}/content/images/blog/2013/11/HiveManagerSample.zip" target="_blank">Download the sample code</a> (Visual Studio 2013 project including a Mobile Service custom API written in JavaScript).</p><p>Do you like the images? You find more in my <a href="http://www.flickr.com/photos/rainerstropek" target="_blank">Flickr album</a> and my <a href="http://bienenimgarten.wordpress.com/" target="_blank">private blog about keeping honey bees</a> (German).</p><h2>Session Recording (German)</h2><iframe width="640" height="480" src="//www.youtube.com/embed/4sFgmnNZItY?rel=0" frameborder="0" allowfullscreen="allowfullscreen"></iframe><h2>Sample Walkthrough</h2><p>My goal in this session was to put a lot of Windows 8.1 + VS2013 + Azure Mobile Services news into one sample. As my hobby is bee keeping, I decided to build a "hive manager". This is how the app should look like (click to enlarge):</p>
+  
+  <a data-lightbox="honeybee" href="/content/images/blog/2013/11/AppImage.png"><img src="/content/images/blog/2013/11/AppImage.png" /></a>
+
+<p>The sample demonstrates the following topics:</p><ul>
   <li>Setting up a new Windows Store app in Visual Studio 2013</li>
   <li>Providing visual assets for <strong>new tile sizes</strong></li>
   <li>Working with the new <strong><em>Hub</em></strong> control</li>
@@ -34,13 +32,11 @@ permalink: /devblog/2013/11/04/Whats-New-For-Devs-in-Win81
   <li>Using the new <strong><em>SearchBox</em></strong> for in-app search capabilities</li>
   <li>New <strong><em>Header</em></strong> and <strong><em>PlaceholderText</em></strong> properties</li>
   <li>New <strong><em>DatePicker</em></strong> control</li>
-</ul><p class="showcase">Note that for this session I have picked just a few of the things that are new in Windows 8.1. If you want to have a more complete overview, check out the <a href="http://msdn.microsoft.com/library/windows/apps/bg182410" target="_blank">Windows 8.1 Feature Guide</a>.</p><h3>App Setup, New Tile Sizes</h3><p>One of the nice new features in Windows 8.1 are the new tile sizes. My sample code makes use of them. The following screenshot shows how to set up the visual assets in Visual Studio 2013:</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:2cb75590-5471-4860-bc59-07bac098713d" />
-  <param name="ThumbnailMaxWidth" value="600" />
-  <param name="ThumbnailMaxHeight" value="600" />
-  <param name="ImageMaxWidth" value="1000" />
-  <param name="ImageMaxHeight" value="1000" />
-</function><p>Here you see the large tile of our app in the Windows 8.1 start menu:</p><p>
+</ul><p class="showcase">Note that for this session I have picked just a few of the things that are new in Windows 8.1. If you want to have a more complete overview, check out the <a href="http://msdn.microsoft.com/library/windows/apps/bg182410" target="_blank">Windows 8.1 Feature Guide</a>.</p><h3>App Setup, New Tile Sizes</h3><p>One of the nice new features in Windows 8.1 are the new tile sizes. My sample code makes use of them. The following screenshot shows how to set up the visual assets in Visual Studio 2013:</p>
+
+<a data-lightbox="TileAssets" href="/content/images/blog/2013/11/TileAssets.png"><img src="/content/images/blog/2013/11/TileAssets.png" /></a>
+
+<p>Here you see the large tile of our app in the Windows 8.1 start menu:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2013/11/LargeTile.png" />
 </p><h3>The New <em>Hub</em> Control</h3><p>The new hub control makes it really easy to use the hub navigation pattern in Windows Store apps. In my app, I use the hub to display</p><ul>
   <li>A "Hero" image to visually "pimp" my app</li>
@@ -254,13 +250,11 @@ public async void Authenticate()
             this.user = null;
         }
     }
-}{% endhighlight %}<p>The behavior in the XAML file will trigger the <em>Authenticate</em> method in the ViewModel whenever the <em>Loaded</em> event of the <em>Page</em> will occur. As a result, your user is presented with the typical login screen for Microsoft Accounts. Subsequent calls to the mobile services referenced by <em>App.MobileService</em> will automatically pass the identity of the user via the corresponding REST calls. If all this is new for you, I encourage you to download an HTTP debugger like <em><a href="http://fiddler2.com/" target="_blank">Fiddler</a></em> and watch the HTTP traffic. Here is a screenshot of the Mobile Services traffic in Fiddler (click to enlarge):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:a1be2b1b-f28e-424f-a427-25668f6428ed" />
-  <param name="ThumbnailMaxWidth" value="600" />
-  <param name="ThumbnailMaxHeight" value="600" />
-  <param name="ImageMaxWidth" value="1000" />
-  <param name="ImageMaxHeight" value="1000" />
-</function><h3>Data Access Using Windows Azure Mobile Services Tables</h3><p>The data itself is stored in Mobile Services tables. In our simple example it is just one table. The following class shows its structure:</p>{% highlight c# %}using Newtonsoft.Json;
+}{% endhighlight %}<p>The behavior in the XAML file will trigger the <em>Authenticate</em> method in the ViewModel whenever the <em>Loaded</em> event of the <em>Page</em> will occur. As a result, your user is presented with the typical login screen for Microsoft Accounts. Subsequent calls to the mobile services referenced by <em>App.MobileService</em> will automatically pass the identity of the user via the corresponding REST calls. If all this is new for you, I encourage you to download an HTTP debugger like <em><a href="http://fiddler2.com/" target="_blank">Fiddler</a></em> and watch the HTTP traffic. Here is a screenshot of the Mobile Services traffic in Fiddler (click to enlarge):</p>
+
+<a data-lightbox="bugfix" href="/content/images/blog/2013/11/Fiddler.png"><img src="/content/images/blog/2013/11/Fiddler.png" /></a>
+
+<h3>Data Access Using Windows Azure Mobile Services Tables</h3><p>The data itself is stored in Mobile Services tables. In our simple example it is just one table. The following class shows its structure:</p>{% highlight c# %}using Newtonsoft.Json;
 using System;
 
 namespace HiveManager

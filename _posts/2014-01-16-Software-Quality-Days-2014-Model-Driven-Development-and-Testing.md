@@ -64,7 +64,10 @@ permalink: /devblog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Developme
 
 <a data-lightbox="CodeDigger2" href="{{site.baseurl}}/content/images/blog/2014/01/MBTDemo/CodeDigger2.png"><img src="{{site.baseurl}}/content/images/blog/2014/01/MBTDemo/CodeDigger2.png" /></a>
 
-<p>Next we wanted to demo the power of PEX and Code Digger in a slightly more complex scenario. Here is the code we used (don't analyze the logic, it does not have any deeper meening):</p>{% highlight c# %}public class Bill
+<p>Next we wanted to demo the power of PEX and Code Digger in a slightly more complex scenario. Here is the code we used (don't analyze the logic, it does not have any deeper meening):</p>
+
+{% highlight c# %}
+public class Bill
 {
     public Bill(Region outsideEU, decimal amount, string supplier)
     {
@@ -117,7 +120,8 @@ permalink: /devblog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Developme
 
         return false;
     }
-}{% endhighlight %}
+}
+{% endhighlight %}
 
 <p>Trying to come up with interesting test cases for the <em>ValidateSupplier</em> method would not be super easy. We let PEX do the math (click on image to enlarge):</p>
 

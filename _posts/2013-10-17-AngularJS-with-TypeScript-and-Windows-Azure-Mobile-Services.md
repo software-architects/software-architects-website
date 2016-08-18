@@ -183,11 +183,11 @@ var WorldCtrl = function ($scope: IHierarchyScope) {
      World's population: {{population | number:1}} millions
  </div>
 </body>
-</html>{% endhighlight %}<h2>Sample 4: Dependency Injection</h2><p>The fourth sample is a little bit more complex than the first three samples. I use it to describe AngularJS's dependency injection system and its connection to TypeScript's type system (especially interfaces). Note that this sample is again inspired by the book mentioned above. The following slide gives an overview about the sample (click to enlarge):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:e0e09f2e-353c-40f1-9c46-3d37498f7091" />
-  <param name="ThumbnailMaxWidth" value="250" />
-  <param name="ThumbnailMaxHeight" value="250" />
-</function><h3>Contract Type</h3><p>At first we define a contract interface for an archive of notification messages:</p>{% highlight javascript %}module NotificationsModule {
+</html>{% endhighlight %}<h2>Sample 4: Dependency Injection</h2><p>The fourth sample is a little bit more complex than the first three samples. I use it to describe AngularJS's dependency injection system and its connection to TypeScript's type system (especially interfaces). Note that this sample is again inspired by the book mentioned above. The following slide gives an overview about the sample (click to enlarge):</p>
+
+<a data-lightbox="Slide" href="/content/images/blog/2013/10/Slide27.png"><img src="/content/images/blog/2013/10/Slide27.png" /></a>
+
+<h3>Contract Type</h3><p>At first we define a contract interface for an archive of notification messages:</p>{% highlight javascript %}module NotificationsModule {
     export interface INotificationsArchive {
         archive(notification: string);
         getArchived(): string[];
@@ -491,11 +491,11 @@ describe("Mobile Services Table Test", function () {
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
     });
-});{% endhighlight %}<h3>HTML View + TypeScript Controller</h3><p>For this last sample I created a view that is a little bit more complete. It contains a grid, a server-side pager, and a form with date picker, numeric field, etc. Here is a screenshot showing the form (click to enlarge):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:b64bc5b9-99a6-467f-95c1-2ae84c7a3f52" />
-  <param name="ThumbnailMaxWidth" value="250" />
-  <param name="ThumbnailMaxHeight" value="250" />
-</function><p>Here is the TypeScript controller that uses the data access class shown above:</p>{% highlight javascript %}/// <reference path="../../../tsDeclarations/angularjs/angular.d.ts"/>
+});{% endhighlight %}<h3>HTML View + TypeScript Controller</h3><p>For this last sample I created a view that is a little bit more complete. It contains a grid, a server-side pager, and a form with date picker, numeric field, etc. Here is a screenshot showing the form (click to enlarge):</p>
+
+<a data-lightbox="View" href="/content/images/blog/2013/10/View.png"><img src="/content/images/blog/2013/10/View.png" /></a>
+
+<p>Here is the TypeScript controller that uses the data access class shown above:</p>{% highlight javascript %}/// <reference path="../../../tsDeclarations/angularjs/angular.d.ts"/>
 /// <reference path="MobileServicesTable.ts"/>
 
 module HttpServiceModule {
