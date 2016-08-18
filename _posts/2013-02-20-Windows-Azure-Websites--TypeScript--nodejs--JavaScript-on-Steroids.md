@@ -104,12 +104,22 @@ app.listen(port);{% endhighlight %}<p>Before I draw you attention to some detail
   <li>If you do not already have a Windows Azure subscription, get one at <a href="http://www.windowsazure.com" title="Windows Azure Homepage" target="_blank">http://www.windowsazure.com</a>. It is free.</li>
   <li>Log in to your Windows Azure Management Portal at <a href="http://windows.azure.com" title="Windows Azure Management Portal" target="_blank">http://windows.azure.com</a>.</li>
   <li>Create a new and empty Windows Azure Website (WAWS) in the Management Portal:
-<br /><function name="Composite.Media.ImageGallery.Slimbox2"><param name="MediaImage" value="MediaArchive:717b2ba4-759e-4ad6-a1a5-65cdc6239081" /><param name="ThumbnailMaxWidth" value="350" /></function>(Image source: <a href="http://www.windowsazure.com/" title="Windows Azure Homepage" target="_blank">http://www.windowsazure.com</a>; click to enlarge)</li>
+<br />
+
+<a data-lightbox="CreateWebsite" href="/content/images/blog/2013/02/create-quick-website.png"><img src="/content/images/blog/2013/02/create-quick-website.png" /></a>
+
+(Image source: <a href="http://www.windowsazure.com/" title="Windows Azure Homepage" target="_blank">http://www.windowsazure.com</a>; click to enlarge)</li>
   <li>Once the website will have been created (only takes a few seconds), you have to enable git-deployment:
-<br /><function name="Composite.Media.ImageGallery.Slimbox2"><param name="MediaImage" value="MediaArchive:5d92b6e6-b826-4996-a495-caedbccf7835" /><param name="ThumbnailMaxWidth" value="350" /><param name="ThumbnailMaxHeight" value="243" /></function>(Image source: <a href="http://www.windowsazure.com/" title="Windows Azure Homepage" target="_blank">http://www.windowsazure.com</a>; click to enlarge)
+<br />
+
+<a data-lightbox="SetupGit" href="/content/images/blog/2013/02/setup_git_publishing.png"><img src="/content/images/blog/2013/02/setup_git_publishing.png" /></a>
+(Image source: <a href="http://www.windowsazure.com/" title="Windows Azure Homepage" target="_blank">http://www.windowsazure.com</a>; click to enlarge)
 <br /></li>
   <li>Once git deployment will have been enabled (again only takes a few seconds), you should copy the git repository URI. We will need it later.
-<br /><function name="Composite.Media.ImageGallery.Slimbox2"><param name="MediaImage" value="MediaArchive:4b631293-3850-4c34-b6d3-7c06fd26fd63" /><param name="ThumbnailMaxWidth" value="350" /><param name="ThumbnailMaxHeight" value="243" /></function>(Image source: <a href="http://www.windowsazure.com/" title="Windows Azure Homepage" target="_blank">http://www.windowsazure.com</a>; click to enlarge)</li>
+<br />
+
+<a data-lightbox="GitInstructions" href="/content/images/blog/2013/02/git_instructions.png"><img src="/content/images/blog/2013/02/git_instructions.png" /></a>
+(Image source: <a href="http://www.windowsazure.com/" title="Windows Azure Homepage" target="_blank">http://www.windowsazure.com</a>; click to enlarge)</li>
   <li>Now let's setup a local git repository which we can later push into the cloud. If you want to learn more about the basics of git, I suggest taking a look at git's manual pages. If you want to get help about e.g. the <em>git commit</em> command, you can launch the corresponding manual page by typing  <em>git help commit</em> on the command line. If you are new to git, here are the steps necessary to prepare your local repository:
 <br /><ol><li>Open a command prompt</li><li>Navigate to your <em>code</em> directory</li><li>Initialize the local git repository: <em>git init</em></li><li>Add the necessary files (only the JavaScript files, the TypeScript sources are not necessary at runtime): <em>git add customer.js server.js package.json</em></li><li>Commit your changes: <em>git commit -m "Initial deployment"</em></li></ol></li>
   <li>Next we add the git repository in the cloud as a remote repository to our local repository (note that <em>azure</em> is the name of the remote repository; choose a different name if you want): <em>git remote add azure &lt;path_to_git_repo_copied_from_azure_management_portal&gt;</em></li>
@@ -160,28 +170,22 @@ var customer = exports.customer;{% endhighlight %}<p>Now let's compare that with
     })(exports.customer || (exports.customer = {}));
     var customer = exports.customer;
 }){% endhighlight %}<p>As you can see the AMD version will work perfectly fine with require.js.</p><p>Now that you have seen what happens behind the scenes, we can concentrate on the actual source code. Open the downloaded solution in Visual Studio. I suggest that you open the file <em>app/AppMain.ts</em>. It contains the JQuery code accessing the Web API we have created previously. Play around with the code. You will see IntelliSense and type safety for our <em>customer</em> class and JQuery. We have reached one of our main goals: We share code (<em>Customer</em> class) between server and client.</p><p>
-  <function name="Composite.Media.ImageGallery.Slimbox2">
-    <param name="MediaImage" value="MediaArchive:46573782-0693-4edb-af87-589a84b921a2" />
-    <param name="ThumbnailMaxWidth" value="350" />
-    <param name="ThumbnailMaxHeight" value="157" />
-  </function>(click to enlarge)</p><p>Of course we now want to test our application. To do this we add a single line to our <em>server.ts</em> file:</p>{% highlight javascript %}...
+  
+  <a data-lightbox="IntelliSenseTypeScript" href="/content/images/blog/2013/02/IntelliSenseTypeScript.png"><img src="/content/images/blog/2013/02/IntelliSenseTypeScript.png" /></a>
+  (click to enlarge)</p><p>Of course we now want to test our application. To do this we add a single line to our <em>server.ts</em> file:</p>{% highlight javascript %}...
 
 app.use("/", express.static(__dirname + "/website/"));
 
 var port = process.env.PORT || 1337; 
 app.listen(port);{% endhighlight %}<p>The important line is the one with <em>app.use(...);</em> It enables access to the static files in the <em>website</em> directory. When you have added the line, don't forget to compile everything (<em>server.ts</em> and the solution in Visual Studio). After that you are ready to test it locally. Run <em>node server.js</em> and open the static website in your favorite browser:</p><p>
-  <function name="Composite.Media.ImageGallery.Slimbox2">
-    <param name="MediaImage" value="MediaArchive:92db18bc-1467-435c-9414-767522d11e82" />
-    <param name="ThumbnailMaxWidth" value="350" />
-    <param name="ThumbnailMaxHeight" value="102" />
-  </function>(click to enlarge)</p><h2>Pushing the Changes into the Cloud</h2><p>Last but not least we will push the changes including the website using the Web API into the cloud. Here is how you do that:</p><ol>
+  
+  <a data-lightbox="ResultWebsite" href="/content/images/blog/2013/02/ResultWebsite.png"><img src="/content/images/blog/2013/02/ResultWebsite.png" /></a>
+  (click to enlarge)</p><h2>Pushing the Changes into the Cloud</h2><p>Last but not least we will push the changes including the website using the Web API into the cloud. Here is how you do that:</p><ol>
   <li>Open a command prompt and navigate to your <em>code</em> directory.</li>
   <li>Add the static website files to your git repository: <em>git add website</em></li>
   <li>Commit your changes: <em>git commit -m "Extended version"</em></li>
   <li>Push changes into the cloud: <em>git push azure master</em></li>
 </ol><p>Done! Try your website in the cloud:</p><p>
-  <function name="Composite.Media.ImageGallery.Slimbox2">
-    <param name="MediaImage" value="MediaArchive:2841e75c-8037-46fe-b5a4-725636bd1f62" />
-    <param name="ThumbnailMaxWidth" value="350" />
-    <param name="ThumbnailMaxHeight" value="105" />
-  </function>(click to enlarge)</p>
+  
+  <a data-lightbox="ResultWebSiteInCloud" href="/content/images/blog/2013/02/ResultWebSiteInCloud.png"><img src="/content/images/blog/2013/02/ResultWebSiteInCloud.png" /></a>
+  (click to enlarge)</p>

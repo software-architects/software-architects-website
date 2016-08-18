@@ -20,10 +20,44 @@ permalink: /devblog/2013/02/27/BASTA-Spring-2013-Custom-OData-Providers
   </strong> from <strong><a href="http://de.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2>
   <a href="{{site.baseurl}}/content/images/blog/2013/02/CustomODataService.zip" title="Sourcecode for Custom OData Provider sample" target="_blank">Download Sourcecode</a>
 </h2><h2>Introducing OData</h2><p>OData is a great protocol for web-enabling CRUD scenarios. It is a platform-independent standard. You can get client and server libraries for a bunch of different platforms. For more information about the protocol see <a href="http://www.odata.org/" title="OData Homepage" target="_blank">OData</a> homepage. .NET contains support for OData for quite a long time. Recently Microsoft has begun to ship its latest OData implementation using Nuget packges. For our sample you need to get <a href="https://nuget.org/packages/Microsoft.Data.Services" title="WCF Data Services Server on Nuget" target="_blank">WCF Data Services Server</a> and its dependencies.</p><h2>The Basics</h2><p>Most of <a href="http://www.windowsazure.com" title="Windows Azure Homepage" target="_blank">Microsoft's cloud services</a> (e.g. Table Storage) support OData out of the box. You do not need to implement an OData server yourself. Unfortunately SQL Server does not support OData natively - neither on-premise nor in the cloud. However, that's not a big problem in practise. If you have an <a href="https://nuget.org/packages/EntityFramework" title="Entity Framework on Nuget" target="_blank">Entity Framework</a> model, Microsoft's OData SDK can turn it into an OData feed with just a few lines of code. If you want to learn more about it, take a look at this <a href="http://msdn.microsoft.com/en-us/library/vstudio/dd728275.aspx" title="Creating the Data Service - MSDN" target="_blank">how-to chapter in MSDN</a>. We will not go into details on this in this session.</p><p>In our sample we want to start with a simple OData service backed by an in-memory collection of <em>Customer</em> objects. The following code snippets show the <em>Customer</em> class and a helper class used to generate demo data. This code is just infrastructure, it is not specific to OData.</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Collections.Generic;&#xA;using System.Linq;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    public class Customer&#xA;    {&#xA;        public int CustomerID { get; set; }&#xA;        public string CompanyName { get; set; }&#xA;        public string ContactPersonFirstName { get; set; }&#xA;        public string ContactPersonLastName { get; set; }&#xA;&#xA;        public override string ToString()&#xA;        {&#xA;            return string.Format(&quot;{0}, {1} {2}, {3}&quot;, this.CustomerID, this.ContactPersonFirstName, this.ContactPersonLastName, this.CompanyName);&#xA;        }&#xA;&#xA;        public static IReadOnlyList&lt;Customer&gt; GenerateDemoCustomers(int firstCustomerID = 0, int numberOfCustomers = 100)&#xA;        {&#xA;            var rand = new Random();&#xA;            return Enumerable.Range(firstCustomerID, numberOfCustomers)&#xA;                .Select(i =&gt; new Customer()&#xA;                {&#xA;                    CustomerID = i,&#xA;                    ContactPersonLastName = DemoNames.LastNames[rand.Next(DemoNames.LastNames.Count)],&#xA;                    ContactPersonFirstName = DemoNames.FirstNames[rand.Next(DemoNames.FirstNames.Count)],&#xA;                    CompanyName = string.Format(&#xA;                        &quot;{0} {1} {2}&quot;,&#xA;                        DemoNames.CompanyNamesPart1[rand.Next(DemoNames.CompanyNamesPart1.Count)],&#xA;                        DemoNames.CompanyNamesPart2[rand.Next(DemoNames.CompanyNamesPart2.Count)],&#xA;                        DemoNames.CompanyNamesPart3[rand.Next(DemoNames.CompanyNamesPart3.Count)])&#xA;                })&#xA;                .ToArray();&#xA;        }&#xA;    }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+  
+  {% highlight c# %}using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CustomLinqProvider
+{
+    public class Customer
+    {
+        public int CustomerID { get; set; }
+        public string CompanyName { get; set; }
+        public string ContactPersonFirstName { get; set; }
+        public string ContactPersonLastName { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1} {2}, {3}", this.CustomerID, this.ContactPersonFirstName, this.ContactPersonLastName, this.CompanyName);
+        }
+
+        public static IReadOnlyList<Customer> GenerateDemoCustomers(int firstCustomerID = 0, int numberOfCustomers = 100)
+        {
+            var rand = new Random();
+            return Enumerable.Range(firstCustomerID, numberOfCustomers)
+                .Select(i => new Customer()
+                {
+                    CustomerID = i,
+                    ContactPersonLastName = DemoNames.LastNames[rand.Next(DemoNames.LastNames.Count)],
+                    ContactPersonFirstName = DemoNames.FirstNames[rand.Next(DemoNames.FirstNames.Count)],
+                    CompanyName = string.Format(
+                        "{0} {1} {2}",
+                        DemoNames.CompanyNamesPart1[rand.Next(DemoNames.CompanyNamesPart1.Count)],
+                        DemoNames.CompanyNamesPart2[rand.Next(DemoNames.CompanyNamesPart2.Count)],
+                        DemoNames.CompanyNamesPart3[rand.Next(DemoNames.CompanyNamesPart3.Count)])
+                })
+                .ToArray();
+        }
+    }
+}{% endhighlight %}
   {% highlight c# %}using System.Collections.Generic;
 
 namespace CustomLinqProvider
@@ -50,10 +84,10 @@ namespace CustomLinqProvider
     }
 }{% endhighlight %}
 </p><p>Publishing generated customer demo data with OData is really simple. Here is the code you need for it:</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&#xA;&#xA;&lt;%@ ServiceHost Language=&quot;C#&quot; Factory=&quot;System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; Service=&quot;CustomODataService.CustomerReflectionService&quot; %&gt;" />
-    <param name="CodeType" value="xml" />
-  </function>
+ 
+  {% highlight xml %}
+<%@ ServiceHost Language="C#" Factory="System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Service="CustomODataService.CustomerReflectionService" %>{% endhighlight %}
+
   {% highlight c# %}using IQToolkit;
 using CustomLinqProvider;
 using System.Data.Services;
@@ -95,23 +129,85 @@ namespace CustomODataService
         }
     }
 }{% endhighlight %}
-</p><p>You can immediately try your OData service in the browser (click to enlarge the image):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:3e7d87b1-e2d9-4b08-9d7b-47c3cab2b1c8" />
-  <param name="ThumbnailMaxWidth" value="350" />
-  <param name="ThumbnailMaxHeight" value="345" />
-</function><p>Your OData service will also support JSON. You can try that by specifying an appropriate accept-header in <a href="http://www.fiddler2.com/fiddler2/" title="Fiddler Homepage" target="_blank">Fiddler</a> (click to enlarge the image):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:70834006-1777-46ad-b8f5-e27517d93399" />
-  <param name="ThumbnailMaxWidth" value="350" />
-  <param name="ThumbnailMaxHeight" value="259" />
-</function><h2>Custom LINQ Provider</h2><p>Did you recognize the problem of the code shown above? The class <em>CustomerReflectionContext</em> <strong>always</strong> generates 100 customer objects. An OData client can specify a <em>$top</em> clause as shown above. However, the server will still generate 100 objects. Somewhere in the OData stack the unwanted 99 customers will be thrown away. Imagine generating the customer objects would be a difficult and time-consuming process. In such a case an architecture that works like the classes shown above would not work.</p><p>A solution to this problem is a custom LINQ provider. A LINQ provider takes an expression tree and has to interpret it. In our case we will just recognize the <em>Take</em> and <em>Skip</em> methods of the expression tree. We will use them to limit the number of customers to generate. Implementing a custom LINQ provider from scratch is hard. Fortunately there are multiple helper libraries available. In my sample I use the <a href="http://iqtoolkit.codeplex.com/" title="IQToolkit on Codeplex" target="_blank">IQToolkit library</a>. With its help, implementing the custom LINQ provider is easy. Here is the code:</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using IQToolkit;&#xA;using System;&#xA;using System.Linq;&#xA;using System.Linq.Expressions;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    public class DemoCustomerProvider : QueryProvider&#xA;    {&#xA;        public override object Execute(Expression expression)&#xA;        {&#xA;            // Use a visitor to extract demo data generation parameters&#xA;            // (&quot;take&quot; and &quot;skip&quot; clauses)&#xA;            var analyzer = new AnalyzeQueryVisitor();&#xA;            analyzer.Visit(expression);&#xA;&#xA;            // Generate data&#xA;            return Customer.GenerateDemoCustomers(analyzer.Skip, analyzer.Take);&#xA;        }&#xA;&#xA;        public override string GetQueryText(Expression expression)&#xA;        {&#xA;            throw new NotImplementedException();&#xA;        }&#xA;    }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Linq.Expressions;&#xA;using System.Reflection;&#xA;&#xA;namespace CustomLinqProvider&#xA;{&#xA;    /// &lt;summary&gt;&#xA;    /// Simple visitor that extracts &quot;Take&quot; and &quot;Skip&quot; clauses from expression tree&#xA;    /// &lt;/summary&gt;&#xA;    internal class AnalyzeQueryVisitor : ExpressionVisitor&#xA;    {&#xA;        public AnalyzeQueryVisitor()&#xA;        {&#xA;            this.Take = 100;&#xA;            this.Skip = 0;&#xA;        }&#xA;&#xA;        public int Take { get; private set; }&#xA;        public int Skip { get; private set; }&#xA;&#xA;        protected override Expression VisitMethodCall(MethodCallExpression m)&#xA;        {&#xA;            switch (m.Method.Name)&#xA;            {&#xA;                case &quot;Take&quot;:&#xA;                    this.Take = (int)(m.Arguments[1] as ConstantExpression).Value;&#xA;                    break;&#xA;                case &quot;Skip&quot;:&#xA;                    this.Skip = (int)(m.Arguments[1] as ConstantExpression).Value;&#xA;                    break;&#xA;                case &quot;OrderBy&quot;:&#xA;                    // We do not check/consider order by yet.&#xA;                    break;&#xA;                default:&#xA;                    throw new CustomLinqProviderException(&quot;Method not supported!&quot;);&#xA;            }&#xA;&#xA;            return base.VisitMethodCall(m);&#xA;        }&#xA;    }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+</p><p>You can immediately try your OData service in the browser (click to enlarge the image):</p>
+
+<a data-lightbox="FirstODataStep" href="/content/images/blog/2013/02/FirstODataStep.png"><img src="/content/images/blog/2013/02/FirstODataStep.png" /></a>
+
+<p>Your OData service will also support JSON. You can try that by specifying an appropriate accept-header in <a href="http://www.fiddler2.com/fiddler2/" title="Fiddler Homepage" target="_blank">Fiddler</a> (click to enlarge the image):</p>
+
+<a data-lightbox="JsonClient" href="/content/images/blog/2013/02/JsonClient.png"><img src="/content/images/blog/2013/02/JsonClient.png" /></a>
+
+<h2>Custom LINQ Provider</h2><p>Did you recognize the problem of the code shown above? The class <em>CustomerReflectionContext</em> <strong>always</strong> generates 100 customer objects. An OData client can specify a <em>$top</em> clause as shown above. However, the server will still generate 100 objects. Somewhere in the OData stack the unwanted 99 customers will be thrown away. Imagine generating the customer objects would be a difficult and time-consuming process. In such a case an architecture that works like the classes shown above would not work.</p><p>A solution to this problem is a custom LINQ provider. A LINQ provider takes an expression tree and has to interpret it. In our case we will just recognize the <em>Take</em> and <em>Skip</em> methods of the expression tree. We will use them to limit the number of customers to generate. Implementing a custom LINQ provider from scratch is hard. Fortunately there are multiple helper libraries available. In my sample I use the <a href="http://iqtoolkit.codeplex.com/" title="IQToolkit on Codeplex" target="_blank">IQToolkit library</a>. With its help, implementing the custom LINQ provider is easy. Here is the code:</p><p>
+  
+{% highlight c# %}using System;
+using System.Linq.Expressions;
+using System.Reflection;
+
+namespace CustomLinqProvider
+{
+    /// <summary>
+    /// Simple visitor that extracts "Take" and "Skip" clauses from expression tree
+    /// </summary>
+    internal class AnalyzeQueryVisitor : ExpressionVisitor
+    {
+        public AnalyzeQueryVisitor()
+        {
+            this.Take = 100;
+            this.Skip = 0;
+        }
+
+        public int Take { get; private set; }
+        public int Skip { get; private set; }
+
+        protected override Expression VisitMethodCall(MethodCallExpression m)
+        {
+            switch (m.Method.Name)
+            {
+                case "Take":
+                    this.Take = (int)(m.Arguments[1] as ConstantExpression).Value;
+                    break;
+                case "Skip":
+                    this.Skip = (int)(m.Arguments[1] as ConstantExpression).Value;
+                    break;
+                case "OrderBy":
+                    // We do not check/consider order by yet.
+                    break;
+                default:
+                    throw new CustomLinqProviderException("Method not supported!");
+            }
+
+            return base.VisitMethodCall(m);
+        }
+    }
+}{% endhighlight %}
+
+  {% highlight c# %}using IQToolkit;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace CustomLinqProvider
+{
+    public class DemoCustomerProvider : QueryProvider
+    {
+        public override object Execute(Expression expression)
+        {
+            // Use a visitor to extract demo data generation parameters
+            // ("take" and "skip" clauses)
+            var analyzer = new AnalyzeQueryVisitor();
+            analyzer.Visit(expression);
+
+            // Generate data
+            return Customer.GenerateDemoCustomers(analyzer.Skip, analyzer.Take);
+        }
+
+        public override string GetQueryText(Expression expression)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}{% endhighlight %}
+  
   {% highlight c# %}using System;
 using System.Runtime.Serialization;
 
@@ -211,15 +307,39 @@ public class CustomerReflectionContext
             return new Query<Customer>(new DemoCustomerProvider());
         }
     }
-}{% endhighlight %}<p>It you query the OData service with a <em>$top</em> clause now, the service will only generated the request number of customer objects in the background.</p><p>Unfortunately we have lost functionality with our customer LINQ provider, too. If you decide to go for a customer provider, you have to deal with all possible LINQ functions yourself. In our case we only allow <em>$top</em> and <em>$skip</em>. In all other cases we throw an exception (click to enlarge image):</p><function name="Composite.Media.ImageGallery.Slimbox2">
-  <param name="MediaImage" value="MediaArchive:1f5b3e71-b0e4-4be5-a77d-6b04231d4bfa" />
-  <param name="ThumbnailMaxWidth" value="350" />
-  <param name="ThumbnailMaxHeight" value="235" />
-</function><h2>Building a Completely Customized OData Provider</h2><p>The example shown above can already dynamically handle parameters specified in OData queries during runtime. However, there are cases in which you might need even more flexibility. Imagine that you do not know the available entities or properties during compile time. Our own SaaS product <a href="http://www.timecockpit.com" title="Time Cockpit Homepage" target="_blank">time cockpit</a> allows power users to customize its data model. Users can add custom entities, add properties, define calculated properties with an easy-to-learn formula language. In such a case, writing a custom LINQ provider and backing an OData service is not sufficient. We have to dive deeper into Microsoft's OData SDK.</p><p>In the sample code shown above we implemented the class <em>CustomerReflectionContext</em> which contains a property of type <em>IQueryable</em>. Our OData service <em>CustomerReflectionService</em> derives from <em>DataService&lt;CustomerReflectionContext&gt;</em>. By specifying the type parameter, Microsoft's OData SDK will look for all <em>IQueryable</em> properties in the specified class. In the custom OData provider sample we want to implement now, we do not know during compile time which <em>IQueryable</em> properties we will have during runtime. Therefore we change from a class that contains a fixed number of properties to a class that can dynamically provide <em>IQueryable</em>s during runtime:</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Data.Services;&#xA;using System.Data.Services.Common;&#xA;using System.Data.Services.Providers;&#xA;using CustomODataService.CustomDataServiceBase;&#xA;using System.Threading;&#xA;using CustomLinqProvider;&#xA;using System.Reflection;&#xA;using System.Linq;&#xA;using IQToolkit;&#xA;&#xA;namespace CustomODataService&#xA;{&#xA;    public class CustomerServiceDataContext : IGenericDataServiceContext&#xA;    {&#xA;        public IQueryable GetQueryable(ResourceSet set)&#xA;        {&#xA;            if (set.Name == &quot;Customer&quot;)&#xA;            {&#xA;                return new Query&lt;Customer&gt;(new DemoCustomerProvider());&#xA;            }&#xA;&#xA;            return null;&#xA;        }&#xA;    }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+}{% endhighlight %}<p>It you query the OData service with a <em>$top</em> clause now, the service will only generated the request number of customer objects in the background.</p><p>Unfortunately we have lost functionality with our customer LINQ provider, too. If you decide to go for a customer provider, you have to deal with all possible LINQ functions yourself. In our case we only allow <em>$top</em> and <em>$skip</em>. In all other cases we throw an exception (click to enlarge image):</p>
+
+<a data-lightbox="ODataError" href="/content/images/blog/2013/02/ODataError.png"><img src="/content/images/blog/2013/02/ODataError.png" /></a>
+
+<h2>Building a Completely Customized OData Provider</h2><p>The example shown above can already dynamically handle parameters specified in OData queries during runtime. However, there are cases in which you might need even more flexibility. Imagine that you do not know the available entities or properties during compile time. Our own SaaS product <a href="http://www.timecockpit.com" title="Time Cockpit Homepage" target="_blank">time cockpit</a> allows power users to customize its data model. Users can add custom entities, add properties, define calculated properties with an easy-to-learn formula language. In such a case, writing a custom LINQ provider and backing an OData service is not sufficient. We have to dive deeper into Microsoft's OData SDK.</p><p>In the sample code shown above we implemented the class <em>CustomerReflectionContext</em> which contains a property of type <em>IQueryable</em>. Our OData service <em>CustomerReflectionService</em> derives from <em>DataService&lt;CustomerReflectionContext&gt;</em>. By specifying the type parameter, Microsoft's OData SDK will look for all <em>IQueryable</em> properties in the specified class. In the custom OData provider sample we want to implement now, we do not know during compile time which <em>IQueryable</em> properties we will have during runtime. Therefore we change from a class that contains a fixed number of properties to a class that can dynamically provide <em>IQueryable</em>s during runtime:</p><p>
+  
+{% highlight c# %}using System;
+using System.Data.Services;
+using System.Data.Services.Common;
+using System.Data.Services.Providers;
+using CustomODataService.CustomDataServiceBase;
+using System.Threading;
+using CustomLinqProvider;
+using System.Reflection;
+using System.Linq;
+using IQToolkit;
+
+namespace CustomODataService
+{
+    public class CustomerServiceDataContext : IGenericDataServiceContext
+    {
+        public IQueryable GetQueryable(ResourceSet set)
+        {
+            if (set.Name == "Customer")
+            {
+                return new Query<Customer>(new DemoCustomerProvider());
+            }
+
+            return null;
+        }
+    }
+}{% endhighlight %}
+
   {% highlight c# %}using System.Data.Services.Providers;
 using System.Linq;
 
@@ -431,6 +551,10 @@ namespace CustomODataService.CustomDataServiceBase
     <param name="SourceCode" value="&#xA;&#xA;&lt;%@ ServiceHost Language=&quot;C#&quot; Factory=&quot;System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; Service=&quot;CustomODataService.CustomerService&quot; %&gt;&#xA;" />
     <param name="CodeType" value="xml" />
   </function>
+{% highlight xml %}
+<%@ ServiceHost Language="C#" Factory="System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Service="CustomODataService.CustomerService" %>{% endhighlight %}
+
+
   {% highlight c# %}using System;
 using System.Data.Services;
 using System.Data.Services.Common;

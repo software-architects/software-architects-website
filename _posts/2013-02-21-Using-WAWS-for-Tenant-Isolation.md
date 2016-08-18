@@ -29,7 +29,11 @@ permalink: /devblog/2013/02/21/Using-WAWS-for-Tenant-Isolation
     <param name="MediaImage" value="MediaArchive:438d73df-94f2-42d0-b68d-1cfd73546704" />
     <param name="ThumbnailMaxWidth" value="350" />
     <param name="ThumbnailMaxHeight" value="189" />
-  </function> Architecture Diagram (click to enlarge)</p><h2>Code Walkthrough</h2><p>When a user subscribes to our service, the website queues a tenant creation request using <a href="http://www.windowsazure.com/en-us/home/features/messaging/" title="Azure Service Bus" target="_blank">Azure's Service Bus</a>. This service makes communicating between servers in the cloud a piece of cake. Just as an example, here is the code I used in the sample to enqueue a tenant creation request.</p>{% highlight c# %}protected void LinkButton1_Click(object sender, EventArgs e)
+  </function> 
+
+  <a data-lightbox="InfoGraphicWawsIsolation" href="/content/images/blog/2013/02/InfoGraphicWawsIsolation.png"><img src="/content/images/blog/2013/02/InfoGraphicWawsIsolation.png" /></a>
+
+  Architecture Diagram (click to enlarge)</p><h2>Code Walkthrough</h2><p>When a user subscribes to our service, the website queues a tenant creation request using <a href="http://www.windowsazure.com/en-us/home/features/messaging/" title="Azure Service Bus" target="_blank">Azure's Service Bus</a>. This service makes communicating between servers in the cloud a piece of cake. Just as an example, here is the code I used in the sample to enqueue a tenant creation request.</p>{% highlight c# %}protected void LinkButton1_Click(object sender, EventArgs e)
 {
     var tenant = string.Format("tenant{0}", DateTime.Now.Ticks);
 
