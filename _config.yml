@@ -18,7 +18,7 @@ twitter_username: timecockpit
 github_username: software-architects
 
 encoding: utf-8
-gems: [jekyll-paginate, jekyll-redirect-from, jekyll-sitemap]
+gems: [jekyll-paginate, jekyll-redirect-from]
 paginate: 10
 paginate_path: "/devblog/page:num/"
 array: []
