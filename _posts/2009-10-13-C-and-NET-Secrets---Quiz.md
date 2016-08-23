@@ -119,10 +119,12 @@ permalink: /devblog/2009/10/13/C-and-NET-Secrets---Quiz
   <a id="Q5" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q5"></a>Question 5 - Finalizing Objects</h2><p class="Abstract">
   <strong>It is a good practise to use destructors in C# just like in C++. Put cleanup code in your class' destructor and the CLR will care for the rest. Is that correct?</strong>
 </p><p>The correct answer is <span class="Highlighted">Cleaning up in the destructor is fine. But that is not enough!</span></p><p class="DecoratorRight">
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="class MyClass { &#xA;    ~MyClass() { ... } &#xA;} &#xA;" />
-    <param name="CodeType" value="c#" />
-  </function>
+  
+ {% highlight c# %}class MyClass { 
+    ~MyClass() { ... } 
+} 
+{% endhighlight %}
+
   <br />is the same as
 			<br /><br />{% highlight c# %}class MyClass { 
     protected override 

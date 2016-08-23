@@ -129,25 +129,126 @@ GO
     <li>Add the ASP.NET application to the cloud project. You can add the ASP.NET project to your cloud project by right-clicking on the <em>Roles</em> folder in the cloud-project.</li>
   </ul>
   <p>Now we can implement the website that can be used to upload customer orders. The HTML part is extremely simple (<span class="InlineCode">FileUploadPage.aspx</span>):</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&lt;%@ Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;FileUploadPage.aspx.cs&quot; Inherits=&quot;Azure.StorageDemo.Web.FileUploadPage&quot; %&gt;&#xA;&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;&#xA;&#xA;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&#xA;&lt;head runat=&quot;server&quot;&gt;&#xA;    &lt;title&gt;&lt;/title&gt;&#xA;&lt;/head&gt;&#xA;&lt;body&gt;&#xA;    &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;&#xA;    &lt;div&gt;&#xA;      &lt;h1&gt;Windows Azure Storage Demo&lt;/h1&gt;&#xA;      &lt;asp:FileUpload ID=&quot;OrderFileUpload&quot; runat=&quot;server&quot; /&gt;&#xA;      &lt;asp:Button OnClick=&quot;OnFileUploadClick&quot; runat=&quot;server&quot; Text=&quot;Upload Orders&quot; /&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;/form&gt;&#xA;&lt;/body&gt;&#xA;&lt;/html&gt;" />
-    <param name="CodeType" value="xml" />
-  </function>
+ 
+  {% highlight xml %}<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FileUploadPage.aspx.cs" Inherits="Azure.StorageDemo.Web.FileUploadPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+      <h1>Windows Azure Storage Demo</h1>
+      <asp:FileUpload ID="OrderFileUpload" runat="server" />
+      <asp:Button OnClick="OnFileUploadClick" runat="server" Text="Upload Orders" />
+    </div>
+    </form>
+</body>
+</html>{% endhighlight %}
+
   <p>Here is the implementation of the upload page (<span class="InlineCode">FileUploadPage.aspx.cs</span>). Note that you have to add references to <span class="InlineCode">Microsoft.WindowsAzure.ServiceRuntime</span> and <span class="InlineCode">Microsoft.WindowsAzure.StorageClient</span> in order to be able to build the solution. You can find this assemblies in the installation folder of the Windows Azure SDK (usually <span class="InlineCode">C:\Program Files\Windows Azure SDK\v1.2\ref</span>).</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Configuration;&#xA;using System.Data;&#xA;using System.Data.SqlClient;&#xA;using System.Text;&#xA;using Microsoft.WindowsAzure.ServiceRuntime;&#xA;&#xA;namespace Azure.StorageDemo.Web&#xA;{&#xA; public partial class FileUploadPage : System.Web.UI.Page&#xA; {&#xA;  protected void OnFileUploadClick(object sender, EventArgs e)&#xA;  {&#xA;   var fileContent = Encoding.UTF8.GetString(this.OrderFileUpload.FileBytes);&#xA;&#xA;   using (var conn = new SqlConnection(&#xA;    RoleEnvironment.GetConfigurationSettingValue(&quot;OrderDatabaseConnectionString&quot;)))&#xA;   {&#xA;    conn.Open();&#xA;    using (var command = conn.CreateCommand())&#xA;    {&#xA;     command.CommandText = &quot;StorageDemo_AddCustomerOrder&quot;;&#xA;     command.CommandType = CommandType.StoredProcedure;&#xA;     command.Parameters.Add(&quot;@OrderDate&quot;, SqlDbType.Date);&#xA;     command.Parameters.Add(&quot;@CustomerName&quot;, SqlDbType.NVarChar, 200);&#xA;     command.Parameters.Add(new SqlParameter()&#xA;     {&#xA;      ParameterName = &quot;@Amount&quot;,&#xA;      SqlDbType = SqlDbType.Decimal,&#xA;      Precision = 18,&#xA;      Scale = 6&#xA;     });&#xA;     command.Prepare();&#xA;&#xA;     // In practise you have to add some checking code here&#xA;     foreach (var fileRows in fileContent.Split('\n'))&#xA;     {&#xA;      var columns = fileRows.Split(';');&#xA;      if (columns.Length == 3)&#xA;      {&#xA;       command.Parameters[0].Value = DateTime.Parse(columns[0]);&#xA;       command.Parameters[1].Value = columns[1];&#xA;       command.Parameters[2].Value = Decimal.Parse(columns[2]);&#xA;       command.ExecuteNonQuery();&#xA;      }&#xA;     }&#xA;    }&#xA;   }&#xA;  }&#xA; }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+ 
+    {% highlight c# %}using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+using Microsoft.WindowsAzure.ServiceRuntime;
+
+namespace Azure.StorageDemo.Web
+{
+ public partial class FileUploadPage : System.Web.UI.Page
+ {
+  protected void OnFileUploadClick(object sender, EventArgs e)
+  {
+   var fileContent = Encoding.UTF8.GetString(this.OrderFileUpload.FileBytes);
+
+   using (var conn = new SqlConnection(
+    RoleEnvironment.GetConfigurationSettingValue("OrderDatabaseConnectionString")))
+   {
+    conn.Open();
+    using (var command = conn.CreateCommand())
+    {
+     command.CommandText = "StorageDemo_AddCustomerOrder";
+     command.CommandType = CommandType.StoredProcedure;
+     command.Parameters.Add("@OrderDate", SqlDbType.Date);
+     command.Parameters.Add("@CustomerName", SqlDbType.NVarChar, 200);
+     command.Parameters.Add(new SqlParameter()
+     {
+      ParameterName = "@Amount",
+      SqlDbType = SqlDbType.Decimal,
+      Precision = 18,
+      Scale = 6
+     });
+     command.Prepare();
+
+     // In practise you have to add some checking code here
+     foreach (var fileRows in fileContent.Split('\n'))
+     {
+      var columns = fileRows.Split(';');
+      if (columns.Length == 3)
+      {
+       command.Parameters[0].Value = DateTime.Parse(columns[0]);
+       command.Parameters[1].Value = columns[1];
+       command.Parameters[2].Value = Decimal.Parse(columns[2]);
+       command.ExecuteNonQuery();
+      }
+     }
+    }
+   }
+  }
+ }
+}{% endhighlight %}
+
+
   <p>Last but not least you have to add the connection string to your Azure configuration files (<span class="InlineCode">ServiceConfiguration.csdef</span> and <span class="InlineCode">ServiceConfiguration.cscfg</span>):</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xA;&lt;ServiceDefinition name=&quot;Azure.StorageDemo.Cloud&quot; xmlns=&quot;http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition&quot;&gt;&#xA; &lt;WebRole name=&quot;Azure.StorageDemo.Web&quot;&gt;&#xA;  &lt;InputEndpoints&gt;&#xA;   &lt;InputEndpoint name=&quot;HttpIn&quot; protocol=&quot;http&quot; port=&quot;80&quot; /&gt;&#xA;  &lt;/InputEndpoints&gt;&#xA;  &lt;ConfigurationSettings&gt;&#xA;   &lt;Setting name=&quot;DiagnosticsConnectionString&quot; /&gt;&#xA;   &lt;Setting name=&quot;OrderDatabaseConnectionString&quot;/&gt;&#xA;  &lt;/ConfigurationSettings&gt;&#xA; &lt;/WebRole&gt;&#xA;&lt;/ServiceDefinition&gt;&#xA;&#xA;&lt;?xml version=&quot;1.0&quot;?&gt;&#xA;&lt;ServiceConfiguration serviceName=&quot;Azure.StorageDemo.Cloud&quot; xmlns=&quot;http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration&quot;&gt;&#xA; &lt;Role name=&quot;Azure.StorageDemo.Web&quot;&gt;&#xA;  &lt;Instances count=&quot;1&quot; /&gt;&#xA;  &lt;ConfigurationSettings&gt;&#xA;   &lt;Setting name=&quot;DiagnosticsConnectionString&quot; value=&quot;UseDevelopmentStorage=true&quot; /&gt;&#xA;   &lt;Setting name=&quot;OrderDatabaseConnectionString&quot; value=&quot;Server=.;Database=AzureStorageDemo;Integrated Security=true&quot;/&gt;&#xA;  &lt;/ConfigurationSettings&gt;&#xA; &lt;/Role&gt;&#xA;&lt;/ServiceConfiguration&gt;" />
-    <param name="CodeType" value="xml" />
-  </function>
+
+  {% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="Azure.StorageDemo.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+ <WebRole name="Azure.StorageDemo.Web">
+  <InputEndpoints>
+   <InputEndpoint name="HttpIn" protocol="http" port="80" />
+  </InputEndpoints>
+  <ConfigurationSettings>
+   <Setting name="DiagnosticsConnectionString" />
+   <Setting name="OrderDatabaseConnectionString"/>
+  </ConfigurationSettings>
+ </WebRole>
+</ServiceDefinition>
+
+<?xml version="1.0"?>
+<ServiceConfiguration serviceName="Azure.StorageDemo.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+ <Role name="Azure.StorageDemo.Web">
+  <Instances count="1" />
+  <ConfigurationSettings>
+   <Setting name="DiagnosticsConnectionString" value="UseDevelopmentStorage=true" />
+   <Setting name="OrderDatabaseConnectionString" value="Server=.;Database=AzureStorageDemo;Integrated Security=true"/>
+  </ConfigurationSettings>
+ </Role>
+</ServiceConfiguration>{% endhighlight %}
+
   <p>You can try your program by just hitting F5. You will see the Windows Azure Development Fabrik come up and you can debug the application. Here is a sample .CSV file that you can use to test the program:</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000&#xA;2010-01-01;Testcustomer;1000" />
-    <param name="CodeType" value="text" />
-  </function>
+
+   {% highlight text %}2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000
+2010-01-01;Testcustomer;1000{% endhighlight %}
   <p>If you like you can also change the connection string in your configuration file so that they point to your SQL Azure database. Because SQL Azure speaks TDS you do not have to change a single line of code to cloud-enable the ADO.NET code. If you have a Windows Azure computing account you can also try this version of the program running in a Windows Azure web role.</p>
   <p>Note that you can use SQL Azure although your application runs locally on your computer. Often I get asked whether it is possible to use just parts of Windows Azure. The answer is of course yes. This is especially true for Azure storage.</p>
   <h3>Second Solution: Ready To Scale</h3>
@@ -157,25 +258,143 @@ GO
     <li>Worker role listens to the queue, pulls payload from table store and processes the order request.</li>
   </ul>
   <p>To handle the connection to Windows Azure Storage we write a small helper class that cares for authentication (<span class="InlineCode">CloudStorageConnection</span>). Note that is is quite easy to establish a connection to Azure Storage. All you need to do is to provide a method that fetches the storage connection string from the configuration file and call <span class="InlineCode">CloudStorageAccount.FromConfigurationSetting</span>.</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using Microsoft.WindowsAzure;&#xA;using Microsoft.WindowsAzure.ServiceRuntime;&#xA;using Microsoft.WindowsAzure.StorageClient;&#xA;&#xA;namespace Azure.StorageDemo.Web&#xA;{&#xA; public class CloudStorageConnection&#xA; {&#xA;  public const string OrderQueueName = &quot;orderqueue&quot;;&#xA;  public const string OrderTableName = &quot;orderpayload&quot;;&#xA;  public CloudStorageConnection()&#xA;  {&#xA;   // Helper method to retrieve configuration data (just a wrapper around Azure's configuration&#xA;   // logic because our code will run just in Azure)&#xA;   CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =&gt;&#xA;   {&#xA;    configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));&#xA;   });&#xA;&#xA;   // Read account data from config file and create clients for tables, queues and blobs&#xA;   var cloudStorageAccount = CloudStorageAccount.FromConfigurationSetting(&quot;StorageConnectionString&quot;);&#xA;   this.TableClient = cloudStorageAccount.CreateCloudTableClient();&#xA;   this.QueueClient = cloudStorageAccount.CreateCloudQueueClient();&#xA;   this.BlobClient = cloudStorageAccount.CreateCloudBlobClient();&#xA;&#xA;   var queue = this.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);&#xA;   queue.CreateIfNotExist();&#xA;   this.OrderQueue = queue;&#xA;&#xA;   var table = this.TableClient.CreateTableIfNotExist(CloudStorageConnection.OrderTableName);&#xA;  }&#xA;&#xA;  public CloudTableClient TableClient { get; private set; }&#xA;  public CloudQueueClient QueueClient { get; private set; }&#xA;  public CloudBlobClient BlobClient { get; private set; }&#xA;  public CloudQueue OrderQueue { get; private set; }&#xA; }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+
+  {% highlight c# %}using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.StorageClient;
+
+namespace Azure.StorageDemo.Web
+{
+ public class CloudStorageConnection
+ {
+  public const string OrderQueueName = "orderqueue";
+  public const string OrderTableName = "orderpayload";
+  public CloudStorageConnection()
+  {
+   // Helper method to retrieve configuration data (just a wrapper around Azure's configuration
+   // logic because our code will run just in Azure)
+   CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =>
+   {
+    configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));
+   });
+
+   // Read account data from config file and create clients for tables, queues and blobs
+   var cloudStorageAccount = CloudStorageAccount.FromConfigurationSetting("StorageConnectionString");
+   this.TableClient = cloudStorageAccount.CreateCloudTableClient();
+   this.QueueClient = cloudStorageAccount.CreateCloudQueueClient();
+   this.BlobClient = cloudStorageAccount.CreateCloudBlobClient();
+
+   var queue = this.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);
+   queue.CreateIfNotExist();
+   this.OrderQueue = queue;
+
+   var table = this.TableClient.CreateTableIfNotExist(CloudStorageConnection.OrderTableName);
+  }
+
+  public CloudTableClient TableClient { get; private set; }
+  public CloudQueueClient QueueClient { get; private set; }
+  public CloudBlobClient BlobClient { get; private set; }
+  public CloudQueue OrderQueue { get; private set; }
+ }
+}{% endhighlight %}
+
   <p>The code shown above reads the Azure Storage connection string using <span class="InlineCode">RoleEnvironment.GetConfigurationSettingValue</span>. Therefore we need the connection string in our Azure configuration files (<span class="InlineCode">ServiceConfiguration.csdef</span> and <span class="InlineCode">ServiceConfiguration.cscfg</span>):</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xA;&lt;ServiceDefinition name=&quot;Azure.StorageDemo.Cloud&quot; xmlns=&quot;http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition&quot;&gt;&#xA;  &lt;WebRole name=&quot;Azure.StorageDemo.Web&quot;&gt;&#xA;    &lt;InputEndpoints&gt;&#xA;      &lt;InputEndpoint name=&quot;HttpIn&quot; protocol=&quot;http&quot; port=&quot;80&quot; /&gt;&#xA;    &lt;/InputEndpoints&gt;&#xA;    &lt;ConfigurationSettings&gt;&#xA;      &lt;Setting name=&quot;DiagnosticsConnectionString&quot; /&gt;&#xA;      &lt;Setting name=&quot;OrderDatabaseConnectionString&quot; /&gt;&#xA;      &lt;Setting name=&quot;StorageConnectionString&quot; /&gt;&#xA;    &lt;/ConfigurationSettings&gt;&#xA;  &lt;/WebRole&gt;&#xA;&lt;/ServiceDefinition&gt;&#xA;&#xA;&lt;?xml version=&quot;1.0&quot;?&gt;&#xA;&lt;ServiceConfiguration serviceName=&quot;Azure.StorageDemo.Cloud&quot; xmlns=&quot;http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration&quot;&gt;&#xA;  &lt;Role name=&quot;Azure.StorageDemo.Web&quot;&gt;&#xA;    &lt;Instances count=&quot;1&quot; /&gt;&#xA;    &lt;ConfigurationSettings&gt;&#xA;      &lt;Setting name=&quot;DiagnosticsConnectionString&quot; value=&quot;UseDevelopmentStorage=true&quot; /&gt;&#xA;      &lt;Setting name=&quot;OrderDatabaseConnectionString&quot; value=&quot;Server=.;Database=AzureStorageDemo;Integrated Security=true&quot; /&gt;&#xA;      &lt;Setting name=&quot;StorageConnectionString&quot; value=&quot;UseDevelopmentStorage=true&quot; /&gt;&#xA;    &lt;/ConfigurationSettings&gt;&#xA;  &lt;/Role&gt;&#xA;&lt;/ServiceConfiguration&gt;" />
-    <param name="CodeType" value="xml" />
-  </function>
+ 
+ {% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="Azure.StorageDemo.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="Azure.StorageDemo.Web">
+    <InputEndpoints>
+      <InputEndpoint name="HttpIn" protocol="http" port="80" />
+    </InputEndpoints>
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" />
+      <Setting name="OrderDatabaseConnectionString" />
+      <Setting name="StorageConnectionString" />
+    </ConfigurationSettings>
+  </WebRole>
+</ServiceDefinition>
+
+<?xml version="1.0"?>
+<ServiceConfiguration serviceName="Azure.StorageDemo.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+  <Role name="Azure.StorageDemo.Web">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="OrderDatabaseConnectionString" value="Server=.;Database=AzureStorageDemo;Integrated Security=true" />
+      <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>{% endhighlight %}
+
   <p>In order to be able to write to our Azure table we need one additional class. This class acts as the "data model" for our table (<span class="InlineCode">Order.cs</span>). Please pay close attention to the comments in the following implementation! If you change only one name of the first three properties you will end up spending hours and hours looking for strange http errors.</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Data.Services.Common;&#xA;&#xA;namespace Azure.StorageDemo.Web&#xA;{&#xA; // WCF Data Services need the DataServiceKey attribute to identify &#xA; // the primary key of the class&#xA; [DataServiceKey(&quot;PartitionKey&quot;, &quot;RowKey&quot;)]&#xA; public class Order&#xA; {&#xA;  // The first three properties have to be present in order to&#xA;  // be able to store objects to table storage (do not change&#xA;  // their names!)&#xA;  public string PartitionKey { get; set; }&#xA;  public string RowKey { get; set; }&#xA;  public DateTime Timestamp { get; set; }  // for optimistic concurrency&#xA;&#xA;  public DateTime OrderDate { get; set; }&#xA;  public string CustomerName { get; set; }&#xA;  public double Amount { get; set; }&#xA; }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+
+  {% highlight c# %}using System;
+using System.Data.Services.Common;
+
+namespace Azure.StorageDemo.Web
+{
+ // WCF Data Services need the DataServiceKey attribute to identify 
+ // the primary key of the class
+ [DataServiceKey("PartitionKey", "RowKey")]
+ public class Order
+ {
+  // The first three properties have to be present in order to
+  // be able to store objects to table storage (do not change
+  // their names!)
+  public string PartitionKey { get; set; }
+  public string RowKey { get; set; }
+  public DateTime Timestamp { get; set; }  // for optimistic concurrency
+
+  public DateTime OrderDate { get; set; }
+  public string CustomerName { get; set; }
+  public double Amount { get; set; }
+ }
+}{% endhighlight %}
+
   <p>Now we are ready to change the implementation of our website. We can throw away the access to SQL Azure and replace it with the insert operation to the Azure table and the code necessary to add the message to the queue:</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Text;&#xA;using Microsoft.WindowsAzure.StorageClient;&#xA;&#xA;namespace Azure.StorageDemo.Web&#xA;{&#xA; public partial class FileUploadPage : System.Web.UI.Page&#xA; {&#xA;  protected void OnFileUploadClick(object sender, EventArgs e)&#xA;  {&#xA;   var fileContent = Encoding.UTF8.GetString(this.OrderFileUpload.FileBytes);&#xA;&#xA;   var connection = new CloudStorageConnection();&#xA;   var context = connection.TableClient.GetDataServiceContext();&#xA;   var queue = connection.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);&#xA;&#xA;   // In practise you have to add some checking code here&#xA;   foreach (var fileRows in fileContent.Split('\n'))&#xA;   {&#xA;    var columns = fileRows.Split(';');&#xA;    if (columns.Length == 3)&#xA;    {&#xA;     var orderId = Guid.NewGuid();&#xA;     var orderPayload = new Order()&#xA;     {&#xA;      PartitionKey = CloudStorageConnection.OrderTableName,&#xA;      RowKey = orderId.ToString(),&#xA;      Timestamp = DateTime.Now,&#xA;      OrderDate = DateTime.Parse(columns[0]),&#xA;      CustomerName = columns[1],&#xA;      Amount = double.Parse(columns[2])&#xA;     };&#xA;     context.AddObject(CloudStorageConnection.OrderTableName, orderPayload);&#xA;     context.SaveChangesWithRetries();&#xA;&#xA;     queue.AddMessage(new CloudQueueMessage(orderId.ToString()));&#xA;    }&#xA;   }&#xA;  }&#xA; }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+
+  {% highlight c# %}using System;
+using System.Text;
+using Microsoft.WindowsAzure.StorageClient;
+
+namespace Azure.StorageDemo.Web
+{
+ public partial class FileUploadPage : System.Web.UI.Page
+ {
+  protected void OnFileUploadClick(object sender, EventArgs e)
+  {
+   var fileContent = Encoding.UTF8.GetString(this.OrderFileUpload.FileBytes);
+
+   var connection = new CloudStorageConnection();
+   var context = connection.TableClient.GetDataServiceContext();
+   var queue = connection.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);
+
+   // In practise you have to add some checking code here
+   foreach (var fileRows in fileContent.Split('\n'))
+   {
+    var columns = fileRows.Split(';');
+    if (columns.Length == 3)
+    {
+     var orderId = Guid.NewGuid();
+     var orderPayload = new Order()
+     {
+      PartitionKey = CloudStorageConnection.OrderTableName,
+      RowKey = orderId.ToString(),
+      Timestamp = DateTime.Now,
+      OrderDate = DateTime.Parse(columns[0]),
+      CustomerName = columns[1],
+      Amount = double.Parse(columns[2])
+     };
+     context.AddObject(CloudStorageConnection.OrderTableName, orderPayload);
+     context.SaveChangesWithRetries();
+
+     queue.AddMessage(new CloudQueueMessage(orderId.ToString()));
+    }
+   }
+  }
+ }
+}{% endhighlight %}
+
   <p>The application is ready to be tested. You can either use Development Storage or - if you have your own Windows Azure account - you can change the connection strings so that they point into the cloud. If you run this version of the program it will add all orders to a table and a queue. I recommend that you get one of the numerous explorer tools with which you can look into Azure tables, queues and blob stores. I personally prefer cerebrata's <em>Cloud Storage Studio</em>; is is worth every single Dollar it costs. If you don't want to spend money for cerebrata you can also use Visual Studio's explorer tools (new in the Windows Azure SDK 1.2; see <em>Server Explorer</em> in Visual Studio). At the time of writing this article Visual Studio tools could not be compared with the toolset that cerebrata provides.</p>
   <p>Our current application version has a slight problem: It sends messages but no one cares. Therefore the next step is to write a worker role that monitors the queue and does the work. You can add a worker to your Azure project by right-clicking on the <em>Roles</em> folder in the cloud-project. The following steps are necessary to get ready to implement the worker:</p>
   <ol>
@@ -183,26 +402,225 @@ GO
     <li>Add links to the files <span class="InlineCode">CloudStorageConnection.cs</span> and <span class="InlineCode">Order.cs</span> (you find them in the web role; details see above).</li>
     <li>Last but not least we have to copy the configuration settings in <span class="InlineCode">ServiceConfiguration.csdef</span> and <span class="InlineCode">ServiceConfiguration.cscfg</span> because the worker role needs the same connection strings as the web role:</li>
   </ol>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xA;&lt;ServiceDefinition name=&quot;Azure.StorageDemo.Cloud&quot; xmlns=&quot;http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition&quot;&gt;&#xA;  &lt;WebRole name=&quot;Azure.StorageDemo.Web&quot;&gt;&#xA;    &lt;InputEndpoints&gt;&#xA;      &lt;InputEndpoint name=&quot;HttpIn&quot; protocol=&quot;http&quot; port=&quot;80&quot; /&gt;&#xA;    &lt;/InputEndpoints&gt;&#xA;    &lt;ConfigurationSettings&gt;&#xA;      &lt;Setting name=&quot;DiagnosticsConnectionString&quot; /&gt;&#xA;      &lt;Setting name=&quot;OrderDatabaseConnectionString&quot; /&gt;&#xA;      &lt;Setting name=&quot;StorageConnectionString&quot; /&gt;&#xA;    &lt;/ConfigurationSettings&gt;&#xA;  &lt;/WebRole&gt;&#xA;  &lt;WorkerRole name=&quot;Azure.StorageDemo.Worker&quot;&gt;&#xA;   &lt;ConfigurationSettings&gt;&#xA;    &lt;Setting name=&quot;DiagnosticsConnectionString&quot; /&gt;&#xA;    &lt;Setting name=&quot;OrderDatabaseConnectionString&quot; /&gt;&#xA;    &lt;Setting name=&quot;StorageConnectionString&quot; /&gt;&#xA;   &lt;/ConfigurationSettings&gt;&#xA;  &lt;/WorkerRole&gt;&#xA;&lt;/ServiceDefinition&gt;" />
-    <param name="CodeType" value="xml" />
-  </function>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&lt;?xml version=&quot;1.0&quot;?&gt;&#xA;&lt;ServiceConfiguration serviceName=&quot;Azure.StorageDemo.Cloud&quot; xmlns=&quot;http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration&quot;&gt;&#xA;  &lt;Role name=&quot;Azure.StorageDemo.Web&quot;&gt;&#xA;    &lt;Instances count=&quot;1&quot; /&gt;&#xA;    &lt;ConfigurationSettings&gt;&#xA;      &lt;Setting name=&quot;DiagnosticsConnectionString&quot; value=&quot;UseDevelopmentStorage=true&quot; /&gt;&#xA;      &lt;Setting name=&quot;OrderDatabaseConnectionString&quot; value=&quot;Server=.;Database=AzureStorageDemo;Integrated Security=true&quot; /&gt;&#xA;      &lt;Setting name=&quot;StorageConnectionString&quot; value=&quot;UseDevelopmentStorage=true&quot; /&gt;&#xA;    &lt;/ConfigurationSettings&gt;&#xA;  &lt;/Role&gt;&#xA;  &lt;Role name=&quot;Azure.StorageDemo.Worker&quot;&gt;&#xA;    &lt;Instances count=&quot;1&quot; /&gt;&#xA;   &lt;ConfigurationSettings&gt;&#xA;    &lt;Setting name=&quot;DiagnosticsConnectionString&quot; value=&quot;UseDevelopmentStorage=true&quot; /&gt;&#xA;    &lt;Setting name=&quot;OrderDatabaseConnectionString&quot; value=&quot;Server=.;Database=AzureStorageDemo;Integrated Security=true&quot; /&gt;&#xA;    &lt;Setting name=&quot;StorageConnectionString&quot; value=&quot;UseDevelopmentStorage=true&quot; /&gt;&#xA;   &lt;/ConfigurationSettings&gt;&#xA;  &lt;/Role&gt;&#xA;&lt;/ServiceConfiguration&gt;" />
-    <param name="CodeType" value="xml" />
-  </function>
-  <p>That's it, we are ready to write the worker. Here is a sample implementation. You will find yourself familiar with most of the concepts because we already used them when implementing the web role. The new part is the query that retrieves data from our Azure table. As you can see you use <em>WCF Data Services</em>; if you are already familiar with that technology Azure tables will not be something new for you.</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Data;&#xA;using System.Data.SqlClient;&#xA;using System.Diagnostics;&#xA;using System.Linq;&#xA;using System.Net;&#xA;using System.Threading;&#xA;using Azure.StorageDemo.Web;&#xA;using Microsoft.WindowsAzure.Diagnostics;&#xA;using Microsoft.WindowsAzure.ServiceRuntime;&#xA;using Microsoft.WindowsAzure.StorageClient;&#xA;&#xA;namespace Azure.StorageDemo.Worker&#xA;{&#xA; public class WorkerRole : RoleEntryPoint&#xA; {&#xA;  public override void Run()&#xA;  {&#xA;   // This is a sample worker implementation. Replace with your logic.&#xA;   Trace.WriteLine(&quot;Azure.StorageDemo.Worker entry point called&quot;, &quot;Information&quot;);&#xA;&#xA;   var connection = new CloudStorageConnection();&#xA;   var context = connection.TableClient.GetDataServiceContext();&#xA;   var queue = connection.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);&#xA;&#xA;   while (true)&#xA;   {&#xA;    // Retrieve message from queue&#xA;    var msg = queue.GetMessage(TimeSpan.FromSeconds(15));&#xA;    if (msg != null)&#xA;    {&#xA;     try&#xA;     {&#xA;      Trace.WriteLine(string.Format(&quot;Handling message '{0}'&quot;, msg.AsString));&#xA;&#xA;      var messagePayload = context.CreateQuery&lt;Order&gt;(CloudStorageConnection.OrderTableName)&#xA;       .Where(o =&gt; o.PartitionKey == CloudStorageConnection.OrderTableName &amp;&amp; o.RowKey == msg.AsString)&#xA;       .AsTableServiceQuery&lt;Order&gt;()&#xA;       .SingleOrDefault();&#xA;&#xA;      if (messagePayload != null)&#xA;      {&#xA;       this.ProcessOrder(messagePayload);&#xA;       queue.DeleteMessage(msg);&#xA;       context.DeleteObject(messagePayload);&#xA;       context.SaveChangesWithRetries();&#xA;      }&#xA;      else&#xA;      {&#xA;       // Could not read payload from storage. Maybe we are too fast? Let's retry it one time.&#xA;       if (msg.DequeueCount &gt; 1)&#xA;       {&#xA;        // After retry still no payload in storage -&gt; remove message&#xA;        queue.DeleteMessage(msg);&#xA;       }&#xA;      }&#xA;     }&#xA;     catch&#xA;     {&#xA;      // Error while processing message&#xA;      if (msg.DequeueCount &gt; 1)&#xA;      {&#xA;       // Remove poisened message&#xA;       queue.DeleteMessage(msg);&#xA;      }&#xA;     }&#xA;    }&#xA;    else&#xA;    {&#xA;     Trace.WriteLine(&quot;No message, waiting...&quot;);&#xA;     Thread.Sleep(1000);&#xA;    }&#xA;   }&#xA;  }&#xA;&#xA;  private void ProcessOrder(Order messagePayload)&#xA;  {&#xA;   using (var conn = new SqlConnection(RoleEnvironment.GetConfigurationSettingValue(&quot;OrderDatabaseConnectionString&quot;)))&#xA;   {&#xA;    conn.Open();&#xA;    using (var command = conn.CreateCommand())&#xA;    {&#xA;     command.CommandText = &quot;StorageDemo_AddCustomerOrder&quot;;&#xA;     command.CommandType = CommandType.StoredProcedure;&#xA;     command.Parameters.Add(&quot;@OrderDate&quot;, SqlDbType.Date);&#xA;     command.Parameters.Add(&quot;@CustomerName&quot;, SqlDbType.NVarChar, 200);&#xA;     command.Parameters.Add(new SqlParameter()&#xA;     {&#xA;      ParameterName = &quot;@Amount&quot;,&#xA;      SqlDbType = SqlDbType.Decimal,&#xA;      Precision = 18,&#xA;      Scale = 6&#xA;     });&#xA;     command.Prepare();&#xA;&#xA;     command.Parameters[0].Value = messagePayload.OrderDate;&#xA;     command.Parameters[1].Value = messagePayload.CustomerName;&#xA;     command.Parameters[2].Value = messagePayload.Amount;&#xA;     command.ExecuteNonQuery();&#xA;    }&#xA;   }&#xA;  }&#xA;&#xA;  public override bool OnStart()&#xA;  {&#xA;   // Set the maximum number of concurrent connections &#xA;   ServicePointManager.DefaultConnectionLimit = 12;&#xA;   DiagnosticMonitor.Start(&quot;DiagnosticsConnectionString&quot;);&#xA;   // For information on handling configuration changes&#xA;   // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.&#xA;   RoleEnvironment.Changing += RoleEnvironmentChanging;&#xA;   return base.OnStart();&#xA;  }&#xA;&#xA;  private void RoleEnvironmentChanging(object sender, RoleEnvironmentChangingEventArgs e)&#xA;  {&#xA;   // If a configuration setting is changing&#xA;   if (e.Changes.Any(change =&gt; change is RoleEnvironmentConfigurationSettingChange))&#xA;   {&#xA;    // Set e.Cancel to true to restart this role instance&#xA;    e.Cancel = true;&#xA;   }&#xA;  }&#xA; }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+
+  {% highlight xml %}<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="Azure.StorageDemo.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="Azure.StorageDemo.Web">
+    <InputEndpoints>
+      <InputEndpoint name="HttpIn" protocol="http" port="80" />
+    </InputEndpoints>
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" />
+      <Setting name="OrderDatabaseConnectionString" />
+      <Setting name="StorageConnectionString" />
+    </ConfigurationSettings>
+  </WebRole>
+  <WorkerRole name="Azure.StorageDemo.Worker">
+   <ConfigurationSettings>
+    <Setting name="DiagnosticsConnectionString" />
+    <Setting name="OrderDatabaseConnectionString" />
+    <Setting name="StorageConnectionString" />
+   </ConfigurationSettings>
+  </WorkerRole>
+</ServiceDefinition>{% endhighlight %}
+
+{% highlight xml %}<?xml version="1.0"?>
+<ServiceConfiguration serviceName="Azure.StorageDemo.Cloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+  <Role name="Azure.StorageDemo.Web">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DiagnosticsConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="OrderDatabaseConnectionString" value="Server=.;Database=AzureStorageDemo;Integrated Security=true" />
+      <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="Azure.StorageDemo.Worker">
+    <Instances count="1" />
+   <ConfigurationSettings>
+    <Setting name="DiagnosticsConnectionString" value="UseDevelopmentStorage=true" />
+    <Setting name="OrderDatabaseConnectionString" value="Server=.;Database=AzureStorageDemo;Integrated Security=true" />
+    <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
+   </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>{% endhighlight %}
+
+   <p>That's it, we are ready to write the worker. Here is a sample implementation. You will find yourself familiar with most of the concepts because we already used them when implementing the web role. The new part is the query that retrieves data from our Azure table. As you can see you use <em>WCF Data Services</em>; if you are already familiar with that technology Azure tables will not be something new for you.</p>
+
+{% highlight c# %}using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Linq;
+using System.Net;
+using System.Threading;
+using Azure.StorageDemo.Web;
+using Microsoft.WindowsAzure.Diagnostics;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.StorageClient;
+
+namespace Azure.StorageDemo.Worker
+{
+ public class WorkerRole : RoleEntryPoint
+ {
+  public override void Run()
+  {
+   // This is a sample worker implementation. Replace with your logic.
+   Trace.WriteLine("Azure.StorageDemo.Worker entry point called", "Information");
+
+   var connection = new CloudStorageConnection();
+   var context = connection.TableClient.GetDataServiceContext();
+   var queue = connection.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);
+
+   while (true)
+   {
+    // Retrieve message from queue
+    var msg = queue.GetMessage(TimeSpan.FromSeconds(15));
+    if (msg != null)
+    {
+     try
+     {
+      Trace.WriteLine(string.Format("Handling message '{0}'", msg.AsString));
+
+      var messagePayload = context.CreateQuery<Order>(CloudStorageConnection.OrderTableName)
+       .Where(o => o.PartitionKey == CloudStorageConnection.OrderTableName && o.RowKey == msg.AsString)
+       .AsTableServiceQuery<Order>()
+       .SingleOrDefault();
+
+      if (messagePayload != null)
+      {
+       this.ProcessOrder(messagePayload);
+       queue.DeleteMessage(msg);
+       context.DeleteObject(messagePayload);
+       context.SaveChangesWithRetries();
+      }
+      else
+      {
+       // Could not read payload from storage. Maybe we are too fast? Let's retry it one time.
+       if (msg.DequeueCount > 1)
+       {
+        // After retry still no payload in storage -> remove message
+        queue.DeleteMessage(msg);
+       }
+      }
+     }
+     catch
+     {
+      // Error while processing message
+      if (msg.DequeueCount > 1)
+      {
+       // Remove poisened message
+       queue.DeleteMessage(msg);
+      }
+     }
+    }
+    else
+    {
+     Trace.WriteLine("No message, waiting...");
+     Thread.Sleep(1000);
+    }
+   }
+  }
+
+  private void ProcessOrder(Order messagePayload)
+  {
+   using (var conn = new SqlConnection(RoleEnvironment.GetConfigurationSettingValue("OrderDatabaseConnectionString")))
+   {
+    conn.Open();
+    using (var command = conn.CreateCommand())
+    {
+     command.CommandText = "StorageDemo_AddCustomerOrder";
+     command.CommandType = CommandType.StoredProcedure;
+     command.Parameters.Add("@OrderDate", SqlDbType.Date);
+     command.Parameters.Add("@CustomerName", SqlDbType.NVarChar, 200);
+     command.Parameters.Add(new SqlParameter()
+     {
+      ParameterName = "@Amount",
+      SqlDbType = SqlDbType.Decimal,
+      Precision = 18,
+      Scale = 6
+     });
+     command.Prepare();
+
+     command.Parameters[0].Value = messagePayload.OrderDate;
+     command.Parameters[1].Value = messagePayload.CustomerName;
+     command.Parameters[2].Value = messagePayload.Amount;
+     command.ExecuteNonQuery();
+    }
+   }
+  }
+
+  public override bool OnStart()
+  {
+   // Set the maximum number of concurrent connections 
+   ServicePointManager.DefaultConnectionLimit = 12;
+   DiagnosticMonitor.Start("DiagnosticsConnectionString");
+   // For information on handling configuration changes
+   // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+   RoleEnvironment.Changing += RoleEnvironmentChanging;
+   return base.OnStart();
+  }
+
+  private void RoleEnvironmentChanging(object sender, RoleEnvironmentChangingEventArgs e)
+  {
+   // If a configuration setting is changing
+   if (e.Changes.Any(change => change is RoleEnvironmentConfigurationSettingChange))
+   {
+    // Set e.Cancel to true to restart this role instance
+    e.Cancel = true;
+   }
+  }
+ }
+}{% endhighlight %}
+
   <p>Hit F5 and watch how your worker picks up messages from the queue, reads order payload from your Azure table and generates rows in the SQL Azure database.</p>
   <h3>Third Step: Using Windows Azure Blob Store</h3>
   <p>In order to demonstrate all different storage mechanism of the Windows Azure Platform we have to include blob storage. In our sample a good application for blob storage could be a confirmation function. After we have successfully processed an order we could send the user a confirmation document. To keep it simple we are just going to create a simple text file (i.e. blob) that says <em>Order xxx accepted</em>. We just have to extend our helper class <span class="InlineCode">CloudStorageConnection</span> a little bit:</p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using Microsoft.WindowsAzure;&#xA;using Microsoft.WindowsAzure.ServiceRuntime;&#xA;using Microsoft.WindowsAzure.StorageClient;&#xA;&#xA;namespace Azure.StorageDemo.Web&#xA;{&#xA; public class CloudStorageConnection&#xA; {&#xA;  public const string OrderQueueName = &quot;orderqueue&quot;;&#xA;  public const string OrderTableName = &quot;orderpayload&quot;;&#xA;  public const string ConfirmationContainerName = &quot;confirmations&quot;;&#xA;&#xA;  public CloudStorageConnection()&#xA;  {&#xA;   // Helper method to retrieve configuration data (just a wrapper around Azure's configuration&#xA;   // logic because our code will run just in Azure)&#xA;   CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =&gt;&#xA;   {&#xA;    configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));&#xA;   });&#xA;&#xA;   // Read account data from config file and create clients for tables, queues and blobs&#xA;   var cloudStorageAccount = CloudStorageAccount.FromConfigurationSetting(&quot;StorageConnectionString&quot;);&#xA;   this.TableClient = cloudStorageAccount.CreateCloudTableClient();&#xA;   this.QueueClient = cloudStorageAccount.CreateCloudQueueClient();&#xA;   this.BlobClient = cloudStorageAccount.CreateCloudBlobClient();&#xA;&#xA;   var queue = this.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);&#xA;   queue.CreateIfNotExist();&#xA;   this.OrderQueue = queue;&#xA;&#xA;   var table = this.TableClient.CreateTableIfNotExist(CloudStorageConnection.OrderTableName);&#xA;&#xA;   this.ConfirmationContainer = this.BlobClient.GetContainerReference(CloudStorageConnection.ConfirmationContainerName);&#xA;   this.ConfirmationContainer.CreateIfNotExist();&#xA;  }&#xA;&#xA;  public CloudTableClient TableClient { get; private set; }&#xA;  public CloudQueueClient QueueClient { get; private set; }&#xA;  public CloudBlobClient BlobClient { get; private set; }&#xA;&#xA;  public CloudQueue OrderQueue { get; private set; }&#xA;  public CloudBlobContainer ConfirmationContainer { get; private set; }&#xA; }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+  
+   {% highlight c# %}using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.StorageClient;
+
+namespace Azure.StorageDemo.Web
+{
+ public class CloudStorageConnection
+ {
+  public const string OrderQueueName = "orderqueue";
+  public const string OrderTableName = "orderpayload";
+  public const string ConfirmationContainerName = "confirmations";
+
+  public CloudStorageConnection()
+  {
+   // Helper method to retrieve configuration data (just a wrapper around Azure's configuration
+   // logic because our code will run just in Azure)
+   CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =>
+   {
+    configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));
+   });
+
+   // Read account data from config file and create clients for tables, queues and blobs
+   var cloudStorageAccount = CloudStorageAccount.FromConfigurationSetting("StorageConnectionString");
+   this.TableClient = cloudStorageAccount.CreateCloudTableClient();
+   this.QueueClient = cloudStorageAccount.CreateCloudQueueClient();
+   this.BlobClient = cloudStorageAccount.CreateCloudBlobClient();
+
+   var queue = this.QueueClient.GetQueueReference(CloudStorageConnection.OrderQueueName);
+   queue.CreateIfNotExist();
+   this.OrderQueue = queue;
+
+   var table = this.TableClient.CreateTableIfNotExist(CloudStorageConnection.OrderTableName);
+
+   this.ConfirmationContainer = this.BlobClient.GetContainerReference(CloudStorageConnection.ConfirmationContainerName);
+   this.ConfirmationContainer.CreateIfNotExist();
+  }
+
+  public CloudTableClient TableClient { get; private set; }
+  public CloudQueueClient QueueClient { get; private set; }
+  public CloudBlobClient BlobClient { get; private set; }
+
+  public CloudQueue OrderQueue { get; private set; }
+  public CloudBlobContainer ConfirmationContainer { get; private set; }
+ }
+}{% endhighlight %}
   <p>With these changes we have a reference to the Azure blob container that should receive our blobs and we can create the blob inside our worker process (I will not repeat the whole worker class here, just the necessary lines for creating the blob):</p>
   {% highlight c# %}CloudBlob blob;
 (blob = connection.ConfirmationContainer

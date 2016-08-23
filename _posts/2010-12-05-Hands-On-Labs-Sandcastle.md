@@ -56,7 +56,48 @@ permalink: /devblog/2010/12/05/Hands-On-Labs-Sandcastle
   <li>Create a new <em>C# Class Library</em> project called <span class="InlineCode">CSharpCodeDoc</span></li>
   <li>Add the following class to the class library:
 
-<function name="Composite.Web.Html.SyntaxHighlighter"><param name="SourceCode" value="namespace CSharpCodeDoc&#xA;{&#xA; using System;&#xA; using System.Collections.Generic;&#xA; using System.IO;&#xA;&#xA; public class SwiftFileReader&lt;T&gt; : TextReader&#xA; {&#xA;  private static object lockObject;&#xA;&#xA;  static SwiftFileReader()&#xA;  {&#xA;   lockObject = new object();&#xA;  }&#xA;&#xA;  public SwiftFileReader()&#xA;   : this(TimeSpan.FromMinutes(1))&#xA;  {&#xA;  }&#xA;&#xA;  public SwiftFileReader(TimeSpan timeout)&#xA;  {&#xA;   this.Timeout = timeout;&#xA;  }&#xA;&#xA;  public TimeSpan Timeout { get; set; }&#xA;&#xA;  public int Size { get; private set; }&#xA;&#xA;  public bool HasReachedLimit { get; private set; }  public IEnumerable&lt;TDest&gt; ConvertFileContent&lt;TDest&gt;(int sizeLimit)&#xA;  {&#xA;   throw new NotImplementedException();&#xA;  }&#xA;&#xA;  public override string ReadToEnd()&#xA;  {&#xA;   return base.ReadToEnd();&#xA;  }&#xA; }&#xA;}" /><param name="CodeType" value="c#" /></function></li>
+{% highlight c# %}namespace CSharpCodeDoc
+{
+ using System;
+ using System.Collections.Generic;
+ using System.IO;
+
+ public class SwiftFileReader<T> : TextReader
+ {
+  private static object lockObject;
+
+  static SwiftFileReader()
+  {
+   lockObject = new object();
+  }
+
+  public SwiftFileReader()
+   : this(TimeSpan.FromMinutes(1))
+  {
+  }
+
+  public SwiftFileReader(TimeSpan timeout)
+  {
+   this.Timeout = timeout;
+  }
+
+  public TimeSpan Timeout { get; set; }
+
+  public int Size { get; private set; }
+
+  public bool HasReachedLimit { get; private set; }  public IEnumerable<TDest> ConvertFileContent<TDest>(int sizeLimit)
+  {
+   throw new NotImplementedException();
+  }
+
+  public override string ReadToEnd()
+  {
+   return base.ReadToEnd();
+  }
+ }
+}{% endhighlight %}
+
+</li>
   <li>Make sure that the class library builds correctly.</li>
   <li>Right-click on the project in <em>Solution Explorer</em> and open choose <em>StyleCop Settings.</em></li>
   <li>

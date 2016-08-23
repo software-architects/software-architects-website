@@ -102,17 +102,72 @@ namespace CustomODataService
 </ol><h3>Add Custom Provider</h3><ol>
   <li>
     <p>The first step to create a custom OData service is to implement a custom context object. The sample solution contains a base class that makes it easier to implement such a context object: <span class="InlineCode">CustomDataServiceContext</span>. In the session I have discussed this base class in more details (see also slide deck; link at the beginning of this article). This is how the implementation could look like (notice that the only job of the context object is to provide a queryable that the OData service can operate on):</p>
-    <function name="Composite.Web.Html.SyntaxHighlighter">
-      <param name="SourceCode" value="using System; &#xA;using System.Data.Services.Providers; &#xA;using System.Linq; &#xA;using CustomODataService.CustomDataServiceBase; &#xA;using CustomODataService.Data; &#xA;&#xA;namespace CustomODataService &#xA;{ &#xA;    public class RealEstateContext : CustomDataServiceContext &#xA;    { &#xA;        static RealEstateContext() &#xA;        { &#xA;        } &#xA;&#xA;        public override IQueryable GetQueryable(ResourceSet set) &#xA;        { &#xA;            if (set.Name == &quot;RealEstate&quot;) &#xA;            { &#xA;                return RealEstateEntities.Create().RealEstate; &#xA;            } &#xA;&#xA;            throw new NotSupportedException(string.Format(&quot;{0} not found&quot;, set.Name)); &#xA;        } &#xA;    } &#xA;}" />
-      <param name="CodeType" value="c#" />
-    </function>
+    
+       {% highlight c# %}using System; 
+using System.Data.Services.Providers; 
+using System.Linq; 
+using CustomODataService.CustomDataServiceBase; 
+using CustomODataService.Data; 
+
+namespace CustomODataService 
+{ 
+    public class RealEstateContext : CustomDataServiceContext 
+    { 
+        static RealEstateContext() 
+        { 
+        } 
+
+        public override IQueryable GetQueryable(ResourceSet set) 
+        { 
+            if (set.Name == "RealEstate") 
+            { 
+                return RealEstateEntities.Create().RealEstate; 
+            } 
+
+            throw new NotSupportedException(string.Format("{0} not found", set.Name)); 
+        } 
+    } 
+}{% endhighlight %}
   </li>
   <li>
     <p>The second step is the creation of the custom provider. The sample solution contains a base class that makes it easier to implement the custom provider: <span class="InlineCode">CustomDataService&lt;T&gt;</span>. In the session I have discussed this base class in more details (see also slide deck; link at the beginning of this article). This is how the implementation could look like:</p>
-    <function name="Composite.Web.Html.SyntaxHighlighter">
-      <param name="SourceCode" value="using System; &#xA;using System.Data.Services; &#xA;using System.Data.Services.Common; &#xA;using System.Data.Services.Providers; &#xA;using System.ServiceModel; &#xA;using CustomODataService.CustomDataServiceBase; &#xA;using CustomODataService.Data; &#xA;&#xA;namespace CustomODataService &#xA;{ &#xA;    [ServiceBehavior(IncludeExceptionDetailInFaults = true)] &#xA;    public class CustomRealEstateDataService : CustomDataService&lt;RealEstateContext&gt; &#xA;    { &#xA;        public static void InitializeService(DataServiceConfiguration config) &#xA;        { &#xA;            config.SetEntitySetAccessRule(&quot;*&quot;, EntitySetRights.AllRead); &#xA;            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2; &#xA;        } &#xA;&#xA;        public override IDataServiceMetadataProvider GetMetadataProvider(Type dataSourceType) &#xA;        { &#xA;            return BuildMetadataForEntityFrameworkEntity&lt;RealEstate&gt;(&quot;Namespace&quot;); &#xA;        } &#xA;&#xA;        public override IDataServiceQueryProvider GetQueryProvider(IDataServiceMetadataProvider metadata) &#xA;        { &#xA;            return new CustomDataServiceProvider&lt;RealEstateContext&gt;(metadata); &#xA;        } &#xA;&#xA;        protected override RealEstateContext CreateDataSource() &#xA;        { &#xA;            return new RealEstateContext(); &#xA;        } &#xA;    } &#xA;}" />
-      <param name="CodeType" value="c#" />
-    </function>
+    
+{% highlight c# %}using System; 
+using System.Data.Services; 
+using System.Data.Services.Common; 
+using System.Data.Services.Providers; 
+using System.ServiceModel; 
+using CustomODataService.CustomDataServiceBase; 
+using CustomODataService.Data; 
+
+namespace CustomODataService 
+{ 
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)] 
+    public class CustomRealEstateDataService : CustomDataService<RealEstateContext> 
+    { 
+        public static void InitializeService(DataServiceConfiguration config) 
+        { 
+            config.SetEntitySetAccessRule("*", EntitySetRights.AllRead); 
+            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2; 
+        } 
+
+        public override IDataServiceMetadataProvider GetMetadataProvider(Type dataSourceType) 
+        { 
+            return BuildMetadataForEntityFrameworkEntity<RealEstate>("Namespace"); 
+        } 
+
+        public override IDataServiceQueryProvider GetQueryProvider(IDataServiceMetadataProvider metadata) 
+        { 
+            return new CustomDataServiceProvider<RealEstateContext>(metadata); 
+        } 
+
+        protected override RealEstateContext CreateDataSource() 
+        { 
+            return new RealEstateContext(); 
+        } 
+    } 
+}{% endhighlight %}
+
     <p> As you can see the custom provider metadata is built using the helper function <span class="InlineCode">BuildMetadataForEntityFrameworkEntity&lt;T&gt;</span>. This function uses reflection to inspect the given type and generates all the necessary OData resource sets and types. In practise you could add addition intelligence here (e.g. provide different metadata for different use cases, generate metadata manually if you do not implement a stronly typed provider).</p>
     {% highlight c# %}/// <summary> 
 /// Helper function that generates service metadata for entity framework entities based on reflection 

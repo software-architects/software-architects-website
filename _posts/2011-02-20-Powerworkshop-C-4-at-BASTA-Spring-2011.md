@@ -60,10 +60,106 @@ permalink: /devblog/2011/02/20/Powerworkshop-C-4-at-BASTA-Spring-2011
   <li>Follow the steps that I show during the workshop.</li>
 </ol><p>During the workshop I might use some of my simple parallel programming demos that you can find in the sample solution <a href="{{site.baseurl}}/content/images/blog/2011/02/ParallelProgramming.Samples.zip" target="_blank">ParallelProgramming.Samples</a>.</p><p>
   <strong>Note:</strong> It would not be possible to deploy many different versions of the sample (e.g. with TPL, with LINQ, with PLINQ) multiple times. In Azure this would take me 15 minutes for each deployment. Therefore I have written a generic Azure worker role that is able to load an assembly from blob store and execute it. With this I just have to deploy a single app; the different algorithms are started by uploading the corresponding assembly into blob store and starting it using a message in an Azure queue (e.g. with <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure Storage Explorer</a> or <a href="http://www.cerebrata.com/products/cloudstoragestudio/" target="_blank">Cerebrata Cloud Storage Studio</a>). Just in case you are interested - here is the code of the two main classes that perform this "deployment magic":</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="using System;&#xA;using System.Net;&#xA;using System.Threading;&#xA;using AzureDynamicLoader.Common;&#xA;using Microsoft.WindowsAzure.ServiceRuntime;&#xA;&#xA;namespace ADL.Wrk&#xA;{&#xA;    public class WorkerRole : RoleEntryPoint&#xA;    {&#xA;        public override void Run()&#xA;        {&#xA;            // Local helper variables&#xA;            var exeAssembly = typeof(Bootstrapper).Assembly.FullName;&#xA;            AppDomain subDomain = null;&#xA;&#xA;            #region Setup storage&#xA;            var account = CloudStorageHelper.GetCloudStorageAccount();&#xA;            &#xA;            var tableClient = CloudStorageHelper.GetCloudTableClient(account);&#xA;            tableClient.CreateTableIfNotExist(ConfigurationCache.Current.LogTableName);&#xA;            var logContext = tableClient.GetDataServiceContext();&#xA;&#xA;            var queueClient = CloudStorageHelper.GetCloudQueueClient(account);&#xA;            var enablerQueue = queueClient.GetQueueReference(ConfigurationCache.Current.EnablerQueueName);&#xA;            enablerQueue.CreateIfNotExist();&#xA;            var disablerQueue = queueClient.GetQueueReference(ConfigurationCache.Current.DisablerQueueName);&#xA;            disablerQueue.CreateIfNotExist();&#xA;            #endregion&#xA;&#xA;            while (true)&#xA;            {&#xA;                try&#xA;                {&#xA;                    if (subDomain == null)&#xA;                    {&#xA;                        #region Wait for enabler message&#xA;                        var enableMsg = enablerQueue.GetMessage();&#xA;                        if (enableMsg != null)&#xA;                        {&#xA;                            var assemblyName = enableMsg.AsString;&#xA;                            enablerQueue.DeleteMessage(enableMsg);&#xA;&#xA;                            subDomain = AppDomain.CreateDomain(&#xA;                                &quot;Subdomain&quot;,&#xA;                                null,&#xA;                                new AppDomainSetup() { ApplicationBase = System.Environment.CurrentDirectory });&#xA;                            var bootstrapper = (Bootstrapper)subDomain.CreateInstanceAndUnwrap(&#xA;                                exeAssembly,&#xA;                                typeof(Bootstrapper).FullName);&#xA;                            if (!bootstrapper.TryStartup(assemblyName))&#xA;                            {&#xA;                                AppDomain.Unload(subDomain);&#xA;                                subDomain = null;&#xA;                            }&#xA;                        }&#xA;                        #endregion&#xA;                    }&#xA;                    else&#xA;                    {&#xA;                        #region Wait for disabler message&#xA;                        var disableMsg = disablerQueue.GetMessage();&#xA;                        if (disableMsg != null)&#xA;                        {&#xA;                            disablerQueue.DeleteMessage(disableMsg);&#xA;                            try&#xA;                            {&#xA;                                AppDomain.Unload(subDomain);&#xA;                            }&#xA;                            finally&#xA;                            {&#xA;                                subDomain = null;&#xA;                            }&#xA;                        }&#xA;                        #endregion&#xA;                    }&#xA;&#xA;                    Thread.Sleep(10000);&#xA;                }&#xA;                catch (Exception ex)&#xA;                {&#xA;                    CloudStorageHelper.WriteLog(logContext, ex);&#xA;                }&#xA;            }&#xA;        }&#xA;&#xA;        public override bool OnStart()&#xA;        {&#xA;            // Set the maximum number of concurrent connections &#xA;            ServicePointManager.DefaultConnectionLimit = 12;&#xA;&#xA;            // For information on handling configuration changes&#xA;            // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.&#xA;&#xA;            return base.OnStart();&#xA;        }&#xA;    }&#xA;}" />
-    <param name="CodeType" value="c#" />
-  </function>
+  
+{% highlight c# %}using System;
+using System.Net;
+using System.Threading;
+using AzureDynamicLoader.Common;
+using Microsoft.WindowsAzure.ServiceRuntime;
+
+namespace ADL.Wrk
+{
+    public class WorkerRole : RoleEntryPoint
+    {
+        public override void Run()
+        {
+            // Local helper variables
+            var exeAssembly = typeof(Bootstrapper).Assembly.FullName;
+            AppDomain subDomain = null;
+
+            #region Setup storage
+            var account = CloudStorageHelper.GetCloudStorageAccount();
+            
+            var tableClient = CloudStorageHelper.GetCloudTableClient(account);
+            tableClient.CreateTableIfNotExist(ConfigurationCache.Current.LogTableName);
+            var logContext = tableClient.GetDataServiceContext();
+
+            var queueClient = CloudStorageHelper.GetCloudQueueClient(account);
+            var enablerQueue = queueClient.GetQueueReference(ConfigurationCache.Current.EnablerQueueName);
+            enablerQueue.CreateIfNotExist();
+            var disablerQueue = queueClient.GetQueueReference(ConfigurationCache.Current.DisablerQueueName);
+            disablerQueue.CreateIfNotExist();
+            #endregion
+
+            while (true)
+            {
+                try
+                {
+                    if (subDomain == null)
+                    {
+                        #region Wait for enabler message
+                        var enableMsg = enablerQueue.GetMessage();
+                        if (enableMsg != null)
+                        {
+                            var assemblyName = enableMsg.AsString;
+                            enablerQueue.DeleteMessage(enableMsg);
+
+                            subDomain = AppDomain.CreateDomain(
+                                "Subdomain",
+                                null,
+                                new AppDomainSetup() { ApplicationBase = System.Environment.CurrentDirectory });
+                            var bootstrapper = (Bootstrapper)subDomain.CreateInstanceAndUnwrap(
+                                exeAssembly,
+                                typeof(Bootstrapper).FullName);
+                            if (!bootstrapper.TryStartup(assemblyName))
+                            {
+                                AppDomain.Unload(subDomain);
+                                subDomain = null;
+                            }
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        #region Wait for disabler message
+                        var disableMsg = disablerQueue.GetMessage();
+                        if (disableMsg != null)
+                        {
+                            disablerQueue.DeleteMessage(disableMsg);
+                            try
+                            {
+                                AppDomain.Unload(subDomain);
+                            }
+                            finally
+                            {
+                                subDomain = null;
+                            }
+                        }
+                        #endregion
+                    }
+
+                    Thread.Sleep(10000);
+                }
+                catch (Exception ex)
+                {
+                    CloudStorageHelper.WriteLog(logContext, ex);
+                }
+            }
+        }
+
+        public override bool OnStart()
+        {
+            // Set the maximum number of concurrent connections 
+            ServicePointManager.DefaultConnectionLimit = 12;
+
+            // For information on handling configuration changes
+            // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+
+            return base.OnStart();
+        }
+    }
+}{% endhighlight %}
+
   {% highlight c# %}using System;
 using System.Collections.Concurrent;
 using System.IO;

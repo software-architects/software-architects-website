@@ -47,15 +47,43 @@ permalink: /devblog/2009/10/13/SQL-Champ---Quiz
       <p>1. Add a TIMESTAMP column to the table; SQL Server will automatically track date and time of every change.<br /> 2. Add a DATETIME column to the table and assign <span class="InlineCode">getdate()</span> as the default value.<br /> 3. Add a DATETIME column to the table and write a trigger that sets its value.<br /> 4. Add a UNIQUEIDENTIFIER column to the table and use it with SQL Server's built functions.</p>
       <p class="DecoratorRight">If you just want to record date and time of the last change to identify those rows that have changed since a certain point in time (e.g. for delta load of a DWH) and you are able to use SQL 2008 check out <a target="_blank" href="http://msdn2.microsoft.com/en-us/library/bb933994(SQL.100).aspx">change tracking and data capture</a>. They provide a mechanism for that without having to change the table structure at all.</p>
       <p dir="ltr">The correct answer is <em>Add a DATETIME column to the table and write a trigger that sets its value</em>. TIMESTAMP does not help in this case because it does not record any date or time values. It just offers a way to generate unique binary numbers that are changed whenever the content of a row changes. The following script shows how to use TIMESTAMP:</p>
-      <function name="Composite.Web.Html.SyntaxHighlighter">
-        <param name="SourceCode" value="use tempdb;  &#xA;&#xA;create table ChangeTrackingTest (  &#xA;  MyId int primary key,  &#xA;  MyDesc varchar(50),  &#xA;  MyTimestamp timestamp  &#xA;);  &#xA;&#xA;insert into ChangeTrackingTest ( MyId, MyDesc )  &#xA;values ( 1, 'Test' );  &#xA;&#xA;select * from ChangeTrackingTest;  &#xA;&#xA;update ChangeTrackingTest  &#xA;set MyDesc = 'Test 2'  &#xA;where MyId = 1;  &#xA;&#xA;select * from ChangeTrackingTest;" />
-        <param name="CodeType" value="sql" />
-      </function>
+      
+    {% highlight sql %}use tempdb;  
+
+create table ChangeTrackingTest (  
+  MyId int primary key,  
+  MyDesc varchar(50),  
+  MyTimestamp timestamp  
+);  
+
+insert into ChangeTrackingTest ( MyId, MyDesc )  
+values ( 1, 'Test' );  
+
+select * from ChangeTrackingTest;  
+
+update ChangeTrackingTest  
+set MyDesc = 'Test 2'  
+where MyId = 1;  
+
+select * from ChangeTrackingTest;{% endhighlight %}
+
       <p dir="ltr">This is the result of this batch. Note how the value of the TIMESTAMP column changes:</p>
-      <function name="Composite.Web.Html.SyntaxHighlighter">
-        <param name="SourceCode" value="(1 row(s) affected)  &#xA;MyId MyDesc MyTimestamp  &#xA;--------------------------- &#xA;1 Test 0x00000000000007D4  &#xA;&#xA;(1 row(s) affected)  &#xA;&#xA;(1 row(s) affected)  &#xA;&#xA;MyId MyDesc MyTimestamp  &#xA;--------------------------- &#xA;1 Test 2 0x00000000000007D5  &#xA;&#xA;(1 row(s) affected)" />
-        <param name="CodeType" value="text" />
-      </function>
+
+     {% highlight text %}(1 row(s) affected)  
+MyId MyDesc MyTimestamp  
+--------------------------- 
+1 Test 0x00000000000007D4  
+
+(1 row(s) affected)  
+
+(1 row(s) affected)  
+
+MyId MyDesc MyTimestamp  
+--------------------------- 
+1 Test 2 0x00000000000007D5  
+
+(1 row(s) affected){% endhighlight %}
+
       <p dir="ltr">The second answer is wrong because this solution would only record date and time when each row was created. The column's content would not change in case of an UPDATE statement. The fourth answer is also wrong simply because there are no such built in functions.</p>
       <h2 class="Head">
         <a id="Q3" class="FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC FCK__AnchorC mceItemAnchor" name="Q3"></a>Question 3 - Date and Time Handling</h2>
@@ -68,15 +96,23 @@ permalink: /devblog/2009/10/13/SQL-Champ---Quiz
       </p>
       <p dir="ltr">1. Next Sunday relative to <span class="InlineCode">@MyDateTime</span>.<br /> 2. Only date part of <span class="InlineCode">@MyDateTime</span>.<br /> 3. Only time part of <span class="InlineCode">@MyDateTime</span>.<br /> 4. Doesn't work because you cannot cast <span class="InlineCode">float </span> to <span class="InlineCode">datetime</span>.</p>
       <p dir="ltr">The second answer <em>Only date part of <span class="InlineCode">@MyDateTime</span></em> is correct. If you cast a <span class="InlineCode">datetime</span> value to float you get a floating point value representing the number of days since 1<sup>st</sup> January 1900:</p>
-      <function name="Composite.Web.Html.SyntaxHighlighter">
-        <param name="SourceCode" value="select cast(cast('1900-01-01 00:00:00' as datetime) as float) &#xA;&#xA;----------------------  &#xA;0  &#xA;&#xA;(1 row(s) affected)" />
-        <param name="CodeType" value="text" />
-      </function>
+      
+     {% highlight text %}select cast(cast('1900-01-01 00:00:00' as datetime) as float) 
+
+----------------------  
+0  
+
+(1 row(s) affected){% endhighlight %}
+
       <p dir="ltr">The fractional digits represent the time:</p>
-      <function name="Composite.Web.Html.SyntaxHighlighter">
-        <param name="SourceCode" value="select cast(cast('1900-01-01 12:00:00' as datetime) as float) &#xA;&#xA;----------------------  &#xA;0,5  &#xA;&#xA;(1 row(s) affected)" />
-        <param name="CodeType" value="text" />
-      </function>
+      
+{% highlight text %}select cast(cast('1900-01-01 12:00:00' as datetime) as float) 
+
+----------------------  
+0,5  
+
+(1 row(s) affected){% endhighlight %}
+
       <p class="DecoratorRight">In contrast to SQL Server 2005 the version 2008 offers separate data types for date and time. Read more about these new data types in <a target="_blank" href="http://msdn2.microsoft.com/en-us/library/ms180878(SQL.100).aspx">MSDN</a>.</p>
       <p dir="ltr">The statement shown above converts the <span class="InlineCode">datetime</span> variable to <span class="InlineCode">float</span>, removes the fractional digits using <span class="InlineCode">floor</span> and converts the result back to <span class="InlineCode">datetime</span>. Therefore it removes the time part of the <span class="InlineCode">datetime</span> variable.</p>
       <h2 class="Head">
@@ -86,10 +122,19 @@ permalink: /devblog/2009/10/13/SQL-Champ---Quiz
         <strong>Does the following statement work in SQL 2005?</strong>
         <br />
         <br />
-        <function name="Composite.Web.Html.SyntaxHighlighter">
-          <param name="SourceCode" value="select CustomerKey,  &#xA;       ProductKey,  &#xA;       sum(SalesAmount) as SumSalesAmount,  &#xA;       sum(SalesAmount) /  &#xA;         sum(sum(SalesAmount)) over ( partition by CustomerKey )  &#xA;         * 100 as SumSumSalesAmount  &#xA;from   dbo.FactInternetSales  &#xA;group by CustomerKey,  &#xA;       ProductKey  &#xA;order by CustomerKey,  &#xA;       ProductKey" />
-          <param name="CodeType" value="sql" />
-        </function>
+       
+        {% highlight sql %}select CustomerKey,  
+       ProductKey,  
+       sum(SalesAmount) as SumSalesAmount,  
+       sum(SalesAmount) /  
+         sum(sum(SalesAmount)) over ( partition by CustomerKey )  
+         * 100 as SumSumSalesAmount  
+from   dbo.FactInternetSales  
+group by CustomerKey,  
+       ProductKey  
+order by CustomerKey,  
+       ProductKey{% endhighlight %}
+
       </p>
       <p dir="ltr">1. Yes<br /> 2. No, syntax error<br /> 3. No, but SQL 2008 supports this syntax</p>
       <p dir="ltr">This statement works in SQL 2005! You maybe know the keyword <span class="InlineCode">over</span> from <a target="_blank" href="http://web.archive.org/web/20091213061209/http://msdn2.microsoft.com/en-us/library/ms189798.aspx">ranking functions</a>. However, it is not quite commonly known that you can use <span class="InlineCode">over</span> with traditional aggregation functions, too. Our sample shown above generates a sales statistics including the customer, the product and the revenue that each customer has generated with each product. The fourth column calculates the ratio of each product's revenue to the customer's total revenue.</p>

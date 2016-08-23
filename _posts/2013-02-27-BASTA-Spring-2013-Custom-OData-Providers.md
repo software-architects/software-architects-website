@@ -547,10 +547,7 @@ namespace CustomODataService.CustomDataServiceBase
         #endregion
     }
 }{% endhighlight %}<p>That's it. We have all prerequisites to setup our fully customizable OData service. Note how the .NET interface <em>IServiceProvider</em> is used to link our service with the previously created implementations of <em>IDataServiceMetadataProvider</em> and <em><em>IDataServiceQueryProvider</em></em>.</p><p>
-  <function name="Composite.Web.Html.SyntaxHighlighter">
-    <param name="SourceCode" value="&#xA;&#xA;&lt;%@ ServiceHost Language=&quot;C#&quot; Factory=&quot;System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; Service=&quot;CustomODataService.CustomerService&quot; %&gt;&#xA;" />
-    <param name="CodeType" value="xml" />
-  </function>
+  
 {% highlight xml %}
 <%@ ServiceHost Language="C#" Factory="System.Data.Services.DataServiceHostFactory, Microsoft.Data.Services, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Service="CustomODataService.CustomerService" %>{% endhighlight %}
 

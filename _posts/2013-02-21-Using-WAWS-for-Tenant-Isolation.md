@@ -25,12 +25,7 @@ permalink: /devblog/2013/02/21/Using-WAWS-for-Tenant-Isolation
   <li>A sample full-client (WPF) representing e.g. a powerful ERP client for the SaaS offering.</li>
   <li>A template implementation for a Web API that is capable of running user-provided scripts. My example uses <a href="http://www.asp.net/web-api" title="ASP.NET Web API" target="_blank">ASP.NET's Web API</a>.</li>
 </ol><p>The following diagram shows an overview how the different components play together. I will go into more details about what goes on in the sample.</p><p>
-  <function name="Composite.Media.ImageGallery.Slimbox2">
-    <param name="MediaImage" value="MediaArchive:438d73df-94f2-42d0-b68d-1cfd73546704" />
-    <param name="ThumbnailMaxWidth" value="350" />
-    <param name="ThumbnailMaxHeight" value="189" />
-  </function> 
-
+ 
   <a data-lightbox="InfoGraphicWawsIsolation" href="/content/images/blog/2013/02/InfoGraphicWawsIsolation.png"><img src="/content/images/blog/2013/02/InfoGraphicWawsIsolation.png" /></a>
 
   Architecture Diagram (click to enlarge)</p><h2>Code Walkthrough</h2><p>When a user subscribes to our service, the website queues a tenant creation request using <a href="http://www.windowsazure.com/en-us/home/features/messaging/" title="Azure Service Bus" target="_blank">Azure's Service Bus</a>. This service makes communicating between servers in the cloud a piece of cake. Just as an example, here is the code I used in the sample to enqueue a tenant creation request.</p>{% highlight c# %}protected void LinkButton1_Click(object sender, EventArgs e)
