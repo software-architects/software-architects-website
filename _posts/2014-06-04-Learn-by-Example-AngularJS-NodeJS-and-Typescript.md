@@ -264,7 +264,7 @@ class RegisterViewModel {
             .when("/register", {
                 templateUrl: "register.html", controller: "RegisterController"
             });
-    });{% endhighlight %}<h2>Step 3: Joining Server and Client</h2><p>So how can we bring server and client together? It turns out that the express framework we used in our NodeJS server can serve static files, too. Just add one line to the server’s <em>app.ts</em> file:</p>{% highlight javascript %}...
+    });{% endhighlight %}<h2>Step 4: Joining Server and Client</h2><p>So how can we bring server and client together? It turns out that the express framework we used in our NodeJS server can serve static files, too. Just add one line to the server’s <em>app.ts</em> file:</p>{% highlight javascript %}...
 // Setup express
 var app = express();
 app.use(bodyParser());

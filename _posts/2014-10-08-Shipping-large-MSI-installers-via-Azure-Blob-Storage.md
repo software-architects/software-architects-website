@@ -88,6 +88,5 @@ permalink: /devblog/2014/10/08/Shipping-large-MSI-installers-via-Azure-Blob-Stor
   <em>msiexec /i https://yourserver.blob.core.windows.net/msiinstaller/CompositeWpfApp.Install.msi ADDLOCAL=Shell,SDK,Extension</em>
 </p><p>
   <img src="{{site.baseurl}}/content/images/blog/2014/10/Disk2.png" />
-</p><h2>
-  <span style="color: rgb(80, 80, 80); font-size: 14px; line-height: 22px;">As you can see, MSI is clever in determining what to download and Azure Blob Storage is a nice way for you to supply your installers to your customers.</span>
-</h2>
+</p>
+<p>As you can see, MSI is clever in determining what to download and Azure Blob Storage is a nice way for you to supply your installers to your customers.</p>
