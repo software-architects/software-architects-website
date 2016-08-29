@@ -28,13 +28,13 @@ Name="ScrollViewer2" scroll:ScrollSynchronizer.ScrollGroup="Group1">
     <span class="InlineCode">ControlTemplate</span>
     <span>.</span>
   </span>
-</p><h2 class="Head">Online Silverlight Demo</h2><p>Here you can see the Silverlight version of my synchronized ListBoxes:</p><iframe style="width: 100%; height: 300px" src="/Samples/ScrollSynchronization/SoftwareArchitects.ScrollViewerUITestPage.html" frameborder="0"></iframe><p>In the following article I will show, how to build the <span class="InlineCode">ScrollSyncronizer</span> class in WPF to synchronize the scroll position of various scrollable controls. In the <a href="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.zip">source code download</a> you will find a working solution for WPF and Silverlight.</p><ul>
+</p><h2 class="Head">Online Silverlight Demo</h2><p>Here you can see the Silverlight version of my synchronized ListBoxes:</p>
+<iframe style="width: 100%; height: 300px" src="/samples/ScrollSynchronization/SoftwareArchitects.ScrollViewerUITestPage.html" frameborder="0"></iframe><p>In the following article I will show, how to build the <span class="InlineCode">ScrollSyncronizer</span> class in WPF to synchronize the scroll position of various scrollable controls. In the <a href="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.zip">source code download</a> you will find a working solution for WPF and Silverlight.</p><ul>
   <li>Building the ScrollSynchronizer</li>
   <li>Testing the ScrollSynchronizer</li>
   <li>Synchronizing ListBoxes</li>
   <li>Silverlight Support</li>
-</ul><h2 class="Head">
-  <a id="Building" name="Building" class="mceItemAnchor"></a>Building the ScrollSynchronizer</h2><p>Our <span class="InlineCode">ScrollSynchronizer</span> object has no representation in the UI. It is just responsible for providing the attached property ScrollGroup. So I have chosen <span class="InlineCode">DependencyObject</span> as the base class. First I added the attached dependency property ScrollGroup with its corresponding methodes <span class="InlineCode">GetScrollGroup</span> and S<span class="InlineCode">etScrollGroup</span> to the class.</p>{% highlight c# %}public class ScrollSynchronizer : DependencyObject
+</ul><h2 class="Head">Building the ScrollSynchronizer</h2><p>Our <span class="InlineCode">ScrollSynchronizer</span> object has no representation in the UI. It is just responsible for providing the attached property ScrollGroup. So I have chosen <span class="InlineCode">DependencyObject</span> as the base class. First I added the attached dependency property ScrollGroup with its corresponding methodes <span class="InlineCode">GetScrollGroup</span> and S<span class="InlineCode">etScrollGroup</span> to the class.</p>{% highlight c# %}public class ScrollSynchronizer : DependencyObject
 {
     public static readonly DependencyProperty ScrollGroupProperty =
         DependencyProperty.RegisterAttached(
@@ -147,8 +147,7 @@ private static void Scroll(ScrollViewer changedScrollViewer)
                 changedScrollViewer.HorizontalOffset); 
         } 
     } 
-}{% endhighlight %}<h2 class="Head">
-  <a id="Testing" name="Testing" class="mceItemAnchor"></a>Testing the ScrollSynchronizer</h2><p>To test the new attached property we build a simple UI with two ScrollViewers. For both ScrollViewers we assign the value "Group1" to the <span class="InlineCode">ScrollGroup</span> property.</p>{% highlight xml %}<Window  
+}{% endhighlight %}<h2 class="Head">Testing the ScrollSynchronizer</h2><p>To test the new attached property we build a simple UI with two ScrollViewers. For both ScrollViewers we assign the value "Group1" to the <span class="InlineCode">ScrollGroup</span> property.</p>{% highlight xml %}<Window  
 xmlns:scroll="clr-namespace:SoftwareArchitects.Windows.Controls; 
 assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer" 
 ...> 
@@ -183,8 +182,7 @@ assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer"
     } 
 }{% endhighlight %}<p>Done! We have two synchronized ScrollViewers:</p><p>
   <img src="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.png" class="mceC1Focused mceC1Focused mceC1Focused mceC1Focused mceC1Focused" />
-</p><h2 class="Head">
-  <a id="ListBoxes" name="ListBoxes" class="mceItemAnchor"></a>Synchronizing ListBoxes</h2><p>Now, how can we get other controls synchronized? Let's replace the ScrollViewers by two ListBoxes. Unfortunately we cannot set the attached property <span class="InlineCode">ScrollGroup</span> to the ListBoxes. In the <span class="InlineCode">OnScrollGroupChanged</span> callback we assume, that we will always get a <span class="InlineCode">ScrollViewer</span>. So we could enhance the ScrollSynchronizer to accept other types of controls, or we could simply add a style for the <span class="InlineCode">ScrollViewer</span> within the ListBoxes, that sets the <span class="InlineCode">ScrollGroup</span>property. In this case no changes are necessary for out <span class="InlineCode">ScrollSynchronizer</span>.</p>{% highlight xml %}<ListBox Grid.Column="0" Name="ListBox1" Margin="0,0,5,0"> 
+</p><h2 class="Head">Synchronizing ListBoxes</h2><p>Now, how can we get other controls synchronized? Let's replace the ScrollViewers by two ListBoxes. Unfortunately we cannot set the attached property <span class="InlineCode">ScrollGroup</span> to the ListBoxes. In the <span class="InlineCode">OnScrollGroupChanged</span> callback we assume, that we will always get a <span class="InlineCode">ScrollViewer</span>. So we could enhance the ScrollSynchronizer to accept other types of controls, or we could simply add a style for the <span class="InlineCode">ScrollViewer</span> within the ListBoxes, that sets the <span class="InlineCode">ScrollGroup</span>property. In this case no changes are necessary for out <span class="InlineCode">ScrollSynchronizer</span>.</p>{% highlight xml %}<ListBox Grid.Column="0" Name="ListBox1" Margin="0,0,5,0"> 
     <ListBox.Resources> 
         <Style TargetType="ScrollViewer"> 
             <Setter Property="scroll:ScrollSynchronizer.ScrollGroup"  
@@ -211,8 +209,7 @@ assembly=SoftwareArchitects.Windows.Controls.ScrollSynchronizer"
 
 <ListBox Grid.Column="1" Name="ListBox2" Margin="5,0,0,0" />{% endhighlight %}<p>
   <img src="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedListBoxes.png" class="mceC1Focused" />
-</p><h2 class="Head">
-  <a id="Silverlight" name="Silverlight" class="mceItemAnchor"></a>Silverlight Support</h2><p>Basically this solution would also work for Silverlight. In detail there are some differences like a <span class="InlineCode">ScrollViewer</span> does not provide the <span class="InlineCode">ScrollChanged</span> event in Silverlight. But you can bypass this problem by using the <span class="InlineCode">Scroll</span> and <span class="InlineCode">ValueChanged</span> events of the underlying ScrollBars. Another problem is that the Style for the <span class="InlineCode">ScrollViewer</span> is not applied in the ListBox sample, even when using the <span class="InlineCode">ImplicitStyleManager</span>. So I ended up setting the attached property in code for Silverlight. In the <a href="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.zip">source code download</a> you will find a working solution for WPF and Silverlight.</p><p>
+</p><h2 class="Head">Silverlight Support</h2><p>Basically this solution would also work for Silverlight. In detail there are some differences like a <span class="InlineCode">ScrollViewer</span> does not provide the <span class="InlineCode">ScrollChanged</span> event in Silverlight. But you can bypass this problem by using the <span class="InlineCode">Scroll</span> and <span class="InlineCode">ValueChanged</span> events of the underlying ScrollBars. Another problem is that the Style for the <span class="InlineCode">ScrollViewer</span> is not applied in the ListBox sample, even when using the <span class="InlineCode">ImplicitStyleManager</span>. So I ended up setting the attached property in code for Silverlight. In the <a href="{{site.baseurl}}/content/images/blog/2009/10/SynchronizedScrollViewers.zip">source code download</a> you will find a working solution for WPF and Silverlight.</p><p>
   <span>
     <span>
       <br />

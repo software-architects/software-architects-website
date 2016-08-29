@@ -278,7 +278,7 @@ public class DisposableObject : IDisposable
   <li>Choose <em>Extensibility</em> in the menu on the left side.</li>
   <li>Click on <em>Launch Lab</em> in the middle column.</li>
   <li>Complete extercises 1 and 2 of the lab.</li>
-</ul><h3>Hands-On Lab 4: MEF And Silverlight</h3><p>Prerequisites:</p><ul>
+</ul><h2>Hands-On Lab 4: MEF And Silverlight</h2><p>Prerequisites:</p><ul>
   <li>Same as Hands-On Lab 3</li>
   <li>Additionally: <a href="http://go.microsoft.com/fwlink/?LinkID=177428" target="_blank">Silverlight 4 Tools for Visual Studio 2010</a></li>
 </ul><p>Lab step by step description:</p><ul>

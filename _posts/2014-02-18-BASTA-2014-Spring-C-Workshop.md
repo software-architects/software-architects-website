@@ -40,12 +40,11 @@ permalink: /devblog/2014/02/18/BASTA-2014-Spring-C-Workshop
   </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h3>Async and Parallel</h3><iframe src="http://www.slideshare.net/slideshow/embed_code/31558900?rel=0" width="512" height="421" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen="allowfullscreen"></iframe><div style="margin-bottom:5px">
   <strong>
     <a href="https://www.slideshare.net/rstropek/workshop-async-and-parallel-in-c" title="Workshop: Async and Parallel in C#" target="_blank">Workshop: Async and Parallel in C#</a>
-  </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2>Better C#</h2><h3>
-  <span style="color: rgb(80, 80, 80); font-size: 14px; line-height: 22px;">The morning of the workshop will be dedicated to the following question:</span>
-  <em style="color: rgb(80, 80, 80); font-size: 14px; line-height: 22px;">What are best and worst practices for writing C# code?</em>
-  <span style="color: rgb(80, 80, 80); font-size: 14px; line-height: 22px;"> </span>
-  <span style="color: rgb(80, 80, 80); font-size: 14px; line-height: 22px;">During the live coding I will cover:</span>
-</h3><ul>
+  </strong> from <strong><a href="http://www.slideshare.net/rstropek" target="_blank">Rainer Stropek</a></strong></div><h2>Better C#</h2>
+  <p>
+  The morning of the workshop will be dedicated to the following question: What are best and worst practices for writing C# code?</p>
+  <p>During the live coding I will cover:</p>
+<ul>
   <li>
     <a href="http://blogs.msdn.com/b/kcwalina/archive/2005/05/05/scenariodrivendesign.aspx" target="_blank">Scenario-Driven Development (SDD)</a>
   </li>
@@ -74,6 +73,5 @@ permalink: /devblog/2014/02/18/BASTA-2014-Spring-C-Workshop
   <li>Async view models for Windows Desktop and Store apps</li>
   <li>Async unit tests</li>
   <li>Async on the server with ASP.NET Web API</li>
-</ul><p class="showcase">A reference implementation of the sample can be found on <a href="https://github.com/rstropek/Samples/tree/master/AsyncSensors" target="_blank">GitHub</a>. During the workshop coding will be live. Therefore it is likely that the sample shown in the workshop is not 100% identical with the reference implementation on GitHub.</p><p>If you want to play with the sample or follow along during the workshop, you will just need Visual Studio 2013.</p><a href="https://shfb.codeplex.com/">
-  <br />
-</a><br />
+</ul><p class="showcase">A reference implementation of the sample can be found on <a href="https://github.com/rstropek/Samples/tree/master/AsyncSensors" target="_blank">GitHub</a>. During the workshop coding will be live. Therefore it is likely that the sample shown in the workshop is not 100% identical with the reference implementation on GitHub.</p>
+<p>If you want to play with the sample or follow along during the workshop, you will just need Visual Studio 2013.</p>
