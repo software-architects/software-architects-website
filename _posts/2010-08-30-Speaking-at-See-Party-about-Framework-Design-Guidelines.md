@@ -10,6 +10,8 @@ lang: en
 tags: [.NET]
 ref: 
 permalink: /devblog/2010/08/30/Speaking-at-See-Party-about-Framework-Design-Guidelines
+redirect_from:
+- /Blogs/tabid/72/BlogID/5/Default.aspx/index.html
 ---
 
 <p>On saturday I had the opportunity to speak about Framework Design Guidelines at the conference <a href="http://www.seesharpparty.de/" target="_blank">See# Party</a> in Switzerland. Here are the key topics that I covered in my session:</p><ol>
