@@ -10,6 +10,8 @@ lang: en
 tags: [.NET]
 ref: 
 permalink: /devblog/2008/03/15/Bug-Busters---Test-Driven-Development-in-NET
+redirect_from:
+- "/TechnicalArticles/TestDrivenDevelopment/tabid/83/language/en-US/Default.aspx/index.html"
 ---
 
 <p class="Abstract">"The quality is remembered long after the price is forgotten."<br /> Sir <a href="http://en.wikiquote.org/wiki/Henry_Royce" target="_blank">Frederick Henry Royce</a> (1863 - 1933; co-founder of Rolls-Royce Motor Cars).</p><h2 class="Head">Abstract</h2><p class="Abstract">In this article Rainer Stropek and Karin Huber show how Test Driven Development (TDD) works in practice. They start with a general overview about quality assurance and testing in software development. After that they implement an end-to-end solution using the TDD philosophy. Karin and Rainer do not only use unit tests for validating the data access and business layer. They also demonstrate how the popular open source tool WatiN can be used to test-driven develop a web user interface. The sample uses Microsoft Visual Studio 2008, C# 3.0, Linq-to-SQL, Linq-to-Objects, Visual Studio Unit Tests, ASP.NET and WatiN.</p><ul>
