@@ -10,6 +10,8 @@ lang: en
 tags: [Silverlight,WPF]
 ref: 
 permalink: /devblog/2009/10/13/Scroll-Synchronization-in-WPF-and-Silverlight
+redirect_from:
+- /TechnicalArticles/ScrollSync/tabid/101/language/en-US/Default.aspx/index.html
 ---
 
 <p>Imagine you have two ListBoxes with lots of items. Whenever a user scrolls in one of the two ListBoxes, the other one should be updated, too. What we want to do in this article is to create a simple attached property, that allows us to group scrollable controls. In the following sample you see two ScrollViewers, whose scroll positions are synchronized because they are both attached to the same ScrollGroup "Group1":</p>{% highlight xml %}<ScrollViewer 
