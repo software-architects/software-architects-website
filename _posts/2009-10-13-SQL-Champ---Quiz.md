@@ -10,8 +10,6 @@ lang: en
 tags: [SQL]
 ref: 
 permalink: /devblog/2009/10/13/SQL-Champ---Quiz
-redirect_from:
-- /TechnicalArticles/Quiz/tabid/82/language/en-US/Default.aspx/index.html
 ---
 
 <div id="dnn_ctr424_ContentPane" class="ContentPane DNNAlignleft">
