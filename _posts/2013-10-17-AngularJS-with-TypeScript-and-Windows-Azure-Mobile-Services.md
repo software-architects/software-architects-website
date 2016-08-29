@@ -185,7 +185,7 @@ var WorldCtrl = function ($scope: IHierarchyScope) {
 </body>
 </html>{% endhighlight %}<h2>Sample 4: Dependency Injection</h2><p>The fourth sample is a little bit more complex than the first three samples. I use it to describe AngularJS's dependency injection system and its connection to TypeScript's type system (especially interfaces). Note that this sample is again inspired by the book mentioned above. The following slide gives an overview about the sample (click to enlarge):</p>
 
-<a data-lightbox="Slide" href="/content/images/blog/2013/10/Slide27.png"><img src="/content/images/blog/2013/10/Slide27.png" /></a>
+<a data-lightbox="Slide" href="/content/images/blog/2013/10/Slide27.PNG"><img src="/content/images/blog/2013/10/Slide27.png" /></a>
 
 <h3>Contract Type</h3><p>At first we define a contract interface for an archive of notification messages:</p>{% highlight javascript %}module NotificationsModule {
     export interface INotificationsArchive {
