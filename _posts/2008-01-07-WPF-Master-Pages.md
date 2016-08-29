@@ -11,7 +11,7 @@ tags: [WPF]
 ref: 
 permalink: /devblog/2008/01/07/WPF-Master-Pages
 redirect_from:
-- /TechnicalArticles/WPFMasterPages/tabid/80/language/en-US/Default.aspx/index.html
+- "/TechnicalArticles/WPFMasterPages/tabid/80/language/en-US/Default.aspx/index.html"
 ---
 
 <p>One of the really great enhancements in ASP.NET was the introduction of master pages. They help developers to create a consistent layout for the pages in an application. Unfortunately there is no such concept in WPF and XAML. In the following sample I would like to show a simple way to build a control in WPF similar to an ASP.NET master page. <a href="{{site.baseurl}}/content/images/blog/2008/01/MasterPages.zip"><span>Download </span> sourcecode<span> - 143 KB...</span></a></p><ul>
