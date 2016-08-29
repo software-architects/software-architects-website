@@ -7,7 +7,7 @@ date: 2016-01-31
 bannerimage: /content/images/blog/2016/01/it-visions-logo.gif
 bannerimagesource: 
 lang: en
-tags: []
+tags: [Conferences and Workshops]
 ref: 
 permalink: /devblog/2016/01/31/First-IT-Visions-Information-Day-in-Linz
 ---

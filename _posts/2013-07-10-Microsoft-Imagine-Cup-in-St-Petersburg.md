@@ -7,7 +7,7 @@ date: 2013-07-10
 bannerimage: 
 bannerimagesource: 
 lang: en
-tags: []
+tags: [Microsoft]
 ref: 
 permalink: /devblog/2013/07/10/Microsoft-Imagine-Cup-in-St-Petersburg
 ---

@@ -7,7 +7,7 @@ date: 2013-07-01
 bannerimage: 
 bannerimagesource: 
 lang: en
-tags: []
+tags: [Conferences and Workshops]
 ref: 
 permalink: /devblog/2013/07/01/Impressions-from-MS-TechEd-2013-Madrid
 ---
