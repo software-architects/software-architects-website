@@ -10,6 +10,8 @@ lang: en
 tags: [ASP.NET]
 ref: 
 permalink: /devblog/2012/11/22/ADONET-45-Async-Data-Reader-and-IAsyncHttpHandler
+redirect_from:
+- TechnicalArticles/CachinginASPNET/tabid/75/language/en-US/Default.aspx/index.html
 ---
 
 <p>Having written quite a few lines of Silverlight (RIP!) as well as asynchronous WPF code over the last two years, I have started to appreciate the Don't-Create-A-Thread-For-Everything approach. On the server side node.js is definitely one of the frameworks to thank for the popularity boost and lately the async-await feature in C# 5 has taken things to a new level.</p><h2>Asynchronous Web Services</h2><p>When ASP.NET processes a request it assigns a thread from the thread pool to this request. The usual web service scenario then connects to a database by opening a connection (ADO.net will helpfully assign a connection from a pool), issues a select and then reads the result one by one from the database. In the synchronous world the executing thread waits for the operation to finish, which generally implies idling the thread and reducing CPU utilization. The goal here is to allow that execution thread to handle a different request (or whatever other task there is to do). Essentially it is a form of cooperative multithreading.</p><h3>Synchronous Version</h3><p>First the synchronous implementation of our simple person table reader:</p>{% highlight c# %}    public class SynchronousContentProducer : IHttpHandler
