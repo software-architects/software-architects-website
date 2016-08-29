@@ -10,6 +10,9 @@ lang: en
 tags: [ASP.NET]
 ref: 
 permalink: /devblog/2008/01/19/Caching-in-ASPNET
+redirect_from:
+- "/Blogs/tabid/72/EntryID/5/language/en-US/Default.aspx/index.html"
+
 ---
 
 <p>There are a lot of ways to improve performance in web applications. One of the simplest but most effective methods is to cache images on the client. In this article I would like to show how we implemented image caching for our DotNetNuke website.</p><ul>
