@@ -240,6 +240,11 @@ table {
 }
 
 .tc-blog {
+	.tc-blog-details {
+		font-size: $base-font-size;
+		margin-top: -15px;
+	}
+
     .tc-related-posts-container {
         h3:first-of-type {
             margin-top: 20px;
