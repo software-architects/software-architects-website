@@ -313,11 +313,19 @@ table {
 .tc-toc {
     ul {
 		list-style-type: none;
+		color: $main-color;
+		position: relative;
+		padding-left: 20px;
 	}
 
-    > ul {
-        padding-left: 0;
-    }
+	li:before {
+		content: "\e072\00a0";
+		font-family: "Glyphicons Halflings";
+		font-size: 10px;
+		position: absolute;
+		left: 0;
+		line-height: 19px;
+	}
 }
 
 .tc-blog-tag-overview {
