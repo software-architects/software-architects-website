@@ -10,6 +10,8 @@ lang: en
 tags: [Microsoft]
 ref: 
 permalink: /devblog/2013/07/11/Imagine-Cup-Three-Gold-Medals-What-a-Night
+redirect_from:
+- "/devblog/team/rainer-stropek/2013/07/11/Imagine-Cup-Three-Gold-Medals-What-a-Night"
 ---
 
 <a data-lightbox="YnotsWinAzureCategory" href="/content/images/blog/2013/07/YnotsWinAzureCategory.jpg"><img src="/content/images/blog/2013/07/YnotsWinAzureCategory.jpg" /></a>
