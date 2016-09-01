@@ -13,7 +13,7 @@ permalink: /devblog/2008/01/13/Graphic-In-XAML-And-WPF
 redirect_from:
 - /TechnicalArticles/GraphicInWPF/tabid/74/language/en-US/Default.aspx/index.html
 - "/devblog/2008/01/13/Graphic-In-XAML-And-WPF"
-- /TechnicalArticles/GraphicInWPF/tabid/74/Default.aspx/index.html
+- "/TechnicalArticles/GraphicInWPF/tabid/74/Default.aspx/index.html"
 ---
 
 <p>In this article I want to describe the functions of XAML, WPF and Silverlight in the context of graphic. I will use the corporate logo of our new company as the sample for this article because it's XAML implementation uses quite a lot of the graphic functions of XAML.</p><p>Unfortunately I cannot go into all great details in this document. If you are interested in more in-depth information you can either read on in the <a href="http://msdn2.microsoft.com/de-at/library/ms752061(VS.85).aspx" target="_blank">MSDN Library</a> or (if you are able to read German) you can check out our <a href="http://www.amazon.de/WPF-XAML-Programmierhandbuch-Rainer-Stropek/dp/3939084603/ref=pd_bbs_sr_1?ie=UTF8&amp;s=books&amp;qid=1199433309&amp;sr=8-1" target="_blank">book about XAML and WPF</a>. Here is what I will discuss in this article:</p><ul>
