@@ -10,6 +10,8 @@ lang: en
 tags: [C#,Visual Studio]
 ref: 
 permalink: /devblog/2014/12/04/NET-Infoday-Whats-New-in-C-6
+redirect_from:
+- "/devblog/team/rainer-stropek/2014/12/04/NET-Infoday-Whats-New-in-C-6"
 ---
 
 <p>At <a href="http://www.it-visions.at/OffeneSeminare/IT-Visions%20Infotag%202014%20zur%20Zukunft%20von%20.NET/7895" target="_blank">IT-Visions' .NET InfoDay 2015</a> in Graz, my friend <a href="http://www.softaware.at/About/Unser-Team" target="_blank">Roman Schacherl</a> and I will do a session about new features in C# 6. In this blog article I summarize the content of the talk and make the sample available for download.</p><h2>Introduction</h2><p>The upcoming version of C# will bring some convenient features for every-day coding. You should not expect such ground-breaking changes* like <em>async/await</em>. However, your C# code will be easier to write and easier to read if you make use of the new features.</p><p>In our session we cover the following new C# topics:</p><ul>
