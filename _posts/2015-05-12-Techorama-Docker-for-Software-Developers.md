@@ -10,6 +10,8 @@ lang: en
 tags: [ASP.NET]
 ref: 
 permalink: /devblog/2015/05/12/Techorama-Docker-for-Software-Developers
+redirect_from:
+- "/devblog/team/rainer-stropek/2015/05/12/Techorama-Docker-for-Software-Developers"
 ---
 
 <p class="floatRight">
