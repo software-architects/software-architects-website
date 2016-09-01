@@ -10,6 +10,8 @@ lang: en
 tags: [C#,TFS,Visual Studio]
 ref: 
 permalink: /devblog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-and-Testing
+redirect from:
+- "/devblog/team/rainer-stropek/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-and-Testing"
 ---
 
 <p class="showcase">Yesterday we represented Microsoft and their <a href="http://msdn.microsoft.com/en-us/vstudio/ff637362.aspx" target="_blank">Team Foundation Server</a> in the Tools Challenge at the <a href="http://www.software-quality-days.com" target="_blank">Software Quality Days 2014</a> conference in Vienna. The topic was <a href="http://en.wikipedia.org/wiki/Model-based_testing" title="Model-based testing on Wikipedia" target="_blank">Model Driven Development and Testing</a>. <strong>The  great news: We won :-)</strong> In this article you can read more about what we have demonstrated during the challenge.<br /></p><p>

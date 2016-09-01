@@ -10,6 +10,8 @@ lang: en
 tags: [Azure]
 ref: 
 permalink: /devblog/2015/05/22/Webinar-Information-Security-in-the-Azure-Cloud-German
+redirect from: 
+- "/devblog/team/rainer-stropek/2015/05/22/Webinar-Information-Security-in-the-Azure-Cloud-German"
 ---
 
 <p>
