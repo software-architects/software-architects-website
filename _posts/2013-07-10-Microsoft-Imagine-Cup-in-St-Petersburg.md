@@ -10,6 +10,8 @@ lang: en
 tags: [Microsoft]
 ref: 
 permalink: /devblog/2013/07/10/Microsoft-Imagine-Cup-in-St-Petersburg
+redirect_from:
+- "/Renderers/ShowMedia.ashx?id=d0035aee-ab97-406c-affd-6ff8d03d314c&mw=800&mh=800"
 ---
 
 <a data-lightbox="ImagineCupYnots" href="/content/images/blog/2013/07/ImagineCupYnots.jpg"><img src="/content/images/blog/2013/07/ImagineCupYnots.jpg" /></a>
