@@ -10,6 +10,8 @@ lang: en
 tags: [.NET,C#,Visual Studio,WPF]
 ref: 
 permalink: /devblog/2013/05/03/dotnet-Cologne-2013-asyncawait
+redirect_from:
+- "/devblog/team/rainer-stropek/2013/05/03/dotnet-Cologne-2013-asyncawait"
 ---
 
 <p>This year at <a href="http://dotnet-cologne.de/" target="_blank">dotnet Cologne</a> I have proposed a 60 minutes live-coding talk about <em>async/await</em>. It was really accepted and I even got the large ballroom. Wow, live coding in front of a huge crowd of developers. This will be awesome. In this blog I post the sample that I am going to develop on stage (at least approximately; let's see if I have some ad hoc ideas on stage).</p><h2>The Starting Point</h2><p>We start from a very simple class simulating a sensor:</p>{% highlight c# %}using System;

@@ -10,7 +10,7 @@ lang: en
 tags: [C#,TFS,Visual Studio]
 ref: 
 permalink: /devblog/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-and-Testing
-redirect from:
+redirect_from:
 - "/devblog/team/rainer-stropek/2014/01/16/Software-Quality-Days-2014-Model-Driven-Development-and-Testing"
 ---
 
