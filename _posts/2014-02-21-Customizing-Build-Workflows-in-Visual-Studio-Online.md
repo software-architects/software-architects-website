@@ -10,6 +10,8 @@ lang: en
 tags: [Azure,TFS,Visual Studio]
 ref: 
 permalink: /devblog/2014/02/21/Customizing-Build-Workflows-in-Visual-Studio-Online
+redirect_from:
+- "/devblog/2014/02/21/Customizing-Build-Workflows-in-visual-Studio-Online"
 ---
 
 <p>At Microsoft TechEd 2013 I did a session about continuous delivery in the cloud with Team Foundation Services. If you are interested you can watch a video and download the session material in <a href="http://www.software-architects.com/devblog/2013/06/26/MS-TechEd-2013-Talk-Continuous-Integration-with-Team-Foundation-Services-and-Windows-Azure-Websites" target="_blank">this blog post</a>. However, some time has gone by and things have developed. TFServices is now <a href="http://www.visualstudio.com/" target="_blank">Visual Studio Online</a>. Visual Studio 2013 is RTM. <a href="http://git-scm.com/" target="_blank">Git</a> is now a first class citizen in the TFS and Visual Studio family. And last but not least <a href="http://www.windowsazure.com/en-us/services/web-sites/" target="_blank">Windows Azure Websites</a> has shown tremendous progress.</p><p>For next week I am invited to do an updated version of last year's TechEd talk at <a href="http://alm-days.de/" target="_blank">ALM Days</a> in Germany. The session will be in German so I only have a German abstract:</p><div style="margin-left: 2em">
