@@ -10,6 +10,8 @@ lang: en
 tags: [.NET,Android,Azure,Visual Studio]
 ref: 
 permalink: /devblog/2013/09/24/BASTA-2013-Android-Development-with-Xamarin-C-and-Azure-Mobile-Services
+redirect_from:
+- "/devblog/team/rainer-stropek/2013/09/24/BASTA-2013-Android-Development-with-Xamarin-C-and-Azure-Mobile-Services"
 ---
 
 <p>The Xamarin and Mono tools enable C# developers to use their existing knowledge and experience to write apps for Android and iOS. At the BASTA 2013 conference I did a session about that topic. During the session I showed a sample that used SQLite on the phone and <a href="http://www.windowsazure.com/en-us/develop/mobile/" target="_blank">Windows Azure Mobile Services</a> as its backend in the cloud. In this blog article I publish my slides as well as the sample code.</p><h2>Photos of the Session</h2>
