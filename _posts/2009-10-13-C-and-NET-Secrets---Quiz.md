@@ -13,6 +13,7 @@ permalink: /devblog/2009/10/13/C-and-NET-Secrets---Quiz
 redirect_from:
 - "/TechnicalArticles/Quiz/tabid/82/language/en-US/Default.aspx/index.html"
 - "/TechnicalArticles/Quiz/tabid/82/language/de-AT/Default.aspx/index.html"
+- "/devblog/2009/10/13/c-and-net-secrets---quiz"
 ---
 
 <p>We invite you to prove your knowledge about certain subjects concerning Microsoft .NET technology by participating in a monthly quiz. This month the quiz is about C# and .NET secrets. In this article you can reread the questions. Additionally you get background information about the correct answers.</p><p class="Abstract">Here is a list of all questions included in the quiz. Use the hyperlinks to jump to the topic you are interested in:</p><ul>
