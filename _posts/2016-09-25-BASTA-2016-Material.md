@@ -25,8 +25,11 @@ After so many years being a presenter at [BASTA!](https://basta.net/), I think I
 
 On day one of the BASTA conference I did a full-day C# workshop focussing on .NET Core. I was amazed and happy that nearly 100 people attended my workshop :-) 
 
-As usual, I have put all my workshop material including sample code and slides on [GitHub](https://github.com/rstropek/Samples/tree/master/AspNetCore1Workshop). Feel free to use it, share it, play with it, send me pull requests, etc.
+As usual, I have put all my workshop material including sample code and slides on [GitHub](https://github.com/rstropek/Samples/tree/master/AspNetCore1Workshop). Feel free to use it, share it, play with it, send me pull requests, etc. If you prefer skipping through the slides without downloading, here are the slides on [Speaker Deck](https://speakerdeck.com/rstropek/basta-2016-c-number-and-net-core-workshop):
 
+<div class="videoWrapper">
+    <script async class="speakerdeck-embed" data-id="c34b7cb4d033470690f99b9304b78901" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+</div>
 
 ## Surviving C# Code Reviews
 
