@@ -7,7 +7,7 @@ date: 2016-09-25
 bannerimage: /content/images/blog/2016/09/basta-rainer-stropek.jpg
 bannerimagesource: Photo <a href="https://twitter.com/BASTAcon">@BASTACon</a>
 lang: en
-tags: [BASTA]
+tags: [BASTA,C#,.NET,Visual Studio,Azure]
 permalink: /devblog/2016/09/25/BASTA-2016-Material
 showtoc: false
 ---
