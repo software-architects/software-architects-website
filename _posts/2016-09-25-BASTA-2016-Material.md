@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: BASTA 2016: Workshop and Session Material
+title: BASTA 2016 - Workshop and Session Material
 excerpt: After so many years being a presenter at BASTA, I think I can call my self a veteran at this conference. This year, I did a full-day C# workshop focussing on .NET Core, a session about C# Code Reviews, a session about Visual Studio "15", and finally a lab about developer tools in Azure. In this blog article I share sample code and slides of my talks. 
 author: Rainer Stropek
 date: 2016-09-25
