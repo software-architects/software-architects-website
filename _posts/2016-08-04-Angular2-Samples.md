@@ -16,9 +16,7 @@ showtoc: false
 ![Screenshot of Angular2 Sample App]({{site.baseurl}}/content/images/blog/2016/08/angular2-samples-app-screenshot.png)
 
 {: .showcase}
-Update 2016-10-12: Note that this content is outdated. 
-[This article]({{site.baseurl}}/devblog/2016/10/12/Angular-2-Samples-Refresh)
-contains the current content.
+Update 2016-10-12: Note that this content is outdated. [This article]({{site.baseurl}}/devblog/2016/10/12/Angular-2-Samples-Refresh) contains the current content.
 
 
 ## Introduction
