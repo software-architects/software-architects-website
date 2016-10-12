@@ -1,11 +1,7 @@
 ---
 layout: blog
 title: Refresh of Angular 2 Samples
-excerpt: For a recent web development training I have refreshed a lot of my Angular 2
-samples. They are now based on the Angular CLI and Lint warning free. 
-Additionally, I restructured our JavaScript training slides and created
-new hands-on labs for JavaScript introduction. All the code samples and the slides
-are available on GitHub.
+excerpt: For a recent web development training I have refreshed a lot of my Angular 2 samples. They are now based on the Angular CLI and Lint warning free. Additionally, I restructured our JavaScript training slides and created new hands-on labs for JavaScript introduction. All the code samples and the slides are available on GitHub.
 author: Rainer Stropek
 date: 2016-10-12
 bannerimage: /content/images/blog/2016/10/angular.png

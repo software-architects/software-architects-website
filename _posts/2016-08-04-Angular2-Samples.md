@@ -7,7 +7,7 @@ date: 2016-08-04
 bannerimage: 
 bannerimagesource:
 lang: en
-tags: [AngularJS]
+tags: [Angular]
 permalink: /devblog/2016/08/04/AngularJS-Training
 showtoc: false
 ---
@@ -19,7 +19,7 @@ showtoc: false
 Update 2016-10-12: Note that this content is outdated. 
 [This article]({{site.baseurl}}/devblog/2016/10/12/Angular-2-Samples-Refresh)
 contains the current content.
- 
+
 
 ## Introduction
 
