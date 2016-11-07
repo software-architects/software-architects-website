@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Lightning Talk at MVP Summit - Minecraft and JavaScript at CoderDojo
-excerpt: Beside my job, I am co-founder and organizer of a local CoderDojo. CoderDojos are programming clubs for kids. At CoderDojo, we want to introduce kids to programming and show them how fascinating technology can be. At Microsoft's MVP Summit in Redmond I do a lighting talk about how we use Minecraft + JavaScript to get kids motivated to learn coding with JavaScript. In this blog article I share links for attendees who want to reproduce my demos. 
+excerpt: Beside my job, I am co-founder and organizer of a local CoderDojo. CoderDojos are programming clubs for kids. At Microsoft's MVP Summit in Redmond I do a lighting talk about how we use Minecraft + JavaScript to get kids motivated to learn coding with JavaScript. In this article I share links for attendees who want to reproduce my demos. 
 author: Rainer Stropek
 date: 2016-11-07
 bannerimage: /content/images/blog/2016/11/minecraft-fireworks-small.png
