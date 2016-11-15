@@ -4,7 +4,7 @@ title: DevOps Sessions at Container Conf
 excerpt: Today, I will do two sessions at the Continous Lifecycle and Container Conference in Germany. As usual, my sessions will be very much cloud related. My firsts session is about container technology in the Microsoft universe.   In this blog post I share my slides and samples.
 author: Rainer Stropek
 date: 2016-11-15
-bannerimage: /content/images/blog/2016/09/Docker_logo_small.png
+bannerimage: /content/images/blog/2016/11/container-conf-thumb.png
 bannerimagesource: 
 lang: en
 tags: [DevOps,Windows,Docker]
@@ -13,7 +13,7 @@ showtoc: false
 ---
 
 {: .banner-image}
-![Docker Logo]({{site.baseurl}}/content/images/blog/2016/09/Docker_logo.png)
+![Docker Logo]({{site.baseurl}}/content/images/blog/2016/11/container-conf.png)
 
 
 ## Introduction
