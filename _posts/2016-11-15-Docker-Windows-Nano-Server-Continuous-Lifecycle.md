@@ -1,7 +1,7 @@
 ---
 layout: blog
-title: DevOps Sessions at Continous Lifecycle Conference
-excerpt: Today, I will do two sessions at the Continous Lifecycle Conference in Germany. As usual, my sessions will be very much cloud related. My firsts session is about container technology in the Microsoft universe.   In this blog post I share my slides and samples.
+title: DevOps Sessions at Container Conf
+excerpt: Today, I will do two sessions at the Continous Lifecycle and Container Conference in Germany. As usual, my sessions will be very much cloud related. My firsts session is about container technology in the Microsoft universe.   In this blog post I share my slides and samples.
 author: Rainer Stropek
 date: 2016-11-15
 bannerimage: /content/images/blog/2016/09/Docker_logo_small.png
@@ -18,7 +18,7 @@ showtoc: false
 
 ## Introduction
 
-Today, I will do two sessions at the [Continous Lifecycle Conference](https://www.continuouslifecycle.de/) in Germany. As usual, my sessions will be very much cloud related. My firsts session is about container technology in the Microsoft universe. My second one covers Nano Server, the cloud-optimized version of Windows. In this blog post I share my slides and samples.
+Today, I will do two sessions at the [Continous Lifecycle and Container Conference](https://www.continuouslifecycle.de/) in Germany. As usual, my sessions will be very much cloud related. My firsts session is about container technology in the Microsoft universe. My second one covers Nano Server, the cloud-optimized version of Windows. In this blog post I share my slides and samples.
 
 {: .showcase}
 You can find the slides (PPTX and PDF) and the sample code in [GitHub repository](https://github.com/rstropek/DockerVS2015Intro/blob/master/). Feel free to clone, fork and send me pull requests if you make enhancements.
