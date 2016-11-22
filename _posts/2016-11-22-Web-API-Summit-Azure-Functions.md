@@ -18,7 +18,7 @@ showtoc: false
 
 ## Introduction
 
-For the next two days, I will be at the first API Summit in Berlin. Given that I was member of the advisory board for that conference, I am very happy that it is quite successful. We will welcome more than 130 atteendees at the new API event. I will do the keynote and two sessions about serverless cloud computing and .NET Web API fundamentals. In this blog post I share slides and samples of my talks.
+For the next two days, I will be at the first [API Summit](https://api-summit.de/) in Berlin. Given that I was member of the advisory board for that conference, I am very happy that it is quite successful. We will welcome more than 130 atteendees at the new API event. I will do the keynote and two sessions about serverless cloud computing and .NET Web API fundamentals. In this blog post I share slides and samples of my talks.
 
 
 ## Keynote: Web API Take Over the Web
