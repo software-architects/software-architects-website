@@ -4,7 +4,7 @@ title: API Summit Berlin
 excerpt: For the next two days, I will be at the first API Summit in Berlin. I will do the keynote and two sessions about serverless cloud computing and .NET Core fundamentals. In this blog post I share slides and samples of my talks. 
 author: Rainer Stropek
 date: 2016-11-22
-bannerimage: /content/images/blog/2016/11/api-summit-thumb.jpg
+bannerimage: /content/images/blog/2016/11/api-summit-thumb.png
 bannerimagesource: 
 lang: en
 tags: [DevOps,C#,.NET,Visual Studio,Azure]
