@@ -106,4 +106,4 @@ My own samples and notes that I typically use in my Angular trainings are [on Gi
 
 ## Other Resources
 
-I could go on and on with resources about modern web development. The web is full of high-quality video tutorials, blogs, eBooks, etc. However, the content mentioned above is free and 
+I could go on and on with resources about modern web development. The web is full of high-quality video tutorials, blogs, eBooks, etc. However, content and tools mentioned above are free and a great way to get started. Have fun! 
