@@ -51,9 +51,10 @@ docker run --rm -v C:\temp\TechDays2017:/local -w="/local" ubuntu /bin/bash -c "
 * Docker containers can run detached in the background:
 
 ```
-docker run -d ubuntu /bin/bash -c "while (true); do echo Ping; sleep 1; done;"
+docker run -d --name background ubuntu /bin/bash -c "while (true); do echo Ping; sleep 1; done;"
 docker ps
-docker logs ...
+docker logs background
+docker rm -f background
 ```
 
 * This was just `ubuntu`. What about other images?<br/>
@@ -84,8 +85,8 @@ dotnet new
 dotnet new sln
 dotnet new web --framework netcoreapp1.1
 dotnet sln app.sln add app.csproj
-dotnet add app.csproj package Microsoft.AspNetCore.Mvc -v 1.1.1
-dotnet add app.csproj package Microsoft.AspNetCore.Cors -v 1.1.0
+dotnet add app.csproj package Microsoft.AspNetCore.Mvc
+dotnet add app.csproj package Microsoft.AspNetCore.Cors
 exit
 ```
 
@@ -175,8 +176,6 @@ docker images
 docker run -d -p 8080:80 --name api rstropek/techdaysapi
 docker ps
 docker logs api
-
-docker rm -f api
 ```
 
 * Push image to Docker Hub and show it there:<br/>
@@ -192,7 +191,7 @@ docker rm -f api
 
 * Run VSTS agent in Docker container:<br/>
   **Note:** Replace the token included in the following statement with your personal access token from VSTS. This token is no longer valid.
-  `docker run --rm -e VSTS_ACCOUNT=rainerdemotfs-westeu -e VSTS_TOKEN=ghbruo7xdy4xsjqhbkifpgmndkmfs6wj7dfe2qihy4jeaydbe4gq -v /var/run/docker.sock:/var/run/docker.sock microsoft/vsts-agent`
+  `docker run --rm -e VSTS_ACCOUNT=rainerdemotfs-westeu -e VSTS_TOKEN=ghbruo7xdy4xsjqhbkifpgmndkmfs6wj7dfe2qihy4jeaydbe4gq -v /var/run/docker.sock:/var/run/docker.sock --name vsts-agent microsoft/vsts-agent`
 
 * Show backend code that is already in VSTS (prepared before session because of time restrictions)
 
@@ -251,7 +250,7 @@ export class ListNamesComponent implements OnInit {
 
 * Add to `environment.ts`:<br/>
   **Tip:** 
-  `apiUrl: "https://api/api/names"`
+  `apiUrl: "http://localhost:8080/api/names"`
 
 * Add to `environment.prod.ts`:<br/>
   `apiUrl: "https://techdaysapi.azurewebsites.net/api/names"`
@@ -264,7 +263,8 @@ export class ListNamesComponent implements OnInit {
 * Build app in short-lived container:<br/>
   `docker run --rm -v C:\temp\TechDays2017\frontend:/app -w="/app" node /app/node_modules/.bin/ng build`
 
-* Create `Dockerfile` for web frontend:
+* Create `Dockerfile` for web frontend<br/>:
+  **Note:** This Dockerfile for Angular is very much simpified. In practice, you need additional settings. Google has lots of examples for nginx configurations for Angular...
 
 ```
 FROM nginx
@@ -283,8 +283,8 @@ COPY dist/* /usr/share/nginx/html/
 ```
 docker build -t rstropek/techdaysui .
 docker images 
-docker run -d -p 8081:80 --name api rstropek/techdaysapi
-docker run -d -p 8080:80 --name ui rstropek/techdaysui
+docker run -d -p 8080:80 --name api rstropek/techdaysapi
+docker run -d -p 8081:80 --name ui rstropek/techdaysui
 docker ps
 ```
 
