@@ -1,10 +1,10 @@
 ---
 layout: blog
-title: TechDays 2017 - Dockerizing Your Cross-Plat .NET Development
+title: TechDays 2017 - Dockerizing .NET Core
 excerpt: Next week I will do a session for the TechDays Online event. I am really looking forward to it. My session is part of the open source track and I will talk about how to combine .NET Core, Docker and VSTS. In this blog post I summarize all the steps and tips that I demo in my session. 
 author: Rainer Stropek
 date: 2017-02-16
-bannerimage: /content/images/blog/2017/07/TechDaysThumb.jpg
+bannerimage: /content/images/blog/2017/02/TechDaysThumb.jpg
 bannerimagesource: 
 lang: en
 tags: [Docker,.NET,VSTS]
@@ -13,7 +13,7 @@ showtoc: false
 ---
 
 {: .banner-image}
-![TechDays Online Banner]({{site.baseurl}}/content/images/blog/2016/12/TechDaysHeader.jpg)
+![TechDays Online Banner]({{site.baseurl}}/content/images/blog/2017/02/TechDaysHeader.jpg)
 
 
 ## Agenda
@@ -298,4 +298,10 @@ docker build -t rstropek/techdaysui .
 docker push rstropek/techdaysui
 ```
 
+## Web App in Azure
 
+* Add *Web App on Linux* in Azure `techdaysapi.azurewebsites.net`
+
+* Get image from Docker Hub `rstropek/techdaysapi`
+
+* Show working web service 
