@@ -182,7 +182,7 @@ docker rm -f api
 * Push image to Docker Hub and show it there:<br/>
   `docker push rstropek/techdaysapi`
 
-* Mention Docker Tools for Visual Studio TODO: Add Link
+* Mention [Visual Studio Tools for Docker](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.VisualStudioToolsforDocker-Preview)
 
 ## Build Automation with VSTS
 
@@ -288,7 +288,7 @@ docker run -d -p 8080:80 --name ui rstropek/techdaysui
 docker ps
 ```
 
-* Mention Docker Compose TODO: Add Link
+* Mention [Docker Compose](https://docs.docker.com/compose/overview/)
 
 * Build prod version of ui, package it and push it to Docker Hub:
 
@@ -304,4 +304,4 @@ docker push rstropek/techdaysui
 
 * Get image from Docker Hub `rstropek/techdaysapi`
 
-* Show working web service 
+* Show working web service at [http://techdaysapi.azurewebsites.net/api/name](http://techdaysapi.azurewebsites.net/api/name)
