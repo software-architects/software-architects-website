@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docker-serve": "docker run --rm -v C:\\Code\\GitHub\\software-architects-website:/srv/jekyll -p 127.0.0.1:4000:4000 jekyll/jekyll jekyll serve --force_polling"
   },
   "repository": {
     "type": "git",
