@@ -21,6 +21,30 @@ This year, we organized the Austrian event of the [Global Azure Bootcamp in Linz
 
 A big thank you to all people who contributed to this community event. Additionally, we want to thank our [sponsors](https://coding-club-linz.github.io/global-azure-bootcamp-2017/sponsoren.html). Without their support, the GAB would not be possible.
 
+## Feedback
+
+Pleasently many attendees (nearly 50%) filled out the evaluation form.
+
+* **We are very happy that the overall rating of the event was very good**.<br/>
+  (1.28 with 1 = best and 5 = worst)
+
+* Venue (1.18) and food (1.52) also got very good feedback.
+
+* **Nearly all responders would recommend the GAB to colleagues and friends**.<br/>
+  (1.12 with 1 = absolutely sure and 5 = surely not)
+
+Thank you for this great feedback. That's a huge motivation for GAB 2018.
+
+{: .showcase}
+Congratulations to the top "five" speakers of GAB 2017 (in fact they are seven because of a tie):
+
+* Rainer Stropek: Azure Functions
+* Wolfgang Strasser: Power BI
+* Manfred Steyer: Angular and Azure
+* Toni Pohl: Power Apps
+* Raphael Schwarz: Optimizing Data-oriented Web APIs
+* Roman Schacherl: Logic Apps
+* Christoph Wille: Service Fabric
 
 ## Slides and Samples
 
