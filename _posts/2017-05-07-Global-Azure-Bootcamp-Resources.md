@@ -60,6 +60,7 @@ Congratulations to the top "five" speakers of GAB 2017 (in fact they are seven b
 * Andreas Pollak: [Document DB and API Management](https://blog.spectologic.com/2017/04/24/global-azure-bootcamp-2017-nachlese/){:target="_blank"}
 * Roman Schacherl: [Logic Apps](https://www.softaware.at/lifeaware/2017/04/24/global-azure-bootcamp-linz.html){:target="_blank"}
 * Christoph Wille: [Service Fabric](https://github.com/christophwille/demosatconferences/blob/master/gab17servicefabric.md){:target="_blank"}
+* Jürgen Mayrbäurl: [Docker]({{site.baseurl}}/content/gab-2017-downloads/GAB-Mayrbaeurl-Docker.pptx){:target="_blank"}
 
 Are you missing a slide deck from you favorite speaker? [Let us know](mailto:info@coderdojo-linz.org). We will ask the speaker to send you the material directly.
 
