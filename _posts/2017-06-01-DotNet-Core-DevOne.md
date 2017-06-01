@@ -17,7 +17,7 @@ showtoc: false
 
 # Introduction
 
-Today, I will do a session about .NET Core at the premier of the devone conference in Linz. In this blog post I share my samples and important links.
+Today, I will do a session about .NET Core at the premier of the [devone conference](https://devone.at/) in Linz. In this blog post I share my samples and important links.
 
 # Slides
 
