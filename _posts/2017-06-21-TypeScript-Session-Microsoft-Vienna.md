@@ -4,13 +4,16 @@ title: Build Recap Session about Whats New in TypeScript
 excerpt: Today, I will do a session about TypeScript at a //Build2017 Recap event at Microsoft Vienna. In this blog post I share my samples and important links.
 author: Rainer Stropek
 date: 2017-06-21
-bannerimage: 
+bannerimage: /content/images/blog/2017/06/build-recap-image-small.png
 bannerimagesource: 
 lang: en
 tags: [TypeScript, Node.js]
 permalink: /devblog/2017/06/21/build-recap-whats-new-in-typescript
 showtoc: false
 ---
+
+{: .banner-image}
+![Intro Logo]({{site.baseurl}}/content/images/blog/2017/06/build-recap-image.png)
 
 # Introduction
 
