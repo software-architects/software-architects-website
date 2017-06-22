@@ -21,6 +21,14 @@ Today, I will do a session about TypeScript at a [*//Build2017 Recap*](https://b
 
 The goal of my talk is to highlight some important features that came with TypeScript 2.x. Instead of bullet points on slides I will use an end-to-end sample demonstrating the language enhancements.
 
+# Recording
+
+I recorded the session and it has been published on Channel9:
+
+<div class="videoWrapper">
+    <iframe src="https://channel9.msdn.com/Blogs/MVP-Azure/BUILD-Tour-Wien-Was-gibt-es-Neues-in-TypeScript-2/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+</div>
+
 # Sample
 
 ## Library
