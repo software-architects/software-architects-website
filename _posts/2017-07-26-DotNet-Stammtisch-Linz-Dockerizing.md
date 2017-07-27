@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: .NET Stammtisch Linz - Dockerizing .NET Apps
-excerpt: Yesterday, I did a session at a .NET user group meeting near Linz (.NET Stammtisch Linz). I spoke about latest Docker developments relevant for .NET developers. After a very short introduction to Docker, I focused on new features in Visual Studio and .NET base images available in the Docker Hub for .NET Core and .NET Framework 4.7. In this post I share a recording of my session. Take a look if you want to hear me speaking in my native Upper Austrian dialect ;-)
+excerpt: Yesterday, I did a session at the .NET Stammtisch Linz. I spoke about latest Docker developments relevant for .NET developers. I focused on new features in Visual Studio and .NET base images available in the Docker Hub for .NET Core and .NET Framework 4.7. In this post I share a recording of my session. Take a look if you want to hear me speaking in my native Upper Austrian dialect ;-)
 author: Rainer Stropek
 date: 2017-07-26
 bannerimage: /content/images/blog/2017/07/netstammtisch-small.jpg
