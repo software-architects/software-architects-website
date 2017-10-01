@@ -41,17 +41,17 @@ const fetch = require('node-fetch');
 async function run() {
     const response = await fetch('https://api.deezer.com/user/me/playlists?output=json&access_token=YOUR_ACCESS_TOKEN');
     const playlists = await response.json();
-    const hochzeitPlaylists = playlists.data.filter(p => p.title.startsWith('something'));
+    const partyPlaylists = playlists.data.filter(p => p.title.startsWith('something'));
     console.log('# Dinner');
     console.log('');
-    await processPlaylist(hochzeitPlaylists.find(p => p.title === 'Dinner'));
+    await processPlaylist(partyPlaylists.find(p => p.title === 'Dinner'));
     console.log('# Party');
     console.log('');
-    await processPlaylist(hochzeitPlaylists.find(p => p.title === 'Party'));
+    await processPlaylist(partyPlaylists.find(p => p.title === 'Party'));
     console.log('\\newpage');
     console.log('# Dance Music');
     console.log('');
-    for (let playlist of hochzeitPlaylists.filter(p => p.title !== 'Dinner' && p.title !== 'Party')) {
+    for (let playlist of partyPlaylists.filter(p => p.title !== 'Dinner' && p.title !== 'Party')) {
         console.log(`## ${playlist.title}`);
         console.log('');
         await processPlaylist(playlist);
