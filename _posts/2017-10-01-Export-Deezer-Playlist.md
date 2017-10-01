@@ -23,7 +23,12 @@ First, you have to create an application in [Deezer's API portal](https://develo
 
 Next, you can interactively get an access token using the following URL:
 
-`https://connect.deezer.com/oauth/auth.php?app_id=YOUR_APP_ID&redirect_uri=https://dummydomain.com/login&response_type=token&perms=basic_access,manage_library`
+```
+https://connect.deezer.com/oauth/auth.php?app_id=YOUR_APP_ID
+    &redirect_uri=https://dummydomain.com/login
+    &response_type=token
+    &perms=basic_access,manage_library
+```
 
 Note that it doesn't matter if the redirect URI exists. You are just interested in the access token that is embedded in the redirect URI.
 
@@ -73,4 +78,3 @@ Export the output into a Markdown file.
 Once I had the Markdown playlist, I used *pandoc* (see my blog post [Markdown and Pandoc for Conceptual Documents](http://www.software-architects.com/devblog/2017/05/23/Markdown-pandoc-conceptual-documents) for details) to convert it to PDF.
 
 Hope that this quick-and-dirty hack is useful for somebody.
- 
