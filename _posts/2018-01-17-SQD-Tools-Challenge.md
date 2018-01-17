@@ -44,5 +44,5 @@ I really enjoyed the event because having to talk about such a broad topic withi
 ## Recording
 
 <div class="videoWrapper">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/STr0ZiBtfPQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="560" height="450" src="https://www.youtube.com/embed/STr0ZiBtfPQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
