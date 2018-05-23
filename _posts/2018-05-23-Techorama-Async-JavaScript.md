@@ -267,5 +267,8 @@ An alternative for async programming in JavaScript/TypeScript is *RxJS*. During 
 })();
 ```
 
-We also take a look at an RxJS example with `HttpClient` in Angular.
+We also take a look at an RxJS example with `HttpClient` in Angular. You can find it [on GitHub](https://github.com/software-architects/javascript-samples/tree/master/angular/02-vehicle-energy-monitor).
 
+## Startup Solution
+
+If you want to recap the session content step-by-step, you can find the startup solution including the snippets I used [on GitHub](https://github.com/software-architects/javascript-samples/tree/master/typescript/labs/060-async-javascript-techorama-2018).
