@@ -398,9 +398,16 @@ fi
 
 * Check connection to AKS: `kubectl get nodes`
 
-* Create Kubernetes deployments and services: `kubectl apply -f your-manifest.yaml`
+* Deploy demo API to Kubernetes
 
-* Watch front-end service to get public IP: `kubectl get service your-service --watch`
+```bash
+cat hotels.yaml \
+  | sed "s/{{CONNSTRING}}/$(az keyvault secret show --vault-name $KV --name $REG-sql-conn --query value -o tsv)/g" \
+  | sed "s/{{AIKEY}}/$AIKEY/g" \
+  | kubectl apply -f -
+```
+
+* Watch front-end service to get public IP: `kubectl get service hotelsapi-svc --watch`
 
 * Try to reach web app via public IP
 
