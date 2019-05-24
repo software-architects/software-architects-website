@@ -4,7 +4,7 @@ title: Techorama Belgium 2019 - Session Material
 excerpt: This year, I was again speaker at Techorama Belgium. I did a full-day workshop about Containers in Azure, one session about Angular, and one about Blazor. In this blog post I share the material and recordings of my talks.
 author: Rainer Stropek
 date: 2019-05-24
-bannerimage: /content/images/blog/2019/techorama1920.jpg
+bannerimage: /content/images/blog/2019/techorama-1920.jpg
 lang: en
 tags: [Docker, CSharp, Blazor, Angular, WebAssembly, Techorama]
 permalink: /devblog/2019/05/techorama-docker-azure-angular-blazor
@@ -12,7 +12,7 @@ showtoc: true
 ---
 
 {: .banner-image}
-![Intro Logo]({{site.baseurl}}/content/images/blog/2019/techorama1920.jpg)
+![Intro Logo]({{site.baseurl}}/content/images/blog/2019/techorama-1920.jpg)
 
 ## Introduction
 
