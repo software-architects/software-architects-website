@@ -30,6 +30,8 @@ My fist session at Techorama was called *Modernizing a Manufacturing Control Sys
 
 *The Swiss company Ammann has a long history in building asphalt mixing plants. The software control systems is an important part of Ammann's mixing plants. In the last months, Ammann has been rebuilding the visualization layer of this product from scratch. The existing C++ base UI is replaced with a browser-based front end built with Angular and SVG. Rainer Stropek has been working as an external consultant in the project from the early days on. In his talk, he presents the chosen architecture and showcases how the project makes use of Angular's great SVG support. Rainer describes how WebSockets is used to connect the real-time control backend with the new Angular UI.*
 
+The material for the session is available [on GitHub](https://github.com/rstropek/Samples/tree/master/AngularSvg).
+
 I recorded the session:
 
 <div class="videoWrapper">
@@ -41,6 +43,8 @@ I recorded the session:
 My second session was about Blazor: *Web Development Revolution with WebAssembly and ASP.NET Blazor*. Here is the abstract of the talk:
 
 *WebAssembly (WASM) is challenging JavaScript's monopoly in the browser. Many higher-level languages are currently evaluating whether WASM is a way for them to conquer the web client. .NET is spearheading this movement. In 2017, we saw the first .NET prototypes running on WASM. Based on that, Blazor, the new .NET- and WASM-based Single-Page-App (SPA) framework has appeared. The .NET community is thrilled but Blazor could be interesting for developers new to .NET, too. Rainer Stropek engaged early in the Blazor open source project. Join him in this fast-paced, demo-heavy session and see what's behind this new contender in the world of browser development.*
+
+The material for the session is available [on GitHub](https://github.com/rstropek/StarshipTraveler).
 
 I recorded the session:
 
