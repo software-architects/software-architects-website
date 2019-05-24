@@ -6,7 +6,7 @@ author: Rainer Stropek
 date: 2019-05-24
 bannerimage: /content/images/blog/2019/techorama1920.jpg
 lang: en
-tags: [Docker, CSharp]
+tags: [Docker, CSharp, Blazor, Angular, WebAssembly, Techorama]
 permalink: /devblog/2019/05/techorama-docker-azure-angular-blazor
 showtoc: true
 ---
