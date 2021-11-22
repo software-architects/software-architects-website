@@ -35,10 +35,20 @@ title: Contact Us
 	<div class="row">
 		<div class="col-sm-6">
 			<p>
-				software architects gmbh<br />
-				Welser Straße 26<br />
-				Austria - 4060 Leonding<br />
-				+43 732 673575
+				software architects gmbh
+			</p>
+			<p>
+				Office:<br/>
+				Kornstraße 7A<br />
+				Austria - 4060 Leonding<br/>
+				+43 732 673575<br/>
+				<a href="support@timecockpit.com">support@timecockpit.com</a>
+			</p>
+			<p>
+				Accounting:<br/>
+				Birkenweg 16<br/>
+				Austria - 4060 Leonding<br/>
+				<a href="office@software-architects.at">office@software-architects.at</a>
 			</p>
 			<p>
 				VAT identification number: ATU65831825
