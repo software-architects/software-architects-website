@@ -65,5 +65,5 @@ title: Contact Us
 		</div>
 	</div>
 	
-	<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2655.6622155619393!2d14.2685138!3d48.270874600000006!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477396549be9de91%3A0xc6cf9a4b5fa51f37!2sWelser+Stra%C3%9Fe+26%2C+4060+Leonding!5e0!3m2!1sde!2sat!4v1406874724324" width="100%" height="400" frameborder="0" style="border:0"></iframe>
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2656.319695621941!2d14.254093051812744!3d48.25822195062676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4773971d01f7c9f5%3A0xfa06d250e7f94038!2ssoftware%20architects!5e0!3m2!1sen!2sat!4v1637578598868!5m2!1sen!2sat" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
